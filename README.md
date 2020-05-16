@@ -20,3 +20,8 @@ project setup and you will notice the dependency it has on `Yaeger`.
 ### Importing the project in Eclipse
 
 ## Create the entry-point of Waterworld
+Let's first create the entry-point, the Class that contains the `main`-method.
+
+:computer: Create a Class called `Waterworld.java` in the package `com.github.hanyaeger.tutorial`.
+
+:computer: Let `Waterworld` extend the Class `YaegerApplication`and implement the required methods. Leave them empty for now.
