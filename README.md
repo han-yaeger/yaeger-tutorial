@@ -40,6 +40,8 @@ to the `launch`-method:
 notice, there is a default width and height and you'll be greeted with the
 Splash Screen. Since no Scenes have been added, Yaeger exits after showing this SplashScreen.
 
+<img align="right" width="100" height="100" src="images/splash.png">
+
 ## Set the width, height and title of the game
 The game now uses the default size (width/height), which might be a bit small. You can use the method `initializeGame()` to 
 set the size to a specific value. Furthermore you can set the title of the game, which will be shown as the title of the window.
@@ -138,6 +140,10 @@ by calling the method `addEntity()`.
 
 :arrow_forward: Run the game again. The TitleScene should now contain the title.
 
+<img align="right" width="100" height="100" src="images/title-no-buttons.png">
+
 ## Add a first level
+Now that we have a TitleScene, lets add a level. Since a level is typically a Scene that contains animated Entities, we are going to extend
+a `DynamicScene`.
 
 
