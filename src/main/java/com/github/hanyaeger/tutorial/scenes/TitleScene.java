@@ -5,12 +5,20 @@ import com.github.hanyaeger.api.engine.entities.entity.Location;
 import com.github.hanyaeger.api.engine.entities.entity.shape.text.TextEntity;
 import com.github.hanyaeger.api.engine.scenes.StaticScene;
 import com.github.hanyaeger.api.engine.styles.HanFont;
+import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.buttons.StartButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
 import java.util.Set;
 
 public class TitleScene extends StaticScene {
+
+    private Waterworld waterworld;
+
+    public TitleScene(Waterworld waterworld) {
+        this.waterworld = waterworld;
+    }
 
     @Override
     public void setupScene() {
@@ -21,10 +29,14 @@ public class TitleScene extends StaticScene {
     @Override
     public void setupEntities() {
         var waterworldText = new TextEntity(new Location(getWidth() / 2, getHeight() / 2), "Waterworld");
-        waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        waterworldText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
         waterworldText.setFill(Color.DARKBLUE);
         waterworldText.setFont(HanFont.createDefaultCondensedFont(80));
         addEntity(waterworldText);
+
+        var playGameText = new StartButton(new Location(getWidth() / 2, getHeight() / 2), waterworld);
+        playGameText.setAnchorPoint(AnchorPoint.TOP_CENTER);
+        addEntity(playGameText);
     }
 
     @Override

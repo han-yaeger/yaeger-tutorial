@@ -24,6 +24,8 @@ project setup and you will notice the dependency it has on `Yaeger`.
 ## Create the entry-point of Waterworld
 Let's first create the entry-point, the Class that contains the `main`-method.
 
+<img align="right" src="images/splash.png">
+
 :computer: Create a Class called `Waterworld.java` in the package `com.github.hanyaeger.tutorial`.
 
 :computer: Let `Waterworld` extend the Class `YaegerApplication`and implement the required methods. Leave them empty for now.
@@ -40,16 +42,14 @@ to the `launch`-method:
 notice, there is a default width and height and you'll be greeted with the
 Splash Screen. Since no Scenes have been added, Yaeger exits after showing this SplashScreen.
 
-<img align="right" src="images/splash.png">
-
 ## Set the width, height and title of the game
-The game now uses the default size (width/height), which might be a bit small. You can use the method `initializeGame()` to 
+The game now uses the default size (width/height), which might be a bit small. You can use the method `setupGame()` to 
 set the size to a specific value. Furthermore you can set the title of the game, which will be shown as the title of the window.
 
-:computer: Add the following body to the `initializeGame()` method
+:computer: Add the following body to the `setupGame()` method
 ```java    
     @Override
-      protected void initializeGame() {
+      protected void setupGame() {
           setGameTitle("Waterworld");
           setSize(new Size(800, 600));
       }
@@ -119,6 +119,8 @@ a Sprite and shape-based Entities, such as, for instance, a *RectangleEntity*. F
 
 A title is typically the static version of a `TextEntity`. We will use the method `setupEntities()` to add Entities to the Scene.
 
+<img align="right" src="images/title-no-buttons.png">
+
 :computer: Add the following body to the setupEntities() method:
 
 ```java
@@ -140,10 +142,22 @@ by calling the method `addEntity()`.
 
 :arrow_forward: Run the game again. The TitleScene should now contain the title.
 
-<img align="right" src="images/title-no-buttons.png">
-
 ## Add a first level
 Now that we have a TitleScene, lets add a level. Since a level is typically a Scene that contains animated Entities, we are going to extend
 a `DynamicScene`.
 
+:computer: Add a scene called `LevelOne`, which extends a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes` package.
+Use the method `setupScene()` to set the background to the asset `background2.jpg` and the audio to `waterworld.mp3`.
 
+At this moment the level has not yet been added to the game. You have only created a new class, that needs
+to be instantiated and added to the `YaegerApplication`.
+
+:computer: Use the `setupScenes()` from the `Waterworld`-class to add `LevelOne` to the game. Choose a wise `id`.
+
+### Add a button to switch to Level 1
+Although `LevelOne` has now been added to the Yaeger Game, there is no way to reach it yet. As said before, the
+first added Scene is set as the active scene and that should be the `TitleScene`. To switch to `LevelOne`
+you will need to call the method `setActiveScene(id)` on the `Waterworld` class.
+
+To enable this, we are going to add a button to the `TitleScene`. Clicking the button will result in switching to
+`LevelOne`.
