@@ -24,11 +24,11 @@ project setup and you will notice the dependency it has on `Yaeger`.
 ## Create the entry-point of Waterworld
 Let's first create the entry-point, the Class that contains the `main`-method.
 
-<img align="right" src="images/splash.png">
-
 :computer: Create a Class called `Waterworld.java` in the package `com.github.hanyaeger.tutorial`.
 
 :computer: Let `Waterworld` extend the Class `YaegerApplication`and implement the required methods. Leave them empty for now.
+
+<img align="right" src="images/splash.png">
 
 :computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerApplication`. Pass the arguments from the `main`-method
 to the `launch`-method:
@@ -119,8 +119,6 @@ a Sprite and shape-based Entities, such as, for instance, a *RectangleEntity*. F
 
 A title is typically the static version of a `TextEntity`. We will use the method `setupEntities()` to add Entities to the Scene.
 
-<img align="right" src="images/title-no-buttons.png">
-
 :computer: Add the following body to the setupEntities() method:
 
 ```java
@@ -133,6 +131,8 @@ A title is typically the static version of a `TextEntity`. We will use the metho
         addEntity(waterworldText);
     }
 ```
+
+<img align="right" src="images/title-no-buttons.png">
 
 First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is the `Location`. To
 place it at the center of the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter is the text to be shown.
@@ -165,7 +165,7 @@ a `TextEntity` that will need to listen to mouse-clicks. Because of the latter, 
 `TextEntity` as we did for the title. We are going to create a new Class, called `StartButton` that extends `TextEntity`,
 and add all the required behaviour to this Class.
 
-## Create and add the button
+### Create and add the button
 :computer: Create a new Class `StartButton` that extends `TextEntity` and place it in the package 
 `com.github.hanyaeger.tutorial.buttons`. Use the following constructor:
 
