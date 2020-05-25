@@ -257,4 +257,27 @@ way:
     }
 ```
 
-Notice how both change both the color of the `Entity` as the mouse cursor.
+Notice how we change both the color of the `Entity` as the mouse cursor.
+
+## Add the player Entity to Level 1
+The player will control a fish by using the arrow keys. For this we will be using a `DynamicSpriteEntity`, which will
+support using an image and, because it is a dynamic entity, can swim around the Scene.
+
+:computer: Create a new Class called `Player` that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
+Give it the following constructor:
+```java
+    public Player(final Location location) {
+        super("sprites/player.png", location, new Size(20, 40), 2);
+    }
+```
+
+<img align="right" src="images/player.png">
+
+The image on the right will be used for the fish. As you can see, it contains two different images of the fish. 
+These are called sprites and depending on the direction the fish is swimming, a different one will be shown. To get
+more insight into the parameters of the constructor, check the [JavaDoc of DynamicSpriteEntity](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/sprite/DynamicSpriteEntity.html).
+
+:computer: Now use the `setupEntities()` from the `LevelOne` to add the `Player`. Place it at the top left corner
+of the screen.
+
+### Animate the Player

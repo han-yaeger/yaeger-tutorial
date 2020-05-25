@@ -1,6 +1,8 @@
 package com.github.hanyaeger.tutorial.scenes;
 
+import com.github.hanyaeger.api.engine.entities.entity.Location;
 import com.github.hanyaeger.api.engine.scenes.DynamicScene;
+import com.github.hanyaeger.tutorial.entities.Player;
 
 public class LevelOne extends DynamicScene {
 
@@ -12,6 +14,6 @@ public class LevelOne extends DynamicScene {
 
     @Override
     public void setupEntities() {
-
+        addEntity(new Player(new Location(0, 0)));
     }
 }
