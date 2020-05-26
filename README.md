@@ -1,13 +1,18 @@
 # Yaeger tutorial: Creating Waterworld
-In this tutorial you will create a simple game called Waterworld. 
-We start of with an empty project that does not contain any code. 
-Only the assets and the project settings are provided. Step-by-step you will be guided in the creation of simple 
-game, and in doing so, become familiar with many of the features of Yaeger.
+In this tutorial you will create a simple game called Waterworld. We start of with an empty project that 
+does not contain any code. Only the assets and the project settings are provided. Step-by-step you will 
+be guided in the creation of simple game, and in doing so, become familiar with many of the features of 
+Yaeger.
 
 ## Requirements
 Yaeger requires Java JDK12 or above to work, and can be used with any IDE that supports Java.
 
 # Creating your first Yaeger Game
+
+We are going to create a game that consists of three **Scenes**. A Title Scene, a Level Scene and a Game Over Scene.
+The Game itself will be about a fish called Hanny, that swims in the ocean and tries to pop air bubbles. Sadly most bubbles
+contain a poisonous gas and popping to many of those kills Hanny.
+But not only Hanny swims in the Ocean, but also an evil Shark. If he gets his hands on Hanny, Hanny gets eaten.
 
 ## Clone the starter project
 We provide a repository, that contains both a starter project and the required assets. Either clone this repository
@@ -142,7 +147,7 @@ by calling the method `addEntity()`.
 
 :arrow_forward: Run the game again. The TitleScene should now contain the title.
 
-## Add a first level
+## Add the Game Scene
 Now that we have a TitleScene, lets add a level. Since a level is typically a Scene that contains animated Entities, we are going to extend
 a `DynamicScene`.
 
@@ -154,7 +159,7 @@ to be instantiated and added to the `YaegerApplication`.
 
 :computer: Use the `setupScenes()` from the `Waterworld`-class to add `LevelOne` to the game. Choose a wise `id`.
 
-### Add a button to switch to Level 1
+### Add a button to switch to the Game Scene
 Although `LevelOne` has now been added to the Yaeger Game, there is no way to reach it yet. As said before, the
 first added Scene is set as the active scene and that should be the `TitleScene`. To switch to `LevelOne`
 you will need to call the method `setActiveScene(id)` on the `Waterworld` class.
@@ -259,14 +264,14 @@ way:
 
 Notice how we change both the color of the `Entity` as the mouse cursor.
 
-## Add the player Entity to Level 1
+## Add the player Entity to the Game
 The player will control a fish by using the arrow keys. For this we will be using a `DynamicSpriteEntity`, which will
 support using an image and, because it is a dynamic entity, can swim around the Scene.
 
 :computer: Create a new Class called `Player` that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
 Give it the following constructor:
 ```java
-    public Player(final Location location) {
+    public Player(Location location) {
         super("sprites/player.png", location, new Size(20, 40), 2);
     }
 ```
@@ -281,3 +286,41 @@ more insight into the parameters of the constructor, check the [JavaDoc of Dynam
 of the screen.
 
 ### Animate the Player
+To animate the Player, we are going to let the Player listen to user input through the keyboard. As with the 
+`MouseButtonPressedListener`, we are going to add an Interface. 
+
+:computer: Let `Player` implement the interface `KeyListener` and implement the event handler in
+the following way:
+
+```java
+  @Override
+    public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
+        if (pressedKeys.contains(KeyCode.LEFT)) {
+            setMotionTo(3, Direction.LEFT.getValue());
+        } else if (pressedKeys.contains(KeyCode.RIGHT)) {
+            setMotionTo(3, Direction.RIGHT.getValue());
+        } else if (pressedKeys.contains(KeyCode.UP)) {
+            setMotionTo(3, Direction.UP.getValue());
+        } else if (pressedKeys.contains(KeyCode.DOWN)) {
+            setMotionTo(3, Direction.DOWN.getValue());
+        } else if (pressedKeys.isEmpty()) {
+            setSpeedTo(0);
+        }
+    }
+```
+
+Notice how the event handler receives a `Set<KeyCode>`. This Set will contain all the buttons that are 
+currently pressed. Depending on this, we set the motion of the Entity. To set the motion, we must set both
+the direction and the speed. For convenience Yaeger supplied an Enumeration for setting the `Direction`.
+
+### Change the frame index depending on the direction of the Player
+We should still change the frame index depending on the direction of the Player. For this a `DynamicSpriteEntity`
+provides the method ` setCurrentFrameIndex(int)`. 
+
+:computer: Set the correct frame index. Make sure only the left and right buttons change the direction in which
+the Player seems to be swimming.
+
+## Add the air bubbles to the Game 
+
+
+
