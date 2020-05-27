@@ -264,11 +264,56 @@ way:
 
 Notice how we change both the color of the `Entity` as the mouse cursor.
 
-## Add the player Entity to the Game
-The player will control a fish by using the arrow keys. For this we will be using a `DynamicSpriteEntity`, which will
-support using an image and, because it is a dynamic entity, can swim around the Scene.
+## Add a `DynamicEntity` to the Game
+Before adding Hanny, lets start by adding her enemy, the evil Swordfish. Since this fish will be based on the image 
+`sprites/swordfish.png` and he will swimm around, we will be using a `DynamicSpriteEntity`.
 
-:computer: Create a new Class called `Player` that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
+### Add the `Swordfish`
+:computer: Create a new Class called `Swordfish` that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
+Give it the following constructor:
+```java
+    public Swordfish(Location location) {
+        super("sprites/swordfish.png", location, new Size(225, 81));
+    }
+```
+Notice how we call `super()` and pass the *image*, the *location* and the *size* to the constructor of the SuperClass.
+
+### Animate the `Swordfish`
+Since the Swordfish is a `DynamicSpriteEntity`, we can let it move around the Scene. To do this, we will need to 
+set both the *direction* and *speed*. The *direction* will be an angle in degrees, where 0 means upwards. For
+convinience Yaeger supplies a method to set both values at once:
+
+:computer: Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
+```java
+        setMotionTo(2, 270d);
+```
+:arrow_forward: Run the game again. You should now see a Swordfish that swims from right to left and disappears of the
+screen.
+
+### Make the `Swordfish` swim in circles
+Now we would like to add behaviour that notifies us when the Swordfish has left te Scene. That way we can place
+him to the right of the Scene, and make him reappear and continue this loop. 
+
+As seen before, adding behaviour is done by implementing the correct Interface. For this use case, Yaeger supplies
+the interface `SceneBorderCrossingWatcher`.
+
+:computer: Let `Swordfish` implement the interface `SceneBorderCrossingWatcher` and use the following event handler:
+```java
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder border) {
+        setOriginX(getSceneWidth());
+    }
+```
+:arrow_forward: Run the game again and see what happens. To also change the y-coordinate at which the swordfish
+reappears, you can also add the following method call: ` setOriginY(new Random().nextInt((int) getSceneHeight() - 81));`
+
+## Add Hanny to the Game
+The player will control Hanny by using the arrow keys. Again we will use a `DynamicSpriteEntity`.
+
+:computer: Create a new Class for `Hanny` in the same package as `SwordFish` . Make sure `Hanny is placed at the
+top-left corner of the Scene.
+
+that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
 Give it the following constructor:
 ```java
     public Player(Location location) {
