@@ -313,26 +313,31 @@ The player will control Hanny by using the arrow keys. Again we will use a `Dyna
 :computer: Create a new Class for `Hanny` in the same package as `SwordFish` . Make sure `Hanny is placed at the
 top-left corner of the Scene.
 
-that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
-Give it the following constructor:
+<img align="right" src="images/hanny.png">
+
+You might notice that the image of Hanny contains two Hannies. This approach is a standard way to animate a figure 
+in a game. The image itself contains multiple sprites and the Game Engine is responsible for showing only one of those sprites. 
+
+Yaeger suports this through its `DynamicSpriteEntity`, by explicitly stating the number of spites and image contains.
+By default a `DynamicSpriteEntity` assumes the image contains only one sprite, but by calling the correct constructor, we
+can change this. 
+
+:computer: With this in mind, the constructor of `Hanny` should look like:
+ 
 ```java
-    public Player(Location location) {
+    public Hanny(Location location) {
         super("sprites/player.png", location, new Size(20, 40), 2);
     }
 ```
-
-<img align="right" src="images/player.png">
-
-The image on the right will be used for the fish. As you can see, it contains two different images of the fish. 
-These are called sprites and depending on the direction the fish is swimming, a different one will be shown. To get
-more insight into the parameters of the constructor, check the [JavaDoc of DynamicSpriteEntity](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/sprite/DynamicSpriteEntity.html).
 
 :computer: Now use the `setupEntities()` from the `LevelOne` to add the `Player`. Place it at the top left corner
 of the screen.
 
 ### Animate the Player
 To animate the Player, we are going to let the Player listen to user input through the keyboard. As with the 
-`MouseButtonPressedListener`, we are going to add an Interface. 
+`MouseButtonPressedListener`, we are going to add an Interface. In the event-handler from that interface, we are going to call
+`setMotionTo()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
+`setSpeed(0)` to make sure Hanny keeps her position.
 
 :computer: Let `Player` implement the interface `KeyListener` and implement the event handler in
 the following way:
@@ -341,13 +346,13 @@ the following way:
   @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            setMotionTo(3, Direction.LEFT.getValue());
+            setMotionTo(3, 270d);
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotionTo(3, Direction.RIGHT.getValue());
+            setMotionTo(3, 90d);
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotionTo(3, Direction.UP.getValue());
+            setMotionTo(3, 0d);
         } else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotionTo(3, Direction.DOWN.getValue());
+            setMotionTo(3, 180d);
         } else if (pressedKeys.isEmpty()) {
             setSpeedTo(0);
         }
@@ -355,17 +360,45 @@ the following way:
 ```
 
 Notice how the event handler receives a `Set<KeyCode>`. This Set will contain all the buttons that are 
-currently pressed. Depending on this, we set the motion of the Entity. To set the motion, we must set both
-the direction and the speed. For convenience Yaeger supplied an Enumeration for setting the `Direction`.
+currently pressed. Depending on this, we set the motion of the Entity. 
 
-### Change the frame index depending on the direction of the Player
-We should still change the frame index depending on the direction of the Player. For this a `DynamicSpriteEntity`
+### Change the frame index depending on the direction of the Hanny
+We should still change the frame index depending on the direction of Hanny. For this a `DynamicSpriteEntity`
 provides the method ` setCurrentFrameIndex(int)`. 
 
 :computer: Set the correct frame index. Make sure only the left and right buttons change the direction in which
-the Player seems to be swimming.
+Hanny seems to be swimming.
 
-## Add the air bubbles to the Game 
+## Add interaction between Hanny and the Swordfish
+A standard feature of a game engine is collision detection. It is an algorithmically complex calculation that determines if any two
+entities occupy the same part of the screen. If so, they have collided.
+
+Yaeger differentiates between entities that need to be notified about a collision (a Collided) and those that do not need to
+be notified (a Collider). Thinks of this as a train and a fly. If they collide the train doesn't even notice it; the fly does 
+(and dies). 
+
+With this approach it is possible to minimize the number of entities that need to be checked for collisions every Game Loop. And
+it enables a good Object Oriented approach to place the responsibility of handling a collision, at the right entity.
+
+### Add collision detection for Hanny and the Swordfish
+There are several different algorithms for collision detection but Yaeger only supports the most simple implementation which is based
+on the BoundingBox of an entity. This method is called Axis Aligned Bounding Box (AABB) collision detection and is implemented through 
+the interfaces `AABBCollided` and `Collider`.
+
+> Besides the interface `AABBCollided` there is a more complex version `AABBSideAwareCollided`, which receives information
+> on which of its sides the collision has occurred. 
+
+The Sworfish is a dangerous foe and each time Hanny collides with him, she will lose a lifepoint. At the start of the game Hanny
+has ten of those and when she reaches zero, she dies and it is Game Over.
+
+:computer: Add the correct interface to Hanny and the SwordFish. You do not need to implement the event handler, but for testing purposes
+you should add a `system.out.println("Collision!");`
+
+:arrow_forward: Start the game and test if the collision has been detected.
+
+### Ensure that Hanny loses a life point when she has collided
+Because Hanny is the one that needs to know if she has collided with the SwordFish, she will be the one that implements 
+`AABBCollided`.
 
 
 

@@ -2,6 +2,8 @@ package com.github.hanyaeger.tutorial.entities;
 
 import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListener;
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
@@ -9,10 +11,10 @@ import javafx.scene.input.KeyCode;
 
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements KeyListener {
+public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBCollided {
 
     public Hanny(Location location) {
-        super("sprites/player.png", location, new Size(20, 40), 2);
+        super("sprites/hanny.png", location, new Size(20, 40), 2);
     }
 
     @Override
@@ -30,5 +32,10 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener {
         } else if (pressedKeys.isEmpty()) {
             setSpeedTo(0);
         }
+    }
+
+    @Override
+    public void onCollision(Collider collidingObject) {
+        System.out.println("Collision!");
     }
 }

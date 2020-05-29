@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.engine.scenes.DynamicScene;
 import com.github.hanyaeger.tutorial.entities.Hanny;
 import com.github.hanyaeger.tutorial.entities.Swordfish;
 
-public class LevelOne extends DynamicScene {
+public class Level extends DynamicScene {
 
     @Override
     public void setupScene() {
