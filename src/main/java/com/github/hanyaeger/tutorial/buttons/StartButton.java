@@ -6,6 +6,7 @@ import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseEnt
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseExitListener;
 import com.github.hanyaeger.api.engine.entities.entity.shape.text.TextEntity;
 import com.github.hanyaeger.api.engine.styles.HanFont;
+import com.github.hanyaeger.api.engine.styles.HanFontStyle;
 import com.github.hanyaeger.tutorial.Waterworld;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
@@ -18,8 +19,8 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
     public StartButton(Location initialPosition, Waterworld waterworld) {
         super(initialPosition, "Play game");
         this.waterworld = waterworld;
-        setFill(Color.PURPLE);
-        setFont(HanFont.createDefaultCondensedFont(30));
+        setFill(Color.ORANGERED);
+        setFont(HanFont.createDefaultCondensedFont(HanFontStyle.BOLD, 30));
     }
 
     @Override
@@ -29,13 +30,13 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
     @Override
     public void onMouseEntered() {
-        setFill(Color.VIOLET);
+        setFill(Color.LIGHTYELLOW);
         setCursor(Cursor.HAND);
     }
 
     @Override
     public void onMouseExited() {
-        setFill(Color.PURPLE);
+        setFill(Color.ORANGERED);
         setCursor(Cursor.DEFAULT);
     }
 }

@@ -9,12 +9,19 @@ import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import javafx.scene.input.KeyCode;
 
+import java.util.Random;
 import java.util.Set;
 
 public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBCollided {
 
-    public Hanny(Location location) {
+    private final HealthText healthText;
+    private int health = 10;
+
+    public Hanny(Location location, HealthText healthText) {
         super("sprites/hanny.png", location, new Size(20, 40), 2);
+
+        this.healthText = healthText;
+        healthText.setHealthText(health);
     }
 
     @Override
@@ -36,6 +43,10 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBColli
 
     @Override
     public void onCollision(Collider collidingObject) {
-        System.out.println("Collision!");
+        setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+        setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+
+        health--;
+        healthText.setHealthText(health);
     }
 }

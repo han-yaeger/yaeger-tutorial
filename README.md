@@ -59,7 +59,6 @@ set the size to a specific value. Furthermore you can set the title of the game,
           setSize(new Size(800, 600));
       }
 ```
-
 ## Add a title/welcome screen
 We're going to add the first Scene to the game. Yaeger supports two different types of Scenes. 
 A `StaticScene` and a `DynamicScene`. A `StaticScene` will have no Game World update and should be used for Scenes
@@ -396,9 +395,83 @@ you should add a `system.out.println("Collision!");`
 
 :arrow_forward: Start the game and test if the collision has been detected.
 
-### Ensure that Hanny loses a life point when she has collided
+### Let Hanny respawn after a collision with the SwordFish
 Because Hanny is the one that needs to know if she has collided with the SwordFish, she will be the one that implements 
-`AABBCollided`.
+`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setOriginX()` and
+`setOriginY()` methods.
+
+:computer: Use the following event handler to let Hanny respawn at a random location:
+```java
+    @Override
+    public void onCollision(Collider collidingObject) {
+        setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+        setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+    }
+```
+
+Notice that we have acces to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *Width* and *Height* of Hanny
+to ensure that Hanny respawn within the Scene.
+
+### Add health points and subtract one on a collision 
+The next step should be fairly simple, since we will use only features we have already seen.
+
+:computer: Create a new static `TextEntity` called `HealthText` that contains the following constructor and method:
+```java
+    public HealthText(Location initialPosition) {
+        super(initialPosition);
+
+        setFont(HanFont.createDefaultCondensedFont(40));
+        setFill(Color.DARKBLUE);
+    }
+
+    public void setHealthText(int health) {
+        setText("Health: " + health);
+    }
+```
+
+:computer: Add this entity to the Level, by using the `setupEntities()` method, but also pass the instance to
+the constructor of Hanny. This way Hanny has access to the `HealthText` Entity and can call the method `setHealthText(int)`
+whenever her health changes.
+
+:computer: Give Hanny a private instance field called health of type `int` and initialize it to 10. Also
+bind the constructor parameter `HealthText` to an instance field. Af this change, the constructor and instance 
+fields of Hanny should look like:
+
+```java
+    private final HealthText healthText;
+    private int health = 10;
+
+    public Hanny(Location location, HealthText healthText) {
+        super("sprites/hanny.png", location, new Size(20, 40), 2);
+
+        this.healthText = healthText;
+        healthText.setHealthText(health);
+    }
+```
+
+The last step is to integrate the health into the event handler.
+
+:computer: Change the event handler to ensure that the health is decreased and the healthText changed:
+```java
+    @Override
+    public void onCollision(Collider collidingObject) {
+        setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+        setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+
+        health--;
+        healthText.setHealthText(health);
+    }
+```
+
+### End game when health reaches zero
+When health reaches 0 Hanny dies and the player should be see a new Scene containing the text Game Over, with
+below it the clickable text *Play again*. We have seen all Yaeger's features that are required for this, so
+it should be clear how to implement this.
+
+:computer: Add a *Game Over* scene with a *Play Again* button. Clicking the *Play Again* button should load the
+Level Scene.
+
+
 
 
 
