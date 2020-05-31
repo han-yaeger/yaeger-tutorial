@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListener;
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
+import com.github.hanyaeger.tutorial.Waterworld;
 import javafx.scene.input.KeyCode;
 
 import java.util.Random;
@@ -15,12 +16,14 @@ import java.util.Set;
 public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBCollided {
 
     private final HealthText healthText;
+    private final Waterworld waterworld;
     private int health = 10;
 
-    public Hanny(Location location, HealthText healthText) {
+    public Hanny(Location location, HealthText healthText, Waterworld waterworld) {
         super("sprites/hanny.png", location, new Size(20, 40), 2);
 
         this.healthText = healthText;
+        this.waterworld = waterworld;
         healthText.setHealthText(health);
     }
 
@@ -43,10 +46,15 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBColli
 
     @Override
     public void onCollision(Collider collidingObject) {
-        setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-        setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
 
         health--;
         healthText.setHealthText(health);
+
+        if (health == 8) {
+            this.waterworld.setActiveScene(2);
+        } else {
+            setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+            setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+        }
     }
 }

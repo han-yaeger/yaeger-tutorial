@@ -463,13 +463,20 @@ The last step is to integrate the health into the event handler.
     }
 ```
 
-### End game when health reaches zero
+### Add a Game Over Scene for when health reaches zero
 When health reaches 0 Hanny dies and the player should be see a new Scene containing the text Game Over, with
 below it the clickable text *Play again*. We have seen all Yaeger's features that are required for this, so
 it should be clear how to implement this.
 
 :computer: Add a *Game Over* scene with a *Play Again* button. Clicking the *Play Again* button should load the
-Level Scene.
+Level Scene. 
+
+:computer: Change the event handler in Hanny in such a way that when the health reaches zero, the Game Over Scene is
+loaded. 
+
+### Add a Quit Game button to the Game Over Scene
+
+:computer: Add a second button to the *Game Over* scene. Clicking this button should quit Yaeger.
 
 
 
