@@ -468,7 +468,22 @@ loaded.
 `YaegerGame` provides a method to quit the game, so use the [JavaDoc](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/YaegerGame.html)
 to figure out which one it is.
 
-## Add `Sharky`
+:arrow_forward: Start the game and test if the Quit button works.
+
+## Add another enemy, called `Sharky`
+
+<img align="right" width="100%" src="images/sharky.png">
+
+Besides the SwordFish, another foe abides in the depth of the ocean: The Evil Sharky. As as be
+seen, Sharky swims from left to right and is composed of many different sprites. If these sprites
+are cycled at the correct speed, Sharky becomes animated. To automatically cycle through the sprites, 
+a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
+
+:computer: Add Sharky to the Level, animate him and let him swim from left to right. After crossing the SceneBorder, he sould
+reappear at a random location left of the Scene. After colliding with Sharky, Hanny loses a healthpoint.
+
+
+
 
 
 
