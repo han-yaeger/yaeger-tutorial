@@ -19,7 +19,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
     public StartButton(Location initialPosition, Waterworld waterworld) {
         super(initialPosition, "Play game");
         this.waterworld = waterworld;
-        setFill(Color.ORANGERED);
+        setFill(Color.ORANGE);
         setFont(HanFont.createDefaultCondensedFont(HanFontStyle.BOLD, 30));
     }
 
@@ -36,7 +36,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
     @Override
     public void onMouseExited() {
-        setFill(Color.ORANGERED);
+        setFill(Color.ORANGE);
         setCursor(Cursor.DEFAULT);
     }
 }

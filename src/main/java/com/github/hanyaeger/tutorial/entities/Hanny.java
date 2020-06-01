@@ -3,7 +3,7 @@ package com.github.hanyaeger.tutorial.entities;
 import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Location;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListener;
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
@@ -45,7 +45,7 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBColli
     }
 
     @Override
-    public void onCollision(Collider collidingObject) {
+    public void onCollision(AABBCollider collidingObject) {
 
         health--;
         healthText.setHealthText(health);

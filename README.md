@@ -225,18 +225,6 @@ As the last step wel would like to add the following to the mouse button handler
     }
 ```
 
-but you will notice that the method `setActiveScene()` is not available. Alas! `setActiveScene()` has access
-modifier `protected` and is therefore only available to instances of subclasses of `YaegerGame`. 
-
-:computer: To make the method visible to other Objects, you should change the visibility by adding a 
-public method to `Waterworld`:
-```java
-    @Override
-    public void setActiveScene(int id) {
-        super.setActiveScene(id);
-    }
-```
-
 :arrow_forward: Run the game again. The TitleScene should now contain the title and a start button. Clicking this
 start button should switch the game to level one.
 
@@ -382,7 +370,7 @@ it enables a good Object Oriented approach to place the responsibility of handli
 ### Add collision detection for Hanny and the Swordfish
 There are several different algorithms for collision detection but Yaeger only supports the most simple implementation which is based
 on the BoundingBox of an entity. This method is called Axis Aligned Bounding Box (AABB) collision detection and is implemented through 
-the interfaces `AABBCollided` and `Collider`.
+the interfaces `AABBCollided` and `AABBCollider`.
 
 > Besides the interface `AABBCollided` there is a more complex version `AABBSideAwareCollided`, which receives information
 > on which of its sides the collision has occurred. 
@@ -403,7 +391,7 @@ Because Hanny is the one that needs to know if she has collided with the SwordFi
 :computer: Use the following event handler to let Hanny respawn at a random location:
 ```java
     @Override
-    public void onCollision(Collider collidingObject) {
+    public void onCollision(AABBCollider collidingObject) {
         setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
         setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
     }
@@ -454,7 +442,7 @@ The last step is to integrate the health into the event handler.
 :computer: Change the event handler to ensure that the health is decreased and the healthText changed:
 ```java
     @Override
-    public void onCollision(Collider collidingObject) {
+    public void onCollision(AABBCollider collidingObject) {
         setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
         setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
 
@@ -476,7 +464,11 @@ loaded.
 
 ### Add a Quit Game button to the Game Over Scene
 
-:computer: Add a second button to the *Game Over* scene. Clicking this button should quit Yaeger.
+:computer: Add a second button to the *Game Over* scene. Clicking this button should quit Yaeger. The Class
+`YaegerGame` provides a method to quit the game, so use the [JavaDoc](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/YaegerGame.html)
+to figure out which one it is.
+
+## Add `Sharky`
 
 
 

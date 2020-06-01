@@ -36,11 +36,11 @@ public class GameOverScene extends StaticScene {
         gameOverText.setFont(HanFont.createDefaultCondensedFont(HanFontStyle.DEMI_BOLD, 80));
         addEntity(gameOverText);
 
-        var playGamButton = new StartButton(new Location(getWidth() / 2, getHeight() / 2), waterworld);
+        var playGamButton = new StartButton(new Location((getWidth() / 2) - 20, getHeight() / 2), waterworld);
         playGamButton.setAnchorPoint(AnchorPoint.TOP_RIGHT);
         addEntity(playGamButton);
 
-        var exitGameButton = new QuitButton(new Location(getWidth() / 2, getHeight() / 2), waterworld);
+        var exitGameButton = new QuitButton(new Location((getWidth() / 2) + 20, getHeight() / 2), waterworld);
         exitGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);
         addEntity(exitGameButton);
     }

@@ -19,13 +19,13 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
     public QuitButton(Location initialPosition, Waterworld waterworld) {
         super(initialPosition, "Quit game");
         this.waterworld = waterworld;
-        setFill(Color.ORANGERED);
+        setFill(Color.ORANGE);
         setFont(HanFont.createDefaultCondensedFont(HanFontStyle.BOLD, 30));
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton button, double x, double y) {
-        waterworld.quitGame();
+        waterworld.quit();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
     @Override
     public void onMouseExited() {
-        setFill(Color.ORANGERED);
+        setFill(Color.ORANGE);
         setCursor(Cursor.DEFAULT);
     }
 }
