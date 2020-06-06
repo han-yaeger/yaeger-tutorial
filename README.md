@@ -474,7 +474,7 @@ to figure out which one it is.
 
 <img align="right" width="100%" src="images/sharky.png">
 
-Besides the SwordFish, another foe abides in the depth of the ocean: The Evil Sharky. As as be
+Besides the SwordFish, another foe abides in the depth of the ocean: The Evil Sharky. As can be
 seen, Sharky swims from left to right and is composed of many different sprites. If these sprites
 are cycled at the correct speed, Sharky becomes animated. To automatically cycle through the sprites, 
 a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
