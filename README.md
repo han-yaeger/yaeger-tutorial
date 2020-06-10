@@ -600,13 +600,54 @@ Notice that we create a `SoundClip` and call its method `play()` to create the p
 is available on all Entities and ensures they are removed from the Scene.
 
 ### Remove the Bubbles if they leave the Scene
-Bubbles that leave the Scene should still be removed. Otherwise they will float on for ever and consume an
+Bubbles that leave the Scene should still be removed, otherwise they will float on for ever and consume an
 increasing amount of memory, bringing even the fastest computer to a grinding halt. We have already seen
 everything needed to accomplish this.
 
 :computer: Add the interface `SceneBorderCrossingWatcher` to the `PoisonBubble` and `AirBubble`, and call the 
 method `remove()` from the event handler. Do make sure you call this method only when the top-border has been
 crossed.
+
+### Remove health point when Hanny Collides with a `PoisonBubble`
+Whenever Hanny collides with a `PoisonBubble`, one Health Point should be removed. Adding this shouldn't be to
+hard, since we have already seen everything we need to accomplish this.
+
+:computer: Make Hanny lose a Health Point whenever she collides with a `PoisonBubble`.
+
+### Add a Bubbles Popped counter and increase it whenever Hanny Pops an `AirBubble`
+Just like the Health counter, shown at the top of the Scene, we are going to add a Bubbles Popped counter.
+Again, something we have done before, so it shouldn't be too hard. The main question will be which Entity is
+responsible for changing the Bubbles Popped counter. Is it Hanny, or are the AirBubbles responsible for this?
+
+In this case we are going to model it by letting Hanny know how many bubbles she has popped. This way the implementation
+can mirror that of the `HealthText`. The main difference will be that the event handler for collision will have to 
+differentiate between an `AirBubble` and other Entities.
+
+:computer: Implement a new `TextEntity` for the Bubbles Popped text. This should be analogue to the way the Health counter
+was implemented. Think about which Entities need to become a `Collider` and implement the event hanlder for collisions
+on Hanny in the following way:
+
+```java
+@Override
+    public void onCollision(AABBCollider collidingObject) {
+
+        if (collidingObject instanceof AirBubble) {
+            bubblesPoppedText.setText(++bubblesPopped);
+        } else {
+            healthText.setText(--health);
+
+            if (health == 0) {
+                this.waterworld.setActiveScene(2);
+            } else {
+                setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+                setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+            }
+        }
+    }
+```
+
+
+
 
 
 

@@ -1,20 +1,18 @@
 package com.github.hanyaeger.tutorial.scenes;
 
+import com.github.hanyaeger.api.engine.entities.entity.AnchorPoint;
 import com.github.hanyaeger.api.engine.entities.entity.Location;
 import com.github.hanyaeger.api.engine.scenes.DynamicScene;
 import com.github.hanyaeger.api.engine.scenes.EntitySpawning;
 import com.github.hanyaeger.tutorial.Waterworld;
-import com.github.hanyaeger.tutorial.entities.Hanny;
-import com.github.hanyaeger.tutorial.entities.HealthText;
-import com.github.hanyaeger.tutorial.entities.Sharky;
-import com.github.hanyaeger.tutorial.entities.Swordfish;
+import com.github.hanyaeger.tutorial.entities.*;
 import com.github.hanyaeger.tutorial.spawners.BubbleSpawner;
 
-public class Level extends DynamicScene implements EntitySpawning {
+public class GameLevel extends DynamicScene implements EntitySpawning {
 
     private Waterworld waterworld;
 
-    public Level(Waterworld waterworld) {
+    public GameLevel(Waterworld waterworld) {
         this.waterworld = waterworld;
     }
 
@@ -26,10 +24,13 @@ public class Level extends DynamicScene implements EntitySpawning {
 
     @Override
     public void setupEntities() {
-        var healthText = new HealthText(new Location(5, 5));
+        var healthText = new HealthText(new Location(0, 0));
         addEntity(healthText);
 
-        addEntity(new Hanny(new Location(0, 0), healthText, waterworld));
+        var bubblesPoppedText = new BubblesPoppedText(new Location(0, 30));
+        addEntity(bubblesPoppedText);
+
+        addEntity(new Hanny(new Location(0, 0), healthText, bubblesPoppedText, waterworld));
         addEntity(new Swordfish(new Location(200, 300)));
         addEntity(new Sharky(new Location(0, 100)));
     }

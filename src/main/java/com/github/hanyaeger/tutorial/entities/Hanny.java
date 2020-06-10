@@ -13,18 +13,22 @@ import javafx.scene.input.KeyCode;
 import java.util.Random;
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBCollided {
+public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBCollided, AABBCollider {
 
     private final HealthText healthText;
+    private final BubblesPoppedText bubblesPoppedText;
     private final Waterworld waterworld;
     private int health = 10;
+    private int bubblesPopped = 0;
 
-    public Hanny(Location location, HealthText healthText, Waterworld waterworld) {
+    public Hanny(Location location, HealthText healthText, BubblesPoppedText bubblesPoppedText, Waterworld waterworld) {
         super("sprites/hanny.png", location, new Size(20, 40), 2);
 
         this.healthText = healthText;
+        this.bubblesPoppedText = bubblesPoppedText;
         this.waterworld = waterworld;
-        healthText.setHealthText(health);
+        healthText.setText(health);
+        bubblesPoppedText.setText(bubblesPopped);
     }
 
     @Override
@@ -47,14 +51,17 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBColli
     @Override
     public void onCollision(AABBCollider collidingObject) {
 
-        health--;
-        healthText.setHealthText(health);
-
-        if (health == 8) {
-            this.waterworld.setActiveScene(2);
+        if (collidingObject instanceof AirBubble) {
+            bubblesPoppedText.setText(++bubblesPopped);
         } else {
-            setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-            setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+            healthText.setText(--health);
+
+            if (health == 0) {
+                this.waterworld.setActiveScene(2);
+            } else {
+                setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+                setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ package com.github.hanyaeger.tutorial.spawners;
 import com.github.hanyaeger.api.engine.entities.EntitySpawner;
 import com.github.hanyaeger.api.engine.entities.entity.Location;
 import com.github.hanyaeger.tutorial.entities.AirBubble;
+import com.github.hanyaeger.tutorial.entities.BubblesPoppedText;
 import com.github.hanyaeger.tutorial.entities.PoisonBubble;
 
 import java.util.Random;

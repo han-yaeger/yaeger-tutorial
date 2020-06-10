@@ -9,7 +9,7 @@ import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntit
 import com.github.hanyaeger.api.engine.media.audio.SoundClip;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 
-public abstract class Bubble extends DynamicSpriteEntity implements AABBCollided, SceneBorderCrossingWatcher {
+public abstract class Bubble extends DynamicSpriteEntity implements AABBCollided, AABBCollider, SceneBorderCrossingWatcher {
     public Bubble(String resource, Location initialLocation, double speed) {
         super(resource, initialLocation, new Size(20, 20));
         setMotionTo(speed, 180d);
