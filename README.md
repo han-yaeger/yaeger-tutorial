@@ -9,7 +9,7 @@ Yaeger requires Java JDK12 or above to work, and can be used with any IDE that s
 
 # Creating your first Yaeger Game
 
-We are going to create a game that consists of three **Scenes**. A Title Scene, a Level Scene and a Game Over Scene.
+We are going to create a game that consists of three **Scenes**. A Title Scene, a GameLevel Scene and a Game Over Scene.
 The Game itself will be about a fish called Hanny, that swims in the ocean and tries to pop air bubbles. Sadly most bubbles
 contain a poisonous gas and popping to many of those kills Hanny.
 But not only Hanny swims in the Ocean, but also an evil Shark. If he gets his hands on Hanny, Hanny gets eaten.
@@ -147,24 +147,24 @@ by calling the method `addEntity()`.
 :arrow_forward: Run the game again. The TitleScene should now contain the title.
 
 ## Add the Game Scene
-Now that we have a TitleScene, lets add a level. Since a level is typically a Scene that contains animated Entities, we are going to extend
+Now that we have a TitleScene, lets add a Game Level. Since a level is typically a Scene that contains animated Entities, we are going to extend
 a `DynamicScene`.
 
-:computer: Add a scene called `LevelOne`, which extends a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes` package.
+:computer: Add a scene called `GameLevel`, which extends a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes` package.
 Use the method `setupScene()` to set the background to the asset `background2.jpg` and the audio to `waterworld.mp3`.
 
 At this moment the level has not yet been added to the game. You have only created a new class, that needs
 to be instantiated and added to the `YaegerApplication`.
 
-:computer: Use the `setupScenes()` from the `Waterworld`-class to add `LevelOne` to the game. Choose a wise `id`.
+:computer: Use the `setupScenes()` from the `Waterworld`-class to add `GameLevel` to the game. Choose a wise `id`.
 
 ### Add a button to switch to the Game Scene
-Although `LevelOne` has now been added to the Yaeger Game, there is no way to reach it yet. As said before, the
-first added Scene is set as the active scene and that should be the `TitleScene`. To switch to `LevelOne`
+Although `GameLevel` has now been added to the Yaeger Game, there is no way to reach it yet. As said before, the
+first added Scene is set as the active scene and that should be the `TitleScene`. To switch to `GameLevel`
 you will need to call the method `setActiveScene(id)` on the `Waterworld` class.
 
 To enable this, we are going to add a button to the `TitleScene`. Clicking the button will result in switching to
-`LevelOne`. As said before, everything that should appear on a Scene is an Entity. For the button we are going to use
+`GameLevel`. As said before, everything that should appear on a Scene is an Entity. For the button we are going to use
 a `TextEntity` that will need to listen to mouse-clicks. Because of the latter, we can no longer use an inline 
 `TextEntity` as we did for the title. We are going to create a new Class, called `StartButton` that extends `TextEntity`,
 and add all the required behaviour to this Class.
@@ -210,7 +210,7 @@ and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene` i
     @Override
     protected void setupScenes() {
         addScene(0, new TitleScene(this));
-        addScene(1, new LevelOne());
+        addScene(1, new GameLevel());
     }
 ```
 
@@ -226,7 +226,7 @@ As the last step wel would like to add the following to the mouse button handler
 ```
 
 :arrow_forward: Run the game again. The TitleScene should now contain the title and a start button. Clicking this
-start button should switch the game to level one.
+start button should switch the game to Game Level.
 
 ### Add more behaviour to make the button into a real button
 The Button should work now, but it gives little visual feedback on it's behaviour. We are going to add two more 
@@ -300,7 +300,7 @@ The player will control Hanny by using the arrow keys. Again we will use a `Dyna
 :computer: Create a new Class for `Hanny` in the same package as `SwordFish` . Make sure `Hanny is placed at the
 top-left corner of the Scene.
 
-<img align="right" src="images/hanny.png">
+<img align="right" src="src/main/resources/sprites/hanny.png">
 
 You might notice that the image of Hanny contains two Hannies. This approach is a standard way to animate a figure 
 in a game. The image itself contains multiple sprites and the Game Engine is responsible for showing only one of those sprites. 
@@ -317,7 +317,7 @@ can change this.
     }
 ```
 
-:computer: Now use the `setupEntities()` from the `LevelOne` to add the `Player`. Place it at the top left corner
+:computer: Now use the `setupEntities()` from the `GameLevel` to add the `Player`. Place it at the top left corner
 of the screen.
 
 ### Animate the Player
@@ -417,7 +417,7 @@ The next step should be fairly simple, since we will use only features we have a
     }
 ```
 
-:computer: Add this entity to the Level, by using the `setupEntities()` method, but also pass the instance to
+:computer: Add this entity to the Game Level, by using the `setupEntities()` method, but also pass the instance to
 the constructor of Hanny. This way Hanny has access to the `HealthText` Entity and can call the method `setHealthText(int)`
 whenever her health changes.
 
@@ -457,7 +457,7 @@ below it the clickable text *Play again*. We have seen all Yaeger's features tha
 it should be clear how to implement this.
 
 :computer: Add a *Game Over* scene with a *Play Again* button. Clicking the *Play Again* button should load the
-Level Scene. 
+Game Level Scene. 
 
 :computer: Change the event handler in Hanny in such a way that when the health reaches zero, the Game Over Scene is
 loaded. 
@@ -472,14 +472,14 @@ to figure out which one it is.
 
 ## Add another enemy, called `Sharky`
 
-<img align="right" width="100%" src="images/sharky.png">
+<img align="right" width="100%" src="src/main/resources/sprites/sharky.png">
 
 Besides the SwordFish, another foe abides in the depth of the ocean: The Evil Sharky. As can be
 seen, Sharky swims from left to right and is composed of many different sprites. If these sprites
 are cycled at the correct speed, Sharky becomes animated. To automatically cycle through the sprites, 
 a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
 
-:computer: Add Sharky to the Level, animate him and let him swim from left to right. After crossing the SceneBorder, he sould
+:computer: Add Sharky to the Game Level, animate him and let him swim from left to right. After crossing the SceneBorder, he sould
 reappear at a random location left of the Scene. After colliding with Sharky, Hanny loses a healthpoint.
 
 :arrow_forward: Start the game and test if Sharky behaves as expected.
@@ -505,7 +505,7 @@ of their constructor. Do not yet add them to the Scene.
 to figure out how to give the bubbles a rotation speed and change their opacity to make them transparent.
 
 ### Create a BubbleSpawner 
-Because spawning Entities into a Level is a common feature of games, Yaeger supports this through the class
+Because spawning Entities into a level is a common feature of games, Yaeger supports this through the class
 `EntitySpawner`. An `EntitySpawner` should be extended and can then be added to a Scene. The `EntitySpawner` will
 then create new instances of `YaegerEntity` and add them to the Scene.
 
@@ -550,13 +550,13 @@ public class BubbleSpawner extends EntitySpawner {
 }
 ```
 
-### Add the BubbleSpawner to the Level
+### Add the BubbleSpawner to the Game Level
 A `YaegerScene` does not support EntitySpawners by default, to enable it, the Scene needs to implement the
 interface `EntitySpawning`, which requires implementing the method `setupEntitySpawners()`. From this method
 we can call ` addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));`, which adds the EntitySpawner to
 the Scene and ensures the spawned Entities appear on the Scene.
 
-:computer: Add the BubbleSpawner to the Level
+:computer: Add the BubbleSpawner to the Game Level
 
 ### Make the BubbleSpawner also spawn instances of `PoisonBubble`
 Lets change the `spawnEntities()` method to ensure that four out of ten spawned bubbles will be a `PoisonBubble`.
@@ -645,6 +645,16 @@ on Hanny in the following way:
         }
     }
 ```
+
+## Add Coral to the Game Level
+The Game Level needs a bit more decoration that can interact with Hanny. So, as the last step in this tutorial, 
+we are going to add some coral.
+
+<img width="100%" src="src/main/resources/sprites/coral1.png">
+<img width="100%" src="src/main/resources/sprites/coral2.png">
+<img width="100%" src="src/main/resources/sprites/coral3.png">
+<img width="100%" src="src/main/resources/sprites/coral4.png">
+
 
 
 
