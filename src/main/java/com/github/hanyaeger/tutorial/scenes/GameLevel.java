@@ -1,14 +1,17 @@
 package com.github.hanyaeger.tutorial.scenes;
 
-import com.github.hanyaeger.api.engine.entities.entity.AnchorPoint;
 import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.tilemap.TileMapContainer;
 import com.github.hanyaeger.api.engine.scenes.DynamicScene;
-import com.github.hanyaeger.api.engine.scenes.EntitySpawning;
+import com.github.hanyaeger.api.engine.scenes.EntitySpawnerContainer;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.*;
+import com.github.hanyaeger.tutorial.entities.map.CoralTileMap;
+import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
+import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.spawners.BubbleSpawner;
 
-public class GameLevel extends DynamicScene implements EntitySpawning {
+public class GameLevel extends DynamicScene implements EntitySpawnerContainer, TileMapContainer {
 
     private Waterworld waterworld;
 
@@ -38,5 +41,11 @@ public class GameLevel extends DynamicScene implements EntitySpawning {
     @Override
     public void setupEntitySpawners() {
         addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));
+    }
+
+    @Override
+    public void setupTileMaps() {
+        addTileMap(new CoralTileMap());
+
     }
 }

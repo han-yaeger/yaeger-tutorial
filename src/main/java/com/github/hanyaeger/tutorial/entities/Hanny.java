@@ -8,6 +8,8 @@ import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListe
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
+import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.KeyCode;
 
 import java.util.Random;

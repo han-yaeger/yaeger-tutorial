@@ -7,8 +7,8 @@ import com.github.hanyaeger.api.engine.scenes.StaticScene;
 import com.github.hanyaeger.api.engine.styles.HanFont;
 import com.github.hanyaeger.api.engine.styles.HanFontStyle;
 import com.github.hanyaeger.tutorial.Waterworld;
-import com.github.hanyaeger.tutorial.buttons.QuitButton;
-import com.github.hanyaeger.tutorial.buttons.StartButton;
+import com.github.hanyaeger.tutorial.entities.buttons.QuitButton;
+import com.github.hanyaeger.tutorial.entities.buttons.StartButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
