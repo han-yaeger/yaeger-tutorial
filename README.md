@@ -8,7 +8,6 @@ Yaeger.
 Yaeger requires Java JDK12 or above to work, and can be used with any IDE that supports Java.
 
 # Creating your first Yaeger Game
-
 We are going to create a game that consists of three **Scenes**. A Title Scene, a GameLevel Scene and a Game Over Scene.
 The Game itself will be about a fish called Hanny, that swims in the ocean and tries to pop air bubbles. Sadly most bubbles
 contain a poisonous gas and popping to many of those kills Hanny.
