@@ -20,6 +20,9 @@ to your local machine, or download the zip file.
 The project is a Maven project, which will be recognized by all modern IDE's. Knowledge of Maven is therefore not required.
 But just to paint the full picture, you'll find a `pom.xml` file at the root of the project. This file contains the full
 project setup and you will notice the dependency it has on `Yaeger`. 
+
+### Switch Branch to look at the solution
+Whenever your stuck, you can switch to Branch *implementation*, to see the full implementation.
  
 ### Importing the project in IntelliJ
 
