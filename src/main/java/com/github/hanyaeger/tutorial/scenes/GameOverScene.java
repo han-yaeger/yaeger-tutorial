@@ -9,10 +9,8 @@ import com.github.hanyaeger.api.engine.styles.HanFontStyle;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.buttons.QuitButton;
 import com.github.hanyaeger.tutorial.entities.buttons.StartButton;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 
-import java.util.Set;
 
 public class GameOverScene extends StaticScene {
 
@@ -43,10 +41,5 @@ public class GameOverScene extends StaticScene {
         var exitGameButton = new QuitButton(new Location((getWidth() / 2) + 20, getHeight() / 2), waterworld);
         exitGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);
         addEntity(exitGameButton);
-    }
-
-    @Override
-    protected void onInputChanged(Set<KeyCode> input) {
-
     }
 }

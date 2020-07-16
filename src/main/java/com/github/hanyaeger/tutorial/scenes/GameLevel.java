@@ -33,7 +33,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         var bubblesPoppedText = new BubblesPoppedText(new Location(0, 30));
         addEntity(bubblesPoppedText);
 
-        addEntity(new Hanny(new Location(0, 0), healthText, bubblesPoppedText, waterworld));
+        addEntity(new Hanny(new Location(1, 1), healthText, bubblesPoppedText, waterworld));
         addEntity(new Swordfish(new Location(200, 300)));
         addEntity(new Sharky(new Location(0, 100)));
     }
@@ -46,6 +46,5 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
     @Override
     public void setupTileMaps() {
         addTileMap(new CoralTileMap());
-
     }
 }

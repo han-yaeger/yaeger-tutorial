@@ -8,10 +8,7 @@ import com.github.hanyaeger.api.engine.styles.HanFont;
 import com.github.hanyaeger.api.engine.styles.HanFontStyle;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.buttons.StartButton;
-import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-
-import java.util.Set;
 
 public class TitleScene extends StaticScene {
 
@@ -38,10 +35,5 @@ public class TitleScene extends StaticScene {
         var playGameText = new StartButton(new Location(getWidth() / 2, getHeight() / 2), waterworld);
         playGameText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         addEntity(playGameText);
-    }
-
-    @Override
-    protected void onInputChanged(Set<KeyCode> input) {
-
     }
 }

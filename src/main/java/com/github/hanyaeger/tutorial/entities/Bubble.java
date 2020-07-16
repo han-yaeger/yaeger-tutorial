@@ -8,8 +8,10 @@ import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import com.github.hanyaeger.api.engine.media.audio.SoundClip;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
+import com.github.hanyaeger.tutorial.entities.map.Coral;
 
 public abstract class Bubble extends DynamicSpriteEntity implements AABBCollided, AABBCollider, SceneBorderCrossingWatcher {
+
     public Bubble(String resource, Location initialLocation, double speed) {
         super(resource, initialLocation, new Size(20, 20));
         setMotionTo(speed, 180d);
@@ -19,6 +21,10 @@ public abstract class Bubble extends DynamicSpriteEntity implements AABBCollided
 
     @Override
     public void onCollision(AABBCollider collidingObject) {
+        if (collidingObject instanceof Coral) {
+            return;
+        }
+
         var popSound = new SoundClip("audio/pop.mp3");
         popSound.play();
 

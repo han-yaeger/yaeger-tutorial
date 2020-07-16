@@ -2,12 +2,15 @@ package com.github.hanyaeger.tutorial.entities;
 
 import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListener;
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
+import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.entities.map.Coral;
 import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.KeyCode;
@@ -15,7 +18,7 @@ import javafx.scene.input.KeyCode;
 import java.util.Random;
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBCollided, AABBCollider {
+public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, AABBCollided, AABBCollider {
 
     private final HealthText healthText;
     private final BubblesPoppedText bubblesPoppedText;
@@ -53,7 +56,9 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBColli
     @Override
     public void onCollision(AABBCollider collidingObject) {
 
-        if (collidingObject instanceof AirBubble) {
+        if (collidingObject instanceof Coral) {
+            setSpeedTo(0);
+        } else if (collidingObject instanceof AirBubble) {
             bubblesPoppedText.setText(++bubblesPopped);
         } else {
             healthText.setText(--health);
@@ -65,5 +70,10 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, AABBColli
                 setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
             }
         }
+    }
+
+    @Override
+    public void notifyBoundaryTouching(SceneBorder border) {
+        setSpeedTo(0);
     }
 }

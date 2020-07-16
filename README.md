@@ -227,11 +227,11 @@ As the last step wel would like to add the following to the mouse button handler
     }
 ```
 
-:arrow_forward: Run the game again. The TitleScene should now contain the title and a start button. Clicking this
+:arrow_forward: Run the game again. The TitleScene should now contain the title, and a start button. Clicking this
 start button should switch the game to Game Level.
 
 ### Add more behaviour to make the button into a real button
-The Button should work now, but it gives little visual feedback on it's behaviour. We are going to add two more 
+The Button should work now, but it gives little visual feedback on its behaviour. We are going to add two more 
 interfaces to the `StartButton`, being the `MouseEnterListener` and `MouseExitListener`.
 
 :computer: Add the interface `MouseEnterListener` and `MouseExitListener` and implement their handlers in the following
@@ -255,7 +255,7 @@ Notice how we change both the color of the `Entity` as the mouse cursor.
 
 ## Add a `DynamicEntity` to the Game
 Before adding Hanny, lets start by adding her enemy, the evil Swordfish. Since this fish will be based on the image 
-`sprites/swordfish.png` and he will swimm around, we will be using a `DynamicSpriteEntity`.
+`sprites/swordfish.png` and he will swim around, we will be using a `DynamicSpriteEntity`.
 
 ### Add the `Swordfish`
 :computer: Create a new Class called `Swordfish` that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
@@ -265,51 +265,56 @@ Give it the following constructor:
         super("sprites/swordfish.png", location, new Size(225, 81));
     }
 ```
-Notice how we call `super()` and pass the *image*, the *location* and the *size* to the constructor of the SuperClass.
+Notice how we call `super()` and pass the *image*, the *location* and the *size* to the constructor of the Super Class.
 
 ### Animate the `Swordfish`
 Since the Swordfish is a `DynamicSpriteEntity`, we can let it move around the Scene. To do this, we will need to 
-set both the *direction* and *speed*. The *direction* will be an angle in degrees, where 0 means upwards. For
-convinience Yaeger supplies a method to set both values at once:
+set both the *direction* and *speed*. The *direction* will be an angle in degrees, where 0 denotes upwards. For
+convenience, Yaeger supplies a method to set both values at once.
 
 :computer: Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
 ```java
         setMotionTo(2, 270d);
 ```
-:arrow_forward: Run the game again. You should now see a Swordfish that swims from right to left and disappears of the
+:arrow_forward: Run the game again. You should now see a Swordfish that swims from right to left and then disappears of the
 screen.
 
-### Make the `Swordfish` swim in circles
-Now we would like to add behaviour that notifies us when the Swordfish has left te Scene. That way we can place
-him to the right of the Scene, and make him reappear and continue this loop. 
+### Make the Swordfish swim in circles
+Now we would like to add behaviour that notifies us when the Swordfish has left the Scene. That way we can place
+him to the right of the Scene, and make him reappear and continue his path. 
 
-As seen before, adding behaviour is done by implementing the correct Interface. For this use case, Yaeger supplies
+As seen before, adding behaviour is being done by implementing the correct interface. In this case, Yaeger supplies
 the interface `SceneBorderCrossingWatcher`.
 
-:computer: Let `Swordfish` implement the interface `SceneBorderCrossingWatcher` and use the following event handler:
+:computer: Let `Swordfish` implement the interface `SceneBorderCrossingWatcher` and implement the event handler in the 
+following way:
+
 ```java
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
         setOriginX(getSceneWidth());
     }
 ```
-:arrow_forward: Run the game again and see what happens. To also change the y-coordinate at which the swordfish
-reappears, you can also add the following method call: ` setOriginY(new Random().nextInt((int) getSceneHeight() - 81));`
+
+:arrow_forward: Run the game again and see what happens. To also change the y-coordinate at which the Swordfish
+reappears, you can  add the following method call: ` setOriginY(new Random().nextInt((int) getSceneHeight() - 81));` 
+to the handler.
 
 ## Add Hanny to the Game
 The player will control Hanny by using the arrow keys. Again we will use a `DynamicSpriteEntity`.
 
-:computer: Create a new Class for `Hanny` in the same package as `SwordFish` . Make sure `Hanny is placed at the
-top-left corner of the Scene.
+:computer: Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is being placed at the
+top left corner of the Scene.
 
 <img align="right" src="src/main/resources/sprites/hanny.png">
 
 You might notice that the image of Hanny contains two Hannies. This approach is a standard way to animate a figure 
-in a game. The image itself contains multiple sprites and the Game Engine is responsible for showing only one of those sprites. 
+in a game. The image itself contains multiple sprites, and the Game Engine is responsible for showing only one of 
+those sprites, or cycling through them to create the impression of movement.
 
-Yaeger suports this through its `DynamicSpriteEntity`, by explicitly stating the number of spites and image contains.
-By default a `DynamicSpriteEntity` assumes the image contains only one sprite, but by calling the correct constructor, we
-can change this. 
+Yaeger supports this through its `DynamicSpriteEntity`, by explicitly stating the number of spites an image contains.
+By default, a `DynamicSpriteEntity` assumes the image contains only one sprite, but by calling the correct constructor, 
+we can change this. 
 
 :computer: With this in mind, the constructor of `Hanny` should look like:
  
@@ -319,16 +324,16 @@ can change this.
     }
 ```
 
-:computer: Now use the `setupEntities()` from the `GameLevel` to add the `Player`. Place it at the top left corner
+:computer: Now use the `setupEntities()` from the `GameLevel` to add the `Player`. Place it in the top left corner
 of the screen.
 
-### Animate the Player
-To animate the Player, we are going to let the Player listen to user input through the keyboard. As with the 
-`MouseButtonPressedListener`, we are going to add an Interface. In the event-handler from that interface, we are going to call
+### Animate Hanny
+To animate Hanny, we are going to let her listen to user input through the keyboard. As with the 
+`MouseButtonPressedListener`, we are going to add an interface. In its event handler, we are going to call
 `setMotionTo()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
 `setSpeed(0)` to make sure Hanny keeps her position.
 
-:computer: Let `Player` implement the interface `KeyListener` and implement the event handler in
+:computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in
 the following way:
 
 ```java
@@ -348,47 +353,57 @@ the following way:
     }
 ```
 
-Notice how the event handler receives a `Set<KeyCode>`. This Set will contain all the buttons that are 
-currently pressed. Depending on this, we set the motion of the Entity. 
+Notice how the event handler receives a `Set<KeyCode>`. This `Set` will contain all the buttons that are 
+currently being pressed. Depending on which buttons are in this `Set`, we set the motion of Hanny. 
 
 ### Change the frame index depending on the direction of the Hanny
-We should still change the frame index depending on the direction of Hanny. For this a `DynamicSpriteEntity`
+We must still change the frame index depending on the direction of Hanny. For this, a `DynamicSpriteEntity`
 provides the method ` setCurrentFrameIndex(int)`. 
 
 :computer: Set the correct frame index. Make sure only the left and right buttons change the direction in which
 Hanny seems to be swimming.
 
-## Add interaction between Hanny and the Swordfish
-A standard feature of a game engine is collision detection. It is an algorithmically complex calculation that determines if any two
-entities occupy the same part of the screen. If so, they have collided.
+### Make sure Hanny doesn't leave the Scene
+To ensure that Hanny remains on the Scene, we can use the interface `SceneBorderTouchingWatcher`, which provides
+an event handler that gets called whenever the Entity touches the border of the Scene. If we use the event handler 
+to set Hannies speed to 0, we can prevent Hanny from leaving the Scene. Note that when Hanny is initially being placed 
+on the Scene, we should make sure she doesn't touch the Scene Border, because that will lead to strange unwanted 
+behaviour.
 
-Yaeger differentiates between entities that need to be notified about a collision (a Collided) and those that do not need to
-be notified (a Collider). Thinks of this as a train and a fly. If they collide the train doesn't even notice it; the fly does 
+:computer: Implement the interface `SceneBorderTouchingWatcher` and use the event handler to set Hannies 
+speed to 0. 
+
+## Add interaction between Hanny and the Swordfish
+A standard feature of a game engine is collision detection. It is an algorithmically complex calculation that 
+determines if any two Entities occupy the same part of the screen. If so, they have collided.
+
+Yaeger differentiates between entities that need to be notified about a collision (a Collided), and those that do not need to
+be notified (a Collider). Thinks of this as a train and a fly. If they collide, the train doesn't even notice it; the fly does 
 (and dies). 
 
-With this approach it is possible to minimize the number of entities that need to be checked for collisions every Game Loop. And
-it enables a good Object Oriented approach to place the responsibility of handling a collision, at the right entity.
+With this approach, it is possible to minimize the number of entities that need to be checked for collisions every Game Loop. 
+And it also enables a good Object Oriented approach to place the responsibility of handling a collision at the right entity.
 
 ### Add collision detection for Hanny and the Swordfish
-There are several different algorithms for collision detection but Yaeger only supports the most simple implementation which is based
-on the BoundingBox of an entity. This method is called Axis Aligned Bounding Box (AABB) collision detection and is implemented through 
-the interfaces `AABBCollided` and `AABBCollider`.
+There are several different algorithms for collision detection but Yaeger only supports the most simple implementation, 
+which is based on the Bounding Box of an Entity. This method is called Axis Aligned Bounding Box (AABB) collision detection 
+and is implemented through the interfaces `AABBCollided` and `AABBCollider`.
 
 > Besides the interface `AABBCollided` there is a more complex version `AABBSideAwareCollided`, which receives information
 > on which of its sides the collision has occurred. 
 
-The Sworfish is a dangerous foe and each time Hanny collides with him, she will lose a lifepoint. At the start of the game Hanny
-has ten of those and when she reaches zero, she dies and it is Game Over.
+The Sworfish is a dangerous foe and each time Hanny collides with him, she will lose a life point. At the start of the 
+game Hanny has ten of those and when she reaches zero, she dies, and it is Game Over.
 
-:computer: Add the correct interface to Hanny and the SwordFish. You do not need to implement the event handler, but for testing purposes
-you should add a `system.out.println("Collision!");`
+:computer: Add the correct interface to Hanny and the SwordFish. You do not yet need to implement the event handler, but for 
+testing purposes you should add a `system.out.println("Collision!");`
 
 :arrow_forward: Start the game and test if the collision has been detected.
 
 ### Let Hanny respawn after a collision with the SwordFish
-Because Hanny is the one that needs to know if she has collided with the SwordFish, she will be the one that implements 
-`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setOriginX()` and
-`setOriginY()` methods.
+Because Hanny is the one who needs to know if she has collided with the SwordFish, she will be the one who implements 
+`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setOriginX()` 
+and `setOriginY()` methods.
 
 :computer: Use the following event handler to let Hanny respawn at a random location:
 ```java
@@ -399,8 +414,8 @@ Because Hanny is the one that needs to know if she has collided with the SwordFi
     }
 ```
 
-Notice that we have acces to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *Width* and *Height* of Hanny
-to ensure that Hanny respawn within the Scene.
+Notice that we have access to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *width* 
+and *height* of Hanny to ensure that Hanny respawns within the Scene.
 
 ### Add health points and subtract one on a collision 
 The next step should be fairly simple, since we will use only features we have already seen.
@@ -422,7 +437,7 @@ package `com.github.hanyaeger.tutorial.entities.text`.
 ```
 
 :computer: Add this entity to the Game Level, by using the `setupEntities()` method, but also pass the instance to
-the constructor of Hanny. This way Hanny has access to the `HealthText` Entity and can call the method `setHealthText(int)`
+the constructor of Hanny. This way, Hanny has access to the `HealthText` Entity and can call the method `setHealthText(int)`
 whenever her health changes.
 
 :computer: Give Hanny a private instance field called health of type `int` and initialize it to 10. Also
@@ -443,7 +458,7 @@ fields of Hanny should look like:
 
 The last step is to integrate the health into the event handler.
 
-:computer: Change the event handler to ensure that the health is decreased and the healthText changed:
+:computer: Change the event handler to ensure that the health is decreased, and the healthText changed:
 ```java
     @Override
     public void onCollision(AABBCollider collidingObject) {
@@ -456,8 +471,8 @@ The last step is to integrate the health into the event handler.
 ```
 
 ### Add a Game Over Scene for when health reaches zero
-When health reaches 0 Hanny dies and the player should be see a new Scene containing the text Game Over, with
-below it the clickable text *Play again*. We have seen all Yaeger's features that are required for this, so
+When health reaches 0 Hanny dies, and the player should see a new Scene containing the text Game Over, with
+below it the clickable text *Play again*. We have seen all of Yaeger's features that are required for this, so
 it should be clear how to implement this.
 
 :computer: Add a *Game Over* scene with a *Play Again* button. Clicking the *Play Again* button should load the
@@ -478,8 +493,8 @@ to figure out which one it is.
 
 <img align="right" width="100%" src="src/main/resources/sprites/sharky.png">
 
-Besides the SwordFish, another foe abides in the depth of the ocean: The Evil Sharky. As can be
-seen, Sharky swims from left to right and is composed of many different sprites. If these sprites
+Besides the SwordFish, another foe abides in the depth of the ocean: the evil Sharky. As can be
+seen, Sharky swims from left to right and is composed of many sprites. If these sprites
 are cycled at the correct speed, Sharky becomes animated. To automatically cycle through the sprites, 
 a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
 
