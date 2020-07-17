@@ -415,7 +415,7 @@ and `setOriginY()` methods.
 ```
 
 Notice that we have access to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *width* 
-and *height* of Hanny to ensure that Hanny respawns within the Scene.
+and *height* of Hanny to ensure that Hanny will respawn within the Scene.
 
 ### Add health points and subtract one on a collision 
 The next step should be fairly simple, since we will use only features we have already seen.
@@ -773,27 +773,11 @@ instances of the Coral Entities. Since all those classes are in the package `com
 
 :arrow_forward: Run the game. 
 
+### Ensure Hanny cannot cross a piece of Coral
+Hanny can no still cross a piece of Coral. This can be easily resolved, using the `AABBCollided` and `AABBCollider`
+interfaces. If the speed of Hanny is being set to 0, whenever she collides with a piece of Coral, we can prevent Hanny from 
+crossing one. When this is done, there is a change that also the bubbles pop whenever to collide with a piece of Coral, 
+so this also needs to be fixed.
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+:computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure that bubble still
+can cross them.
