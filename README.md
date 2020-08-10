@@ -507,21 +507,27 @@ reappear at a random location left of the Scene. After colliding with Sharky, Ha
 We are now going to add the Game Objective: the reason we want to play this game. Being, Hanny is going to pop air 
 bubbles. They emerge from the depth of the Ocean and float upwards at random speeds. Some are filled with Air and
 some are filled with a poisonous gas. When Hanny pops one of those, she loses a health point. But when she pops an
-air bubble, her Bubbles popped score increases and she earns eternal fame.
+air bubble, her Bubbles popped score increases, and she earns eternal fame.
 
 ### Create Air Bubbles and Poison Bubbles
-Air- and Poison bubbles will just extend `DynamicSpriteEntity`, so they should be easy to create. We are not going 
-to add them to the Scene directly, but we're going to use an `EntitySpawner`, which is a Object that is specifically
-designed for spawning Entities into a Scene.
+For Air- and Poison bubbles we could provide two images of bubbles and use a `DynamicSpriteEntity`,  but we'll use a 
+different approach. Yaeger provides various Entities for standard shapes and for a bubble we could perfectly use a 
+`DynamicCircleEntity`. With it, we can draw a circle and give it the appropriate size and colors. The big advantage over
+using an image is that we can give it any color and size we like, and change it while running the game. And even more 
+important, it will save on memory usage, since no images need to be loaded into memory.
 
 Because both Air- and Poison bubbles share much of their behaviour, a superclass called `Bubble` would be the preferable
 approach, but it is not required. Their interaction with Hanny will be of later concern.
 
 :computer: Create an `AirBubble` and a `PoisonBubble` that accept both the `initialLocation` and the `speed` as a parameter
-of their constructor. Do not yet add them to the Scene.
+of their constructor. Do not yet add them to the Scene. Use the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/circle/DynamicCircleEntity.html)
+to figure out how to set the size and color (fill and stroke) of both bubbles. Ensure you can differentiate between both bubbles. 
 
-:computer: Use the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/sprite/DynamicSpriteEntity.html)
-to figure out how to give the bubbles a rotation speed and change their opacity to make them transparent.
+:computer: Use the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/circle/DynamicCircleEntity.html)
+to figure out how to change their opacity to make them transparent.
+
+> Besides the interface `DynamicCircleEntity`, Yaeger also contains a `DynamicRectangleEntity`, a `DynamicEllipseEntity` 
+> and their static versions. 
 
 ### Create a BubbleSpawner 
 Because spawning Entities into a level is a common feature of games, Yaeger supports this through the class
@@ -779,5 +785,14 @@ interfaces. If the speed of Hanny is being set to 0, whenever she collides with 
 crossing one. When this is done, there is a change that also the bubbles pop whenever to collide with a piece of Coral, 
 so this also needs to be fixed.
 
-:computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure that bubble still
-can cross them.
+:computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure that a bubble can 
+still cross them.
+
+## Further challenges
+
+* Because Hanny will respawn at a random location, she could also respawn on a piece of coral. Because she can not move
+whenever she collides with coral, she will never be able to leave that location. Resolve this by limiting the
+locations at which Hanny can respawn. 
+
+
+

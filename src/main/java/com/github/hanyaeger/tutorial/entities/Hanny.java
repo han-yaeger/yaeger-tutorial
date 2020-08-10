@@ -66,8 +66,8 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
             if (health == 0) {
                 this.waterworld.setActiveScene(2);
             } else {
-                setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-                setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+                setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+                setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
             }
         }
     }
