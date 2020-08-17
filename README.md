@@ -300,6 +300,14 @@ following way:
 reappears, you can  add the following method call: ` setOriginY(new Random().nextInt((int) getSceneHeight() - 81));` 
 to the handler.
 
+### Use the build-in debugger to see what is happening
+Yaeger contains a simple debugger that displays how much memory is used by the game and how many Objects
+are currently part of the game. When a game doesn't work as expected, you can use this debugger to get some 
+inside information.
+
+:arrow_forward: Run the game and press F1 to show the Debugger. See if you can relate the states numbers to
+what you expect from your game.
+
 ## Add Hanny to the Game
 The player will control Hanny by using the arrow keys. Again we will use a `DynamicSpriteEntity`.
 
@@ -582,6 +590,9 @@ we can call ` addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));`, wh
 the Scene and ensures the spawned Entities appear on the Scene.
 
 :computer: Add the BubbleSpawner to the Game Level
+
+:arrow_forward: Run the game and use the Debugger to see if the Bubbles that leave the top of the screen
+are actually removed (and garbage collected).
 
 ### Make the BubbleSpawner also spawn instances of `PoisonBubble`
 Lets change the `spawnEntities()` method to ensure that four out of ten spawned bubbles will be a `PoisonBubble`.
