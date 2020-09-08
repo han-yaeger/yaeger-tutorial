@@ -1,6 +1,6 @@
 package com.github.hanyaeger.tutorial.entities;
 
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
@@ -11,7 +11,7 @@ import com.github.hanyaeger.tutorial.entities.map.Coral;
 
 public abstract class Bubble extends DynamicCircleEntity implements AABBCollided, AABBCollider, SceneBorderCrossingWatcher {
 
-    public Bubble(Location initialLocation, double speed) {
+    public Bubble(Coordinate2D initialLocation, double speed) {
         super(initialLocation);
         setRadius(8);
         setMotionTo(speed, 180d);

@@ -5,7 +5,7 @@ be guided in the creation of simple game, and in doing so, become familiar with 
 Yaeger.
 
 ## Requirements
-Yaeger requires Java JDK12 or above to work, and can be used with any IDE that supports Java.
+Yaeger requires Java JDK14 or above to work, and can be used with any IDE that supports Java.
 
 # Creating your first Yaeger Game
 We are going to create a game that consists of three **Scenes**. A Title Scene, a GameLevel Scene and a Game Over Scene.
@@ -130,7 +130,7 @@ A title is typically the static version of a `TextEntity`. We will use the metho
 ```java
     @Override
     public void setupEntities() {
-        var waterworldText = new TextEntity(new Location(getWidth() / 2, getHeight() / 2), "Waterworld");
+        var waterworldText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Waterworld");
         waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         waterworldText.setFill(Color.DARKBLUE);
         waterworldText.setFont(HanFont.createDefaultCondensedFont(80));
@@ -140,7 +140,7 @@ A title is typically the static version of a `TextEntity`. We will use the metho
 
 <img align="right" src="images/title-no-buttons.png">
 
-First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is the `Location`. To
+First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is the `Coordinate2D`. To
 place it at the center of the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter is the text to be shown.
 To actually place the center of the `TextEntity` at the center of the Scene, we use the method `setAnchorPoint()` and to set the 
 color, we use `setFill()`. We set the font to the HAN font, through the method `setFont()` and lastly we add the `Entity` to the Scene, 
@@ -176,8 +176,8 @@ and add all the required behaviour to this Class.
 `com.github.hanyaeger.tutorial.entities.buttons`. Use the following constructor:
 
 ```java
-    public StartButton(Location initialPosition) {
-        super(initialPosition, "Play game");
+    public StartButton(Coordinate2D initialLocation) {
+        super(initialLocation, "Play game");
         setFill(Color.PURPLE);
         setFont(HanFont.createDefaultCondensedFont(30));
     }
@@ -261,7 +261,7 @@ Before adding Hanny, lets start by adding her enemy, the evil Swordfish. Since t
 :computer: Create a new Class called `Swordfish` that extends `DynamicSpriteEntity` in package `com.github.hanyaeger.tutorial.entities`.
 Give it the following constructor:
 ```java
-    public Swordfish(Location location) {
+    public Swordfish(Coordinate2D location) {
         super("sprites/swordfish.png", location, new Size(225, 81));
     }
 ```
@@ -327,7 +327,7 @@ we can change this.
 :computer: With this in mind, the constructor of `Hanny` should look like:
  
 ```java
-    public Hanny(Location location) {
+    public Hanny(Coordinate2D location) {
         super("sprites/player.png", location, new Size(20, 40), 2);
     }
 ```
@@ -339,7 +339,7 @@ of the screen.
 To animate Hanny, we are going to let her listen to user input through the keyboard. As with the 
 `MouseButtonPressedListener`, we are going to add an interface. In its event handler, we are going to call
 `setMotionTo()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
-`setSpeed(0)` to make sure Hanny keeps her position.
+`setSpeed(0)` to make sure Hanny keeps her location.
 
 :computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in
 the following way:
@@ -432,8 +432,8 @@ The next step should be fairly simple, since we will use only features we have a
 package `com.github.hanyaeger.tutorial.entities.text`.
 
 ```java
-    public HealthText(Location initialPosition) {
-        super(initialPosition);
+    public HealthText(Coordinate2D initialLocation) {
+        super(initialLocation);
 
         setFont(HanFont.createDefaultCondensedFont(40));
         setFill(Color.DARKBLUE);
@@ -456,7 +456,7 @@ fields of Hanny should look like:
     private final HealthText healthText;
     private int health = 10;
 
-    public Hanny(Location location, HealthText healthText) {
+    public Hanny(Coordinate2D location, HealthText healthText) {
         super("sprites/hanny.png", location, new Size(20, 40), 2);
 
         this.healthText = healthText;
@@ -576,9 +576,9 @@ public class BubbleSpawner extends EntitySpawner {
         spawn(new AirBubble(randomLocation(), 2));
     }
 
-    private Location randomLocation() {
+    private Coordinate2D randomLocation() {
         double x = new Random().nextInt((int) sceneWidth);
-        return new Location(x, sceneHeight);
+        return new Coordinate2D(x, sceneHeight);
     }
 }
 ```
@@ -596,7 +596,7 @@ are actually removed (and garbage collected).
 
 ### Make the BubbleSpawner also spawn instances of `PoisonBubble`
 Lets change the `spawnEntities()` method to ensure that four out of ten spawned bubbles will be a `PoisonBubble`.
-For this we can use the Class `Random` from the Java [API](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/Random.html). 
+For this we can use the Class `Random` from the Java [API](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/util/Random.html). 
 
 :computer: Change the `spawnEntities()` method to:
 ```java
@@ -703,7 +703,7 @@ Yaeger.
 
 ### Create Coral Entities
 Lets first create the four Coral Entities. They should extend `SpriteEntity` and their constructor should accept
-the `Location` as the first parameter and the `Size` as the second. Add them to the package 
+the `Coordinate2D` as the first parameter and the `Size` as the second. Add them to the package 
 `com.github.hanyaeger.tutorial.entities.map`.
 
 ### Create a Tile Map for the Coral

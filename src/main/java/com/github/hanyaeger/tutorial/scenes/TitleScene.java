@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.engine.entities.entity.AnchorPoint;
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.shape.text.TextEntity;
 import com.github.hanyaeger.api.engine.scenes.StaticScene;
 import com.github.hanyaeger.api.engine.styles.HanFont;
@@ -26,13 +26,13 @@ public class TitleScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var waterworldText = new TextEntity(new Location(getWidth() / 2, getHeight() / 2), "Waterworld");
+        var waterworldText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Waterworld");
         waterworldText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
         waterworldText.setFill(Color.LIGHTBLUE);
         waterworldText.setFont(HanFont.createDefaultCondensedFont(HanFontStyle.DEMI_BOLD, 80));
         addEntity(waterworldText);
 
-        var playGameText = new StartButton(new Location(getWidth() / 2, getHeight() / 2), waterworld);
+        var playGameText = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 2), waterworld);
         playGameText.setAnchorPoint(AnchorPoint.TOP_CENTER);
         addEntity(playGameText);
     }

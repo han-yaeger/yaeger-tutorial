@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.engine.entities.entity.AnchorPoint;
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.shape.text.TextEntity;
 import com.github.hanyaeger.api.engine.scenes.StaticScene;
 import com.github.hanyaeger.api.engine.styles.HanFont;
@@ -28,17 +28,17 @@ public class GameOverScene extends StaticScene {
 
     @Override
     public void setupEntities() {
-        var gameOverText = new TextEntity(new Location(getWidth() / 2, getHeight() / 2), "Game Over");
+        var gameOverText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "Game Over");
         gameOverText.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
         gameOverText.setFill(Color.DEEPPINK);
         gameOverText.setFont(HanFont.createDefaultCondensedFont(HanFontStyle.DEMI_BOLD, 80));
         addEntity(gameOverText);
 
-        var playGamButton = new StartButton(new Location((getWidth() / 2) - 20, getHeight() / 2), waterworld);
+        var playGamButton = new StartButton(new Coordinate2D((getWidth() / 2) - 20, getHeight() / 2), waterworld);
         playGamButton.setAnchorPoint(AnchorPoint.TOP_RIGHT);
         addEntity(playGamButton);
 
-        var exitGameButton = new QuitButton(new Location((getWidth() / 2) + 20, getHeight() / 2), waterworld);
+        var exitGameButton = new QuitButton(new Coordinate2D((getWidth() / 2) + 20, getHeight() / 2), waterworld);
         exitGameButton.setAnchorPoint(AnchorPoint.TOP_LEFT);
         addEntity(exitGameButton);
     }

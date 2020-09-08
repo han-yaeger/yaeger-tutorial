@@ -1,6 +1,6 @@
 package com.github.hanyaeger.tutorial.scenes;
 
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.tilemap.TileMapContainer;
 import com.github.hanyaeger.api.engine.scenes.DynamicScene;
 import com.github.hanyaeger.api.engine.scenes.EntitySpawnerContainer;
@@ -27,15 +27,15 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
 
     @Override
     public void setupEntities() {
-        var healthText = new HealthText(new Location(0, 0));
+        var healthText = new HealthText(new Coordinate2D(0, 0));
         addEntity(healthText);
 
-        var bubblesPoppedText = new BubblesPoppedText(new Location(0, 30));
+        var bubblesPoppedText = new BubblesPoppedText(new Coordinate2D(0, 30));
         addEntity(bubblesPoppedText);
 
-        addEntity(new Hanny(new Location(1, 1), healthText, bubblesPoppedText, waterworld));
-        addEntity(new Swordfish(new Location(200, 300)));
-        addEntity(new Sharky(new Location(0, 100)));
+        addEntity(new Hanny(new Coordinate2D(1, 1), healthText, bubblesPoppedText, waterworld));
+        addEntity(new Swordfish(new Coordinate2D(200, 300)));
+        addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
 
     @Override

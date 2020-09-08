@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.entities;
 
 import com.github.hanyaeger.api.engine.Size;
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderTouchingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
@@ -26,7 +26,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     private int health = 10;
     private int bubblesPopped = 0;
 
-    public Hanny(Location location, HealthText healthText, BubblesPoppedText bubblesPoppedText, Waterworld waterworld) {
+    public Hanny(Coordinate2D location, HealthText healthText, BubblesPoppedText bubblesPoppedText, Waterworld waterworld) {
         super("sprites/hanny.png", location, new Size(20, 40), 2);
 
         this.healthText = healthText;

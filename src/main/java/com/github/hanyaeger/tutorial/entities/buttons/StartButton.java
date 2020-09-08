@@ -1,6 +1,6 @@
 package com.github.hanyaeger.tutorial.entities.buttons;
 
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseExitListener;
@@ -16,7 +16,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
     private final Waterworld waterworld;
 
-    public StartButton(Location initialPosition, Waterworld waterworld) {
+    public StartButton(Coordinate2D initialPosition, Waterworld waterworld) {
         super(initialPosition, "Play game");
         this.waterworld = waterworld;
         setFill(Color.ORANGE);

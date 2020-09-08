@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.spawners;
 
 import com.github.hanyaeger.api.engine.entities.EntitySpawner;
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.tutorial.entities.AirBubble;
 import com.github.hanyaeger.tutorial.entities.PoisonBubble;
 
@@ -27,8 +27,8 @@ public class BubbleSpawner extends EntitySpawner {
         }
     }
 
-    private Location randomLocation() {
+    private Coordinate2D randomLocation() {
         double x = new Random().nextInt((int) sceneWidth);
-        return new Location(x, sceneHeight);
+        return new Coordinate2D(x, sceneHeight);
     }
 }

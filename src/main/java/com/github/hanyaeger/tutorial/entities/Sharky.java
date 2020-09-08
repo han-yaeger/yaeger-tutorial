@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.entities;
 
 import com.github.hanyaeger.api.engine.Size;
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Sharky extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, AABBCollider {
 
-    public Sharky(Location location) {
+    public Sharky(Coordinate2D location) {
         super("sprites/sharky.png", location, new Size(150, 150), 19);
         setAutoCycle(25);
         setMotionTo(4, 90);

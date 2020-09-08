@@ -1,6 +1,6 @@
 package com.github.hanyaeger.tutorial.entities.buttons;
 
-import com.github.hanyaeger.api.engine.entities.entity.Location;
+import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseExitListener;
@@ -16,7 +16,7 @@ public class QuitButton extends TextEntity implements MouseButtonPressedListener
 
     private final Waterworld waterworld;
 
-    public QuitButton(Location initialPosition, Waterworld waterworld) {
+    public QuitButton(Coordinate2D initialPosition, Waterworld waterworld) {
         super(initialPosition, "Quit game");
         this.waterworld = waterworld;
         setFill(Color.ORANGE);
