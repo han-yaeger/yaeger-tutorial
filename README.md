@@ -33,11 +33,11 @@ Let's first create the entry-point, the Class that contains the `main`-method.
 
 :computer: Create a Class called `Waterworld.java` in the package `com.github.hanyaeger.tutorial`.
 
-:computer: Let `Waterworld` extend the Class `YaegerApplication`and implement the required methods. Leave them empty for now.
+:computer: Let `Waterworld` extend the Class `YaegerGame`and implement the required methods. Leave them empty for now.
 
 <img align="right" src="images/splash.png">
 
-:computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerApplication`. Pass the arguments from the `main`-method
+:computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerGame`. Pass the arguments from the `main`-method
 to the `launch`-method:
 ```java
     public static void main(String[] args) {
@@ -315,11 +315,11 @@ can change this.
  
 ```java
     public Hanny(Location location) {
-        super("sprites/player.png", location, new Size(20, 40), 2);
+        super("sprites/hanny.png", location, new Size(20, 40), 2);
     }
 ```
 
-:computer: Now use the `setupEntities()` from the `GameLevel` to add the `Player`. Place it at the top left corner
+:computer: Now use the `setupEntities()` from the `GameLevel` to add `Hanny`. Place it at the top left corner
 of the screen.
 
 ### Animate the Player
@@ -328,7 +328,7 @@ To animate the Player, we are going to let the Player listen to user input throu
 `setMotionTo()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
 `setSpeed(0)` to make sure Hanny keeps her position.
 
-:computer: Let `Player` implement the interface `KeyListener` and implement the event handler in
+:computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in
 the following way:
 
 ```java
@@ -339,9 +339,9 @@ the following way:
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
             setMotionTo(3, 90d);
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotionTo(3, 0d);
-        } else if (pressedKeys.contains(KeyCode.DOWN)) {
             setMotionTo(3, 180d);
+        } else if (pressedKeys.contains(KeyCode.DOWN)) {
+            setMotionTo(3, 0d);
         } else if (pressedKeys.isEmpty()) {
             setSpeedTo(0);
         }
@@ -377,7 +377,7 @@ the interfaces `AABBCollided` and `AABBCollider`.
 > Besides the interface `AABBCollided` there is a more complex version `AABBSideAwareCollided`, which receives information
 > on which of its sides the collision has occurred. 
 
-The Sworfish is a dangerous foe and each time Hanny collides with him, she will lose a lifepoint. At the start of the game Hanny
+The Swordfish is a dangerous foe and each time Hanny collides with him, she will lose a lifepoint. At the start of the game Hanny
 has ten of those and when she reaches zero, she dies and it is Game Over.
 
 :computer: Add the correct interface to Hanny and the SwordFish. You do not need to implement the event handler, but for testing purposes
@@ -400,7 +400,7 @@ Because Hanny is the one that needs to know if she has collided with the SwordFi
 ```
 
 Notice that we have acces to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *Width* and *Height* of Hanny
-to ensure that Hanny respawn within the Scene.
+to ensure that Hanny respawns within the Scene.
 
 ### Add health points and subtract one on a collision 
 The next step should be fairly simple, since we will use only features we have already seen.
@@ -441,7 +441,7 @@ fields of Hanny should look like:
     }
 ```
 
-The last step is to integrate the health into the event handler.
+The last step is to integrate the health into the event handler of Hanny.
 
 :computer: Change the event handler to ensure that the health is decreased and the healthText changed:
 ```java
@@ -516,7 +516,7 @@ then create new instances of `YaegerEntity` and add them to the Scene.
 We are going to create a `BubbleSpawner` that can create both instances of `AirBubble` and `PoisonBubble`.
 
 :computer: Create a Class called `BubbleSpawner` that extends `EntitySpawner` in the package 
-`com.github.hanyaeger.tutorial.spawners`. Notice that the constructor accepts a parameter called `intervalInMs`.
+`com.github.hanyaeger.tutorial.spawners`. Notice that the constructor of `EntitySpawner` accepts a parameter called `intervalInMs`.
 This parameter will define the interval at which the method `spawnEntities()` is called. From this method
 you can call `spawn(YaegerEntity)`.
 
@@ -608,7 +608,7 @@ Bubbles that leave the Scene should still be removed, otherwise they will float 
 increasing amount of memory, bringing even the fastest computer to a grinding halt. We have already seen
 everything needed to accomplish this.
 
-:computer: Add the interface `SceneBorderCrossingWatcher` to the `PoisonBubble` and `AirBubble`, and call the 
+:computer: Add the interface `SceneBorderCrossingWatcher` to the `PoisonBubble` and `AirBubble` (remember, this is also shared behaviour), and call the 
 method `remove()` from the event handler. Do make sure you call this method only when the top-border has been
 crossed.
 
@@ -628,7 +628,7 @@ can mirror that of the `HealthText`. The main difference will be that the event 
 differentiate between an `AirBubble` and other Entities.
 
 :computer: Implement a new `TextEntity` for the Bubbles Popped text. This should be analogue to the way the Health counter
-was implemented. Think about which Entities need to become a `Collider` and implement the event hanlder for collisions
+was implemented. Think about which Entities need to become a `Collider` and implement the event handler for collisions
 on Hanny in the following way:
 
 ```java
@@ -649,6 +649,9 @@ on Hanny in the following way:
         }
     }
 ```
+When you followed the steps above you might have implemented the `AABBCollider` interface in the `AirBubble` class as well as 
+in the `PoissonBubble` class. Since they now both implement the same interface, you should move the implementation of 
+`AABBCollider` to the superclass `Bubble`. 
 
 ## Add Coral to the Game Level
 The Game Level needs a bit more decoration, so as the last step in this tutorial, 
@@ -731,9 +734,12 @@ other values are mapped on the Entities that are registered from the method setu
 
 ### Add the Tile Map to the Game Scene
 To be able to use the Tile Map, the Scene will need to implement the interface `TileMapContainer`. This will expose the
-method `setupTileMaps()`, from which the Tile Maps can be added, by calling `addTileMap(TileMap);`.
+method `setupTileMaps()`, from which the Tile Maps can be added, by calling `addTileMap(TileMap);`. This last method accept a 
+parameter of the type `TileMap`. We can instantiate a new `CoralTileMap` and pass this as a parameter to the method.
 
-:computer: Add the `CoralTileMap` to the Game Seene.
+:computer: Add the `CoralTileMap` to the Game Scene.
+
+Note: The tiles in your Tilemap will scale automatically to fit the screen.
 
 :arrow_forward: Run the game. If you have done everything correctly, when going to Game Scene, you will likely be greeted
 with the following exception:
