@@ -33,11 +33,11 @@ Let's first create the entry-point, the Class that contains the `main`-method.
 
 :computer: Create a Class called `Waterworld.java` in the package `com.github.hanyaeger.tutorial`.
 
-:computer: Let `Waterworld` extend the Class `YaegerApplication`and implement the required methods. Leave them empty for now.
+:computer: Let `Waterworld` extend the Class `YaegerGame`and implement the required methods. Leave them empty for now.
 
 <img align="right" src="images/splash.png">
 
-:computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerApplication`. Pass the arguments from the `main`-method
+:computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerGame`. Pass the arguments from the `main`-method
 to the `launch`-method:
 ```java
     public static void main(String[] args) {
@@ -156,7 +156,7 @@ a `DynamicScene`.
 Use the method `setupScene()` to set the background to the asset `background2.jpg` and the audio to `waterworld.mp3`.
 
 At this moment the level has not yet been added to the game. You have only created a new class, that needs
-to be instantiated and added to the `YaegerApplication`.
+to be instantiated and added to the `YaegerGame`.
 
 :computer: Use the `setupScenes()` from the `Waterworld`-class to add `GameLevel` to the game. Choose a wise `id`.
 
@@ -311,7 +311,7 @@ what you expect from your game.
 ## Add Hanny to the Game
 The player will control Hanny by using the arrow keys. Again we will use a `DynamicSpriteEntity`.
 
-:computer: Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is being placed at the
+:computer: Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is placed at the
 top left corner of the Scene.
 
 <img align="right" src="src/main/resources/sprites/hanny.png">
@@ -328,11 +328,11 @@ we can change this.
  
 ```java
     public Hanny(Coordinate2D location) {
-        super("sprites/player.png", location, new Size(20, 40), 2);
+        super("sprites/hanny.png", location, new Size(20, 40), 2);
     }
 ```
 
-:computer: Now use the `setupEntities()` from the `GameLevel` to add the `Player`. Place it in the top left corner
+:computer: Now use the `setupEntities()` from the `GameLevel` to add `Hanny`. Place her in the top left corner
 of the screen.
 
 ### Animate Hanny
@@ -352,9 +352,9 @@ the following way:
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
             setMotionTo(3, 90d);
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotionTo(3, 0d);
-        } else if (pressedKeys.contains(KeyCode.DOWN)) {
             setMotionTo(3, 180d);
+        } else if (pressedKeys.contains(KeyCode.DOWN)) {
+            setMotionTo(3, 0d);
         } else if (pressedKeys.isEmpty()) {
             setSpeedTo(0);
         }
@@ -400,7 +400,7 @@ and is implemented through the interfaces `AABBCollided` and `AABBCollider`.
 > Besides the interface `AABBCollided` there is a more complex version `AABBSideAwareCollided`, which receives information
 > on which of its sides the collision has occurred. 
 
-The Sworfish is a dangerous foe and each time Hanny collides with him, she will lose a life point. At the start of the 
+The Swordfish is a dangerous foe and each time Hanny collides with him, she will lose a life point. At the start of the 
 game Hanny has ten of those and when she reaches zero, she dies, and it is Game Over.
 
 :computer: Add the correct interface to Hanny and the SwordFish. You do not yet need to implement the event handler, but for 
@@ -423,7 +423,7 @@ and `setOriginY()` methods.
 ```
 
 Notice that we have access to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *width* 
-and *height* of Hanny to ensure that Hanny will respawn within the Scene.
+and *height* of Hanny to ensure that Hanny respawns within the Scene.
 
 ### Add health points and subtract one on a collision 
 The next step should be fairly simple, since we will use only features we have already seen.
@@ -464,7 +464,7 @@ fields of Hanny should look like:
     }
 ```
 
-The last step is to integrate the health into the event handler.
+The last step is to integrate the health into the event handler of Hanny.
 
 :computer: Change the event handler to ensure that the health is decreased, and the healthText changed:
 ```java
@@ -545,7 +545,7 @@ then create new instances of `YaegerEntity` and add them to the Scene.
 We are going to create a `BubbleSpawner` that can create both instances of `AirBubble` and `PoisonBubble`.
 
 :computer: Create a Class called `BubbleSpawner` that extends `EntitySpawner` in the package 
-`com.github.hanyaeger.tutorial.spawners`. Notice that the constructor accepts a parameter called `intervalInMs`.
+`com.github.hanyaeger.tutorial.spawners`. Notice that the constructor of `EntitySpawner` accepts a parameter called `intervalInMs`.
 This parameter will define the interval at which the method `spawnEntities()` is called. From this method
 you can call `spawn(YaegerEntity)`.
 
@@ -642,7 +642,7 @@ everything needed to accomplish this.
 
 :computer: Add the interface `SceneBorderCrossingWatcher` to the `PoisonBubble` and `AirBubble`, and call the 
 method `remove()` from the event handler. Do make sure you call this method only when the top-border has been
-crossed.
+crossed. Do you notice how the shared behaviour?
 
 ### Remove health point when Hanny Collides with a `PoisonBubble`
 Whenever Hanny collides with a `PoisonBubble`, one Health Point should be removed. Adding this shouldn't be to
@@ -660,7 +660,7 @@ can mirror that of the `HealthText`. The main difference will be that the event 
 differentiate between an `AirBubble` and other Entities.
 
 :computer: Implement a new `TextEntity` for the Bubbles Popped text. This should be analogue to the way the Health counter
-was implemented. Think about which Entities need to become a `Collider` and implement the event hanlder for collisions
+was implemented. Think about which Entities need to become a `Collider` and implement the event handler for collisions
 on Hanny in the following way:
 
 ```java
@@ -681,6 +681,14 @@ on Hanny in the following way:
         }
     }
 ```
+
+## Apply some proper Object Orientation 
+When you followed the steps above you might have implemented the `AABBCollider` interface 
+in the `AirBubble` Class as well as in the `PoissonBubble` class. Again shared behaviour, so its time
+to clean that up.
+
+:computer: Create a superclass for both `AirBubble` and `PoisonBubble` and move all their shared behaviour
+to this superclass.
 
 ## Add Coral to the Game Level
 The Game Level needs a bit more decoration, so as the last step in this tutorial, 
@@ -763,9 +771,11 @@ other values are mapped on the Entities that are registered from the method setu
 
 ### Add the Tile Map to the Game Scene
 To be able to use the Tile Map, the Scene will need to implement the interface `TileMapContainer`. This will expose the
-method `setupTileMaps()`, from which the Tile Maps can be added, by calling `addTileMap(TileMap);`.
+method `setupTileMaps()`, from which the Tile Maps can be added, by calling `addTileMap(TileMap);`. This last method 
+accepts a parameter of the type `TileMap`. So we can instantiate a new `CoralTileMap` and pass this as a parameter to the 
+method.
 
-:computer: Add the `CoralTileMap` to the Game Seene.
+:computer: Add the `CoralTileMap` to the Game Scene.
 
 :arrow_forward: Run the game. If you have done everything correctly, when going to Game Scene, you will likely be greeted
 with the following exception:
@@ -788,11 +798,11 @@ instances of the Coral Entities. Since all those classes are in the package `com
     exports com.github.hanyaeger.tutorial.entities.map;
 ```
 
-:arrow_forward: Run the game. 
+:arrow_forward: Run the game. Note how the tiles in your Tilemap are scaled automatically.
 
 ### Ensure Hanny cannot cross a piece of Coral
 Hanny can no still cross a piece of Coral. This can be easily resolved, using the `AABBCollided` and `AABBCollider`
-interfaces. If the speed of Hanny is being set to 0, whenever she collides with a piece of Coral, we can prevent Hanny from 
+interfaces. If the speed of Hanny is set to 0, whenever she collides with a piece of Coral, we can prevent Hanny from 
 crossing one. When this is done, there is a change that also the bubbles pop whenever to collide with a piece of Coral, 
 so this also needs to be fixed.
 
@@ -801,7 +811,7 @@ still cross them.
 
 ## Further challenges
 
-* Because Hanny will respawn at a random location, she could also respawn on a piece of coral. Because she can not move
+* Because Hanny will respawn at a random location, she could also respawn on a piece of coral. Because she cannot move
 whenever she collides with coral, she will never be able to leave that location. Resolve this by limiting the
 locations at which Hanny can respawn. 
 
