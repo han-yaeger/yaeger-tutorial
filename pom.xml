@@ -4,7 +4,7 @@
 
     <groupId>com.github.han-yaeger</groupId>
     <artifactId>tutorial</artifactId>
-    <version>2019.2020-beta3-SNAPSHOT</version>
+    <version>2019.2020-beta3</version>
     <packaging>jar</packaging>
 
     <name>Yaeger tutorial: Waterworld</name>
