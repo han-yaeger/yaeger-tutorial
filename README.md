@@ -17,6 +17,8 @@ But not only Hanny swims in the Ocean, but also an evil Shark. If he gets his ha
 We provide a repository, that contains both a starter project and the required assets. Either clone this repository
 to your local machine, or download the zip file.
 
+<img align="right" width="50%" src="images/setup/browser-clone.png">
+
 The project is a Maven project, which will be recognized by all modern IDE's. Knowledge of Maven is therefore not required.
 But just to paint the full picture, you'll find a `pom.xml` file at the root of the project. This file contains the full
 project setup and you will notice the dependency it has on `Yaeger`. 
@@ -25,8 +27,24 @@ project setup and you will notice the dependency it has on `Yaeger`.
 Whenever your stuck, you can switch to Branch *implementation*, to see the full implementation.
  
 ### Importing the project in IntelliJ
+1. Select *File > Open...*
+2. In the **import window** navigate to the project directory. Notice that this directy contains a `pom.xml` file. 
+    Select this `pom.xml` file and press *Open*.
+3. IntelliJ will notice that you are opening a `pom.xml` file and will ask if it needs to open the enitre project:
+    
+    <img align="center" src="images/setup/intellij-pom.png">
+    
+    In the **Open Project Window** select **Open as Project**
 
 ### Importing the project in Eclipse
+1. Select *File > Import...*
+2. In the **import window**, expand *maven*, select *Existing Maven Projects*, and click *Next:*
+
+    <img align="center" src="images/setup/eclipse-import.png">
+
+3. Click *Browse* and select the project directory. Notice that this directory contains a `pom.xml` file:
+
+    <img align="center" src="images/setup/eclipse-select.png">
 
 ## Create the entry-point of Waterworld
 Let's first create the entry-point, the Class that contains the `main`-method.
@@ -35,7 +53,7 @@ Let's first create the entry-point, the Class that contains the `main`-method.
 
 :computer: Let `Waterworld` extend the Class `YaegerGame`and implement the required methods. Leave them empty for now.
 
-<img align="right" src="images/splash.png">
+<img align="right" src="images/game/splash.png">
 
 :computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerGame`. Pass the arguments from the `main`-method
 to the `launch`-method:
@@ -138,7 +156,7 @@ A title is typically the static version of a `TextEntity`. We will use the metho
     }
 ```
 
-<img align="right" src="images/title-no-buttons.png">
+<img align="right" src="images/game/title-no-buttons.png">
 
 First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is the `Coordinate2D`. To
 place it at the center of the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter is the text to be shown.
@@ -305,7 +323,7 @@ Yaeger contains a simple debugger that displays how much memory is used by the g
 are currently part of the game. When a game doesn't work as expected, you can use this debugger to get some 
 inside information.
 
-:arrow_forward: Run the game and press F1 to show the Debugger. See if you can relate the states numbers to
+:arrow_forward: Run the game and press F1 to show the Debugger. See if you can relate the stated numbers to
 what you expect from your game.
 
 ## Add Hanny to the Game
@@ -692,12 +710,16 @@ to this superclass.
 
 ## Add Coral to the Game Level
 The Game Level needs a bit more decoration, so as the last step in this tutorial, 
-we are going to add some coral.
+we are going to add some coral. The following four images are avaiable:
 
-<img width="25%" src="src/main/resources/sprites/coral1.png">
-<img width="25%" src="src/main/resources/sprites/coral2.png">
-<img width="25%" src="src/main/resources/sprites/coral3.png">
-<img width="25%" src="src/main/resources/sprites/coral4.png">
+1. coral1.png:
+    <img width="10%" src="src/main/resources/sprites/coral1.png">
+2. coral2.png:    
+    <img width="10%" src="src/main/resources/sprites/coral2.png">
+3. coral3.png:
+    <img width="10%" src="src/main/resources/sprites/coral3.png">
+4. coral4.png:
+   <img width="10%" src="src/main/resources/sprites/coral4.png">
 
 We could just create new instances of `SpriteEntity` for each of the four Coral images and then use 
 `addEntity(YaegerEntity)` to add them to the Game Level. This would work, but it will be hard to add them in a nice 
@@ -808,6 +830,8 @@ so this also needs to be fixed.
 
 :computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure that a bubble can 
 still cross them.
+
+<img align="center" width="50%" src="images/game/game.png">
 
 ## Further challenges
 
