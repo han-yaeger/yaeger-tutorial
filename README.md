@@ -53,7 +53,7 @@ Let's first create the entry-point, the Class that contains the `main`-method.
 
 :computer: Let `Waterworld` extend the Class `YaegerGame`and implement the required methods. Leave them empty for now.
 
-<img align="right" width="70%" src="images/game/splash.png">
+<img align="center" width="70%" src="images/game/splash.png">
 
 :computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerGame`. Pass the arguments from the `main`-method
 to the `launch`-method:
