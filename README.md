@@ -17,7 +17,7 @@ But not only Hanny swims in the Ocean, but also an evil Shark. If he gets his ha
 We provide a repository, that contains both a starter project and the required assets. Either clone this repository
 to your local machine, or download the zip file.
 
-<img align="right" width="50%" src="images/setup/browser-clone.png">
+<img align="right" width="70%" src="images/setup/browser-clone.png">
 
 The project is a Maven project, which will be recognized by all modern IDE's. Knowledge of Maven is therefore not required.
 But just to paint the full picture, you'll find a `pom.xml` file at the root of the project. This file contains the full
@@ -53,7 +53,7 @@ Let's first create the entry-point, the Class that contains the `main`-method.
 
 :computer: Let `Waterworld` extend the Class `YaegerGame`and implement the required methods. Leave them empty for now.
 
-<img align="right" src="images/game/splash.png">
+<img align="right" width="70%" src="images/game/splash.png">
 
 :computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerGame`. Pass the arguments from the `main`-method
 to the `launch`-method:
@@ -156,7 +156,7 @@ A title is typically the static version of a `TextEntity`. We will use the metho
     }
 ```
 
-<img align="right" src="images/game/title-no-buttons.png">
+<img align="center" width="70%" src="images/game/title-no-buttons.png">
 
 First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is the `Coordinate2D`. To
 place it at the center of the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter is the text to be shown.
@@ -710,16 +710,12 @@ to this superclass.
 
 ## Add Coral to the Game Level
 The Game Level needs a bit more decoration, so as the last step in this tutorial, 
-we are going to add some coral. The following four images are avaiable:
+we are going to add some coral. The following four images are available:
 
-1. coral1.png:
-    <img width="10%" src="src/main/resources/sprites/coral1.png">
-2. coral2.png:    
-    <img width="10%" src="src/main/resources/sprites/coral2.png">
-3. coral3.png:
-    <img width="10%" src="src/main/resources/sprites/coral3.png">
-4. coral4.png:
-   <img width="10%" src="src/main/resources/sprites/coral4.png">
+1. coral1.png: <img width="10%" src="src/main/resources/sprites/coral1.png">
+2. coral2.png: <img width="10%" src="src/main/resources/sprites/coral2.png">
+3. coral3.png: <img width="10%" src="src/main/resources/sprites/coral3.png">
+4. coral4.png: <img width="10%" src="src/main/resources/sprites/coral4.png">
 
 We could just create new instances of `SpriteEntity` for each of the four Coral images and then use 
 `addEntity(YaegerEntity)` to add them to the Game Level. This would work, but it will be hard to add them in a nice 
@@ -831,7 +827,7 @@ so this also needs to be fixed.
 :computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure that a bubble can 
 still cross them.
 
-<img align="center" width="50%" src="images/game/game.png">
+<img align="center" width="70%"  src="images/game/game.png">
 
 ## Further challenges
 
