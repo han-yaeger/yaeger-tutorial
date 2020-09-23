@@ -819,12 +819,12 @@ instances of the Coral Entities. Since all those classes are in the package `com
 :arrow_forward: Run the game. Note how the tiles in your Tilemap are scaled automatically.
 
 ### Ensure Hanny cannot cross a piece of Coral
-Hanny can no still cross a piece of Coral. This can be easily resolved, using the `AABBCollided` and `AABBCollider`
+Hanny can now still cross a piece of Coral. This can be easily resolved, using the `AABBCollided` and `AABBCollider`
 interfaces. If the speed of Hanny is set to 0, whenever she collides with a piece of Coral, we can prevent Hanny from 
 crossing one. When this is done, there is a change that also the bubbles pop whenever to collide with a piece of Coral, 
 so this also needs to be fixed.
 
-:computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure that a bubble can 
+:computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure a bubble can 
 still cross them.
 
 <img align="center" width="70%"  src="images/game/game.png">
