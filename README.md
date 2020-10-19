@@ -294,6 +294,8 @@ convenience, Yaeger supplies a method to set both values at once.
 ```java
         setMotionTo(2, 270d);
 ```
+:computer: Now use the `setupEntities()` from the `GameLevel` to add `Swordfish`. 
+
 :arrow_forward: Run the game again. You should now see a Swordfish that swims from right to left and then disappears of the
 screen.
 
@@ -310,12 +312,12 @@ following way:
 ```java
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
-        setOriginX(getSceneWidth());
+        setReferenceX(getSceneWidth());
     }
 ```
 
 :arrow_forward: Run the game again and see what happens. To also change the y-coordinate at which the Swordfish
-reappears, you can  add the following method call: ` setOriginY(new Random().nextInt((int) getSceneHeight() - 81));` 
+reappears, you can  add the following method call: ` setReferenceY(new Random().nextInt((int) getSceneHeight() - 81));` 
 to the handler.
 
 ### Use the build-in debugger to see what is happening
@@ -379,8 +381,8 @@ the following way:
     }
 ```
 
-Notice how the event handler receives a `Set<KeyCode>`. This `Set` will contain all the buttons that are 
-currently being pressed. Depending on which buttons are in this `Set`, we set the motion of Hanny. 
+Notice how the event handler receives a `Set<KeyCode>`. This `Set` will contain all the keys that are 
+currently being pressed. Depending on which keys are in this `Set`, we set the motion of Hanny. 
 
 ### Change the frame index depending on the direction of the Hanny
 We must still change the frame index depending on the direction of Hanny. For this, a `DynamicSpriteEntity`
@@ -422,21 +424,21 @@ The Swordfish is a dangerous foe and each time Hanny collides with him, she will
 game Hanny has ten of those and when she reaches zero, she dies, and it is Game Over.
 
 :computer: Add the correct interface to Hanny and the SwordFish. You do not yet need to implement the event handler, but for 
-testing purposes you should add a `system.out.println("Collision!");`
+testing purposes you should add a `System.out.println("Collision!");`
 
 :arrow_forward: Start the game and test if the collision has been detected.
 
 ### Let Hanny respawn after a collision with the SwordFish
 Because Hanny is the one who needs to know if she has collided with the SwordFish, she will be the one who implements 
-`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setOriginX()` 
-and `setOriginY()` methods.
+`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setReferenceX()` 
+and `setReferenceY()` methods.
 
 :computer: Use the following event handler to let Hanny respawn at a random location:
 ```java
     @Override
     public void onCollision(AABBCollider collidingObject) {
-        setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-        setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+        setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+        setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
     }
 ```
 
@@ -488,8 +490,8 @@ The last step is to integrate the health into the event handler of Hanny.
 ```java
     @Override
     public void onCollision(AABBCollider collidingObject) {
-        setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-        setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+        setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+        setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
 
         health--;
         healthText.setHealthText(health);
@@ -693,8 +695,8 @@ on Hanny in the following way:
             if (health == 0) {
                 this.waterworld.setActiveScene(2);
             } else {
-                setOriginX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-                setOriginY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+                setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
+                setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
             }
         }
     }
