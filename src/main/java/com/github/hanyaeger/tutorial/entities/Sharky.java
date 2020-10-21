@@ -19,7 +19,6 @@ public class Sharky extends DynamicSpriteEntity implements SceneBorderCrossingWa
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
-        setReferenceX(-150);
-        setReferenceY(new Random().nextInt((int) getSceneHeight() - 150));
+        setAnchorLocation(new Coordinate2D(-150, new Random().nextInt((int) getSceneHeight() - 150)));
     }
 }

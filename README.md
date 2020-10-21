@@ -312,12 +312,12 @@ following way:
 ```java
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
-        setReferenceX(getSceneWidth());
+        setAnchorLocationX(getSceneWidth());
     }
 ```
 
 :arrow_forward: Run the game again and see what happens. To also change the y-coordinate at which the Swordfish
-reappears, you can  add the following method call: ` setReferenceY(new Random().nextInt((int) getSceneHeight() - 81));` 
+reappears, you can  add the following method call: ` setAnchorLocationY(new Random().nextInt((int) getSceneHeight() - 81));` 
 to the handler.
 
 ### Use the build-in debugger to see what is happening
@@ -430,15 +430,17 @@ testing purposes you should add a `System.out.println("Collision!");`
 
 ### Let Hanny respawn after a collision with the SwordFish
 Because Hanny is the one who needs to know if she has collided with the SwordFish, she will be the one who implements 
-`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setReferenceX()` 
-and `setReferenceY()` methods.
+`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setAnchorLocation()` 
+method.
 
 :computer: Use the following event handler to let Hanny respawn at a random location:
 ```java
     @Override
     public void onCollision(AABBCollider collidingObject) {
-        setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-        setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+      setAnchorLocation(new Coordinate2D(
+              new Random().nextInt((int) (getSceneWidth() - getWidth())),
+              new Random().nextInt((int) (getSceneHeight() - getHeight())))
+        );
     }
 ```
 
@@ -490,8 +492,10 @@ The last step is to integrate the health into the event handler of Hanny.
 ```java
     @Override
     public void onCollision(AABBCollider collidingObject) {
-        setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-        setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+       setAnchorLocation(new Coordinate2D(
+                new Random().nextInt((int) (getSceneWidth() - getWidth())),
+                new Random().nextInt((int) (getSceneHeight() - getHeight())))
+            );
 
         health--;
         healthText.setHealthText(health);
@@ -526,8 +530,8 @@ seen, Sharky swims from left to right and is composed of many sprites. If these 
 are cycled at the correct speed, Sharky becomes animated. To automatically cycle through the sprites, 
 a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
 
-:computer: Add Sharky to the Game Level, animate him and let him swim from left to right. After crossing the SceneBorder, he sould
-reappear at a random location left of the Scene. After colliding with Sharky, Hanny loses a healthpoint.
+:computer: Add Sharky to the Game Level, animate him and let him swim from left to right. After crossing the SceneBorder, he 
+should reappear at a random location left of the Scene. After colliding with Sharky, Hanny loses a health point.
 
 :arrow_forward: Start the game and test if Sharky behaves as expected.
 
@@ -695,8 +699,10 @@ on Hanny in the following way:
             if (health == 0) {
                 this.waterworld.setActiveScene(2);
             } else {
-                setReferenceX(new Random().nextInt((int) (getSceneWidth() - getWidth())));
-                setReferenceY(new Random().nextInt((int) (getSceneHeight() - getHeight())));
+                setAnchorLocation(new Coordinate2D(
+                        new Random().nextInt((int) (getSceneWidth() - getWidth())),
+                        new Random().nextInt((int) (getSceneHeight() - getHeight())))
+                );
             }
         }
     }
