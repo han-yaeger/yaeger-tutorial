@@ -14,7 +14,7 @@ public abstract class Bubble extends DynamicCircleEntity implements AABBCollided
     public Bubble(Coordinate2D initialLocation, double speed) {
         super(initialLocation);
         setRadius(8);
-        setMotionTo(speed, 180d);
+        setMotion(speed, 180d);
         setOpacity(0.5);
         setStrokeWidth(0.2);
     }

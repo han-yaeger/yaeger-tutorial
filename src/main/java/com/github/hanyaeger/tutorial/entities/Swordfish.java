@@ -13,7 +13,7 @@ public class Swordfish extends DynamicSpriteEntity implements SceneBorderCrossin
 
     public Swordfish(Coordinate2D location) {
         super("sprites/swordfish.png", location, new Size(225, 81));
-        setMotionTo(2, 270d);
+        setMotion(2, 270d);
     }
 
     @Override

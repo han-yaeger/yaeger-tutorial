@@ -14,7 +14,7 @@ public class Sharky extends DynamicSpriteEntity implements SceneBorderCrossingWa
     public Sharky(Coordinate2D location) {
         super("sprites/sharky.png", location, new Size(150, 150), 19);
         setAutoCycle(25);
-        setMotionTo(4, 90);
+        setMotion(4, 90);
     }
 
     @Override

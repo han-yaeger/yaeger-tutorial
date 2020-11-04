@@ -40,16 +40,16 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
             setCurrentFrameIndex(0);
-            setMotionTo(3, Direction.LEFT.getValue());
+            setMotion(3, Direction.LEFT.getValue());
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
             setCurrentFrameIndex(1);
-            setMotionTo(3, Direction.RIGHT.getValue());
+            setMotion(3, Direction.RIGHT.getValue());
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotionTo(3, Direction.UP.getValue());
+            setMotion(3, Direction.UP.getValue());
         } else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotionTo(3, Direction.DOWN.getValue());
+            setMotion(3, Direction.DOWN.getValue());
         } else if (pressedKeys.isEmpty()) {
-            setSpeedTo(0);
+            setSpeed(0);
         }
     }
 
@@ -57,7 +57,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     public void onCollision(AABBCollider collidingObject) {
 
         if (collidingObject instanceof Coral) {
-            setSpeedTo(0);
+            setSpeed(0);
         } else if (collidingObject instanceof AirBubble) {
             bubblesPoppedText.setText(++bubblesPopped);
         } else {
@@ -75,6 +75,6 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-        setSpeedTo(0);
+        setSpeed(0);
     }
 }

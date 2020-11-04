@@ -292,7 +292,7 @@ convenience, Yaeger supplies a method to set both values at once.
 
 :computer: Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
 ```java
-        setMotionTo(2, 270d);
+        setMotion(2, 270d);
 ```
 :computer: Now use the `setupEntities()` from the `GameLevel` to add `Swordfish`. 
 
@@ -358,7 +358,7 @@ of the screen.
 ### Animate Hanny
 To animate Hanny, we are going to let her listen to user input through the keyboard. As with the 
 `MouseButtonPressedListener`, we are going to add an interface. In its event handler, we are going to call
-`setMotionTo()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
+`setMotion()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
 `setSpeed(0)` to make sure Hanny keeps her location.
 
 :computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in
@@ -368,15 +368,15 @@ the following way:
   @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            setMotionTo(3, 270d);
+            setMotion(3, 270d);
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotionTo(3, 90d);
+            setMotion(3, 90d);
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotionTo(3, 180d);
+            setMotion(3, 180d);
         } else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotionTo(3, 0d);
+            setMotion(3, 0d);
         } else if (pressedKeys.isEmpty()) {
-            setSpeedTo(0);
+            setSpeed(0);
         }
     }
 ```
