@@ -3,13 +3,13 @@ package com.github.hanyaeger.tutorial.entities;
 import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 
 import java.util.Random;
 
-public class Swordfish extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, AABBCollider {
+public class Swordfish extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, Collider {
 
     public Swordfish(Coordinate2D location) {
         super("sprites/swordfish.png", location, new Size(225, 81));

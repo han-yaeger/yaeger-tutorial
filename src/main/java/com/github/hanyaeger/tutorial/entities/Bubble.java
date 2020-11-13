@@ -2,14 +2,14 @@ package com.github.hanyaeger.tutorial.entities;
 
 import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.Collided;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
 import com.github.hanyaeger.api.engine.entities.entity.shape.circle.DynamicCircleEntity;
 import com.github.hanyaeger.api.engine.media.audio.SoundClip;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.entities.map.Coral;
 
-public abstract class Bubble extends DynamicCircleEntity implements AABBCollided, AABBCollider, SceneBorderCrossingWatcher {
+public abstract class Bubble extends DynamicCircleEntity implements Collided, Collider, SceneBorderCrossingWatcher {
 
     public Bubble(Coordinate2D initialLocation, double speed) {
         super(initialLocation);
@@ -20,7 +20,7 @@ public abstract class Bubble extends DynamicCircleEntity implements AABBCollided
     }
 
     @Override
-    public void onCollision(AABBCollider collidingObject) {
+    public void onCollision(Collider collidingObject) {
         if (collidingObject instanceof Coral) {
             return;
         }

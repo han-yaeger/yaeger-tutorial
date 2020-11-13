@@ -3,8 +3,8 @@ package com.github.hanyaeger.tutorial.entities;
 import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderTouchingWatcher;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollided;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.AABBCollider;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.Collided;
+import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListener;
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
@@ -18,7 +18,7 @@ import javafx.scene.input.KeyCode;
 import java.util.Random;
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, AABBCollided, AABBCollider {
+public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider {
 
     private final HealthText healthText;
     private final BubblesPoppedText bubblesPoppedText;
@@ -54,7 +54,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     }
 
     @Override
-    public void onCollision(AABBCollider collidingObject) {
+    public void onCollision(Collider collidingObject) {
 
         if (collidingObject instanceof Coral) {
             setSpeed(0);
