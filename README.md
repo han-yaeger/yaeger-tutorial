@@ -413,7 +413,7 @@ With this approach, it is possible to minimize the number of entities that need 
 And it also enables a good Object Oriented approach to place the responsibility of handling a collision at the right entity.
 
 ### Add collision detection for Hanny and the Swordfish
-There are several different algorithms for collision detection but Yaeger only supports the most simple implementation, 
+There are several algorithms for collision detection but Yaeger only supports the most simple implementation, 
 which is based on the Bounding Box of an Entity. This method is called Axis Aligned Bounding Box (AABB) collision detection 
 and is implemented through the interfaces `AABBCollided` and `AABBCollider`.
 
@@ -427,6 +427,17 @@ game Hanny has ten of those and when she reaches zero, she dies, and it is Game 
 testing purposes you should add a `System.out.println("Collision!");`
 
 :arrow_forward: Start the game and test if the collision has been detected.
+
+> You might have noticed that because Yaeger uses the Bounding Box to check for collisions, the collision detection  
+> is not as accurate as you might like it to be. This can be solved by using the notion of a hit box, a shape that
+> defines the area that is being checked during a collision detection cycle. Hit Boxes can be used in Yaeger, through
+> the use of a `CompositeEntity`: an Entity that consists of other Entities.
+> An implementation of this can be found in the [Yaeger Showcase](https://github.com/han-yaeger/yaeger-showcase) on
+> the *Composing* Scene. On that Scene we again find Hanny and the Swordfish, but both are constructed through the use
+> of a `CompositeEntity`. The Swordfish consists of a `SpriteEntity` and a `RectangleEntity` that is invisible and
+> placed on top of the Swordsfish's sword. Since that rectangle implements the interface `AABBCollider`, the collision between
+> Hanny and the sword is the collision that is detected.
+>
 
 ### Let Hanny respawn after a collision with the SwordFish
 Because Hanny is the one who needs to know if she has collided with the SwordFish, she will be the one who implements 
