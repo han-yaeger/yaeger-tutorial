@@ -292,7 +292,7 @@ convenience, Yaeger supplies a method to set both values at once.
 
 :computer: Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
 ```java
-        setMotionTo(2, 270d);
+        setMotion(2, 270d);
 ```
 :computer: Now use the `setupEntities()` from the `GameLevel` to add `Swordfish`. 
 
@@ -358,7 +358,7 @@ of the screen.
 ### Animate Hanny
 To animate Hanny, we are going to let her listen to user input through the keyboard. As with the 
 `MouseButtonPressedListener`, we are going to add an interface. In its event handler, we are going to call
-`setMotionTo()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
+`setMotion()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
 `setSpeed(0)` to make sure Hanny keeps her location.
 
 :computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in
@@ -368,15 +368,15 @@ the following way:
   @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            setMotionTo(3, 270d);
+            setMotion(3, 270d);
         } else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotionTo(3, 90d);
+            setMotion(3, 90d);
         } else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotionTo(3, 180d);
+            setMotion(3, 180d);
         } else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotionTo(3, 0d);
+            setMotion(3, 0d);
         } else if (pressedKeys.isEmpty()) {
-            setSpeedTo(0);
+            setSpeed(0);
         }
     }
 ```
@@ -413,11 +413,11 @@ With this approach, it is possible to minimize the number of entities that need 
 And it also enables a good Object Oriented approach to place the responsibility of handling a collision at the right entity.
 
 ### Add collision detection for Hanny and the Swordfish
-There are several different algorithms for collision detection but Yaeger only supports the most simple implementation, 
+There are several algorithms for collision detection but Yaeger only supports the most simple implementation, 
 which is based on the Bounding Box of an Entity. This method is called Axis Aligned Bounding Box (AABB) collision detection 
-and is implemented through the interfaces `AABBCollided` and `AABBCollider`.
+and is implemented through the interfaces `Collided` and `Collider`.
 
-> Besides the interface `AABBCollided` there is a more complex version `AABBSideAwareCollided`, which receives information
+> Besides the interface `Collided` there is a more complex version `SideAwareCollided`, which receives information
 > on which of its sides the collision has occurred. 
 
 The Swordfish is a dangerous foe and each time Hanny collides with him, she will lose a life point. At the start of the 
@@ -428,15 +428,26 @@ testing purposes you should add a `System.out.println("Collision!");`
 
 :arrow_forward: Start the game and test if the collision has been detected.
 
+> You might have noticed that because Yaeger uses the Bounding Box to check for collisions, the collision detection  
+> is not as accurate as you might like it to be. This can be solved by using the notion of a hit box, a shape that
+> defines the area that is being checked during a collision detection cycle. Hit Boxes can be used in Yaeger, through
+> the use of a `CompositeEntity`: an Entity that consists of other Entities.
+> An implementation of this can be found in the [Yaeger Showcase](https://github.com/han-yaeger/yaeger-showcase) on
+> the *Composing* Scene. On that Scene we again find Hanny and the Swordfish, but both are constructed through the use
+> of a `CompositeEntity`. The Swordfish consists of a `SpriteEntity` and a `RectangleEntity` that is invisible and
+> placed on top of the Swordsfish's sword. Since that rectangle implements the interface `Collider`, the collision between
+> Hanny and the sword is the collision that is detected.
+>
+
 ### Let Hanny respawn after a collision with the SwordFish
 Because Hanny is the one who needs to know if she has collided with the SwordFish, she will be the one who implements 
-`AABBCollided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setAnchorLocation()` 
+`Collided`. We are going to use the event handler to let Hanny respawn at a different location, using her `setAnchorLocation()` 
 method.
 
 :computer: Use the following event handler to let Hanny respawn at a random location:
 ```java
     @Override
-    public void onCollision(AABBCollider collidingObject) {
+    public void onCollision(Collider collidingObject) {
       setAnchorLocation(new Coordinate2D(
               new Random().nextInt((int) (getSceneWidth() - getWidth())),
               new Random().nextInt((int) (getSceneHeight() - getHeight())))
@@ -491,7 +502,7 @@ The last step is to integrate the health into the event handler of Hanny.
 :computer: Change the event handler to ensure that the health is decreased, and the healthText changed:
 ```java
     @Override
-    public void onCollision(AABBCollider collidingObject) {
+    public void onCollision(Collider collidingObject) {
        setAnchorLocation(new Coordinate2D(
                 new Random().nextInt((int) (getSceneWidth() - getWidth())),
                 new Random().nextInt((int) (getSceneHeight() - getHeight())))
@@ -637,18 +648,18 @@ For this we can use the Class `Random` from the Java [API](https://docs.oracle.c
 ### Make the bubbles pop if they collide with Hanny
 Whenever a Bubble collides with Hanny, a popping sound should be played, and they should be removed from the Scene.
 We have already seen how to approach this. Apparently the Bubble needs to be notified when something collides with it.
-Remember the interface `AABBCollided`? But then, this is only applicable if the Entity that collides with it, becomes
-an `AABBCollider`. So Hanny will not only be a `AABBCollided`, but also a `AABBCollider`.
+Remember the interface `Collided`? But then, this is only applicable if the Entity that collides with it, becomes
+an `Collider`. So Hanny will not only be a `Collided`, but also a `Collider`.
 
-:computer: Add the interface `AABBCollider` to Hanny
+:computer: Add the interface `Collider` to Hanny
 
-:computer: Add the interface `AABBCollided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour
+:computer: Add the interface `Collided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour
 and we a doing proper Object Orientation, we will add it to their superclass). Implement the event handler in the 
 following way:
 
 ```java
     @Override
-    public void onCollision(AABBCollider collidingObject) {
+    public void onCollision(Collider collidingObject) {
         var popSound = new SoundClip("audio/pop.mp3");
         popSound.play();
 
@@ -689,7 +700,7 @@ on Hanny in the following way:
 
 ```java
 @Override
-    public void onCollision(AABBCollider collidingObject) {
+    public void onCollision(Collider collidingObject) {
 
         if (collidingObject instanceof AirBubble) {
             bubblesPoppedText.setText(++bubblesPopped);
@@ -709,7 +720,7 @@ on Hanny in the following way:
 ```
 
 ## Apply some proper Object Orientation 
-When you followed the steps above you might have implemented the `AABBCollider` interface 
+When you followed the steps above you might have implemented the `Collider` interface 
 in the `AirBubble` Class as well as in the `PoissonBubble` class. Again shared behaviour, so its time
 to clean that up.
 
@@ -827,7 +838,7 @@ instances of the Coral Entities. Since all those classes are in the package `com
 :arrow_forward: Run the game. Note how the tiles in your Tilemap are scaled automatically.
 
 ### Ensure Hanny cannot cross a piece of Coral
-Hanny can now still cross a piece of Coral. This can be easily resolved, using the `AABBCollided` and `AABBCollider`
+Hanny can now still cross a piece of Coral. This can be easily resolved, using the `Collided` and `Collider`
 interfaces. If the speed of Hanny is set to 0, whenever she collides with a piece of Coral, we can prevent Hanny from 
 crossing one. When this is done, there is a change that also the bubbles pop whenever to collide with a piece of Coral, 
 so this also needs to be fixed.
