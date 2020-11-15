@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
+import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 
@@ -14,7 +15,7 @@ public class Sharky extends DynamicSpriteEntity implements SceneBorderCrossingWa
     public Sharky(Coordinate2D location) {
         super("sprites/sharky.png", location, new Size(150, 150), 19);
         setAutoCycle(25);
-        setMotion(4, 90);
+        setMotion(4, Direction.RIGHT);
     }
 
     @Override

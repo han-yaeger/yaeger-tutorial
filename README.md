@@ -288,7 +288,8 @@ Notice how we call `super()` and pass the *image*, the *location* and the *size*
 ### Animate the `Swordfish`
 Since the Swordfish is a `DynamicSpriteEntity`, we can let it move around the Scene. To do this, we will need to 
 set both the *direction* and *speed*. The *direction* will be an angle in degrees, where 0 denotes upwards. For
-convenience, Yaeger supplies a method to set both values at once.
+convenience, Yaeger supplies a method to set both values at once. For the trivial directions (up, left, right and down)
+Yaeger provides a Enumeration called `Direction`, which can also be passed to the method. 
 
 :computer: Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
 ```java
@@ -358,7 +359,7 @@ of the screen.
 ### Animate Hanny
 To animate Hanny, we are going to let her listen to user input through the keyboard. As with the 
 `MouseButtonPressedListener`, we are going to add an interface. In its event handler, we are going to call
-`setMotion()`, so we can change the direction based on the key being pressed. When no buttons are being pressed, we use 
+`setMotion()`, so we can change the direction based on the key being pressed. When no buttons are pressed, we use 
 `setSpeed(0)` to make sure Hanny keeps her location.
 
 :computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in

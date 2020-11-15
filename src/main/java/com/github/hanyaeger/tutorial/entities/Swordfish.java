@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.engine.Size;
 import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
+import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 
@@ -13,7 +14,7 @@ public class Swordfish extends DynamicSpriteEntity implements SceneBorderCrossin
 
     public Swordfish(Coordinate2D location) {
         super("sprites/swordfish.png", location, new Size(225, 81));
-        setMotion(2, 270d);
+        setMotion(2, Direction.LEFT);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
 import com.github.hanyaeger.api.engine.entities.entity.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.Collided;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
+import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
 import com.github.hanyaeger.api.engine.entities.entity.shape.circle.DynamicCircleEntity;
 import com.github.hanyaeger.api.engine.media.audio.SoundClip;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
@@ -14,7 +15,7 @@ public abstract class Bubble extends DynamicCircleEntity implements Collided, Co
     public Bubble(Coordinate2D initialLocation, double speed) {
         super(initialLocation);
         setRadius(8);
-        setMotion(speed, 180d);
+        setMotion(speed, Direction.UP);
         setOpacity(0.5);
         setStrokeWidth(0.2);
     }
