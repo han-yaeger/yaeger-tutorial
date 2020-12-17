@@ -655,7 +655,7 @@ an `Collider`. So Hanny will not only be a `Collided`, but also a `Collider`.
 :computer: Add the interface `Collider` to Hanny
 
 :computer: Add the interface `Collided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour
-and we a doing proper Object Orientation, we will add it to their superclass). Implement the event handler in the 
+and we are doing proper Object Orientation, we will add it to their superclass). Implement the event handler in the 
 following way:
 
 ```java
@@ -743,7 +743,7 @@ pattern to a Scene.
 
 To facilitate this, Yaeger supplies a `Tile Map`, which is an Object with which you can create a 
 two-dimensional discrete map that represents the Scene, and then use the map to decide where to place the Entities.
-Yaeger will the calculate the location, width and height of each Entity and place them on the Scene. You do still need 
+Yaeger will then calculate the location, width and height of each Entity and place them on the Scene. You do still need 
 to create new instances of `SpriteEntity` for each of the four Coral images, but the rest will be handled by 
 Yaeger.
 
