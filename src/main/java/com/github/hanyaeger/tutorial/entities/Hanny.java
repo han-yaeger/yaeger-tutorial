@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.engine.entities.entity.collisions.Collided;
 import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
 import com.github.hanyaeger.api.engine.entities.entity.events.userinput.KeyListener;
 import com.github.hanyaeger.api.engine.entities.entity.motion.Direction;
+import com.github.hanyaeger.api.engine.entities.entity.motion.Newtonian;
 import com.github.hanyaeger.api.engine.entities.entity.sprite.DynamicSpriteEntity;
 import com.github.hanyaeger.api.engine.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.Waterworld;
@@ -18,7 +19,7 @@ import javafx.scene.input.KeyCode;
 import java.util.Random;
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider {
+public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWatcher, KeyListener, Collided, Collider, Newtonian {
 
     private final HealthText healthText;
     private final BubblesPoppedText bubblesPoppedText;
@@ -34,6 +35,9 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
         this.waterworld = waterworld;
         healthText.setText(health);
         bubblesPoppedText.setText(bubblesPopped);
+
+        setGravityConstant(0.005);
+        setFrictionConstant(0.04);
     }
 
     @Override
@@ -48,8 +52,6 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
             setMotion(3, Direction.UP);
         } else if (pressedKeys.contains(KeyCode.DOWN)) {
             setMotion(3, Direction.DOWN);
-        } else if (pressedKeys.isEmpty()) {
-            setSpeed(0);
         }
     }
 
