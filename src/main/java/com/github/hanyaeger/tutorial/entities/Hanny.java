@@ -26,7 +26,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     private int health = 10;
     private int bubblesPopped = 0;
 
-    public Hanny(Coordinate2D location, HealthText healthText, BubblesPoppedText bubblesPoppedText, Waterworld waterworld) {
+    public Hanny(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Waterworld waterworld) {
         super("sprites/hanny.png", location, new Size(20, 40), 2);
 
         this.healthText = healthText;
@@ -55,7 +55,6 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
 
     @Override
     public void onCollision(Collider collidingObject) {
-
         if (collidingObject instanceof Coral) {
             setSpeed(0);
         } else if (collidingObject instanceof AirBubble) {
@@ -74,7 +73,23 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     }
 
     @Override
-    public void notifyBoundaryTouching(SceneBorder border) {
+    public void notifyBoundaryTouching(final SceneBorder border) {
         setSpeed(0);
+
+        switch (border) {
+            case TOP:
+                setAnchorLocationY(1);
+                break;
+            case BOTTOM:
+                setAnchorLocationY(getSceneHeight() - getHeight() - 1);
+                break;
+            case LEFT:
+                setAnchorLocationX(1);
+                break;
+            case RIGHT:
+                setAnchorLocationX(getSceneWidth() - getWidth() - 1);
+            default:
+                break;
+        }
     }
 }
