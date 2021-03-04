@@ -32,7 +32,7 @@ Whenever your stuck, you can switch to Branch *implementation*, to see the full 
     Select this `pom.xml` file and press *Open*.
 3. IntelliJ will notice that you are opening a `pom.xml` file and will ask if it needs to open the enitre project:
     
-    <img align="center" src="images/setup/intellij-pom.png">
+    <img src="images/setup/intellij-pom.png">
     
     In the **Open Project Window** select **Open as Project**
 
@@ -40,11 +40,11 @@ Whenever your stuck, you can switch to Branch *implementation*, to see the full 
 1. Select *File > Import...*
 2. In the **import window**, expand *maven*, select *Existing Maven Projects*, and click *Next:*
 
-    <img align="center" src="images/setup/eclipse-import.png">
+    <img src="images/setup/eclipse-import.png">
 
 3. Click *Browse* and select the project directory. Notice that this directory contains a `pom.xml` file:
 
-    <img align="center" src="images/setup/eclipse-select.png">
+    <img src="images/setup/eclipse-select.png">
 
 ## Create the entry-point of Waterworld
 Let's first create the entry-point, the Class that contains the `main`-method.
@@ -53,7 +53,7 @@ Let's first create the entry-point, the Class that contains the `main`-method.
 
 :computer: Let `Waterworld` extend the Class `YaegerGame`and implement the required methods. Leave them empty for now.
 
-<img align="center" width="70%" src="images/game/splash.png">
+<img width="70%" src="images/game/splash.png">
 
 :computer: Add a `main`-method that calls the static method `launch()` from the class `YaegerGame`. Pass the arguments from the `main`-method
 to the `launch`-method:
@@ -90,7 +90,7 @@ it can become `StaticScene`.
 :computer: Create a new Class called `TitleScene` that extends `StaticScene` in the package `com.github.hanyaeger.tutorial.scenes`.
 Implement the required methods, but leave them empty.
 
-### Set the backgound image and audio
+### Set the background image and audio
 The method `setupScene()` should be used for setting the background image and audio of a Scene. For this you
 can use the methods `setBackgroundImage(String url)` and `setBackgroundAudio(String url)`. Both the image
 and the audio are provided in the `resources/` folder. This folder should be the only place to store your assets.
@@ -156,7 +156,7 @@ A title is typically the static version of a `TextEntity`. We will use the metho
     }
 ```
 
-<img align="center" width="70%" src="images/game/title-no-buttons.png">
+<img width="70%" src="images/game/title-no-buttons.png">
 
 First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is the `Coordinate2D`. To
 place it at the center of the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter is the text to be shown.
@@ -335,7 +335,7 @@ The player will control Hanny by using the arrow keys. Again we will use a `Dyna
 :computer: Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is placed at the
 top left corner of the Scene.
 
-<img align="right" src="src/main/resources/sprites/hanny.png">
+<img src="src/main/resources/sprites/hanny.png">
 
 You might notice that the image of Hanny contains two Hannies. This approach is a standard way to animate a figure 
 in a game. The image itself contains multiple sprites, and the Game Engine is responsible for showing only one of 
@@ -586,7 +586,7 @@ to figure out which one it is.
 
 ## Add another enemy, called `Sharky`
 
-<img align="right" width="100%" src="src/main/resources/sprites/sharky.png">
+<img width="100%" src="src/main/resources/sprites/sharky.png">
 
 Besides the SwordFish, another foe abides in the depth of the ocean: the evil Sharky. As can be
 seen, Sharky swims from left to right and is composed of many sprites. If these sprites
@@ -897,7 +897,7 @@ Game World Update. Because this new speed is only applied after one Game World U
 :computer: Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure a bubble can 
 still cross them.
 
-<img align="center" width="70%"  src="images/game/game.png">
+<img width="70%"  src="images/game/game.png">
 
 ## Further challenges
 
