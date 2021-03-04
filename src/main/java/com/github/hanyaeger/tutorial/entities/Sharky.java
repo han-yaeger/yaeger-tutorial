@@ -13,7 +13,7 @@ import java.util.Random;
 public class Sharky extends DynamicSpriteEntity implements SceneBorderCrossingWatcher, Collider {
 
     public Sharky(Coordinate2D location) {
-        super("sprites/sharky.png", location, new Size(150, 150), 19);
+        super("sprites/sharky.png", location, new Size(150, 150), 1, 19);
         setAutoCycle(25);
         setMotion(4, Direction.RIGHT);
     }

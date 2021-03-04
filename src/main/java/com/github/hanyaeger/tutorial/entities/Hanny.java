@@ -28,7 +28,7 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     private int bubblesPopped = 0;
 
     public Hanny(final Coordinate2D location, final HealthText healthText, final BubblesPoppedText bubblesPoppedText, final Waterworld waterworld) {
-        super("sprites/hanny.png", location, new Size(20, 40), 2);
+        super("sprites/hanny.png", location, new Size(20, 40), 1, 2);
 
         this.healthText = healthText;
         this.bubblesPoppedText = bubblesPoppedText;
