@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/intellij
 
+### MacOSX ###
+.DS_Store
+
 ### Maven ###
 target/
 
