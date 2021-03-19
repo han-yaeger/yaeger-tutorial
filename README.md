@@ -126,8 +126,10 @@ special file that defines
 (amongst other things) which directories should be opened up. The `resources` folder itself is open by default, but any
 subdirectory should be added for the resources in those directories to be available. As you will notice this has already
 been done:
+
 ```java opens audio; opens backgrounds; opens sprites;
 ```
+
 Do not forget to do this for your own game, or an Exception will be thrown when the game is trying to access a resource
 that is in a directory that has not been opened up.
 
@@ -303,11 +305,12 @@ Before adding Hanny, lets start by adding her enemy, the evil Swordfish. Since t
 ### Add the `Swordfish`
 
 :computer: Create a new Class called `Swordfish` that extends `DynamicSpriteEntity` in
-package `com.github.hanyaeger.tutorial.entities`. Give it the following constructor:
+package `com.github.hanyaeger.tutorial.entities`. Since the image of the swordfish is already of the correct size, we
+don't need to set its size through the constructor, which can now look like:
 
 ```java
     public Swordfish(Coordinate2D location){
-        super("sprites/swordfish.png",location,new Size(225,81));
+        super("sprites/swordfish.png",location);
         }
 ```
 
