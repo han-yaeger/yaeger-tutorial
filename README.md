@@ -359,11 +359,20 @@ to the handler.
 
 ### Use the build-in debugger to see what is happening
 
-Yaeger contains a simple debugger that displays how much memory is used by the game and how many Objects are currently
+Yaeger contains a simple debugger that displays how much memory is used by the game and how many Entities are currently
 part of the game. When a game doesn't work as expected, you can use this debugger to get some inside information.
 
-:arrow_forward: Run the game and press F1 to show the Debugger. See if you can relate the stated numbers to what you
-expect from your game.
+:arrow_forward: Run the game with the commandline argument `--showDebug`. Setting these options can usually be done from
+the Run Configuration in your IDE. When using IntelliJ, first select "Edit Configurations...":
+
+<img src="images/game/run-config-edit.png">
+
+Add the commandline argument to the correct Run Configuration:
+
+<img src="images/game/run-config-argument.png">
+
+See if you can relate the stated numbers to what you expect from your game. To disable the Debugger window, just removed
+the commandline argument from the Run Configuration.
 
 ## Add Hanny to the Game
 
@@ -483,20 +492,18 @@ right entity.
 
 ### Add collision detection for Hanny and the Swordfish
 
-There are several algorithms for collision detection but Yaeger only supports the most simple implementation, which is
-based on the Bounding Box of an Entity. This method is called Axis Aligned Bounding Box (AABB) collision detection and
-is implemented through the interfaces `Collided` and `Collider`.
-
-> Besides the interface `Collided` there is a more complex version `SideAwareCollided`, which receives information
-> on which of its sides the collision has occurred.
-
 The Swordfish is a dangerous foe and each time Hanny collides with him, she will lose a life point. At the start of the
 game Hanny has ten of those and when she reaches zero, she dies, and it is Game Over.
+
+There are several algorithms for collision detection but Yaeger only supports the simplest implementation, which is
+based on the Bounding Box of an Entity. This method is called Axis Aligned Bounding Box (AABB) collision detection and
+is implemented through the interfaces `Collided` and `Collider`.
 
 :computer: Add the correct interface to Hanny and the SwordFish. You do not yet need to implement the event handler, but
 for testing purposes you should add a `System.out.println("Collision!");`
 
-:arrow_forward: Start the game and test if the collision has been detected.
+:arrow_forward: Start the game and test if the collision has been detected. To get more insight into these collisions,
+it is possible to run Yaeger with the commandline argument `--showBB`, which makes all bounding boxes visible.
 
 > You might have noticed that because Yaeger uses the Bounding Box to check for collisions, the collision detection  
 > is not as accurate as you might like it to be. This can be solved by using the notion of a hit box, a shape that
