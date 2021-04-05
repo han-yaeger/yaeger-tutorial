@@ -84,11 +84,11 @@ window.
 :computer: Add the following body to the `setupGame()` method
 
 ```java    
-    @Override
-      protected void setupGame() {
-          setGameTitle("Waterworld");
-          setSize(new Size(800, 600));
-      }
+@Override
+protected void setupGame() {
+    setGameTitle("Waterworld");
+    setSize(new Size(800, 600));
+}
 ```
 
 ## Add a title/welcome screen
@@ -114,11 +114,11 @@ url `backgrounds/background1.jpg`. For the background audio, we will use `ocean.
 :computer:  Add the following body to the `setupScene()`.
 
 ```java
-    @Override
+@Override
 public void setupScene(){
-        setBackgroundAudio("audio/ocean.mp3");
-        setBackgroundImage("backgrounds/background1.jpg");
-        }
+    setBackgroundAudio("audio/ocean.mp3");
+    setBackgroundImage("backgrounds/background1.jpg");
+}
 ```
 
 At this point you should have a look at the file `module-info.java`, which is called the *Module Descriptor*. This is a
@@ -127,7 +127,10 @@ special file that defines
 subdirectory should be added for the resources in those directories to be available. As you will notice this has already
 been done:
 
-```java opens audio; opens backgrounds; opens sprites;
+```java 
+opens audio; 
+opens backgrounds; 
+opens sprites;
 ```
 
 Do not forget to do this for your own game, or an Exception will be thrown when the game is trying to access a resource
@@ -142,10 +145,10 @@ the active Scene. The second parameter is an instance of the Scene.
 :computer: So add the following body to the `setupScenes()` method:
 
 ```java
-    @Override
+@Override
 protected void setupScenes(){
-        addScene(0,new TitleScene());
-        }
+    addScene(0,new TitleScene());
+}
 ```
 
 :arrow_forward: Its time to run the game again. After the Splash Screen has been shown, the TitleScene should be loaded.
@@ -163,14 +166,14 @@ the Scene.
 :computer: Add the following body to the setupEntities() method:
 
 ```java
-    @Override
+@Override
 public void setupEntities(){
-        var waterworldText=new TextEntity(new Coordinate2D(getWidth()/2,getHeight()/2),"Waterworld");
-        waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        waterworldText.setFill(Color.DARKBLUE);
-        waterworldText.setFont(HanFont.createDefaultCondensedFont(80));
-        addEntity(waterworldText);
-        }
+    var waterworldText=new TextEntity(new Coordinate2D(getWidth()/2,getHeight()/2),"Waterworld");
+    waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+    waterworldText.setFill(Color.DARKBLUE);
+    waterworldText.setFont(HanFont.createDefaultCondensedFont(80));
+    addEntity(waterworldText);
+}
 ```
 
 <img width="70%" src="images/game/title-no-buttons.png">
@@ -215,11 +218,11 @@ a `TextEntity` that will need to listen to mouse-clicks. Because of the latter, 
 `com.github.hanyaeger.tutorial.entities.buttons`. Use the following constructor:
 
 ```java
-    public StartButton(Coordinate2D initialLocation){
-        super(initialLocation,"Play game");
-        setFill(Color.PURPLE);
-        setFont(HanFont.createDefaultCondensedFont(30));
-        }
+public StartButton(Coordinate2D initialLocation){
+    super(initialLocation,"Play game");
+    setFill(Color.PURPLE);
+    setFont(HanFont.createDefaultCondensedFont(30));
+}
 ```
 
 As you will notice we use the text *Play Game*, set the color to *Purple* and use the condensed version of the HAN font.
@@ -241,11 +244,11 @@ instance of `Waterworld` to the `StartButton` and then call `setActiveScene()` f
 :computer: Change the constructor of `TitleScene` to
 
 ```java
-    private Waterworld waterworld;
+private Waterworld waterworld;
 
 public TitleScene(Waterworld waterworld){
-        this.waterworld=waterworld;
-        }
+    this.waterworld=waterworld;
+}
 ```
 
 and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene` in the `setupScenes` method:
@@ -253,9 +256,9 @@ and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene` i
 ```java
     @Override
 protected void setupScenes(){
-        addScene(0,new TitleScene(this));
-        addScene(1,new GameLevel());
-        }
+    addScene(0,new TitleScene(this));
+    addScene(1,new GameLevel());
+}
 ```
 
 :computer: Now do the same for the constructor of the `StartButton`. This constructor already has the location as a
@@ -264,10 +267,10 @@ parameter, so after this change it will have two parameters.
 As the last step wel would like to add the following to the mouse button handler:
 
 ```java
-    @Override
-public void onMouseButtonPressed(MouseButton button,double x,double y){
-        waterworld.setActiveScene(1);
-        }
+@Override
+public void onMouseButtonPressed(MouseButton button, double x, double y){
+    waterworld.setActiveScene(1);
+}
 ```
 
 :arrow_forward: Run the game again. The TitleScene should now contain the title, and a start button. Clicking this start
@@ -282,17 +285,17 @@ interfaces to the `StartButton`, being the `MouseEnterListener` and `MouseExitLi
 way:
 
 ```java
-    @Override
+@Override
 public void onMouseEntered(){
-        setFill(Color.VIOLET);
-        setCursor(Cursor.HAND);
-        }
+    setFill(Color.VIOLET);
+    setCursor(Cursor.HAND);
+}
 
 @Override
 public void onMouseExited(){
-        setFill(Color.PURPLE);
-        setCursor(Cursor.DEFAULT);
-        }
+    setFill(Color.PURPLE);
+    setCursor(Cursor.DEFAULT);
+}
 ```
 
 Notice how we change both the color of the `Entity` as the mouse cursor.
@@ -309,9 +312,9 @@ package `com.github.hanyaeger.tutorial.entities`. Since the image of the swordfi
 don't need to set its size through the constructor, which can now look like:
 
 ```java
-    public Swordfish(Coordinate2D location){
-        super("sprites/swordfish.png",location);
-        }
+public Swordfish(Coordinate2D location){
+    super("sprites/swordfish.png",location);
+}
 ```
 
 Notice how we call `super()` and pass the *image*, the *location* and the *size* to the constructor of the Super Class.
@@ -326,7 +329,7 @@ Yaeger provides a Enumeration called `Direction`, which can also be passed to th
 :computer: Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
 
 ```java
-        setMotion(2,270d);
+setMotion(2,270d);
 ```
 
 :computer: Now use the `setupEntities()` from the `GameLevel` to add `Swordfish`.
@@ -346,10 +349,10 @@ interface `SceneBorderCrossingWatcher`.
 following way:
 
 ```java
-    @Override
+@Override
 public void notifyBoundaryCrossing(SceneBorder border){
-        setAnchorLocationX(getSceneWidth());
-        }
+    setAnchorLocationX(getSceneWidth());
+}
 ```
 
 :arrow_forward: Run the game again and see what happens. To also change the y-coordinate at which the Swordfish
@@ -394,9 +397,9 @@ assumes the image contains only one sprite, but by calling the correct construct
 :computer: With this in mind, the constructor of `Hanny` should look like:
 
 ```java
-    public Hanny(Coordinate2D location){
-        super("sprites/hanny.png",location,new Size(20,40),1,2);
-        }
+public Hanny(Coordinate2D location){
+    super("sprites/hanny.png",location,new Size(20,40),1,2);
+}
 ```
 
 :computer: Now use the `setupEntities()` from the `GameLevel` to add `Hanny`. Place her in the top left corner of the
@@ -415,17 +418,17 @@ To animate Hanny, we are going to let her listen to user input through the keybo
   @Override
 public void onPressedKeysChange(Set<KeyCode> pressedKeys){
         if(pressedKeys.contains(KeyCode.LEFT)){
-        setMotion(3,270d);
-        }else if(pressedKeys.contains(KeyCode.RIGHT)){
-        setMotion(3,90d);
-        }else if(pressedKeys.contains(KeyCode.UP)){
-        setMotion(3,180d);
-        }else if(pressedKeys.contains(KeyCode.DOWN)){
-        setMotion(3,0d);
-        }else if(pressedKeys.isEmpty()){
-        setSpeed(0);
+            setMotion(3,270d);
+        } else if(pressedKeys.contains(KeyCode.RIGHT)){
+            setMotion(3,90d);
+        } else if(pressedKeys.contains(KeyCode.UP)){
+            setMotion(3,180d);
+        } else if(pressedKeys.contains(KeyCode.DOWN)){
+            setMotion(3,0d);
+        } else if(pressedKeys.isEmpty()){
+            setSpeed(0);
         }
-        }
+}
 ```
 
 Notice how the event handler receives a `Set<KeyCode>`. This `Set` will contain all the keys that are currently being
@@ -448,26 +451,26 @@ borders was touched. We can use this the set either the `x` or `y` coordinate of
 Scene. Besides that, we also set her speed to 0.
 
 ```java
-    @Override
+@Override
 public void notifyBoundaryTouching(final SceneBorder border){
-        setSpeed(0);
+    setSpeed(0);
 
-        switch(border){
+    switch(border){
         case TOP:
-        setAnchorLocationY(1);
-        break;
+            setAnchorLocationY(1);
+            break;
         case BOTTOM:
-        setAnchorLocationY(getSceneHeight()-getHeight()-1);
-        break;
+            setAnchorLocationY(getSceneHeight()-getHeight()-1);
+            break;
         case LEFT:
-        setAnchorLocationX(1);
-        break;
+            setAnchorLocationX(1);
+            break;
         case RIGHT:
-        setAnchorLocationX(getSceneWidth()-getWidth()-1);
-default:
-        break;
-        }
-        }
+            setAnchorLocationX(getSceneWidth()-getWidth()-1);
+        default:
+            break;
+    }
+}
 ```
 
 Note that when Hanny is initially being placed on the Scene, we should make sure she doesn't touch the Scene Border,
@@ -528,11 +531,9 @@ method.
 ```java
     @Override
 public void onCollision(Collider collidingObject){
-        setAnchorLocation(new Coordinate2D(
-        new Random().nextInt((int)(getSceneWidth()-getWidth())),
-        new Random().nextInt((int)(getSceneHeight()-getHeight())))
-        );
-        }
+    setAnchorLocation(new Coordinate2D(new Random().nextInt((int)(getSceneWidth()-getWidth())),
+        new Random().nextInt((int)(getSceneHeight()-getHeight()))));
+}
 ```
 
 Notice that we have access to the *SceneWidth* and *SceneHeight* and that we subtract, respectively, the *width*
@@ -546,16 +547,16 @@ The next step should be fairly simple, since we will use only features we have a
 the package `com.github.hanyaeger.tutorial.entities.text`.
 
 ```java
-    public HealthText(Coordinate2D initialLocation){
-        super(initialLocation);
+public HealthText(Coordinate2D initialLocation){
+    super(initialLocation);
 
-        setFont(HanFont.createDefaultCondensedFont(40));
-        setFill(Color.DARKBLUE);
-        }
+    setFont(HanFont.createDefaultCondensedFont(40));
+    setFill(Color.DARKBLUE);
+}
 
 public void setHealthText(int health){
-        setText("Health: "+health);
-        }
+    setText("Health: "+health);
+}
 ```
 
 :computer: Add this entity to the Game Level, by using the `setupEntities()` method, but also pass the instance to the
@@ -567,15 +568,15 @@ constructor parameter `HealthText` to an instance field. Af this change, the con
 should look like:
 
 ```java
-    private final HealthText healthText;
+private final HealthText healthText;
 private int health=10;
 
 public Hanny(Coordinate2D location,HealthText healthText){
-        super("sprites/hanny.png",location,new Size(20,40),2);
+    super("sprites/hanny.png",location,new Size(20,40),2);
 
-        this.healthText=healthText;
-        healthText.setHealthText(health);
-        }
+    this.healthText=healthText;
+    healthText.setHealthText(health);
+}
 ```
 
 The last step is to integrate the health into the event handler of Hanny.
@@ -592,7 +593,7 @@ public void onCollision(Collider collidingObject){
 
         health--;
         healthText.setHealthText(health);
-        }
+}
 ```
 
 ### Make Hanny experience gravity and friction
@@ -606,8 +607,8 @@ the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger
 :computer: Add the interface `Newtonian` to Hanny and the following to lines to Hanny's constructor:
 
 ```java
-        setGravityConstant(0.005);
-        setFrictionConstant(0.04);
+setGravityConstant(0.005);
+setFrictionConstant(0.04);
 ```
 
 They will ensure very low gravity and high friction, which would be the case when swimming in the ocean.
@@ -757,14 +758,14 @@ Java [API](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/uti
 :computer: Change the `spawnEntities()` method to:
 
 ```java
-    @Override
+@Override
 protected void spawnEntities(){
         if(new Random().nextInt(10)< 4){
         spawn(new PoisonBubble(randomLocation(),2));
-        }else{
+        } else {
         spawn(new AirBubble(randomLocation(),2));
         }
-        }
+}
 ```
 
 ### Make the bubbles pop if they collide with Hanny
@@ -782,11 +783,11 @@ doing proper Object Orientation, we will add it to their superclass). Implement 
 ```java
     @Override
 public void onCollision(Collider collidingObject){
-        var popSound=new SoundClip("audio/pop.mp3");
-        popSound.play();
+    var popSound=new SoundClip("audio/pop.mp3");
+    popSound.play();
 
-        remove();
-        }
+    remove();
+}
 ```
 
 Notice that we create a `SoundClip` and call its method `play()` to create the pop-sound. The `remove()` method is
@@ -826,22 +827,20 @@ collisions on Hanny in the following way:
 ```java
 @Override
 public void onCollision(Collider collidingObject){
-
-        if(collidingObject instanceof AirBubble){
+    if(collidingObject instanceof AirBubble){
         bubblesPoppedText.setText(++bubblesPopped);
-        }else{
+    } else {
         healthText.setText(--health);
 
-        if(health==0){
-        this.waterworld.setActiveScene(2);
-        }else{
-        setAnchorLocation(new Coordinate2D(
-        new Random().nextInt((int)(getSceneWidth()-getWidth())),
-        new Random().nextInt((int)(getSceneHeight()-getHeight())))
-        );
+        if (health == 0){
+            this.waterworld.setActiveScene(2);
+        } else {
+            setAnchorLocation(new Coordinate2D(
+            new Random().nextInt((int)(getSceneWidth()-getWidth())),
+            new Random().nextInt((int)(getSceneHeight()-getHeight()))));
         }
-        }
-        }
+    }
+}
 ```
 
 ## Apply some proper Object Orientation
@@ -902,7 +901,7 @@ public void setupEntities(){
         addEntity(2,CoralTwo.class);
         addEntity(3,CoralThree.class);
         addEntity(4,CoralFour.class);
-        }
+}
 ```
 
 The Coral should be placed in the lower half of the Scene. For this we can use the method `defineMap()`. From this
@@ -933,7 +932,7 @@ public int[][]defineMap(){
         {2,3,1,0,0,2,0,0,0,0,3,1,0,2,0,0,0,1,4},
         };
         return map;
-        }
+}
 ```
 
 ### Add the Tile Map to the Game Scene
