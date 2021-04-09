@@ -415,19 +415,19 @@ To animate Hanny, we are going to let her listen to user input through the keybo
 :computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in the following way:
 
 ```java
-  @Override
+@Override
 public void onPressedKeysChange(Set<KeyCode> pressedKeys){
-        if(pressedKeys.contains(KeyCode.LEFT)){
-            setMotion(3,270d);
-        } else if(pressedKeys.contains(KeyCode.RIGHT)){
-            setMotion(3,90d);
-        } else if(pressedKeys.contains(KeyCode.UP)){
-            setMotion(3,180d);
-        } else if(pressedKeys.contains(KeyCode.DOWN)){
-            setMotion(3,0d);
-        } else if(pressedKeys.isEmpty()){
-            setSpeed(0);
-        }
+    if(pressedKeys.contains(KeyCode.LEFT)){
+        setMotion(3,270d);
+    } else if(pressedKeys.contains(KeyCode.RIGHT)){
+        setMotion(3,90d);
+    } else if(pressedKeys.contains(KeyCode.UP)){
+        setMotion(3,180d);
+    } else if(pressedKeys.contains(KeyCode.DOWN)){
+        setMotion(3,0d);
+    } else if(pressedKeys.isEmpty()){
+        setSpeed(0);
+    }
 }
 ```
 
@@ -529,7 +529,7 @@ method.
 :computer: Use the following event handler to let Hanny respawn at a random location:
 
 ```java
-    @Override
+@Override
 public void onCollision(Collider collidingObject){
     setAnchorLocation(new Coordinate2D(new Random().nextInt((int)(getSceneWidth()-getWidth())),
         new Random().nextInt((int)(getSceneHeight()-getHeight()))));
@@ -584,27 +584,27 @@ The last step is to integrate the health into the event handler of Hanny.
 :computer: Change the event handler to ensure that the health is decreased, and the healthText changed:
 
 ```java
-    @Override
+@Override
 public void onCollision(Collider collidingObject){
-        setAnchorLocation(new Coordinate2D(
-        new Random().nextInt((int)(getSceneWidth()-getWidth())),
-        new Random().nextInt((int)(getSceneHeight()-getHeight())))
+    setAnchorLocation(new Coordinate2D(
+            new Random().nextInt((int)(getSceneWidth()-getWidth())),
+            new Random().nextInt((int)(getSceneHeight()-getHeight())))
         );
 
-        health--;
-        healthText.setHealthText(health);
+    health--;
+    healthText.setHealthText(health);
 }
 ```
 
 ### Make Hanny experience gravity and friction
 
-Yaeger supports a simple approach to enable gravity and physics. This can be done by implementing the `Newtonian`
-interface, in which case the Entity will continually experience gravitational pull and friction whenever it moves. To
+Yaeger supports a simple approach to enable gravity and friction, which van be enabled by implementing the `Newtonian`
+interface. With that interface the Entity will continually experience gravitational pull and friction whenever it moves. To
 learn more about this interface, have a look at
 the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/motion/Moveable.html)
 .
 
-:computer: Add the interface `Newtonian` to Hanny and the following to lines to Hanny's constructor:
+:computer: Add the interface `Newtonian` to Hanny and add the following two lines to Hanny's constructor:
 
 ```java
 setGravityConstant(0.005);
@@ -613,16 +613,16 @@ setFrictionConstant(0.04);
 
 They will ensure very low gravity and high friction, which would be the case when swimming in the ocean.
 
-Last thing to do is to make sure Hanny does not stop swimming when none of the arrow buttons are pressed. To do this
-remove the following line from the eventhandler from the `KeyListener` interface:
+Last thing to do, is to make sure Hanny does not stop swimming when none of the arrow buttons are pressed. To do this
+remove the following line from the event handler from the `KeyListener` interface:
 
 ```java
-    else if(pressedKeys.isEmpty()){
-        setSpeed(0);
-        }
+else if(pressedKeys.isEmpty()){
+    setSpeed(0);
+}
 ```
 
-:computer: Change the eventhandler from the `KeyListener` interface to ensure the speed is no longer set to 0.
+:computer: Change the event handler from the `KeyListener` interface to ensure the speed is no longer set to 0.
 
 ### Add a Game Over Scene for when health reaches zero
 
@@ -760,11 +760,11 @@ Java [API](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/uti
 ```java
 @Override
 protected void spawnEntities(){
-        if(new Random().nextInt(10)< 4){
+    if(new Random().nextInt(10)< 4){
         spawn(new PoisonBubble(randomLocation(),2));
-        } else {
+    } else {
         spawn(new AirBubble(randomLocation(),2));
-        }
+    }
 }
 ```
 
@@ -781,9 +781,9 @@ an `Collider`. So Hanny will not only be a `Collided`, but also a `Collider`.
 doing proper Object Orientation, we will add it to their superclass). Implement the event handler in the following way:
 
 ```java
-    @Override
+@Override
 public void onCollision(Collider collidingObject){
-    var popSound=new SoundClip("audio/pop.mp3");
+    var popSound = new SoundClip("audio/pop.mp3");
     popSound.play();
 
     remove();
@@ -895,12 +895,12 @@ an instance of an Entity, but its Class. Yaeger will then use this Class to crea
 :computer: Implement the method `setupEntities()` as shown below.
 
 ```java
-    @Override
+@Override
 public void setupEntities(){
-        addEntity(1,CoralOne.class);
-        addEntity(2,CoralTwo.class);
-        addEntity(3,CoralThree.class);
-        addEntity(4,CoralFour.class);
+    addEntity(1,CoralOne.class);
+    addEntity(2,CoralTwo.class);
+    addEntity(3,CoralThree.class);
+    addEntity(4,CoralFour.class);
 }
 ```
 
@@ -911,27 +911,27 @@ placed. The other values are mapped on the Entities that are registered from the
 :computer:  Implement the method `defineMap()` as shown below.
 
 ```java
- @Override
+@Override
 public int[][]defineMap(){
-        int[][]map={
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0},
-        {0,0,0,0,3,0,0,0,2,0,0,0,0,0,0,0,0,2,0},
-        {3,0,0,0,0,4,0,0,0,0,0,1,0,0,2,0,3,0,1},
-        {0,0,2,4,0,0,1,0,0,0,0,0,0,3,0,4,0,0,0},
-        {1,0,0,0,0,0,0,0,4,0,0,0,0,0,0,1,0,3,0},
-        {2,3,1,0,0,2,0,0,0,0,3,1,0,2,0,0,0,1,4},
+    int[][]map = {
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0},
+            {0,0,0,0,3,0,0,0,2,0,0,0,0,0,0,0,0,2,0},
+            {3,0,0,0,0,4,0,0,0,0,0,1,0,0,2,0,3,0,1},
+            {0,0,2,4,0,0,1,0,0,0,0,0,0,3,0,4,0,0,0},
+            {1,0,0,0,0,0,0,0,4,0,0,0,0,0,0,1,0,3,0},
+            {2,3,1,0,0,2,0,0,0,0,3,1,0,2,0,0,0,1,4},
         };
-        return map;
+    return map;
 }
 ```
 
