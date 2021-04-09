@@ -4,13 +4,13 @@
 
     <groupId>com.github.han-yaeger</groupId>
     <artifactId>tutorial</artifactId>
-    <version>2019.2020-beta7-SNAPSHOT</version>
+    <version>2019.2020-beta6</version>
 
     <name>Yaeger tutorial: Waterworld</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>16</java.version>
+        <java.version>14</java.version>
     </properties>
 
     <build>
