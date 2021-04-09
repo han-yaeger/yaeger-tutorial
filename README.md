@@ -6,7 +6,7 @@ of simple game, and in doing so, become familiar with many of the features of Ya
 
 ## Requirements
 
-Yaeger requires Java JDK16 or above to work, and can be used with any IDE that supports Java.
+Yaeger requires Java JDK14 or above to work, and can be used with any IDE that supports Java.
 
 # Creating your first Yaeger Game
 
