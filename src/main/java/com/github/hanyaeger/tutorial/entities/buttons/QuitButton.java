@@ -1,12 +1,12 @@
 package com.github.hanyaeger.tutorial.entities.buttons;
 
 import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
-import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseButtonPressedListener;
-import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseEnterListener;
-import com.github.hanyaeger.api.engine.entities.entity.events.userinput.MouseExitListener;
 import com.github.hanyaeger.api.engine.entities.entity.shape.text.TextEntity;
 import com.github.hanyaeger.api.engine.styles.HanFont;
 import com.github.hanyaeger.api.engine.styles.HanFontStyle;
+import com.github.hanyaeger.api.engine.userinput.MouseButtonPressedListener;
+import com.github.hanyaeger.api.engine.userinput.MouseEnterListener;
+import com.github.hanyaeger.api.engine.userinput.MouseExitListener;
 import com.github.hanyaeger.tutorial.Waterworld;
 import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
