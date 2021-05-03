@@ -1,0 +1,14 @@
+[book]
+authors = ["Meron Brouwer"]
+description = "A tutorial for Waterworld, a simple game based on Yaeger "
+language = "en"
+multilingual = false
+src = "docs"
+title = "Yaeger Tutorial - Creating Waterworld"
+
+[build]
+build-dir = "target/docs"
+create-missing = false
+
+[output.html]
+git-repository-url = "https://github.com/han-yaeger/yaeger-tutorial"

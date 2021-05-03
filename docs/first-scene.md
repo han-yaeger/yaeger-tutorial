@@ -1,16 +1,16 @@
-## Add a title/welcome screen
+# Add a title/welcome screen
 
 We're going to add the first Scene to the game. Yaeger supports two different types of Scenes. A `StaticScene` and
 a `DynamicScene`. A `StaticScene` will have no Game World update and should be used for Scenes in which nothing should
 move or be animated. A `DynamicScene` does receive a Game World update and should be used for Game Levels, or Scenes
 that contain animated elements. Since nothing will have to be animated for the TitleScene, it can become `StaticScene`.
 
-### Add the TileScene
+## Add the TileScene
 
 :computer: Create a new Class called `TitleScene` that extends `StaticScene` in the
 package `com.github.hanyaeger.tutorial.scenes`. Implement the required methods, but leave them empty.
 
-### Set the background image and audio
+## Set the background image and audio
 
 The method `setupScene()` should be used for setting the background image and audio of a Scene. For this you can use the
 methods `setBackgroundImage(String url)` and `setBackgroundAudio(String url)`. Both the image and the audio are provided
@@ -43,7 +43,7 @@ opens sprites;
 Do not forget to do this for your own game, or an Exception will be thrown when the game is trying to access a resource
 that is in a directory that has not been opened up.
 
-### Add the scene to the Yaeger Game
+## Add the scene to the Yaeger Game
 
 Now that we have created the TitleScene, we should add it to the Game. For this, we will use the method `setupScenes()`
 from `Waterworld.java`. This method takes two parameters. The first one identifies the Scene, which you can use to set
@@ -60,7 +60,7 @@ protected void setupScenes(){
 
 :arrow_forward: Its time to run the game again. After the Splash Screen has been shown, the TitleScene should be loaded.
 
-### Add some text to the TitleScene
+## Add some text to the TitleScene
 
 Lets add the title of the game to the TitleScene. All objects you can add to a Scene are called *Entities*. Of these
 there are various different types. There are *TextEntities* that should be used for dislaying a text, *SpriteEntities*
