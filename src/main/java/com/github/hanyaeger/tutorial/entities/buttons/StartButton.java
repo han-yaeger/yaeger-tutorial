@@ -24,7 +24,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
     }
 
     @Override
-    public void onMouseButtonPressed(MouseButton button, double x, double y) {
+    public void onMouseButtonPressed(final MouseButton button, final Coordinate2D coordinate2D) {
         waterworld.setActiveScene(1);
     }
 
