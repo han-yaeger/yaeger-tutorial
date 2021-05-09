@@ -27,10 +27,11 @@ for testing purposes you should add a `System.out.println("Collision!");`
 :arrow_forward: Start the game and test if the collision has been detected. To get more insight into these collisions,
 it is possible to run Yaeger with the commandline argument `--showBB`, which makes all bounding boxes visible.
 
-> You might have noticed that because Yaeger uses the Bounding Box to check for collisions, the collision detection  
-> is not as accurate as you might like it to be. This can be solved by using the notion of a hit box, a shape that
-> defines the area that is being checked during a collision detection cycle. Hit Boxes can be used in Yaeger, through
-> the use of a `CompositeEntity`: an Entity that consists of other Entities.
+> You might have noticed that because Yaeger uses the Bounding Box to check for collisions, 
+> the collision detection is not as accurate as you might like it to be. This can be solved by using the notion of a hit box, 
+> a shape that defines the area that is being checked during a collision detection cycle. 
+> 
+> Hit Boxes can be used in Yaeger, through the use of a `CompositeEntity`, an Entity that consists of other Entities.
 > An implementation of this can be found in the [Yaeger Showcase](https://github.com/han-yaeger/yaeger-showcase) on
 > the *Composing* Scene. On that Scene we again find Hanny and the Swordfish, but both are constructed through the use
 > of a `CompositeEntity`. The Swordfish consists of a `SpriteEntity` and a `RectangleEntity` that is invisible and
@@ -50,8 +51,10 @@ method.
 ```java
 @Override
 public void onCollision(Collider collidingObject){
-    setAnchorLocation(new Coordinate2D(new Random().nextInt((int)(getSceneWidth()-getWidth())),
-        new Random().nextInt((int)(getSceneHeight()-getHeight()))));
+    setAnchorLocation(
+            new Coordinate2D(new Random().nextInt((int)(getSceneWidth()-getWidth())),
+            new Random().nextInt((int)(getSceneHeight()-getHeight())))
+        );
 }
 ```
 
@@ -87,10 +90,10 @@ constructor parameter `HealthText` to an instance field. Af this change, the con
 should look like:
 
 ```java
-private final HealthText healthText;
+private HealthText healthText;
 private int health=10;
 
-public Hanny(Coordinate2D location,HealthText healthText){
+public Hanny(Coordinate2D location, HealthText healthText){
     super("sprites/hanny.png",location,new Size(20,40),2);
 
     this.healthText=healthText;

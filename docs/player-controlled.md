@@ -73,7 +73,7 @@ Scene. Besides that, we also set her speed to 0.
 
 ```java
 @Override
-public void notifyBoundaryTouching(final SceneBorder border){
+public void notifyBoundaryTouching(SceneBorder border){
     setSpeed(0);
 
     switch(border){

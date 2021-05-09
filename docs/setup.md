@@ -15,7 +15,7 @@ from the `main`-method to the `launch`-method:
 ```java
     public static void main(String[]args){
         launch(args);
-        }
+    }
 ```
 
 :arrow_forward: You now have a minimal Yaeger game. Run the `main`-method to start the game. As you will notice, there

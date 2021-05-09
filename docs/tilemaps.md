@@ -44,10 +44,10 @@ an instance of an Entity, but its Class. Yaeger will then use this Class to crea
 ```java
 @Override
 public void setupEntities(){
-    addEntity(1,CoralOne.class);
-    addEntity(2,CoralTwo.class);
-    addEntity(3,CoralThree.class);
-    addEntity(4,CoralFour.class);
+    addEntity(1, CoralOne.class);
+    addEntity(2, CoralTwo.class);
+    addEntity(3, CoralThree.class);
+    addEntity(4, CoralFour.class);
 }
 ```
 

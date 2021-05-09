@@ -116,9 +116,9 @@ Java [API](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/uti
 @Override
 protected void spawnEntities(){
     if(new Random().nextInt(10)< 4){
-        spawn(new PoisonBubble(randomLocation(),2));
+        spawn(new PoisonBubble(randomLocation(), 2));
     } else {
-        spawn(new AirBubble(randomLocation(),2));
+        spawn(new AirBubble(randomLocation(), 2));
     }
 }
 ```
@@ -191,8 +191,8 @@ public void onCollision(Collider collidingObject){
             this.waterworld.setActiveScene(2);
         } else {
             setAnchorLocation(new Coordinate2D(
-            new Random().nextInt((int)(getSceneWidth()-getWidth())),
-            new Random().nextInt((int)(getSceneHeight()-getHeight()))));
+            new Random().nextInt((int)(getSceneWidth() - getWidth())),
+            new Random().nextInt((int)(getSceneHeight() - getHeight()))));
         }
     }
 }

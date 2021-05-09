@@ -66,10 +66,10 @@ public TitleScene(Waterworld waterworld){
 and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene` in the `setupScenes` method:
 
 ```java
-    @Override
+@Override
 protected void setupScenes(){
-    addScene(0,new TitleScene(this));
-    addScene(1,new GameLevel());
+    addScene(0, new TitleScene(this));
+    addScene(1, new GameLevel());
 }
 ```
 

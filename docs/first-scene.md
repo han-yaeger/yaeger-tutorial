@@ -75,7 +75,10 @@ the Scene.
 ```java
 @Override
 public void setupEntities(){
-    var waterworldText=new TextEntity(new Coordinate2D(getWidth()/2,getHeight()/2),"Waterworld");
+    var waterworldText = new TextEntity(
+            new Coordinate2D(getWidth()/2, getHeight()/2), 
+            "Waterworld"
+        );
     waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
     waterworldText.setFill(Color.DARKBLUE);
     waterworldText.setFont(HanFont.createDefaultCondensedFont(80));
