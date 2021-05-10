@@ -6,6 +6,6 @@ guided in the creation of simple game, and in doing so, become familiar with man
 
 ![Waterworld](docs/images/game/game.png)
 
-[Dive into the tutporial](https://han-yaeger.github.io/yaeger-tutorial/)
+[Dive into the tutorial](https://han-yaeger.github.io/yaeger-tutorial/)
 
 
