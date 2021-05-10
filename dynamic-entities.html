@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Adding Dynamic Entities - Yaeger Tutorial - Creating Waterworld</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="A tutorial for Waterworld, a simple game based on Yaeger ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="import.html"><strong aria-hidden="true">2.</strong> Importing the starter code</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">3.</strong> Setting up a new game</a></li><li class="chapter-item expanded "><a href="first-scene.html"><strong aria-hidden="true">4.</strong> Creating the first Scene</a></li><li class="chapter-item expanded "><a href="level.html"><strong aria-hidden="true">5.</strong> Creating a level</a></li><li class="chapter-item expanded "><a href="dynamic-entities.html" class="active"><strong aria-hidden="true">6.</strong> Adding Dynamic Entities</a></li><li class="chapter-item expanded "><a href="player-controlled.html"><strong aria-hidden="true">7.</strong> Adding a player controlled Entity</a></li><li class="chapter-item expanded "><a href="interaction.html"><strong aria-hidden="true">8.</strong> Adding interaction through collision detection</a></li><li class="chapter-item expanded "><a href="more-entities.html"><strong aria-hidden="true">9.</strong> Adding more Entities and EntitySpawners</a></li><li class="chapter-item expanded "><a href="tilemaps.html"><strong aria-hidden="true">10.</strong> Adding many entities at once</a></li><li class="chapter-item expanded "><a href="further-challenges.html"><strong aria-hidden="true">11.</strong> Further challenges</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Yaeger Tutorial - Creating Waterworld</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/han-yaeger/yaeger-tutorial" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="adding-dynamic-entities"><a class="header" href="#adding-dynamic-entities">Adding Dynamic Entities</a></h1>
+<p>Before adding Hanny, lets start by adding her enemy, the evil Swordfish. Since this fish will be based on the image
+<code>sprites/swordfish.png</code> and he will swim around, we will be using a <code>DynamicSpriteEntity</code>.</p>
+<h2 id="add-the-swordfish"><a class="header" href="#add-the-swordfish">Add the <code>Swordfish</code></a></h2>
+<p><img src="images/edit.png" alt="Edit" /> Create a new Class called <code>Swordfish</code> that extends <code>DynamicSpriteEntity</code> in
+package <code>com.github.hanyaeger.tutorial.entities</code>. Since the image of the swordfish is already of the correct size, we
+don't need to set its size through the constructor, which can now look like:</p>
+<pre><code class="language-java">public Swordfish(Coordinate2D location){
+    super(&quot;sprites/swordfish.png&quot;,location);
+}
+</code></pre>
+<p>Notice how we call <code>super()</code> and pass the <em>image</em>, the <em>location</em> and the <em>size</em> to the constructor of the Super Class.</p>
+<h2 id="animate-the-swordfish"><a class="header" href="#animate-the-swordfish">Animate the <code>Swordfish</code></a></h2>
+<p>Since the Swordfish is a <code>DynamicSpriteEntity</code>, we can let it move around the Scene. To do this, we will need to set
+both the <em>direction</em> and <em>speed</em>. The <em>direction</em> will be an angle in degrees, where 0 denotes upwards. For convenience,
+Yaeger supplies a method to set both values at once. For the trivial directions (up, left, right and down)
+Yaeger provides a Enumeration called <code>Direction</code>, which can also be passed to the method.</p>
+<p><img src="images/edit.png" alt="Edit" /> Add the following method-call to the constructor of <code>Swordfish</code>, just after the call to <code>super</code>:</p>
+<pre><code class="language-java">setMotion(2,270d);
+</code></pre>
+<p><img src="images/edit.png" alt="Edit" /> Now use the <code>setupEntities()</code> from the <code>GameLevel</code> to add <code>Swordfish</code>.</p>
+<p><img src="images/play.png" alt="Run" /> Run the game again. You should now see a Swordfish that swims from right to left and then disappears of
+the screen.</p>
+<h2 id="make-the-swordfish-swim-in-circles"><a class="header" href="#make-the-swordfish-swim-in-circles">Make the Swordfish swim in circles</a></h2>
+<p>Now we would like to add behaviour that notifies us when the Swordfish has left the Scene. That way we can place him to
+the right of the Scene, and make him reappear and continue his path.</p>
+<p>As seen before, adding behaviour is being done by implementing the correct interface. In this case, Yaeger supplies the
+interface <code>SceneBorderCrossingWatcher</code>.</p>
+<p><img src="images/edit.png" alt="Edit" /> Let <code>Swordfish</code> implement the interface <code>SceneBorderCrossingWatcher</code> and implement the event handler in the
+following way:</p>
+<pre><code class="language-java">@Override
+public void notifyBoundaryCrossing(SceneBorder border){
+    setAnchorLocationX(getSceneWidth());
+}
+</code></pre>
+<p><img src="images/play.png" alt="Run" /> Run the game again and see what happens. To also change the y-coordinate at which the Swordfish
+reappears, you can add the following method
+call: <code> setAnchorLocationY(new Random().nextInt((int) getSceneHeight() - 81));</code>
+to the handler.</p>
+<h2 id="use-the-build-in-debugger-to-see-what-is-happening"><a class="header" href="#use-the-build-in-debugger-to-see-what-is-happening">Use the build-in debugger to see what is happening</a></h2>
+<p>Yaeger contains a simple debugger that displays how much memory is used by the game and how many Entities are currently
+part of the game. When a game doesn't work as expected, you can use this debugger to get some inside information.</p>
+<p><img src="images/play.png" alt="Run" /> Run the game with the commandline argument <code>--showDebug</code>. Setting these options can usually be done from
+the Run Configuration in your IDE. When using IntelliJ, first select &quot;Edit Configurations...&quot;:</p>
+<p><img src="images/game/run-config-edit.png" alt="The Title Scene" /></p>
+<p>Add the commandline argument to the correct Run Configuration:</p>
+<p><img src="images/game/run-config-argument.png" alt="The Title Scene" /></p>
+<p>See if you can relate the stated numbers to what you expect from your game. To disable the Debugger window, just remove
+the commandline argument from the Run Configuration.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="level.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="player-controlled.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="level.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="player-controlled.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

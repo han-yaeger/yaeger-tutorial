@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Adding a player controlled Entity - Yaeger Tutorial - Creating Waterworld</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="A tutorial for Waterworld, a simple game based on Yaeger ">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="import.html"><strong aria-hidden="true">2.</strong> Importing the starter code</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">3.</strong> Setting up a new game</a></li><li class="chapter-item expanded "><a href="first-scene.html"><strong aria-hidden="true">4.</strong> Creating the first Scene</a></li><li class="chapter-item expanded "><a href="level.html"><strong aria-hidden="true">5.</strong> Creating a level</a></li><li class="chapter-item expanded "><a href="dynamic-entities.html"><strong aria-hidden="true">6.</strong> Adding Dynamic Entities</a></li><li class="chapter-item expanded "><a href="player-controlled.html" class="active"><strong aria-hidden="true">7.</strong> Adding a player controlled Entity</a></li><li class="chapter-item expanded "><a href="interaction.html"><strong aria-hidden="true">8.</strong> Adding interaction through collision detection</a></li><li class="chapter-item expanded "><a href="more-entities.html"><strong aria-hidden="true">9.</strong> Adding more Entities and EntitySpawners</a></li><li class="chapter-item expanded "><a href="tilemaps.html"><strong aria-hidden="true">10.</strong> Adding many entities at once</a></li><li class="chapter-item expanded "><a href="further-challenges.html"><strong aria-hidden="true">11.</strong> Further challenges</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Yaeger Tutorial - Creating Waterworld</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/han-yaeger/yaeger-tutorial" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="adding-a-player-controlled-entity"><a class="header" href="#adding-a-player-controlled-entity">Adding a player controlled Entity</a></h1>
+<p>The player will control Hanny by using the arrow keys. Again we will use a <code>DynamicSpriteEntity</code>.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is placed at the top left
+corner of the Scene.</p>
+<p><img src="images/game/hanny.png" alt="Hanny" /></p>
+<p>You might notice that the image of Hanny contains two Hannies. This approach is a standard way to animate a figure in a
+game. The image itself contains multiple sprites, and the Game Engine is responsible for showing only one of those
+sprites, or cycling through them to create the impression of movement.</p>
+<p>Yaeger supports this through its <code>DynamicSpriteEntity</code>, by explicitly stating the number of rows and columns of sprites
+an image contains. In case of Hanny, we have one row, that contains two columns. By default, a <code>DynamicSpriteEntity</code>
+assumes the image contains only one sprite, but by calling the correct constructor, we can change this.</p>
+<p><img src="images/edit.png" alt="Edit" /> With this in mind, the constructor of <code>Hanny</code> should look like:</p>
+<pre><code class="language-java">public Hanny(Coordinate2D location){
+    super(&quot;sprites/hanny.png&quot;,location,new Size(20,40),1,2);
+}
+</code></pre>
+<p><img src="images/edit.png" alt="Edit" /> Now use the <code>setupEntities()</code> from the <code>GameLevel</code> to add <code>Hanny</code>. Place her in the top left corner of the
+screen.</p>
+<h2 id="animate-hanny"><a class="header" href="#animate-hanny">Animate Hanny</a></h2>
+<p>To animate Hanny, we are going to let her listen to user input through the keyboard. As with the
+<code>MouseButtonPressedListener</code>, we are going to add an interface. In its event handler, we are going to call
+<code>setMotion()</code>, so we can change the direction based on the key being pressed. When no buttons are pressed, we use
+<code>setSpeed(0)</code> to make sure Hanny keeps her location.</p>
+<p><img src="images/edit.png" alt="Edit" /> Let <code>Hanny</code> implement the interface <code>KeyListener</code> and implement the event handler in the following way:</p>
+<pre><code class="language-java">@Override
+public void onPressedKeysChange(Set&lt;KeyCode&gt; pressedKeys){
+    if(pressedKeys.contains(KeyCode.LEFT)){
+        setMotion(3,270d);
+    } else if(pressedKeys.contains(KeyCode.RIGHT)){
+        setMotion(3,90d);
+    } else if(pressedKeys.contains(KeyCode.UP)){
+        setMotion(3,180d);
+    } else if(pressedKeys.contains(KeyCode.DOWN)){
+        setMotion(3,0d);
+    } else if(pressedKeys.isEmpty()){
+        setSpeed(0);
+    }
+}
+</code></pre>
+<p>Notice how the event handler receives a <code>Set&lt;KeyCode&gt;</code>. This <code>Set</code> will contain all the keys that are currently being
+pressed. Depending on which keys are in this <code>Set</code>, we set the motion of Hanny.</p>
+<h2 id="change-the-frame-index-depending-on-the-direction-of-the-hanny"><a class="header" href="#change-the-frame-index-depending-on-the-direction-of-the-hanny">Change the frame index depending on the direction of the Hanny</a></h2>
+<p>We must still change the frame index depending on the direction of Hanny. For this, a <code>DynamicSpriteEntity</code>
+provides the method <code> setCurrentFrameIndex(int)</code>.</p>
+<p><img src="images/edit.png" alt="Edit" /> Set the correct frame index. Make sure only the left and right buttons change the direction in which Hanny
+seems to be swimming.</p>
+<h2 id="make-sure-hanny-doesnt-leave-the-scene"><a class="header" href="#make-sure-hanny-doesnt-leave-the-scene">Make sure Hanny doesn't leave the Scene</a></h2>
+<p>To ensure that Hanny remains on the Scene, we can use the interface <code>SceneBorderTouchingWatcher</code>, which provides an
+event handler that gets called whenever the Entity touches the border of the Scene. By implementing this Interface, the
+Entity needs to implement the method <code>void notifyBoundaryTouching(SceneBorder)</code>, which receives which of the four
+borders was touched. We can use this the set either the <code>x</code> or <code>y</code> coordinate of Hanny to ensure she remains within the
+Scene. Besides that, we also set her speed to 0.</p>
+<pre><code class="language-java">@Override
+public void notifyBoundaryTouching(SceneBorder border){
+    setSpeed(0);
+
+    switch(border){
+        case TOP:
+            setAnchorLocationY(1);
+            break;
+        case BOTTOM:
+            setAnchorLocationY(getSceneHeight()-getHeight()-1);
+            break;
+        case LEFT:
+            setAnchorLocationX(1);
+            break;
+        case RIGHT:
+            setAnchorLocationX(getSceneWidth()-getWidth()-1);
+        default:
+            break;
+    }
+}
+</code></pre>
+<p>Note that when Hanny is initially being placed on the Scene, we should make sure she doesn't touch the Scene Border,
+because that will lead to strange unwanted behaviour.</p>
+<p><img src="images/edit.png" alt="Edit" /> Implement the interface <code>SceneBorderTouchingWatcher</code> and use the event handler to ensure that Hanny doesn't
+leave the Scene.</p>
+<h2 id="make-hanny-experience-gravity-and-friction"><a class="header" href="#make-hanny-experience-gravity-and-friction">Make Hanny experience gravity and friction</a></h2>
+<p>Yaeger supports a simple approach to enable gravity and friction, which van be enabled by implementing the <code>Newtonian</code>
+interface. With that interface the Entity will continually experience gravitational pull and friction whenever it moves. To
+learn more about this interface, have a look at
+the <a href="https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/motion/Moveable.html">API</a>
+.</p>
+<p><img src="images/edit.png" alt="Edit" /> Add the interface <code>Newtonian</code> to Hanny and add the following two lines to Hanny's constructor:</p>
+<pre><code class="language-java">setGravityConstant(0.005);
+setFrictionConstant(0.04);
+</code></pre>
+<p>They will ensure very low gravity and high friction, which would be the case when swimming in the ocean.</p>
+<p>Last thing to do, is to make sure Hanny does not stop swimming when none of the arrow buttons are pressed. To do this
+remove the following line from the event handler from the <code>KeyListener</code> interface:</p>
+<pre><code class="language-java">else if(pressedKeys.isEmpty()){
+    setSpeed(0);
+}
+</code></pre>
+<p><img src="images/edit.png" alt="Edit" /> Change the event handler from the <code>KeyListener</code> interface to ensure the speed is no longer set to 0.</p>
+<h2 id="add-a-game-over-scene-for-when-health-reaches-zero"><a class="header" href="#add-a-game-over-scene-for-when-health-reaches-zero">Add a Game Over Scene for when health reaches zero</a></h2>
+<p>When health reaches 0 Hanny dies, and the player should see a new Scene containing the text Game Over, with below it the
+clickable text <em>Play again</em>. We have seen all of Yaeger's features that are required for this, so it should be clear how
+to implement this.</p>
+<p><img src="images/edit.png" alt="Edit" /> Add a <em>Game Over</em> scene with a <em>Play Again</em> button. Clicking the <em>Play Again</em> button should load the Game
+Level Scene.</p>
+<p><img src="images/edit.png" alt="Edit" /> Change the event handler in Hanny in such a way that when the health reaches zero, the Game Over Scene is
+loaded.</p>
+<h2 id="add-a-quit-game-button-to-the-game-over-scene"><a class="header" href="#add-a-quit-game-button-to-the-game-over-scene">Add a Quit Game button to the Game Over Scene</a></h2>
+<p><img src="images/edit.png" alt="Edit" /> Add a second button to the <em>Game Over</em> scene. Clicking this button should quit Yaeger. The Class
+<code>YaegerGame</code> provides a method to quit the game, so use
+the <a href="https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/YaegerGame.html">JavaDoc</a>
+to figure out which one it is.</p>
+<p><img src="images/play.png" alt="Run" /> Run the game and test if the Quit button works.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="dynamic-entities.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="interaction.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="dynamic-entities.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="interaction.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
