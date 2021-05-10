@@ -13,11 +13,6 @@ jobs:
       - name: Fetch source code
         uses: actions/checkout@v2
 
-      - name: QA check Markdown content
-        uses: nosborn/github-action-markdown-cli@v1.1.1
-        with:
-          files: .
-
       - name: Run mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
