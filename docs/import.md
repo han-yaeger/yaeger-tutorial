@@ -10,7 +10,7 @@ so does an evil Shark. If he gets his hands on Hanny, Hanny gets eaten.
 We provide a repository, that contains both a starter project and the required assets. Either clone this repository to
 your local machine, or download the zip file.
 
-<img align="right" width="70%" src="images/setup/browser-clone.png">
+![Clone Project](images/setup/browser-clone.png)
 
 The project is a Maven project, which will be recognized by all modern IDE's. Knowledge of Maven is therefore not
 required. But just to paint the full picture, you'll find a `pom.xml` file at the root of the project. This file
@@ -23,11 +23,11 @@ Whenever your stuck, you can switch to Branch *implementation*, to see the full 
 ### Importing the project in IntelliJ
 
 1. Select *File > Open...*
-2. In the **import window** navigate to the project directory. Notice that this directy contains a `pom.xml` file.
+2. In the **import window**, navigate to the project directory. Notice that this directy contains a `pom.xml` file.
    Select this `pom.xml` file and press *Open*.
 3. IntelliJ will notice that you are opening a `pom.xml` file and will ask if it needs to open the enitre project:
 
-    <img src="images/setup/intellij-pom.png">
+   ![Select POM](images/setup/intellij-pom.png)
 
    In the **Open Project Window** select **Open as Project**
 

@@ -1,11 +1,12 @@
-# Add Hanny to the Game
+# Adding a player controlled Entity
 
 The player will control Hanny by using the arrow keys. Again we will use a `DynamicSpriteEntity`.
 
-:computer: Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is placed at the top left
+![Edit](images/edit.png) Create a new Class for Hanny in the same package as SwordFish . Make sure Hanny is placed at the top left
 corner of the Scene.
 
-<img src="src/main/resources/sprites/hanny.png">
+
+![Hanny](images/game/hanny.png)
 
 You might notice that the image of Hanny contains two Hannies. This approach is a standard way to animate a figure in a
 game. The image itself contains multiple sprites, and the Game Engine is responsible for showing only one of those
@@ -15,7 +16,7 @@ Yaeger supports this through its `DynamicSpriteEntity`, by explicitly stating th
 an image contains. In case of Hanny, we have one row, that contains two columns. By default, a `DynamicSpriteEntity`
 assumes the image contains only one sprite, but by calling the correct constructor, we can change this.
 
-:computer: With this in mind, the constructor of `Hanny` should look like:
+![Edit](images/edit.png) With this in mind, the constructor of `Hanny` should look like:
 
 ```java
 public Hanny(Coordinate2D location){
@@ -23,7 +24,7 @@ public Hanny(Coordinate2D location){
 }
 ```
 
-:computer: Now use the `setupEntities()` from the `GameLevel` to add `Hanny`. Place her in the top left corner of the
+![Edit](images/edit.png) Now use the `setupEntities()` from the `GameLevel` to add `Hanny`. Place her in the top left corner of the
 screen.
 
 ## Animate Hanny
@@ -33,7 +34,7 @@ To animate Hanny, we are going to let her listen to user input through the keybo
 `setMotion()`, so we can change the direction based on the key being pressed. When no buttons are pressed, we use
 `setSpeed(0)` to make sure Hanny keeps her location.
 
-:computer: Let `Hanny` implement the interface `KeyListener` and implement the event handler in the following way:
+![Edit](images/edit.png) Let `Hanny` implement the interface `KeyListener` and implement the event handler in the following way:
 
 ```java
 @Override
@@ -60,7 +61,7 @@ pressed. Depending on which keys are in this `Set`, we set the motion of Hanny.
 We must still change the frame index depending on the direction of Hanny. For this, a `DynamicSpriteEntity`
 provides the method ` setCurrentFrameIndex(int)`.
 
-:computer: Set the correct frame index. Make sure only the left and right buttons change the direction in which Hanny
+![Edit](images/edit.png) Set the correct frame index. Make sure only the left and right buttons change the direction in which Hanny
 seems to be swimming.
 
 ## Make sure Hanny doesn't leave the Scene
@@ -97,7 +98,7 @@ public void notifyBoundaryTouching(SceneBorder border){
 Note that when Hanny is initially being placed on the Scene, we should make sure she doesn't touch the Scene Border,
 because that will lead to strange unwanted behaviour.
 
-:computer: Implement the interface `SceneBorderTouchingWatcher` and use the event handler to ensure that Hanny doesn't
+![Edit](images/edit.png) Implement the interface `SceneBorderTouchingWatcher` and use the event handler to ensure that Hanny doesn't
 leave the Scene.
 
 ## Make Hanny experience gravity and friction
@@ -108,7 +109,7 @@ learn more about this interface, have a look at
 the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/motion/Moveable.html)
 .
 
-:computer: Add the interface `Newtonian` to Hanny and add the following two lines to Hanny's constructor:
+![Edit](images/edit.png) Add the interface `Newtonian` to Hanny and add the following two lines to Hanny's constructor:
 
 ```java
 setGravityConstant(0.005);
@@ -126,7 +127,7 @@ else if(pressedKeys.isEmpty()){
 }
 ```
 
-:computer: Change the event handler from the `KeyListener` interface to ensure the speed is no longer set to 0.
+![Edit](images/edit.png) Change the event handler from the `KeyListener` interface to ensure the speed is no longer set to 0.
 
 ## Add a Game Over Scene for when health reaches zero
 
@@ -134,17 +135,17 @@ When health reaches 0 Hanny dies, and the player should see a new Scene containi
 clickable text *Play again*. We have seen all of Yaeger's features that are required for this, so it should be clear how
 to implement this.
 
-:computer: Add a *Game Over* scene with a *Play Again* button. Clicking the *Play Again* button should load the Game
+![Edit](images/edit.png) Add a *Game Over* scene with a *Play Again* button. Clicking the *Play Again* button should load the Game
 Level Scene.
 
-:computer: Change the event handler in Hanny in such a way that when the health reaches zero, the Game Over Scene is
+![Edit](images/edit.png) Change the event handler in Hanny in such a way that when the health reaches zero, the Game Over Scene is
 loaded.
 
 ## Add a Quit Game button to the Game Over Scene
 
-:computer: Add a second button to the *Game Over* scene. Clicking this button should quit Yaeger. The Class
+![Edit](images/edit.png) Add a second button to the *Game Over* scene. Clicking this button should quit Yaeger. The Class
 `YaegerGame` provides a method to quit the game, so use
 the [JavaDoc](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/YaegerGame.html)
 to figure out which one it is.
 
-:arrow_forward: Start the game and test if the Quit button works.
+![Run](images/play.png) Run the game and test if the Quit button works.

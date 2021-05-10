@@ -1,18 +1,18 @@
-## Add the Game Scene
+# Creating a level
 
 Now that we have a TitleScene, lets add a Game Level. Since a level is typically a Scene that contains animated
 Entities, we are going to extend a `DynamicScene`.
 
-:computer: Add a scene called `GameLevel`, which extends a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
+![Edit](images/edit.png) Add a scene called `GameLevel`, which extends a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
 package. Use the method `setupScene()` to set the background to the asset `background2.jpg` and the audio
 to `waterworld.mp3`.
 
 At this moment the level has not yet been added to the game. You have only created a new class, that needs to be
 instantiated and added to the `YaegerGame`.
 
-:computer: Use the `setupScenes()` from the `Waterworld`-class to add `GameLevel` to the game. Choose a wise `id`.
+![Edit](images/edit.png) Use the `setupScenes()` from the `Waterworld`-class to add `GameLevel` to the game. Choose a wise `id`.
 
-### Add a button to switch to the Game Scene
+## Add a button to switch to the Game Scene
 
 Although `GameLevel` has now been added to the Yaeger Game, there is no way to reach it yet. As said before, the first
 added Scene is set as the active scene and that should be the `TitleScene`. To switch to `GameLevel`
@@ -24,9 +24,9 @@ a `TextEntity` that will need to listen to mouse-clicks. Because of the latter, 
 `TextEntity` as we did for the title. We are going to create a new Class, called `StartButton` that extends `TextEntity`
 , and add all the required behaviour to this Class.
 
-### Create and add the button
+## Create and add the button
 
-:computer: Create a new Class `StartButton` that extends `TextEntity` and place it in the package
+![Edit](images/edit.png) Create a new Class `StartButton` that extends `TextEntity` and place it in the package
 `com.github.hanyaeger.tutorial.entities.buttons`. Use the following constructor:
 
 ```java
@@ -39,21 +39,21 @@ public StartButton(Coordinate2D initialLocation){
 
 As you will notice we use the text *Play Game*, set the color to *Purple* and use the condensed version of the HAN font.
 
-:computer: Now use the `setupEntities()` from the `TitleScene` to add the `StartButton`. Place it at the center of the
+![Edit](images/edit.png) Now use the `setupEntities()` from the `TitleScene` to add the `StartButton`. Place it at the center of the
 screen, just below the title.
 
-### Add behaviour to handle mouse clicks
+## Add behaviour to handle mouse clicks
 
 In general, to expand the behaviour of an `Entity`, you should add the appropriate Interface to the `Entity`. To let
 an `Entity` listen to mouse button clicks, the `Entity` should implement the Interface `MouseButtonPressedListener`.
 
-:computer: Let `StartButton` implement the interface `MouseButtonPressedListener`.
+![Edit](images/edit.png) Let `StartButton` implement the interface `MouseButtonPressedListener`.
 
 When the user clicks on the `StartButton` the handler (`onMouseButtonPressed()`) is called. this handler should call
 `setActiveScene()` on the `Waterworld` class, but this method is not available from the `TitleScene`. So lets pass the
 instance of `Waterworld` to the `StartButton` and then call `setActiveScene()` from the mouse pressed handler.
 
-:computer: Change the constructor of `TitleScene` to
+![Edit](images/edit.png) Change the constructor of `TitleScene` to
 
 ```java
 private Waterworld waterworld;
@@ -73,7 +73,7 @@ protected void setupScenes(){
 }
 ```
 
-:computer: Now do the same for the constructor of the `StartButton`. This constructor already has the location as a
+![Edit](images/edit.png) Now do the same for the constructor of the `StartButton`. This constructor already has the location as a
 parameter, so after this change it will have two parameters.
 
 As the last step wel would like to add the following to the mouse button handler:
@@ -85,15 +85,15 @@ public void onMouseButtonPressed(MouseButton button, double x, double y){
 }
 ```
 
-:arrow_forward: Run the game again. The TitleScene should now contain the title, and a start button. Clicking this start
+![Run](images/play.png) Run the game again. The TitleScene should now contain the title, and a start button. Clicking this start
 button should switch the game to Game Level.
 
-### Add more behaviour to make the button into a real button
+## Add more behaviour to make the button into a real button
 
 The Button should work now, but it gives little visual feedback on its behaviour. We are going to add two more
 interfaces to the `StartButton`, being the `MouseEnterListener` and `MouseExitListener`.
 
-:computer: Add the interface `MouseEnterListener` and `MouseExitListener` and implement their handlers in the following
+![Edit](images/edit.png) Add the interface `MouseEnterListener` and `MouseExitListener` and implement their handlers in the following
 way:
 
 ```java

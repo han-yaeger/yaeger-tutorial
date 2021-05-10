@@ -1,15 +1,14 @@
-# Add interaction between Hanny and the Swordfish
+# Add interaction through collision detection
 
 A standard feature of a game engine is collision detection. It is an algorithmically complex calculation that determines
 if any two Entities occupy the same part of the screen. If so, they have collided.
 
 Yaeger differentiates between entities that need to be notified about a collision (a Collided), and those that do not
 need to be notified (a Collider). Thinks of this as a train and a fly. If they collide, the train doesn't even notice
-it; the fly does
-(and dies).
+it; the fly does (and dies).
 
 With this approach, it is possible to minimize the number of entities that need to be checked for collisions every Game
-Loop. And it also enables a good Object Oriented approach to place the responsibility of handling a collision at the
+Loop. And it also enables a good Object-Oriented approach to place the responsibility of handling a collision at the
 right entity.
 
 ## Add collision detection for Hanny and the Swordfish
@@ -21,10 +20,10 @@ There are several algorithms for collision detection but Yaeger only supports th
 based on the Bounding Box of an Entity. This method is called Axis Aligned Bounding Box (AABB) collision detection and
 is implemented through the interfaces `Collided` and `Collider`.
 
-:computer: Add the correct interface to Hanny and the SwordFish. You do not yet need to implement the event handler, but
+![Edit](images/edit.png) Add the correct interface to Hanny and the SwordFish. You do not yet need to implement the event handler, but
 for testing purposes you should add a `System.out.println("Collision!");`
 
-:arrow_forward: Start the game and test if the collision has been detected. To get more insight into these collisions,
+![Run](images/play.png) Start the game and test if the collision has been detected. To get more insight into these collisions,
 it is possible to run Yaeger with the commandline argument `--showBB`, which makes all bounding boxes visible.
 
 > You might have noticed that because Yaeger uses the Bounding Box to check for collisions, 
@@ -46,7 +45,7 @@ Because Hanny is the one who needs to know if she has collided with the SwordFis
 her `setAnchorLocation()`
 method.
 
-:computer: Use the following event handler to let Hanny respawn at a random location:
+![Edit](images/edit.png) Use the following event handler to let Hanny respawn at a random location:
 
 ```java
 @Override
@@ -65,7 +64,7 @@ and *height* of Hanny to ensure that Hanny respawns within the Scene.
 
 The next step should be fairly simple, since we will use only features we have already seen.
 
-:computer: Create a new static `TextEntity` called `HealthText` with the constructor and method shown below. Add it to
+![Edit](images/edit.png) Create a new static `TextEntity` called `HealthText` with the constructor and method shown below. Add it to
 the package `com.github.hanyaeger.tutorial.entities.text`.
 
 ```java
@@ -81,11 +80,11 @@ public void setHealthText(int health){
 }
 ```
 
-:computer: Add this entity to the Game Level, by using the `setupEntities()` method, but also pass the instance to the
+![Edit](images/edit.png) Add this entity to the Game Level, by using the `setupEntities()` method, but also pass the instance to the
 constructor of Hanny. This way, Hanny has access to the `HealthText` Entity and can call the method `setHealthText(int)`
 whenever her health changes.
 
-:computer: Give Hanny a private instance field called health of type `int` and initialize it to 10. Also bind the
+![Edit](images/edit.png) Give Hanny a private instance field called health of type `int` and initialize it to 10. Also bind the
 constructor parameter `HealthText` to an instance field. Af this change, the constructor and instance fields of Hanny
 should look like:
 
@@ -103,7 +102,7 @@ public Hanny(Coordinate2D location, HealthText healthText){
 
 The last step is to integrate the health into the event handler of Hanny.
 
-:computer: Change the event handler to ensure that the health is decreased, and the healthText changed:
+![Edit](images/edit.png) Change the event handler to ensure that the health is decreased, and the healthText changed:
 
 ```java
 @Override

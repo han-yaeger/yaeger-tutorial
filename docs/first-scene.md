@@ -1,4 +1,4 @@
-# Add a title/welcome screen
+# Creating the first Scene
 
 We're going to add the first Scene to the game. Yaeger supports two different types of Scenes. A `StaticScene` and
 a `DynamicScene`. A `StaticScene` will have no Game World update and should be used for Scenes in which nothing should
@@ -7,7 +7,7 @@ that contain animated elements. Since nothing will have to be animated for the T
 
 ## Add the TileScene
 
-:computer: Create a new Class called `TitleScene` that extends `StaticScene` in the
+![Edit](images/edit.png) Create a new Class called `TitleScene` that extends `StaticScene` in the
 package `com.github.hanyaeger.tutorial.scenes`. Implement the required methods, but leave them empty.
 
 ## Set the background image and audio
@@ -18,7 +18,7 @@ in the `resources/` folder. This folder should be the only place to store your a
 folder, so the file `background1.jpg` from the folder `backgrounds/` should be accessed through the
 url `backgrounds/background1.jpg`. For the background audio, we will use `ocean.mp3`.
 
-:computer:  Add the following body to the `setupScene()`.
+![Edit](images/edit.png) Add the following body to the `setupScene()`.
 
 ```java
 @Override
@@ -49,7 +49,7 @@ Now that we have created the TitleScene, we should add it to the Game. For this,
 from `Waterworld.java`. This method takes two parameters. The first one identifies the Scene, which you can use to set
 the active Scene. The second parameter is an instance of the Scene.
 
-:computer: So add the following body to the `setupScenes()` method:
+![Edit](images/edit.png) So add the following body to the `setupScenes()` method:
 
 ```java
 @Override
@@ -58,7 +58,7 @@ protected void setupScenes(){
 }
 ```
 
-:arrow_forward: Its time to run the game again. After the Splash Screen has been shown, the TitleScene should be loaded.
+![Run](images/play.png) Its time to run the game again. After the Splash Screen has been shown, the TitleScene should be loaded.
 
 ## Add some text to the TitleScene
 
@@ -70,7 +70,7 @@ are the Static and Dynamic version.
 A title is typically the static version of a `TextEntity`. We will use the method `setupEntities()` to add Entities to
 the Scene.
 
-:computer: Add the following body to the setupEntities() method:
+![Edit](images/edit.png) Add the following body to the setupEntities() method:
 
 ```java
 @Override
@@ -86,7 +86,7 @@ public void setupEntities(){
 }
 ```
 
-<img width="70%" src="images/game/title-no-buttons.png">
+![The Title Scene](images/game/title-no-buttons.png)
 
 First we create the `waterworldText` by instantiating a `TextEntity`. The first parameter of the constructor is
 the `Coordinate2D`. To place it at the center of the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second
@@ -94,4 +94,4 @@ parameter is the text to be shown. To actually place the center of the `TextEnti
 the method `setAnchorPoint()` and to set the color, we use `setFill()`. We set the font to the HAN font, through the
 method `setFont()` and lastly we add the `Entity` to the Scene, by calling the method `addEntity()`.
 
-:arrow_forward: Run the game again. The TitleScene should now contain the title.
+![Run](images/play.png) Run the game again. The TitleScene should now contain the title.

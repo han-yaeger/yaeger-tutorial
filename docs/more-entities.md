@@ -1,18 +1,18 @@
-# Adding more Entities
+# Adding more Entities and EntitySpawners
 
 ## Add another enemy, called `Sharky`
 
-<img width="100%" src="src/main/resources/sprites/sharky.png">
+![Sharky](images/game/sharky.png)
 
 Besides the SwordFish, another foe abides in the depth of the ocean: the evil Sharky. As can be seen, Sharky swims from
 left to right and is composed of many sprites. If these sprites are cycled at the correct speed, Sharky becomes
 animated. To automatically cycle through the sprites, a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
 
-:computer: Add Sharky to the Game Level, animate him and let him swim from left to right. After crossing the
+![Edit](images/edit.png) Add Sharky to the Game Level, animate him and let him swim from left to right. After crossing the
 SceneBorder, he should reappear at a random location left of the Scene. After colliding with Sharky, Hanny loses a
 health point.
 
-:arrow_forward: Start the game and test if Sharky behaves as expected.
+![Run](images/play.png) Start the game and test if Sharky behaves as expected.
 
 ## Add Air and Poison bubbles
 
@@ -32,13 +32,13 @@ important, it will save on memory usage, since no images need to be loaded into 
 Because both Air- and Poison bubbles share much of their behaviour, a superclass called `Bubble` would be the preferable
 approach, but it is not required. Their interaction with Hanny will be of later concern.
 
-:computer: Create an `AirBubble` and a `PoisonBubble` that accept both the `initialLocation` and the `speed` as a
+![Edit](images/edit.png) Create an `AirBubble` and a `PoisonBubble` that accept both the `initialLocation` and the `speed` as a
 parameter of their constructor. Do not yet add them to the Scene. Use
 the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/circle/DynamicCircleEntity.html)
 to figure out how to set the size and color (fill and stroke) of both bubbles. Ensure you can differentiate between both
 bubbles.
 
-:computer: Use
+![Edit](images/edit.png) Use
 the [API](https://han-yaeger.github.io/yaeger/hanyaeger.api/com/github/hanyaeger/api/engine/entities/entity/circle/DynamicCircleEntity.html)
 to figure out how to change their opacity to make them transparent.
 
@@ -53,7 +53,7 @@ create new instances of `YaegerEntity` and add them to the Scene.
 
 We are going to create a `BubbleSpawner` that can create both instances of `AirBubble` and `PoisonBubble`.
 
-:computer: Create a Class called `BubbleSpawner` that extends `EntitySpawner` in the package
+![Edit](images/edit.png) Create a Class called `BubbleSpawner` that extends `EntitySpawner` in the package
 `com.github.hanyaeger.tutorial.spawners`. Notice that the constructor of `EntitySpawner` accepts a parameter
 called `intervalInMs`. This parameter will define the interval at which the method `spawnEntities()` is called. From
 this method you can call `spawn(YaegerEntity)`.
@@ -66,7 +66,7 @@ and *height* of the Scene. To facilitate this, we are going to pass those two va
 
 We are going to start with spawning only instances of `AirBubble`. The `PoisonBubble` will be added at a later stage.
 
-:computer: Add the following body to the `BubbleSpawner`.
+![Edit](images/edit.png) Add the following body to the `BubbleSpawner`.
 
 ```java
 public class BubbleSpawner extends EntitySpawner {
@@ -99,9 +99,9 @@ interface `EntitySpawnerContainer`, which requires implementing the method `setu
 can call ` addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));`, which adds the EntitySpawner to the Scene and
 ensures the spawned Entities appear on the Scene.
 
-:computer: Add the BubbleSpawner to the Game Level
+![Edit](images/edit.png) Add the BubbleSpawner to the Game Level
 
-:arrow_forward: Run the game and use the Debugger to see if the Bubbles that leave the top of the screen are actually
+![Run](images/play.png) Run the game and use the Debugger to see if the Bubbles that leave the top of the screen are actually
 removed (and garbage collected).
 
 ### Make the BubbleSpawner also spawn instances of `PoisonBubble`
@@ -110,7 +110,7 @@ Lets change the `spawnEntities()` method to ensure that four out of ten spawned 
 this we can use the Class `Random` from the
 Java [API](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/util/Random.html).
 
-:computer: Change the `spawnEntities()` method to:
+![Edit](images/edit.png) Change the `spawnEntities()` method to:
 
 ```java
 @Override
@@ -130,9 +130,9 @@ have already seen how to approach this. Apparently the Bubble needs to be notifi
 Remember the interface `Collided`? But then, this is only applicable if the Entity that collides with it, becomes
 an `Collider`. So Hanny will not only be a `Collided`, but also a `Collider`.
 
-:computer: Add the interface `Collider` to Hanny
+![Edit](images/edit.png) Add the interface `Collider` to Hanny
 
-:computer: Add the interface `Collided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour and we are
+![Edit](images/edit.png) Add the interface `Collided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour and we are
 doing proper Object Orientation, we will add it to their superclass). Implement the event handler in the following way:
 
 ```java
@@ -154,7 +154,7 @@ Bubbles that leave the Scene should still be removed, otherwise they will float 
 amount of memory, bringing even the fastest computer to a grinding halt. We have already seen everything needed to
 accomplish this.
 
-:computer: Add the interface `SceneBorderCrossingWatcher` to the `PoisonBubble` and `AirBubble`, and call the
+![Edit](images/edit.png) Add the interface `SceneBorderCrossingWatcher` to the `PoisonBubble` and `AirBubble`, and call the
 method `remove()` from the event handler. Do make sure you call this method only when the top-border has been crossed.
 Do you notice how the shared behaviour?
 
@@ -163,7 +163,7 @@ Do you notice how the shared behaviour?
 Whenever Hanny collides with a `PoisonBubble`, one Health Point should be removed. Adding this shouldn't be to hard,
 since we have already seen everything we need to accomplish this.
 
-:computer: Make Hanny lose a Health Point whenever she collides with a `PoisonBubble`.
+![Edit](images/edit.png) Make Hanny lose a Health Point whenever she collides with a `PoisonBubble`.
 
 ### Add a Bubbles Popped counter and increase it whenever Hanny Pops an `AirBubble`
 
@@ -175,7 +175,7 @@ In this case we are going to model it by letting Hanny know how many bubbles she
 can mirror that of the `HealthText`. The main difference will be that the event handler for collision will have to
 differentiate between an `AirBubble` and other Entities.
 
-:computer: Implement a new `TextEntity` for the Bubbles Popped text. This should be analogue to the way the Health
+![Edit](images/edit.png) Implement a new `TextEntity` for the Bubbles Popped text. This should be analogue to the way the Health
 counter was implemented. Think about which Entities need to become a `Collider` and implement the event handler for
 collisions on Hanny in the following way:
 
@@ -203,5 +203,5 @@ public void onCollision(Collider collidingObject){
 When you followed the steps above you might have implemented the `Collider` interface in the `AirBubble` class as well
 as in the `PoissonBubble` class. Again shared behaviour, so it's time to clean that up.
 
-:computer: Create a superclass for both `AirBubble` and `PoisonBubble` and move all their shared behaviour to this
+![Edit](images/edit.png) Create a superclass for both `AirBubble` and `PoisonBubble` and move all their shared behaviour to this
 superclass.
