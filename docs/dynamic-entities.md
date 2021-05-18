@@ -22,7 +22,7 @@ Notice how we call `super()` and pass the *image*, the *location* and the *size*
 Since the Swordfish is a `DynamicSpriteEntity`, we can let it move around the Scene. To do this, we will need to set
 both the *direction* and *speed*. The *direction* will be an angle in degrees, where 0 denotes upwards. For convenience,
 Yaeger supplies a method to set both values at once. For the trivial directions (up, left, right and down)
-Yaeger provides a Enumeration called `Direction`, which can also be passed to the method.
+Yaeger provides an Enumeration called `Direction`, which can also be passed to the method.
 
 ![Edit](images/edit.png) Add the following method-call to the constructor of `Swordfish`, just after the call to `super`:
 

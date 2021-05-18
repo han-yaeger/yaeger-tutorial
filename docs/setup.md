@@ -24,7 +24,7 @@ exits after showing this SplashScreen.
 ## Set the width, height and title of the game
 
 The game now uses the default size (width/height), which might be a bit small. You can use the method `setupGame()` to
-set the size to a specific value. Furthermore you can set the title of the game, which will be shown as the title of the
+set the size to a specific value. Furthermore, you can set the title of the game, which will be shown as the title of the
 window.
 
 ![Edit](images/edit.png) Add the following body to the `setupGame()` method

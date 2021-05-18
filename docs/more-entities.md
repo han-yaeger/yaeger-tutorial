@@ -4,7 +4,7 @@
 
 ![Sharky](images/game/sharky.png)
 
-Besides the SwordFish, another foe abides in the depth of the ocean: the evil Sharky. As can be seen, Sharky swims from
+Not only the SwordFish, but aldo another foe abides in the depth of the ocean: the evil Sharky. As can be seen, Sharky swims from
 left to right and is composed of many sprites. If these sprites are cycled at the correct speed, Sharky becomes
 animated. To automatically cycle through the sprites, a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
 
@@ -18,7 +18,7 @@ health point.
 
 We are now going to add the Game Objective: the reason we want to play this game. Being, Hanny is going to pop air
 bubbles. They emerge from the depth of the Ocean and float upwards at random speeds. Some are filled with Air and some
-are filled with a poisonous gas. When Hanny pops one of those, she loses a health point. But when she pops an air
+are filled with a poisonous gas. When Hanny pops one of those, she loses a health point, but when she pops an air
 bubble, her Bubbles popped score increases, and she earns eternal fame.
 
 ### Create Air Bubbles and Poison Bubbles
@@ -26,7 +26,7 @@ bubble, her Bubbles popped score increases, and she earns eternal fame.
 For Air- and Poison bubbles we could provide two images of bubbles and use a `DynamicSpriteEntity`, but we'll use a
 different approach. Yaeger provides various Entities for standard shapes and for a bubble we could perfectly use a
 `DynamicCircleEntity`. With it, we can draw a circle and give it the appropriate size and colors. The big advantage over
-using an image is that we can give it any color and size we like, and change it while running the game. And even more
+using an image is that we can give it any color and size we like, and change it while running the game. Even more
 important, it will save on memory usage, since no images need to be loaded into memory.
 
 Because both Air- and Poison bubbles share much of their behaviour, a superclass called `Bubble` would be the preferable
@@ -106,7 +106,7 @@ removed (and garbage collected).
 
 ### Make the BubbleSpawner also spawn instances of `PoisonBubble`
 
-Lets change the `spawnEntities()` method to ensure that four out of ten spawned bubbles will be a `PoisonBubble`. For
+Let's change the `spawnEntities()` method to ensure that four out of ten spawned bubbles will be a `PoisonBubble`. For
 this we can use the Class `Random` from the
 Java [API](https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/util/Random.html).
 
@@ -132,7 +132,7 @@ an `Collider`. So Hanny will not only be a `Collided`, but also a `Collider`.
 
 ![Edit](images/edit.png) Add the interface `Collider` to Hanny
 
-![Edit](images/edit.png) Add the interface `Collided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour and we are
+![Edit](images/edit.png) Add the interface `Collided` to the `PoisonBubble` and `AirBubble` (Since this is shared behaviour, and we are
 doing proper Object Orientation, we will add it to their superclass). Implement the event handler in the following way:
 
 ```java
@@ -160,7 +160,7 @@ Do you notice how the shared behaviour?
 
 ### Remove health point when Hanny Collides with a `PoisonBubble`
 
-Whenever Hanny collides with a `PoisonBubble`, one Health Point should be removed. Adding this shouldn't be to hard,
+Whenever Hanny collides with a `PoisonBubble`, one Health Point should be removed. Adding this shouldn't be too hard,
 since we have already seen everything we need to accomplish this.
 
 ![Edit](images/edit.png) Make Hanny lose a Health Point whenever she collides with a `PoisonBubble`.

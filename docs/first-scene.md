@@ -58,12 +58,12 @@ protected void setupScenes(){
 }
 ```
 
-![Run](images/play.png) Its time to run the game again. After the Splash Screen has been shown, the TitleScene should be loaded.
+![Run](images/play.png) It's time to run the game again. After the Splash Screen has been shown, the TitleScene should be loaded.
 
 ## Add some text to the TitleScene
 
-Lets add the title of the game to the TitleScene. All objects you can add to a Scene are called *Entities*. Of these
-there are various different types. There are *TextEntities* that should be used for dislaying a text, *SpriteEntities*
+Let's add the title of the game to the TitleScene. All objects you can add to a Scene are called *Entities*. Of these
+there are various different types. There are *TextEntities* that should be used for displaying a text, *SpriteEntities*
 for displaying a Sprite and shape-based Entities, such as, for instance, a *RectangleEntity*. For all these types there
 are the Static and Dynamic version.
 

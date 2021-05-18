@@ -8,7 +8,7 @@ need to be notified (a Collider). Thinks of this as a train and a fly. If they c
 it; the fly does (and dies).
 
 With this approach, it is possible to minimize the number of entities that need to be checked for collisions every Game
-Loop. And it also enables a good Object-Oriented approach to place the responsibility of handling a collision at the
+World Update, and it also enables a good Object-Oriented approach to place the responsibility of handling a collision at the
 right entity.
 
 ## Add collision detection for Hanny and the Swordfish
@@ -34,7 +34,7 @@ it is possible to run Yaeger with the commandline argument `--showBB`, which mak
 > An implementation of this can be found in the [Yaeger Showcase](https://github.com/han-yaeger/yaeger-showcase) on
 > the *Composing* Scene. On that Scene we again find Hanny and the Swordfish, but both are constructed through the use
 > of a `CompositeEntity`. The Swordfish consists of a `SpriteEntity` and a `RectangleEntity` that is invisible and
-> placed on top of the Swordsfish's sword. Since that rectangle implements the interface `Collider`, the collision between
+> placed on top of the Swordfish's sword. Since that rectangle implements the interface `Collider`, the collision between
 > Hanny and the sword is the collision that is detected.
 >
 

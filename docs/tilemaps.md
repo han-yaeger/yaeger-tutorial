@@ -29,7 +29,7 @@ the `Coordinate2D` as the first parameter and the `Size` as the second. Add them
 package `com.github.hanyaeger.tutorial.entities.map`.
 
 As you can see, `CoralTileMap` will need to implement two methods. The method `setupEntities()` will be used to register
-the Entities that are to be used with the Tile Map. The method `defineMap()` should return a two dimensional array
+the Entities that are to be used with the Tile Map. The method `defineMap()` should return a two-dimensional array
 of `int` values. This array is a map of the Scene and tells Yaeger where to place which Entity. In the next step we will
 implement both methods.
 
@@ -60,7 +60,7 @@ placed. The other values are mapped on the Entities that are registered from the
 ```java
 @Override
 public int[][]defineMap(){
-        int[][]map={
+    int[][]map={
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -78,8 +78,8 @@ public int[][]defineMap(){
         {1,0,0,0,0,0,0,0,4,0,0,0,0,0,0,1,0,3,0},
         {2,3,1,0,0,2,0,0,0,0,3,1,0,2,0,0,0,1,4},
         };
-        return map;
-        }
+    return map;
+}
 ```
 
 ## Add the Tile Map to the Game Scene
@@ -125,4 +125,4 @@ slowly.
 ![Edit](images/edit.png) Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure a bubble can
 still cross them.
 
-![Waterwworld](images/game/game.png)
+![Waterworld](images/game/game.png)
