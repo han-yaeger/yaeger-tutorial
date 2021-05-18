@@ -1,9 +1,9 @@
 package com.github.hanyaeger.tutorial.scenes;
 
-import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
-import com.github.hanyaeger.api.engine.entities.tilemap.TileMapContainer;
-import com.github.hanyaeger.api.engine.scenes.DynamicScene;
-import com.github.hanyaeger.api.engine.scenes.EntitySpawnerContainer;
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.EntitySpawnerContainer;
+import com.github.hanyaeger.api.scenes.DynamicScene;
+import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.*;
 import com.github.hanyaeger.tutorial.entities.map.CoralTileMap;

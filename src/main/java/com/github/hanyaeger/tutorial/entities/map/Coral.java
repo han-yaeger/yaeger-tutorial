@@ -1,9 +1,9 @@
 package com.github.hanyaeger.tutorial.entities.map;
 
-import com.github.hanyaeger.api.engine.Size;
-import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
-import com.github.hanyaeger.api.engine.entities.entity.collisions.Collider;
-import com.github.hanyaeger.api.engine.entities.entity.sprite.SpriteEntity;
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.api.entities.impl.sprite.SpriteEntity;
 
 public class Coral extends SpriteEntity implements Collider {
 

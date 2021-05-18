@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial.spawners;
 
-import com.github.hanyaeger.api.engine.entities.EntitySpawner;
-import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.EntitySpawner;
 import com.github.hanyaeger.tutorial.entities.AirBubble;
 import com.github.hanyaeger.tutorial.entities.PoisonBubble;
 

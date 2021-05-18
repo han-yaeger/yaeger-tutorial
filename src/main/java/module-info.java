@@ -1,5 +1,5 @@
 module waterworld {
-    requires hanyaeger.api;
+    requires hanyaeger;
 
     exports com.github.hanyaeger.tutorial;
     exports com.github.hanyaeger.tutorial.entities.map;

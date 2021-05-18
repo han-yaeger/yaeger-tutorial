@@ -1,6 +1,6 @@
 package com.github.hanyaeger.tutorial.entities;
 
-import com.github.hanyaeger.api.engine.entities.entity.Coordinate2D;
+import com.github.hanyaeger.api.Coordinate2D;
 import javafx.scene.paint.Color;
 
 public class AirBubble extends Bubble {

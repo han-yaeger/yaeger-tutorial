@@ -1,7 +1,7 @@
 package com.github.hanyaeger.tutorial;
 
-import com.github.hanyaeger.api.engine.Size;
-import com.github.hanyaeger.api.engine.YaegerGame;
+import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.YaegerGame;
 import com.github.hanyaeger.tutorial.scenes.GameOverScene;
 import com.github.hanyaeger.tutorial.scenes.GameLevel;
 import com.github.hanyaeger.tutorial.scenes.TitleScene;
@@ -13,13 +13,13 @@ public class Waterworld extends YaegerGame {
     }
 
     @Override
-    protected void setupGame() {
+    public void setupGame() {
         setGameTitle("Waterworld");
         setSize(new Size(800, 600));
     }
 
     @Override
-    protected void setupScenes() {
+    public void setupScenes() {
         addScene(0, new TitleScene(this));
         addScene(1, new GameLevel(this));
         addScene(2, new GameOverScene(this));

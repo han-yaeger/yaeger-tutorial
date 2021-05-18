@@ -1,6 +1,6 @@
 package com.github.hanyaeger.tutorial.entities.map;
 
-import com.github.hanyaeger.api.engine.entities.tilemap.TileMap;
+import com.github.hanyaeger.api.scenes.TileMap;
 
 public class CoralTileMap extends TileMap {
     @Override
