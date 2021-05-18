@@ -71,7 +71,7 @@ the package `com.github.hanyaeger.tutorial.entities.text`.
 public HealthText(Coordinate2D initialLocation){
     super(initialLocation);
 
-    setFont(HanFont.createDefaultCondensedFont(40));
+    setFont(Font.font("Roboto", FontWeight.NORMAL, 30));
     setFill(Color.DARKBLUE);
 }
 

@@ -81,7 +81,7 @@ public void setupEntities(){
         );
     waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
     waterworldText.setFill(Color.DARKBLUE);
-    waterworldText.setFont(HanFont.createDefaultCondensedFont(80));
+    waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
     addEntity(waterworldText);
 }
 ```

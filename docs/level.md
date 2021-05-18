@@ -3,14 +3,16 @@
 Now that we have a TitleScene, lets add a Game Level. Since a level is typically a Scene that contains animated
 Entities, we are going to extend a `DynamicScene`.
 
-![Edit](images/edit.png) Add a scene called `GameLevel`, which extends a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
+![Edit](images/edit.png) Add a scene called `GameLevel`, which extends a `DynamicScene`, to
+the `com.github.hanyaeger.tutorial.scenes`
 package. Use the method `setupScene()` to set the background to the asset `background2.jpg` and the audio
 to `waterworld.mp3`.
 
 At this moment the level has not yet been added to the game. You have only created a new class, that needs to be
 instantiated and added to the `YaegerGame`.
 
-![Edit](images/edit.png) Use the `setupScenes()` from the `Waterworld`-class to add `GameLevel` to the game. Choose a wise `id`.
+![Edit](images/edit.png) Use the `setupScenes()` from the `Waterworld`-class to add `GameLevel` to the game. Choose a
+wise `id`.
 
 ## Add a button to switch to the Game Scene
 
@@ -33,14 +35,14 @@ a `TextEntity` that will need to listen to mouse-clicks. Because of the latter, 
 public StartButton(Coordinate2D initialLocation){
     super(initialLocation,"Play game");
     setFill(Color.PURPLE);
-    setFont(HanFont.createDefaultCondensedFont(30));
+    setFont(Font.font("Roboto",FontWeight.BOLD,30));
 }
 ```
 
 As you will notice we use the text *Play Game*, set the color to *Purple* and use the condensed version of the HAN font.
 
-![Edit](images/edit.png) Now use the `setupEntities()` from the `TitleScene` to add the `StartButton`. Place it at the center of the
-screen, just below the title.
+![Edit](images/edit.png) Now use the `setupEntities()` from the `TitleScene` to add the `StartButton`. Place it at the
+center of the screen, just below the title.
 
 ## Add behaviour to handle mouse clicks
 
@@ -68,33 +70,33 @@ and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene` i
 ```java
 @Override
 protected void setupScenes(){
-    addScene(0, new TitleScene(this));
-    addScene(1, new GameLevel());
+    addScene(0,new TitleScene(this));
+    addScene(1,new GameLevel());
 }
 ```
 
-![Edit](images/edit.png) Now do the same for the constructor of the `StartButton`. This constructor already has the location as a
-parameter, so after this change it will have two parameters.
+![Edit](images/edit.png) Now do the same for the constructor of the `StartButton`. This constructor already has the
+location as a parameter, so after this change it will have two parameters.
 
 As the last step wel would like to add the following to the mouse button handler:
 
 ```java
 @Override
-public void onMouseButtonPressed(MouseButton button, double x, double y){
+public void onMouseButtonPressed(MouseButton button,double x,double y){
     waterworld.setActiveScene(1);
 }
 ```
 
-![Run](images/play.png) Run the game again. The TitleScene should now contain the title, and a start button. Clicking this start
-button should switch the game to Game Level.
+![Run](images/play.png) Run the game again. The TitleScene should now contain the title, and a start button. Clicking
+this start button should switch the game to Game Level.
 
 ## Add more behaviour to make the button into a real button
 
 The Button should work now, but it gives little visual feedback on its behaviour. We are going to add two more
 interfaces to the `StartButton`, being the `MouseEnterListener` and `MouseExitListener`.
 
-![Edit](images/edit.png) Add the interface `MouseEnterListener` and `MouseExitListener` and implement their handlers in the following
-way:
+![Edit](images/edit.png) Add the interface `MouseEnterListener` and `MouseExitListener` and implement their handlers in
+the following way:
 
 ```java
 @Override
