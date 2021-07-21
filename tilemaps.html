@@ -147,48 +147,58 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="adding-many-entities-at-once"><a class="header" href="#adding-many-entities-at-once">Adding many entities at once</a></h1>
-<p>The Game Level needs a bit more decoration, so as the last step in this tutorial, we are going to add some coral. The
-following four images are available:</p>
+<p>The Game Level needs a bit more decoration, so as the last step in this
+tutorial, we are going to add some coral. The following four images are
+available:</p>
 <ol>
 <li>coral1.png: <img src="images/game/coral1.png" alt="Coral1" /></li>
 <li>coral2.png:<img src="images/game/coral2.png" alt="Coral1" /></li>
 <li>coral3.png: <img src="images/game/coral3.png" alt="Coral1" /></li>
 <li>coral4.png: <img src="images/game/coral4.png" alt="Coral1" /></li>
 </ol>
-<p>We could just create new instances of <code>SpriteEntity</code> for each of the four Coral images and then use
-<code>addEntity(YaegerEntity)</code> to add them to the Game Level. This would work, but it will be hard to add them in a nice
-pattern to a Scene.</p>
-<p>To facilitate this, Yaeger supplies a <code>Tile Map</code>, which is an Object with which you can create a two-dimensional
-discrete map that represents the Scene, and then use the map to decide where to place the Entities. Yaeger will then
-calculate the location, width and height of each Entity and place them on the Scene. You do still need to create new
-instances of <code>SpriteEntity</code> for each of the four Coral images, but the rest will be handled by Yaeger.</p>
+<p>We could just create new instances of <code>SpriteEntity</code> for each of the four Coral
+images and then use
+<code>addEntity(YaegerEntity)</code> to add them to the Game Level. This would work, but it
+will be hard to add them in a nice pattern to a Scene.</p>
+<p>To facilitate this, Yaeger supplies a <code>Tile Map</code>, which is an Object with which
+you can create a two-dimensional discrete map that represents the Scene, and
+then use the map to decide where to place the Entities. Yaeger will then
+calculate the location, width and height of each Entity and place them on the
+Scene. You do still need to create new instances of <code>SpriteEntity</code> for each of
+the four Coral images, but the rest will be handled by Yaeger.</p>
 <h2 id="create-coral-entities"><a class="header" href="#create-coral-entities">Create Coral Entities</a></h2>
-<p>Let's first create the four Coral Entities. They should extend <code>SpriteEntity</code> and their constructor should accept
-the <code>Coordinate2D</code> as the first parameter and the <code>Size</code> as the second. Add them to the package
+<p>Let's first create the four Coral Entities. They should extend <code>SpriteEntity</code>
+and their constructor should accept the <code>Coordinate2D</code> as the first parameter
+and the <code>Size</code> as the second. Add them to the package
 <code>com.github.hanyaeger.tutorial.entities.map</code>.</p>
 <h2 id="create-a-tile-map-for-the-coral"><a class="header" href="#create-a-tile-map-for-the-coral">Create a Tile Map for the Coral</a></h2>
-<p><img src="images/edit.png" alt="Edit" /> Create a class <code>CoralTileMap</code> that extends <code>TileMap</code> to the
-package <code>com.github.hanyaeger.tutorial.entities.map</code>.</p>
-<p>As you can see, <code>CoralTileMap</code> will need to implement two methods. The method <code>setupEntities()</code> will be used to register
-the Entities that are to be used with the Tile Map. The method <code>defineMap()</code> should return a two-dimensional array
-of <code>int</code> values. This array is a map of the Scene and tells Yaeger where to place which Entity. In the next step we will
-implement both methods.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create a class <code>CoralTileMap</code> that extends <code>TileMap</code> to
+the package <code>com.github.hanyaeger.tutorial.entities.map</code>.</p>
+<p>As you can see, <code>CoralTileMap</code> will need to implement two methods. The
+method <code>setupEntities()</code> will be used to register the Entities that are to be
+used with the Tile Map. The method <code>defineMap()</code> should return a two-dimensional
+array of <code>int</code> values. This array is a map of the Scene and tells Yaeger where
+to place which Entity. In the next step we will implement both methods.</p>
 <h2 id="implement-the-coraltilemap"><a class="header" href="#implement-the-coraltilemap">Implement the <code>CoralTileMap</code></a></h2>
-<p>The method <code>setupEntities()</code> should be used to register Entities on the Tile Map. From this method we should call
-<code>addEntity(int, Class);</code>. As you can see, this method accepts an integer and a Class. So in this case, we should not add
-an instance of an Entity, but its Class. Yaeger will then use this Class to create instances.</p>
+<p>The method <code>setupEntities()</code> should be used to register Entities on the Tile
+Map. From this method we should call
+<code>addEntity(int, Class);</code>. As you can see, this method accepts an integer and a
+Class. So in this case, we should not add an instance of an Entity, but its
+Class. Yaeger will then use this Class to create instances.</p>
 <p><img src="images/edit.png" alt="Edit" /> Implement the method <code>setupEntities()</code> as shown below.</p>
 <pre><code class="language-java">@Override
 public void setupEntities(){
-        addEntity(1,CoralOne.class);
-        addEntity(2,CoralTwo.class);
-        addEntity(3,CoralThree.class);
-        addEntity(4,CoralFour.class);
-        }
+    addEntity(1,CoralOne.class);
+    addEntity(2,CoralTwo.class);
+    addEntity(3,CoralThree.class);
+    addEntity(4,CoralFour.class);
+}
 </code></pre>
-<p>The Coral should be placed in the lower half of the Scene. For this we can use the method <code>defineMap()</code>. From this
-method will return a two-dimensional array that represents the Scene. The int value 0 will mean no Entity is to be
-placed. The other values are mapped on the Entities that are registered from the method setupEntities().</p>
+<p>The Coral should be placed in the lower half of the Scene. For this we can use
+the method <code>defineMap()</code>. From this method will return a two-dimensional array
+that represents the Scene. The int value 0 will mean no Entity is to be placed.
+The other values are mapped on the Entities that are registered from the method
+setupEntities().</p>
 <p><img src="images/edit.png" alt="Edit" /> Implement the method <code>defineMap()</code> as shown below.</p>
 <pre><code class="language-java">@Override
 public int[][]defineMap(){
@@ -214,13 +224,15 @@ public int[][]defineMap(){
 }
 </code></pre>
 <h2 id="add-the-tile-map-to-the-game-scene"><a class="header" href="#add-the-tile-map-to-the-game-scene">Add the Tile Map to the Game Scene</a></h2>
-<p>To be able to use the Tile Map, the Scene will need to implement the interface <code>TileMapContainer</code>. This will expose the
-method <code>setupTileMaps()</code>, from which the Tile Maps can be added, by calling <code>addTileMap(TileMap);</code>. This last method
-accepts a parameter of the type <code>TileMap</code>. So we can instantiate a new <code>CoralTileMap</code> and pass this as a parameter to
-the method.</p>
+<p>To be able to use the Tile Map, the Scene will need to implement the
+interface <code>TileMapContainer</code>. This will expose the method <code>setupTileMaps()</code>,
+from which the Tile Maps can be added, by calling <code>addTileMap(TileMap);</code>. This
+last method accepts a parameter of the type <code>TileMap</code>. So we can instantiate a
+new <code>CoralTileMap</code> and pass this as a parameter to the method.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the <code>CoralTileMap</code> to the Game Scene.</p>
-<p><img src="images/play.png" alt="Run" /> Run the game. If you have done everything correctly, when going to Game Scene, you will likely be
-greeted with the following exception:</p>
+<p><img src="images/play.png" alt="Run" /> Run the game. If you have done everything correctly,
+when going to Game Scene, you will likely be greeted with the following
+exception:</p>
 <pre><code class="language-text">Caused by: java.lang.IllegalAccessException: class com.github.hanyaeger.api.engine.entities.tilemap.TileFactory (in module hanyaeger.api) cannot access class com.github.hanyaeger.tutorial.entities.map.CoralThree (in module waterworld) because module waterworld does not export com.github.hanyaeger.tutorial.entities.map to module hanyaeger.api
 	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
 	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:647)
@@ -228,20 +240,25 @@ greeted with the following exception:</p>
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
 	at hanyaeger.api@2020.2021-beta2-SNAPSHOT/com.github.hanyaeger.api.engine.entities.tilemap.TileFactory.create(TileFactory.java:39)
 </code></pre>
-<p>Remember how we talked about the <em>Module Descriptor</em>? We are going to edit it, to make sure that Yaeger is allowed to
-make instances of the Coral Entities. Since all those classes are in the
-package <code>com.github.hanyaeger.tutorial.entities.map</code>, we have to export that package.</p>
+<p>Remember how we talked about the <em>Module Descriptor</em>? We are going to edit it,
+to make sure that Yaeger is allowed to make instances of the Coral Entities.
+Since all those classes are in the
+package <code>com.github.hanyaeger.tutorial.entities.map</code>, we have to export that
+package.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the following line to the file <code>module-info.java</code>:</p>
 <pre><code class="language-text">    exports com.github.hanyaeger.tutorial.entities.map;
 </code></pre>
-<p><img src="images/play.png" alt="Run" /> Run the game. Note how the tiles in your TileMap are scaled automatically.</p>
+<p><img src="images/play.png" alt="Run" /> Run the game. Note how the tiles in your TileMap are
+scaled automatically.</p>
 <h2 id="ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral"><a class="header" href="#ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral">Ensure Hanny is hindered whenever she crosses a piece of Coral</a></h2>
-<p>Hanny can now still cross a piece of Coral. This can be easily resolved, using the <code>Collided</code> and <code>Collider</code>
-interfaces. If the speed of Hanny is set to 0, whenever she collides with a piece of Coral, she will stop moving for
-that Game World Update. Because this new speed is only applied after one Game World Update, she can still move, but very
-slowly.</p>
-<p><img src="images/edit.png" alt="Edit" /> Implement everything required to ensure Hanny cannot cross a piece of coral. Also make sure a bubble can
-still cross them.</p>
+<p>Hanny can now still cross a piece of Coral. This can be easily resolved, using
+the <code>Collided</code> and <code>Collider</code>
+interfaces. If the speed of Hanny is set to 0, whenever she collides with a
+piece of Coral, she will stop moving for that Game World Update. Because this
+new speed is only applied after one Game World Update, she can still move, but
+very slowly.</p>
+<p><img src="images/edit.png" alt="Edit" /> Implement everything required to ensure Hanny cannot
+cross a piece of coral. Also make sure a bubble can still cross them.</p>
 <p><img src="images/game/game.png" alt="Waterworld" /></p>
 
                     </main>
