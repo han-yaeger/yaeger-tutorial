@@ -1,17 +1,17 @@
 # Creating a level
 
-Now that we have a TitleScene, lets add a Game Level. Since a level is typically
-a Scene that contains animated Entities, we are going to extend a `DynamicScene`
-.
+Now that we have a Title Scene, lets add a Game Level. Since a level is
+typically a Scene that contains animated Entities, we are going to extend a
+`DynamicScene`.
 
 ![Edit](images/edit.png) Add a scene called `GameLevel`, which extends
-a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
+`DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
 package. Use the method `setupScene()` to set the background to the
 asset `background2.jpg` and the audio to `waterworld.mp3`.
 
 At this moment the level has not yet been added to the game. You have only
-created a new class, that needs to be instantiated and added to the `YaegerGame`
-.
+created a new class, that needs to be instantiated and added to
+`YaegerGame`.
 
 ![Edit](images/edit.png) Use the `setupScenes()` from the `Waterworld`-class to
 add `GameLevel` to the game. Choose a wise `id`.
@@ -23,8 +23,8 @@ reach it yet. As said before, the first added Scene is set as the active scene
 and that should be the `TitleScene`. To switch to `GameLevel`
 you will need to call the method `setActiveScene(id)` on the `Waterworld` class.
 
-To enable this, we are going to add a button to the `TitleScene`. Clicking the
-button will result in switching to
+To trigger this call, we are going to add a button to the `TitleScene`. Clicking
+the button will result in switching to
 `GameLevel`. As said before, everything that should appear on a Scene is an
 Entity. For the button we are going to use a `TextEntity` that will need to
 listen to mouse-clicks. Because of the latter, we can no longer use an inline
@@ -57,18 +57,17 @@ title.
 
 In general, to expand the behaviour of an `Entity`, you should add the
 appropriate Interface to the `Entity`. To let an `Entity` listen to mouse button
-clicks, the `Entity` should implement the Interface `MouseButtonPressedListener`
-.
+clicks, the `Entity` should implement the Interface
+`MouseButtonPressedListener`.
 
-![Edit](images/edit.png) Let `StartButton` implement the
-interface `MouseButtonPressedListener`.
+![Edit](images/edit.png) Let `StartButton` implement the interface
+`MouseButtonPressedListener`.
 
 When the user clicks on the `StartButton` the handler (`onMouseButtonPressed()`)
-is called. this handler should call
-`setActiveScene()` on the `Waterworld` class, but this method is not available
-from the `TitleScene`. So lets pass the instance of `Waterworld` to
-the `StartButton` and then call `setActiveScene()` from the mouse pressed
-handler.
+is called. this handler should call `setActiveScene()` on the `Waterworld`
+class, but this method is not available from the `TitleScene`. So lets pass the
+instance of `Waterworld` to the `StartButton` and then call
+`setActiveScene()` from the mouse pressed handler.
 
 ![Edit](images/edit.png) Change the constructor of `TitleScene` to
 
@@ -76,19 +75,19 @@ handler.
 private Waterworld waterworld;
 
 public TitleScene(Waterworld waterworld){
-    this.waterworld=waterworld;
-}
+        this.waterworld=waterworld;
+        }
 ```
 
 and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene`
-in the `setupScenes` method:
+in the `setupScenes()` method:
 
 ```java
 @Override
 protected void setupScenes(){
-    addScene(0, new TitleScene(this));
-    addScene(1, new GameLevel());
-}
+        addScene(0,new TitleScene(this));
+        addScene(1,new GameLevel());
+        }
 ```
 
 ![Edit](images/edit.png) Now do the same for the constructor of
@@ -101,8 +100,8 @@ handler:
 ```java
 @Override
 public void onMouseButtonPressed(MouseButton button,double x,double y){
-    waterworld.setActiveScene(1);
-}
+        waterworld.setActiveScene(1);
+        }
 ```
 
 ![Run](images/play.png) Run the game again. The TitleScene should now contain
@@ -121,15 +120,18 @@ and `MouseExitListener` and implement their handlers in the following way:
 ```java
 @Override
 public void onMouseEntered(){
-    setFill(Color.VIOLET);
-    setCursor(Cursor.HAND);
-}
+        setFill(Color.VIOLET);
+        setCursor(Cursor.HAND);
+        }
 
 @Override
 public void onMouseExited(){
-    setFill(Color.PURPLE);
-    setCursor(Cursor.DEFAULT);
-}
+        setFill(Color.PURPLE);
+        setCursor(Cursor.DEFAULT);
+        }
 ```
 
 Notice how we change both the color of the `Entity` as the mouse cursor.
+
+Now we have set up the Game Level, in the next chapter we'll add Entities to
+turn it into an actual game.

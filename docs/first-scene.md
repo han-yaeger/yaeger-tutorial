@@ -51,7 +51,7 @@ Do not forget to do this for your own game, or an Exception will be thrown when
 the game is trying to access a resource that is in a directory that has not been
 opened up.
 
-## Add the scene to the Yaeger Game
+## Add the Scene to the Yaeger Game
 
 Now that we have created the TitleScene, we should add it to the Game. For this,
 we will use the method `setupScenes()`
@@ -65,7 +65,7 @@ method:
 ```java
 @Override
 protected void setupScenes(){
-    addScene(0,new TitleScene());
+    addScene(0, new TitleScene());
 }
 ```
 
@@ -74,16 +74,17 @@ has been shown, the TitleScene should be loaded.
 
 ## Add some text to the TitleScene
 
-Let's add the title of the game to the TitleScene. All objects you can add to a
-Scene are called *Entities*. Of these there are various different types. There
-are *TextEntities* that should be used for displaying a text, *SpriteEntities*
-for displaying a Sprite and shape-based Entities, such as, for instance, a *
-RectangleEntity*. For all these types there are the Static and Dynamic version.
+Let's add the title of the game to the `TitleScene`. All objects you can add to
+a Scene are called *Entities*. Of these there are various different types. There
+are *TextEntities* that should be used for displaying a text,
+*SpriteEntities* for displaying a Sprite and shape-based Entities, such as, for
+instance, a *RectangleEntity*. For all these types there are the Static and
+Dynamic version.
 
 A title is typically the static version of a `TextEntity`. We will use the
 method `setupEntities()` to add Entities to the Scene.
 
-![Edit](images/edit.png) Add the following body to the setupEntities() method:
+![Edit](images/edit.png) Add the following body to the `setupEntities()` method:
 
 ```java
 @Override
@@ -110,5 +111,5 @@ we use `setFill()`. We set the font to the HAN font, through the
 method `setFont()` and lastly we add the `Entity` to the Scene, by calling the
 method `addEntity()`.
 
-![Run](images/play.png) Run the game again. The TitleScene should now contain
+![Run](images/play.png) Run the game again. The `TitleScene` should now contain
 the title.

@@ -8,8 +8,6 @@ package `com.github.hanyaeger.tutorial`.
 ![Edit](images/edit.png)  Let `Waterworld` extend the Class `YaegerGame`and
 implement the required methods. Leave them empty for now.
 
-![Yaeger Splash Screen](images/game/splash.png)
-
 ![Edit](images/edit.png) Add a `main`-method that calls the static
 method `launch()` from the class `YaegerGame`. Pass the arguments from
 the `main`-method to the `launch`-method:
@@ -24,6 +22,8 @@ public static void main(String[] args){
 -method to start the game. As you will notice, there is a default width and
 height, and you'll be greeted with the Splash Screen. Since no Scenes have been
 added, Yaeger exits after showing this SplashScreen.
+
+![Yaeger Splash Screen](images/game/splash.png)
 
 ## Set the width, height and title of the game
 
