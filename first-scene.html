@@ -186,7 +186,7 @@ opens sprites;
 <p>Do not forget to do this for your own game, or an Exception will be thrown when
 the game is trying to access a resource that is in a directory that has not been
 opened up.</p>
-<h2 id="add-the-scene-to-the-yaeger-game"><a class="header" href="#add-the-scene-to-the-yaeger-game">Add the scene to the Yaeger Game</a></h2>
+<h2 id="add-the-scene-to-the-yaeger-game"><a class="header" href="#add-the-scene-to-the-yaeger-game">Add the Scene to the Yaeger Game</a></h2>
 <p>Now that we have created the TitleScene, we should add it to the Game. For this,
 we will use the method <code>setupScenes()</code>
 from <code>Waterworld.java</code>. This method takes two parameters. The first one
@@ -196,20 +196,21 @@ parameter is an instance of the Scene.</p>
 method:</p>
 <pre><code class="language-java">@Override
 protected void setupScenes(){
-    addScene(0,new TitleScene());
+    addScene(0, new TitleScene());
 }
 </code></pre>
 <p><img src="images/play.png" alt="Run" /> It's time to run the game again. After the Splash Screen
 has been shown, the TitleScene should be loaded.</p>
 <h2 id="add-some-text-to-the-titlescene"><a class="header" href="#add-some-text-to-the-titlescene">Add some text to the TitleScene</a></h2>
-<p>Let's add the title of the game to the TitleScene. All objects you can add to a
-Scene are called <em>Entities</em>. Of these there are various different types. There
-are <em>TextEntities</em> that should be used for displaying a text, <em>SpriteEntities</em>
-for displaying a Sprite and shape-based Entities, such as, for instance, a *
-RectangleEntity*. For all these types there are the Static and Dynamic version.</p>
+<p>Let's add the title of the game to the <code>TitleScene</code>. All objects you can add to
+a Scene are called <em>Entities</em>. Of these there are various different types. There
+are <em>TextEntities</em> that should be used for displaying a text,
+<em>SpriteEntities</em> for displaying a Sprite and shape-based Entities, such as, for
+instance, a <em>RectangleEntity</em>. For all these types there are the Static and
+Dynamic version.</p>
 <p>A title is typically the static version of a <code>TextEntity</code>. We will use the
 method <code>setupEntities()</code> to add Entities to the Scene.</p>
-<p><img src="images/edit.png" alt="Edit" /> Add the following body to the setupEntities() method:</p>
+<p><img src="images/edit.png" alt="Edit" /> Add the following body to the <code>setupEntities()</code> method:</p>
 <pre><code class="language-java">@Override
 public void setupEntities(){
     var waterworldText=new TextEntity(
@@ -231,7 +232,7 @@ center of the Scene, we use the method <code>setAnchorPoint()</code> and to set 
 we use <code>setFill()</code>. We set the font to the HAN font, through the
 method <code>setFont()</code> and lastly we add the <code>Entity</code> to the Scene, by calling the
 method <code>addEntity()</code>.</p>
-<p><img src="images/play.png" alt="Run" /> Run the game again. The TitleScene should now contain
+<p><img src="images/play.png" alt="Run" /> Run the game again. The <code>TitleScene</code> should now contain
 the title.</p>
 
                     </main>
