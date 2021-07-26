@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="import.html"><strong aria-hidden="true">2.</strong> Importing the starter code</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">3.</strong> Setting up a new game</a></li><li class="chapter-item expanded "><a href="first-scene.html"><strong aria-hidden="true">4.</strong> Creating the first Scene</a></li><li class="chapter-item expanded "><a href="level.html"><strong aria-hidden="true">5.</strong> Creating a level</a></li><li class="chapter-item expanded "><a href="dynamic-entities.html"><strong aria-hidden="true">6.</strong> Adding Dynamic Entities</a></li><li class="chapter-item expanded "><a href="player-controlled.html"><strong aria-hidden="true">7.</strong> Adding a player controlled Entity</a></li><li class="chapter-item expanded "><a href="interaction.html"><strong aria-hidden="true">8.</strong> Adding interaction through collision detection</a></li><li class="chapter-item expanded "><a href="more-entities.html"><strong aria-hidden="true">9.</strong> Adding more Entities and EntitySpawners</a></li><li class="chapter-item expanded "><a href="tilemaps.html"><strong aria-hidden="true">10.</strong> Adding many entities at once</a></li><li class="chapter-item expanded "><a href="further-challenges.html"><strong aria-hidden="true">11.</strong> Further challenges</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="import.html"><strong aria-hidden="true">2.</strong> Importing the starter code</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">3.</strong> Setting up a new game</a></li><li class="chapter-item expanded "><a href="first-scene.html"><strong aria-hidden="true">4.</strong> Creating the first Scene</a></li><li class="chapter-item expanded "><a href="level.html"><strong aria-hidden="true">5.</strong> Creating a level</a></li><li class="chapter-item expanded "><a href="dynamic-entities.html"><strong aria-hidden="true">6.</strong> Adding Dynamic Entities</a></li><li class="chapter-item expanded "><a href="player-controlled.html"><strong aria-hidden="true">7.</strong> Adding a player controlled Entity</a></li><li class="chapter-item expanded "><a href="interaction.html"><strong aria-hidden="true">8.</strong> Adding interaction through collision detection</a></li><li class="chapter-item expanded "><a href="interaction-with-hitboxes.html"><strong aria-hidden="true">9.</strong> Improve collision through composition</a></li><li class="chapter-item expanded "><a href="more-entities.html"><strong aria-hidden="true">10.</strong> Adding more Entities and EntitySpawners</a></li><li class="chapter-item expanded "><a href="tilemaps.html"><strong aria-hidden="true">11.</strong> Adding many entities at once</a></li><li class="chapter-item expanded "><a href="further-challenges.html"><strong aria-hidden="true">12.</strong> Further challenges</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -669,15 +669,13 @@ detected. To get more insight into these collisions, it is possible to run
 Yaeger with the commandline argument <code>--showBB</code>, which makes all bounding boxes
 visible.</p>
 <blockquote>
-<p>You might have noticed that because Yaeger uses the Bounding Box to check for collisions,
-the collision detection is not as accurate as you might like it to be. This can be solved by using the notion of a hit box,
-a shape that defines the area that is being checked during a collision detection cycle.</p>
-<p>Hit Boxes can be used in Yaeger, through the use of a <code>CompositeEntity</code>, an Entity that consists of other Entities.
-An implementation of this can be found in the <a href="https://github.com/han-yaeger/yaeger-showcase">Yaeger Showcase</a> on
-the <em>Composing</em> Scene. On that Scene we again find Hanny and the Swordfish, but both are constructed through the use
-of a <code>CompositeEntity</code>. The Swordfish consists of a <code>SpriteEntity</code> and a <code>RectangleEntity</code> that is invisible and
-placed on top of the Swordfish's sword. Since that rectangle implements the interface <code>Collider</code>, the collision between
-Hanny and the sword is the collision that is detected.</p>
+<p>You might have noticed that because Yaeger uses the Bounding Box to check for 
+collisions, the collision detection is not as accurate as you might like it to
+be. This can be solved by using the notion of a hit box, a shape that defines 
+the area that is being checked during a collision detection cycle.</p>
+<p>We will first finish implementing what happens after a collision. In the next
+chapter we will rework the Swordfish to a version where only the sword causes
+a collision.</p>
 </blockquote>
 <h2 id="let-hanny-respawn-after-a-collision-with-the-swordfish"><a class="header" href="#let-hanny-respawn-after-a-collision-with-the-swordfish">Let Hanny respawn after a collision with the SwordFish</a></h2>
 <p>Because Hanny is the one who needs to know if she has collided with the
@@ -689,11 +687,12 @@ method.</p>
 a random location:</p>
 <pre><code class="language-java">@Override
 public void onCollision(Collider collidingObject){
-        setAnchorLocation(
-        new Coordinate2D(new Random().nextInt((int)(getSceneWidth()-getWidth())),
-        new Random().nextInt((int)(getSceneHeight()-getHeight())))
-        );
-        }
+    setAnchorLocation(
+        new Coordinate2D(new Random().nextInt((int)(getSceneWidth() 
+        - getWidth())),
+        new Random().nextInt((int)(getSceneHeight() - getHeight())))
+    );
+}
 </code></pre>
 <p>Notice that we have access to the <em>SceneWidth</em> and <em>SceneHeight</em> and that we
 subtract, respectively, the <em>width</em>
@@ -705,15 +704,15 @@ already seen.</p>
 with the constructor and method shown below. Add it to the
 package <code>com.github.hanyaeger.tutorial.entities.text</code>.</p>
 <pre><code class="language-java">public HealthText(Coordinate2D initialLocation){
-        super(initialLocation);
+    super(initialLocation);
 
-        setFont(Font.font(&quot;Roboto&quot;,FontWeight.NORMAL,30));
-        setFill(Color.DARKBLUE);
-        }
+    setFont(Font.font(&quot;Roboto&quot;,FontWeight.NORMAL, 30));
+    setFill(Color.DARKBLUE);
+}
 
 public void setHealthText(int health){
-        setText(&quot;Health: &quot;+health);
-        }
+    setText(&quot;Health: &quot; + health);
+}
 </code></pre>
 <p><img src="images/edit.png" alt="Edit" /> Add this entity to the Game Level, by using
 the <code>setupEntities()</code> method, but also pass the instance to the constructor of
@@ -725,14 +724,14 @@ type <code>int</code> and initialize it to 10. Also bind the constructor
 parameter <code>HealthText</code> to an instance field. Af this change, the constructor and
 instance fields of Hanny should look like:</p>
 <pre><code class="language-java">private HealthText healthText;
-private int health=10;
+private int health = 10;
 
 public Hanny(Coordinate2D location,HealthText healthText){
-        super(&quot;sprites/hanny.png&quot;,location,new Size(20,40),2);
+    super(&quot;sprites/hanny.png&quot;, location, new Size(20,40), 2);
 
-        this.healthText=healthText;
-        healthText.setHealthText(health);
-        }
+    this.healthText = healthText;
+    healthText.setHealthText(health);
+}
 </code></pre>
 <p>The last step is to integrate the health into the event handler of Hanny.</p>
 <p><img src="images/edit.png" alt="Edit" /> Change the event handler to ensure that the health is
@@ -748,6 +747,71 @@ public void onCollision(Collider collidingObject){
     healthText.setHealthText(health);
 }
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="improve-collision-detection-through-the-use-of-composition"><a class="header" href="#improve-collision-detection-through-the-use-of-composition">Improve collision detection through the use of composition</a></h1>
+<p>Now we have implemented both the Swordfish and Hanny, and collision detection
+between them, we might notice that the collision detection is to rough. The
+Bounding Box of the Swordfish is much too large, compared to its area, and we
+would much rather only register a collision if Hanny collides with the actual
+sword of the Swordfish.</p>
+<p>We are going to create a new version of the Swordfish that does just that. For
+this, we will be using a composition of several Entities, that will be part of
+a <code>DynamicCompositeEntity</code>.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create a package
+<code>com.github.hanyaeger.tutorial.entities.swordfish</code>. In this package create a
+class <code>SwordFish</code> that extends <code>DynamicCompositeEntity</code>. Implement the methods,
+but leave them empty for now. Delete the previous implementation of the
+Swordfish and replace all usages with the new one.</p>
+<h2 id="another-setupentities"><a class="header" href="#another-setupentities">Another <code>setupEntities()</code>?</a></h2>
+<p>Because a Composite Entity enables the possibility to create a 
+composition of Entities, it supplies its own <code>setupEntities()</code> method, which 
+should be used to add the Entities that are to be a part of the composition. </p>
+<p>A Composite Entity defines its own area, where the top-left corner has 
+coordinate (0,0). The size of a Composite Entity is derived from it content.</p>
+<h3 id="create-the-entities-that-should-be-part-of-the-composite-entity"><a class="header" href="#create-the-entities-that-should-be-part-of-the-composite-entity">Create the Entities that should be part of the Composite Entity</a></h3>
+<p>The composition will consist of two entities, a <code>SpriteEntity</code> that provides 
+the image of the SwordFish, and a <code>RectangleEntity</code> that will implement 
+<code>Collided</code>, be invisible and placed exactly on the sword of the SwordFish.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create the class <code>SwordFishSprite</code> that extends 
+<code>SpriteEntity</code> and place it in the package 
+<code>com.github.hanyaeger.tutorial.entities.swordfish</code> in the following way:</p>
+<pre><code class="language-java">public class SwordfishSprite extends SpriteEntity {
+
+    public SwordfishSprite(final Coordinate2D location) {
+        super(&quot;sprites/swordfish.png&quot;, location);
+    }
+}
+</code></pre>
+<p><img src="images/edit.png" alt="Edit" /> Create a class <code>HitBox</code> that extends <code>RectangleEntity</code>
+and implements <code>Collider</code> in the following way:</p>
+<pre><code class="language-java">public class HitBox extends RectangleEntity implements Collider {
+
+    public HitBox(final Coordinate2D initialPosition) {
+        super(initialPosition);
+        setWidth(60);
+        setHeight(2);
+        setFill(Color.TRANSPARENT);
+    }
+}
+</code></pre>
+<h3 id="add-the-entities-to-the-composition"><a class="header" href="#add-the-entities-to-the-composition">Add the Entities to the composition</a></h3>
+<p>Now use the <code>setupEntities()</code> method from <code>SwordFish</code> to add both Entities. 
+First the <code>SwordFishSprite</code> and then the <code>HitBox</code>. Since the 
+<code>SwordFishSprite</code> should be placed in the upper-left corner of the 
+<code>SwordFish</code>, it should be placed at coordinate (0,0). </p>
+<p><img src="images/edit.png" alt="Edit" /> Add the <code>SwordFishSprite</code> to the <code>SwordFish</code> at 
+coordinate (0,0).</p>
+<p><img src="images/edit.png" alt="Edit" /> Add the <code>HitBox</code> to the SwordFish in such a way 
+that it overlaps the sword of the Sword Fish. It could help to set the fill 
+of the HitBox to a specific color, so you can see what you're doing.</p>
+<h2 id="make-the-swordfish-swim"><a class="header" href="#make-the-swordfish-swim">Make the <code>SwordFish</code> swim</a></h2>
+<p>Notice that both the image and the hitbox are Static Entities. They are part 
+of the Composite Entity, which is a Dynamic Entity. This 
+<code>DynamicCompositeEntity</code> is the one that will move around the Scene, and its 
+content will move with it. </p>
+<p><img src="images/edit.png" alt="Edit" /> Make the <code>SwordFish</code> swim through the Scene as it 
+did before. Don't forget to make him reappear if he leaves the Scene.</p>
+<p><img src="images/play.png" alt="Run" /> Start the game and test if the SwordFish behaves as 
+expected. </p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="adding-more-entities-and-entityspawners"><a class="header" href="#adding-more-entities-and-entityspawners">Adding more Entities and EntitySpawners</a></h1>
 <h2 id="add-another-enemy-called-sharky"><a class="header" href="#add-another-enemy-called-sharky">Add another enemy, called <code>Sharky</code></a></h2>
 <p><img src="images/game/sharky.png" alt="Sharky" /></p>

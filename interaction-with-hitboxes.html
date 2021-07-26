@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Setting up a new game - Yaeger Tutorial - Creating Waterworld</title>
+        <title>Improve collision through composition - Yaeger Tutorial - Creating Waterworld</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="import.html"><strong aria-hidden="true">2.</strong> Importing the starter code</a></li><li class="chapter-item expanded "><a href="setup.html" class="active"><strong aria-hidden="true">3.</strong> Setting up a new game</a></li><li class="chapter-item expanded "><a href="first-scene.html"><strong aria-hidden="true">4.</strong> Creating the first Scene</a></li><li class="chapter-item expanded "><a href="level.html"><strong aria-hidden="true">5.</strong> Creating a level</a></li><li class="chapter-item expanded "><a href="dynamic-entities.html"><strong aria-hidden="true">6.</strong> Adding Dynamic Entities</a></li><li class="chapter-item expanded "><a href="player-controlled.html"><strong aria-hidden="true">7.</strong> Adding a player controlled Entity</a></li><li class="chapter-item expanded "><a href="interaction.html"><strong aria-hidden="true">8.</strong> Adding interaction through collision detection</a></li><li class="chapter-item expanded "><a href="interaction-with-hitboxes.html"><strong aria-hidden="true">9.</strong> Improve collision through composition</a></li><li class="chapter-item expanded "><a href="more-entities.html"><strong aria-hidden="true">10.</strong> Adding more Entities and EntitySpawners</a></li><li class="chapter-item expanded "><a href="tilemaps.html"><strong aria-hidden="true">11.</strong> Adding many entities at once</a></li><li class="chapter-item expanded "><a href="further-challenges.html"><strong aria-hidden="true">12.</strong> Further challenges</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="import.html"><strong aria-hidden="true">2.</strong> Importing the starter code</a></li><li class="chapter-item expanded "><a href="setup.html"><strong aria-hidden="true">3.</strong> Setting up a new game</a></li><li class="chapter-item expanded "><a href="first-scene.html"><strong aria-hidden="true">4.</strong> Creating the first Scene</a></li><li class="chapter-item expanded "><a href="level.html"><strong aria-hidden="true">5.</strong> Creating a level</a></li><li class="chapter-item expanded "><a href="dynamic-entities.html"><strong aria-hidden="true">6.</strong> Adding Dynamic Entities</a></li><li class="chapter-item expanded "><a href="player-controlled.html"><strong aria-hidden="true">7.</strong> Adding a player controlled Entity</a></li><li class="chapter-item expanded "><a href="interaction.html"><strong aria-hidden="true">8.</strong> Adding interaction through collision detection</a></li><li class="chapter-item expanded "><a href="interaction-with-hitboxes.html" class="active"><strong aria-hidden="true">9.</strong> Improve collision through composition</a></li><li class="chapter-item expanded "><a href="more-entities.html"><strong aria-hidden="true">10.</strong> Adding more Entities and EntitySpawners</a></li><li class="chapter-item expanded "><a href="tilemaps.html"><strong aria-hidden="true">11.</strong> Adding many entities at once</a></li><li class="chapter-item expanded "><a href="further-challenges.html"><strong aria-hidden="true">12.</strong> Further challenges</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -146,46 +146,81 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="setting-up-a-new-game"><a class="header" href="#setting-up-a-new-game">Setting up a new game</a></h1>
-<p>Let's first create the entry-point, the Class that contains the <code>main</code>-method.</p>
-<p><img src="images/edit.png" alt="Edit" /> Create a Class called <code>Waterworld.java</code> in the
-package <code>com.github.hanyaeger.tutorial</code>.</p>
-<p><img src="images/edit.png" alt="Edit" />  Let <code>Waterworld</code> extend the Class <code>YaegerGame</code>and
-implement the required methods. Leave them empty for now.</p>
-<p><img src="images/edit.png" alt="Edit" /> Add a <code>main</code>-method that calls the static
-method <code>launch()</code> from the class <code>YaegerGame</code>. Pass the arguments from
-the <code>main</code>-method to the <code>launch</code>-method:</p>
-<pre><code class="language-java">public static void main(String[] args){
-    launch(args);
+                        <h1 id="improve-collision-detection-through-the-use-of-composition"><a class="header" href="#improve-collision-detection-through-the-use-of-composition">Improve collision detection through the use of composition</a></h1>
+<p>Now we have implemented both the Swordfish and Hanny, and collision detection
+between them, we might notice that the collision detection is to rough. The
+Bounding Box of the Swordfish is much too large, compared to its area, and we
+would much rather only register a collision if Hanny collides with the actual
+sword of the Swordfish.</p>
+<p>We are going to create a new version of the Swordfish that does just that. For
+this, we will be using a composition of several Entities, that will be part of
+a <code>DynamicCompositeEntity</code>.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create a package
+<code>com.github.hanyaeger.tutorial.entities.swordfish</code>. In this package create a
+class <code>SwordFish</code> that extends <code>DynamicCompositeEntity</code>. Implement the methods,
+but leave them empty for now. Delete the previous implementation of the
+Swordfish and replace all usages with the new one.</p>
+<h2 id="another-setupentities"><a class="header" href="#another-setupentities">Another <code>setupEntities()</code>?</a></h2>
+<p>Because a Composite Entity enables the possibility to create a 
+composition of Entities, it supplies its own <code>setupEntities()</code> method, which 
+should be used to add the Entities that are to be a part of the composition. </p>
+<p>A Composite Entity defines its own area, where the top-left corner has 
+coordinate (0,0). The size of a Composite Entity is derived from it content.</p>
+<h3 id="create-the-entities-that-should-be-part-of-the-composite-entity"><a class="header" href="#create-the-entities-that-should-be-part-of-the-composite-entity">Create the Entities that should be part of the Composite Entity</a></h3>
+<p>The composition will consist of two entities, a <code>SpriteEntity</code> that provides 
+the image of the SwordFish, and a <code>RectangleEntity</code> that will implement 
+<code>Collided</code>, be invisible and placed exactly on the sword of the SwordFish.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create the class <code>SwordFishSprite</code> that extends 
+<code>SpriteEntity</code> and place it in the package 
+<code>com.github.hanyaeger.tutorial.entities.swordfish</code> in the following way:</p>
+<pre><code class="language-java">public class SwordfishSprite extends SpriteEntity {
+
+    public SwordfishSprite(final Coordinate2D location) {
+        super(&quot;sprites/swordfish.png&quot;, location);
+    }
 }
 </code></pre>
-<p><img src="images/play.png" alt="Run" /> You now have a minimal Yaeger game. Run the <code>main</code>
--method to start the game. As you will notice, there is a default width and
-height, and you'll be greeted with the Splash Screen. Since no Scenes have been
-added, Yaeger exits after showing this SplashScreen.</p>
-<p><img src="images/game/splash.png" alt="Yaeger Splash Screen" /></p>
-<h2 id="set-the-width-height-and-title-of-the-game"><a class="header" href="#set-the-width-height-and-title-of-the-game">Set the width, height and title of the game</a></h2>
-<p>The game now uses the default size (width/height), which might be a bit small.
-You can use the method <code>setupGame()</code> to set the size to a specific value.
-Furthermore, you can set the title of the game, which will be shown as the title
-of the window.</p>
-<p><img src="images/edit.png" alt="Edit" /> Add the following body to the <code>setupGame()</code> method</p>
-<pre><code class="language-java">@Override
-protected void setupGame() {
-    setGameTitle(&quot;Waterworld&quot;);
-    setSize(new Size(800, 600));
+<p><img src="images/edit.png" alt="Edit" /> Create a class <code>HitBox</code> that extends <code>RectangleEntity</code>
+and implements <code>Collider</code> in the following way:</p>
+<pre><code class="language-java">public class HitBox extends RectangleEntity implements Collider {
+
+    public HitBox(final Coordinate2D initialPosition) {
+        super(initialPosition);
+        setWidth(60);
+        setHeight(2);
+        setFill(Color.TRANSPARENT);
+    }
 }
 </code></pre>
+<h3 id="add-the-entities-to-the-composition"><a class="header" href="#add-the-entities-to-the-composition">Add the Entities to the composition</a></h3>
+<p>Now use the <code>setupEntities()</code> method from <code>SwordFish</code> to add both Entities. 
+First the <code>SwordFishSprite</code> and then the <code>HitBox</code>. Since the 
+<code>SwordFishSprite</code> should be placed in the upper-left corner of the 
+<code>SwordFish</code>, it should be placed at coordinate (0,0). </p>
+<p><img src="images/edit.png" alt="Edit" /> Add the <code>SwordFishSprite</code> to the <code>SwordFish</code> at 
+coordinate (0,0).</p>
+<p><img src="images/edit.png" alt="Edit" /> Add the <code>HitBox</code> to the SwordFish in such a way 
+that it overlaps the sword of the Sword Fish. It could help to set the fill 
+of the HitBox to a specific color, so you can see what you're doing.</p>
+<h2 id="make-the-swordfish-swim"><a class="header" href="#make-the-swordfish-swim">Make the <code>SwordFish</code> swim</a></h2>
+<p>Notice that both the image and the hitbox are Static Entities. They are part 
+of the Composite Entity, which is a Dynamic Entity. This 
+<code>DynamicCompositeEntity</code> is the one that will move around the Scene, and its 
+content will move with it. </p>
+<p><img src="images/edit.png" alt="Edit" /> Make the <code>SwordFish</code> swim through the Scene as it 
+did before. Don't forget to make him reappear if he leaves the Scene.</p>
+<p><img src="images/play.png" alt="Run" /> Start the game and test if the SwordFish behaves as 
+expected. </p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="import.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="interaction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="first-scene.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="more-entities.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -195,11 +230,11 @@ protected void setupGame() {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="import.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="interaction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="first-scene.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="more-entities.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>
