@@ -7,6 +7,7 @@ import com.github.hanyaeger.api.scenes.TileMapContainer;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.*;
 import com.github.hanyaeger.tutorial.entities.map.CoralTileMap;
+import com.github.hanyaeger.tutorial.entities.swordfish.SwordFish;
 import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import com.github.hanyaeger.tutorial.spawners.BubbleSpawner;
@@ -34,7 +35,7 @@ public class GameLevel extends DynamicScene implements EntitySpawnerContainer, T
         addEntity(bubblesPoppedText);
 
         addEntity(new Hanny(new Coordinate2D(1, 1), healthText, bubblesPoppedText, waterworld));
-        addEntity(new Swordfish(new Coordinate2D(200, 300)));
+        addEntity(new SwordFish(new Coordinate2D(200, 300)));
         addEntity(new Sharky(new Coordinate2D(0, 100)));
     }
 

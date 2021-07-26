@@ -8,6 +8,7 @@
 - [Adding Dynamic Entities](dynamic-entities.md)
 - [Adding a player controlled Entity](player-controlled.md)
 - [Adding interaction through collision detection](interaction.md)
+- [Improve collision through composition](interaction-with-hitboxes.md)
 - [Adding more Entities and EntitySpawners](more-entities.md)
 - [Adding many entities at once](tilemaps.md)
 - [Further challenges](further-challenges.md)
