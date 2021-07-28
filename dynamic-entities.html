@@ -147,45 +147,43 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="adding-dynamic-entities"><a class="header" href="#adding-dynamic-entities">Adding Dynamic Entities</a></h1>
-<p>Before adding Hanny, lets start by adding her enemy, the evil Swordfish. Since
-this fish will be based on the image
-<code>sprites/swordfish.png</code> and he will swim around, we will be using
-a <code>DynamicSpriteEntity</code>.</p>
+<p>Before adding Hanny, lets start by adding her enemy, the evil swordfish. Since
+this fish will be based on the image <code>sprites/swordfish.png</code> and he will 
+swim around, we will be using a <code>DynamicSpriteEntity</code>.</p>
 <h2 id="add-the-swordfish"><a class="header" href="#add-the-swordfish">Add the <code>Swordfish</code></a></h2>
-<p><img src="images/edit.png" alt="Edit" /> Create a new Class called <code>Swordfish</code> that
-extends <code>DynamicSpriteEntity</code> in
-package <code>com.github.hanyaeger.tutorial.entities</code>. Since the image of the
+<p><img src="images/edit.png" alt="Edit" /> Create a new class called <code>Swordfish</code> that
+extends <code>DynamicSpriteEntity</code> in package 
+<code>com.github.hanyaeger.tutorial.entities</code>. Since the image of the
 swordfish is already of the correct size, we don't need to set its size through
 the constructor, which can now look like:</p>
 <pre><code class="language-java">public Swordfish(Coordinate2D location){
-    super(&quot;sprites/swordfish.png&quot;,location);
+    super(&quot;sprites/swordfish.png&quot;, location);
 }
 </code></pre>
-<p>Notice how we call <code>super()</code> and pass the <em>image</em>, the <em>location</em> and the <em>size</em>
-to the constructor of the Super Class.</p>
+<p>Notice how we call <code>super(String, Coordinate2D)</code> and pass the <em>url</em> and<br />
+<em>location</em> to the constructor of the super class.</p>
 <h2 id="animate-the-swordfish"><a class="header" href="#animate-the-swordfish">Animate the <code>Swordfish</code></a></h2>
-<p>Since the Swordfish is a <code>DynamicSpriteEntity</code>, we can let it move around the
-Scene. To do this, we will need to set both the <em>direction</em> and <em>speed</em>. The *
-direction* will be an angle in degrees, where 0 denotes upwards. For
+<p>Since the swordfish is a <code>DynamicSpriteEntity</code>, we can let it move around the
+scene. To do this, we will need to set both the <em>direction</em> and <em>speed</em>. The 
+<em>direction</em> will be an angle in degrees, where 0 denotes upwards. For
 convenience, Yaeger supplies a method to set both values at once. For the
-trivial directions (up, left, right and down)
-Yaeger provides an Enumeration called <code>Direction</code>, which can also be passed to
-the method.</p>
+trivial directions (up, left, right and down) Yaeger provides an Enumeration 
+called <code>Direction</code>, which can also be passed to the method.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the following method-call to the constructor
 of <code>Swordfish</code>, just after the call to <code>super</code>:</p>
-<pre><code class="language-java">setMotion(2,270d);
+<pre><code class="language-java">setMotion(2, 270d);
 </code></pre>
-<p><img src="images/edit.png" alt="Edit" /> Now use the <code>setupEntities()</code> from the <code>GameLevel</code> to
+<p><img src="images/edit.png" alt="Edit" /> Now use the <code>setupEntities()</code> from <code>GameLevel</code> to
 add <code>Swordfish</code>.</p>
-<p><img src="images/play.png" alt="Run" /> Run the game again. You should now see a Swordfish that
+<p><img src="images/play.png" alt="Run" /> Run the game again. You should now see a swordfish that
 swims from right to left and then disappears of the screen.</p>
-<h2 id="make-the-swordfish-swim-in-circles"><a class="header" href="#make-the-swordfish-swim-in-circles">Make the Swordfish swim in circles</a></h2>
-<p>Now we would like to add behaviour that notifies us when the Swordfish has left
-the Scene. That way we can place him to the right of the Scene, and make him
+<h2 id="make-the-swordfish-swim-in-circles"><a class="header" href="#make-the-swordfish-swim-in-circles">Make the swordfish swim in circles</a></h2>
+<p>Now we would like to add behaviour that notifies us when the swordfish has left
+the scene. That way we can place him to the right of the scene, and make him
 reappear and continue his path.</p>
 <p>As seen before, adding behaviour is being done by implementing the correct
-interface. In this case, Yaeger supplies the
-interface <code>SceneBorderCrossingWatcher</code>.</p>
+interface. For this case, Yaeger supplies the interface 
+<code>SceneBorderCrossingWatcher</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Let <code>Swordfish</code> implement the
 interface <code>SceneBorderCrossingWatcher</code> and implement the event handler in the
 following way:</p>
@@ -195,7 +193,7 @@ public void notifyBoundaryCrossing(SceneBorder border){
 }
 </code></pre>
 <p><img src="images/play.png" alt="Run" /> Run the game again and see what happens. To also change
-the y-coordinate at which the Swordfish reappears, you can add the following
+the y-coordinate at which the swordfish reappears, you can add the following
 method-call: 
 <code>setAnchorLocationY(new Random().nextInt((int) getSceneHeight()- 81));</code>
 to the handler.</p>
@@ -205,14 +203,22 @@ game and how many Entities are currently part of the game. When a game doesn't
 work as expected, you can use this debugger to get some inside information.</p>
 <p><img src="images/play.png" alt="Run" /> Run the game with the commandline argument 
 <code>--showDebug</code>. Setting these options can usually be done from the Run 
-Configuration in your IDE. When using IntelliJ, first select &quot;Edit 
-Configurations...&quot;:</p>
-<p><img src="images/game/run-config-edit.png" alt="The Title Scene" /></p>
-<p>Add the commandline argument to the correct Run Configuration:</p>
-<p><img src="images/game/run-config-argument.png" alt="The Title Scene" /></p>
+Configuration within your IDE, as explained below.</p>
 <p>See if you can relate the stated numbers to what you expect from your game. To
 disable the Debugger window, just remove the commandline argument from the Run
 Configuration.</p>
+<h3 id="setting-commandline-arguments-from-intellij"><a class="header" href="#setting-commandline-arguments-from-intellij">Setting commandline arguments from IntelliJ</a></h3>
+<p>When using <a href="https://www.jetbrains.com/idea/">JetBrains IntelliJ</a>, first 
+select <em>Edit Configurations...</em>:</p>
+<p><img src="images/setup/intellij-run-config-edit.png" alt="IntelliJ Run Configuration" /></p>
+<p>Add the commandline argument to the correct Run Configuration:</p>
+<p><img src="images/setup/intellij-run-config-argument.png" alt="IntelliJ Program arguments" /></p>
+<h3 id="setting-commandline-arguments-from-eclipse"><a class="header" href="#setting-commandline-arguments-from-eclipse">Setting commandline arguments from Eclipse</a></h3>
+<p>When using <a href="https://www.eclipse.org/">Eclipse</a>, select <em>Run Configurations...</em>
+from the toolbar:</p>
+<p><img src="images/setup/eclipse-run-config.png" alt="IntelliJ Run Configuration" /></p>
+<p>Select the <em>Arguments</em> tab and edit the <em>Program Arguments</em>:</p>
+<p><img src="images/setup/eclipse-run-config-argument.png" alt="IntelliJ Program arguments" /></p>
 
                     </main>
 

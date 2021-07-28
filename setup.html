@@ -147,22 +147,22 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="setting-up-a-new-game"><a class="header" href="#setting-up-a-new-game">Setting up a new game</a></h1>
-<p>Let's first create the entry-point, the Class that contains the <code>main</code>-method.</p>
-<p><img src="images/edit.png" alt="Edit" /> Create a Class called <code>Waterworld.java</code> in the
+<p>Let's first create the entry-point, the class that contains the <code>main</code>-method.</p>
+<p><img src="images/edit.png" alt="Edit" /> Create a class called <code>Waterworld.java</code> in the
 package <code>com.github.hanyaeger.tutorial</code>.</p>
-<p><img src="images/edit.png" alt="Edit" />  Let <code>Waterworld</code> extend the Class <code>YaegerGame</code>and
+<p><img src="images/edit.png" alt="Edit" />  Let <code>Waterworld</code> extend the class <code>YaegerGame</code> and
 implement the required methods. Leave them empty for now.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add a <code>main</code>-method that calls the static
 method <code>launch()</code> from the class <code>YaegerGame</code>. Pass the arguments from
 the <code>main</code>-method to the <code>launch</code>-method:</p>
-<pre><code class="language-java">public static void main(String[] args){
-    launch(args);
-}
+<pre><code class="language-java">public static void main(String[]args){
+        launch(args);
+        }
 </code></pre>
-<p><img src="images/play.png" alt="Run" /> You now have a minimal Yaeger game. Run the <code>main</code>
--method to start the game. As you will notice, there is a default width and
-height, and you'll be greeted with the Splash Screen. Since no Scenes have been
-added, Yaeger exits after showing this SplashScreen.</p>
+<p><img src="images/play.png" alt="Run" /> You now have a minimal Yaeger game. Run the
+<code>main</code>-method to start the game. As you will notice, there is a default width
+and height, and you'll be greeted with the Splash Screen. Since no Scenes have
+been added, Yaeger exits after showing this Splash Screen.</p>
 <p><img src="images/game/splash.png" alt="Yaeger Splash Screen" /></p>
 <h2 id="set-the-width-height-and-title-of-the-game"><a class="header" href="#set-the-width-height-and-title-of-the-game">Set the width, height and title of the game</a></h2>
 <p>The game now uses the default size (width/height), which might be a bit small.
@@ -176,6 +176,8 @@ protected void setupGame() {
     setSize(new Size(800, 600));
 }
 </code></pre>
+<p>The game has been set up, in the next step we will add the scenes and their
+content.</p>
 
                     </main>
 

@@ -148,6 +148,14 @@
                     <main>
                         <h1 id="further-challenges"><a class="header" href="#further-challenges">Further challenges</a></h1>
 <p>Although this game is playable, still many features are missing.</p>
+<h2 id="prevent-hanny-from-crossing-a-piece-of-coral"><a class="header" href="#prevent-hanny-from-crossing-a-piece-of-coral">Prevent Hanny from crossing a piece of coral</a></h2>
+<p>Right now, whenever Hanny collides with a piece of coral, her speed is set to 0.
+This does slow her down, but doen not prevent her from crossing the piece of 
+coral.</p>
+<p>To make that work, you should not only set the speed to 0, but also reset 
+Hannies location to exactly next to the piece of coral. Since Hanny can only 
+travel horizontally or vertically, you should first figure out her direction and
+then set het x- or y-coordinate to the right value.</p>
 <h2 id="prevent-hanny-from-respawning-in-the-coral-field"><a class="header" href="#prevent-hanny-from-respawning-in-the-coral-field">Prevent Hanny from respawning in the coral field</a></h2>
 <p>Because Hanny will respawn at a random location, she could also respawn on a
 piece of coral. Because her speed is always set to 0, whenever she collides with

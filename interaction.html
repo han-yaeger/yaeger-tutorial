@@ -148,25 +148,25 @@
                     <main>
                         <h1 id="add-interaction-through-collision-detection"><a class="header" href="#add-interaction-through-collision-detection">Add interaction through collision detection</a></h1>
 <p>A standard feature of a game engine is collision detection. It is an
-algorithmically complex calculation that determines if any two Entities occupy
+algorithmically complex calculation that determines if any two entities occupy
 the same part of the screen. If so, they have collided.</p>
 <p>Yaeger differentiates between entities that need to be notified about a
-collision (a Collided), and those that do not need to be notified (a Collider).
-Thinks of this as a train and a fly. If they collide, the train doesn't even
-notice it; the fly does (and dies).</p>
+collision (a <code>Collided</code>), and those that do not need to be notified (a 
+<code>Collider</code>). Think of this as a train and a fly. If they collide, the train 
+doesn't even notice it; the fly does (and dies).</p>
 <p>With this approach, it is possible to minimize the number of entities that need
-to be checked for collisions every Game World Update, and it also enables a good
-Object-Oriented approach to place the responsibility of handling a collision at
+to be checked for collisions every GWU, and it also enables a good
+Object-Oriented approach to place the responsibility of handling a collision on
 the right entity.</p>
 <h2 id="add-collision-detection-for-hanny-and-the-swordfish"><a class="header" href="#add-collision-detection-for-hanny-and-the-swordfish">Add collision detection for Hanny and the Swordfish</a></h2>
-<p>The Swordfish is a dangerous foe and each time Hanny collides with him, she will
+<p>The swordfish is a dangerous foe and each time Hanny collides with him, she will
 lose a life point. At the start of the game Hanny has ten of those and when she
 reaches zero, she dies, and it is Game Over.</p>
 <p>There are several algorithms for collision detection but Yaeger only supports
-the simplest implementation, which is based on the Bounding Box of an Entity.
+the simplest implementation, which is based on the Bounding Box of an entity.
 This method is called Axis Aligned Bounding Box (AABB) collision detection and
 is implemented through the interfaces <code>Collided</code> and <code>Collider</code>.</p>
-<p><img src="images/edit.png" alt="Edit" /> Add the correct interface to Hanny and the SwordFish.
+<p><img src="images/edit.png" alt="Edit" /> Add the correct interface to Hanny and the swordfish.
 You do not yet need to implement the event handler, but for testing purposes you
 should add a <code>System.out.println(&quot;Collision!&quot;);</code></p>
 <p><img src="images/play.png" alt="Run" /> Start the game and test if the collision has been
@@ -179,15 +179,14 @@ collisions, the collision detection is not as accurate as you might like it to
 be. This can be solved by using the notion of a hit box, a shape that defines 
 the area that is being checked during a collision detection cycle.</p>
 <p>We will first finish implementing what happens after a collision. In the next
-chapter we will rework the Swordfish to a version where only the sword causes
+chapter we will rework the swordfish to a version where only the sword causes
 a collision.</p>
 </blockquote>
 <h2 id="let-hanny-respawn-after-a-collision-with-the-swordfish"><a class="header" href="#let-hanny-respawn-after-a-collision-with-the-swordfish">Let Hanny respawn after a collision with the SwordFish</a></h2>
 <p>Because Hanny is the one who needs to know if she has collided with the
-SwordFish, she will be the one who implements
-<code>Collided</code>. We are going to use the event handler to let Hanny respawn at a
-different location, using her <code>setAnchorLocation()</code>
-method.</p>
+swordfish, she will be the one who implements <code>Collided</code>. We are going to 
+use the event handler to let Hanny respawn at a different location, using 
+her <code>setAnchorLocation()</code> method.</p>
 <p><img src="images/edit.png" alt="Edit" /> Use the following event handler to let Hanny respawn at
 a random location:</p>
 <pre><code class="language-java">@Override
@@ -200,8 +199,8 @@ public void onCollision(Collider collidingObject){
 }
 </code></pre>
 <p>Notice that we have access to the <em>SceneWidth</em> and <em>SceneHeight</em> and that we
-subtract, respectively, the <em>width</em>
-and <em>height</em> of Hanny to ensure that Hanny respawns within the Scene.</p>
+subtract, respectively, the <em>width</em> and <em>height</em> of Hanny to ensure that 
+Hanny respawns within the scene.</p>
 <h2 id="add-health-points-and-subtract-one-on-a-collision"><a class="header" href="#add-health-points-and-subtract-one-on-a-collision">Add health points and subtract one on a collision</a></h2>
 <p>The next step should be fairly simple, since we will use only features we have
 already seen.</p>
@@ -219,11 +218,10 @@ public void setHealthText(int health){
     setText(&quot;Health: &quot; + health);
 }
 </code></pre>
-<p><img src="images/edit.png" alt="Edit" /> Add this entity to the Game Level, by using
-the <code>setupEntities()</code> method, but also pass the instance to the constructor of
-Hanny. This way, Hanny has access to the <code>HealthText</code> Entity and can call the
-method <code>setHealthText(int)</code>
-whenever her health changes.</p>
+<p><img src="images/edit.png" alt="Edit" /> Add this entity to <code>GameLevel</code>, by using  the 
+<code>setupEntities()</code> method, but also pass the instance to the constructor of
+Hanny. This way, Hanny has access to the <code>HealthText</code> entity and can call the
+method <code>setHealthText(int)</code> whenever her health changes.</p>
 <p><img src="images/edit.png" alt="Edit" /> Give Hanny a private instance field called health of
 type <code>int</code> and initialize it to 10. Also bind the constructor
 parameter <code>HealthText</code> to an instance field. Af this change, the constructor and
@@ -240,7 +238,7 @@ public Hanny(Coordinate2D location,HealthText healthText){
 </code></pre>
 <p>The last step is to integrate the health into the event handler of Hanny.</p>
 <p><img src="images/edit.png" alt="Edit" /> Change the event handler to ensure that the health is
-decreased, and the healthText changed:</p>
+decreased, and the <code>healthText</code> changed:</p>
 <pre><code class="language-java">@Override
 public void onCollision(Collider collidingObject){
     setAnchorLocation(new Coordinate2D(
