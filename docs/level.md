@@ -131,7 +131,7 @@ public void onMouseExited(){
         }
 ```
 
-Notice how we change both the color of the `Entity` as the mouse cursor.
+Notice how we change both the color of the `Entity` and the mouse cursor.
 
 Now we have set up the Game Level, in the next chapter we'll add Entities to
 turn it into an actual game.
