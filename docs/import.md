@@ -1,4 +1,4 @@
-# Creating your first Yaeger Game
+# Creating your first Yaeger game
 
 We are going to create a game that consists of three scenes. A Title scene,
 a Game Level scene and a Game Over scene. The Game itself will be about a fish
@@ -21,7 +21,7 @@ is therefore not required, but just to paint the full picture: you'll find a
 `pom.xml` file at the root of the project. This file contains the full project 
 setup, and you will notice the dependency it has on`Yaeger`.
 
-## Importing the Maven Project into your favourite IDE
+## Importing the Maven project into your favourite IDE
 
 Since all modern IDE's can import a [Maven](https://maven.apache.org/) project,
 it does not matter which you use. In this tutorial we focus on the two most
@@ -55,7 +55,7 @@ popular amongst Java developers:
 
    ![Eclipse select](images/setup/eclipse-select.png)
 
-## Switch Branch to look at the solution
+## Switch branch to look at the solution
 
 Whenever your stuck, you can switch to Branch *implementation*, to see the full
 implementation. For switching branches some knowledge of 

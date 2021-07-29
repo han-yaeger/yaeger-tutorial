@@ -16,7 +16,7 @@ created a new class, that needs to be instantiated and added to
 ![Edit](images/edit.png) Use the `setupScenes()` from the `Waterworld`-class to
 add `GameLevel` to the game. Choose a wise `id`.
 
-## Add a button to switch to the Game Scene
+## Add a button to switch to the game scene
 
 Although `GameLevel` has now been added to the Yaeger Game, there is no way to
 reach it yet. As said before, the first added Scene is set as the active scene

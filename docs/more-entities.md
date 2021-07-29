@@ -1,6 +1,6 @@
-# Adding more Entities and EntitySpawners
+# Adding more entities and an `EntitySpawner`
 
-## Add another enemy, called `Sharky`
+## Add another enemy, called Sharky
 
 ![Sharky](images/game/sharky.png)
 
@@ -17,7 +17,7 @@ loses a health point.
 
 ![Run](images/play.png) Start the game and test if Sharky behaves as expected.
 
-## Add Air and Poison bubbles
+## Add air and poison bubbles
 
 We are now going to add the game objective: Hanny is going to pop air bubbles. 
 They emerge from the depth of the ocean and float upwards at random speeds. 
@@ -25,7 +25,7 @@ Some are filled with air, and some are filled with a poisonous gas. When Hanny
 pops one of those, she loses a health point, but when she pops an air bubble, 
 her bubbles popped score increases, and she earns eternal fame.
 
-### Create Air Bubbles and Poison Bubbles
+### Create air and poison bubbles
 
 For air- and poison bubbles we could provide two images of bubbles and use
 a `DynamicSpriteEntity`, but we'll use a different approach. Yaeger provides
@@ -54,7 +54,7 @@ to figure out how to change their opacity to make them transparent.
 > Besides the interface `DynamicCircleEntity`, Yaeger also contains a `DynamicRectangleEntity`, a `DynamicEllipseEntity`
 > and their static versions.
 
-### Create a BubbleSpawner
+### Create a bubble spawner
 
 Because spawning entities into a level is a common feature of games, Yaeger
 supports this through the class `EntitySpawner`. An `EntitySpawner` should 
@@ -71,7 +71,7 @@ of `EntitySpawner` accepts a parameter called `intervalInMs`. This parameter
 will define the interval at which the method `spawnEntities()` is called. From
 this method you can call `spawn(YaegerEntity)`.
 
-### Let the BubbleSpawner spawn AirBubbles
+### Let the bubble spawner spawn air bubbles
 
 The `spawn(YaegerEntity)` method from the `BubbleSpawner` should be used for
 spawning an entity. Furthermore, the `BubbleSpawner` should be able to place its
@@ -108,7 +108,7 @@ public class BubbleSpawner extends EntitySpawner {
 }
 ```
 
-### Add the BubbleSpawner to the Game Level
+### Add the bubble spawner to the game level
 
 A `YaegerScene` does not support entity spawners by default, to enable it, the
 scene needs to implement the interface `EntitySpawnerContainer`, which requires
@@ -121,7 +121,7 @@ the scene.
 
 ![Run](images/play.png) Run the game to see if everything works as expected.
 
-### Make the BubbleSpawner also spawn instances of `PoisonBubble`
+### Make the bubble spawner also spawn instances of `PoisonBubble`
 
 Let's change the `spawnEntities()` method to ensure that four out of ten spawned
 bubbles will be a `PoisonBubble`. For this we can use the class `Random` from
@@ -171,7 +171,7 @@ Notice that we create a `SoundClip` and call its method `play()` to create the
 pop-sound. The `remove()` method is available on all entities and ensures they
 are removed from the scene.
 
-### Remove the Bubbles if they leave the Scene
+### Remove the bubbles if they leave the scene
 
 Bubbles that leave the scene should still be removed, otherwise they will float
 on for ever and consume an increasing amount of memory, bringing even the
@@ -186,7 +186,7 @@ been crossed.
 ![Run](images/play.png) Run the game and use the debugger to see if the bubbles
 that leave the top of the screen are actually removed (and garbage collected).
 
-### Remove health point when Hanny Collides with a `PoisonBubble`
+### Remove health point when Hanny collides with a `PoisonBubble`
 
 Whenever Hanny collides with a `PoisonBubble`, one health point should be
 removed. Adding this shouldn't be too hard, since we have already seen
@@ -195,7 +195,7 @@ everything we need to accomplish this.
 ![Edit](images/edit.png) Make Hanny lose a health point whenever she collides
 with a `PoisonBubble`.
 
-### Add a Bubbles Popped counter and increase it whenever Hanny Pops an `AirBubble`
+### Add a Bubbles Popped counter and increase it whenever Hanny pops an `AirBubble`
 
 Just like the health counter, shown at the top of the screen, we are going 
 to add a *Bubbles Popped* counter. Again, something we have done before, so it 

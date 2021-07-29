@@ -14,7 +14,7 @@ to be checked for collisions every GWU, and it also enables a good
 Object-Oriented approach to place the responsibility of handling a collision on
 the right entity.
 
-## Add collision detection for Hanny and the Swordfish
+## Add collision detection for Hanny and the swordfish
 
 The swordfish is a dangerous foe and each time Hanny collides with him, she will
 lose a life point. At the start of the game Hanny has ten of those and when she
@@ -43,7 +43,7 @@ visible.
 > chapter we will rework the swordfish to a version where only the sword causes
 > a collision.
 
-## Let Hanny respawn after a collision with the SwordFish
+## Let Hanny respawn after a collision with the swordfish
 
 Because Hanny is the one who needs to know if she has collided with the
 swordfish, she will be the one who implements `Collided`. We are going to 

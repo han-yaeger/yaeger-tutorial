@@ -1,4 +1,4 @@
-# Creating the first Scene
+# Creating the first scene
 
 We're going to add the first scene to the game. Yaeger supports two different
 types of scenes. A `StaticScene` and a `DynamicScene`. A `StaticScene` will have
@@ -7,7 +7,7 @@ should move or be animated. A `DynamicScene` does receive a GWU and should be
 used for Game Levels, or scenes that contain animated elements. Since nothing
 will have to be animated for the Title scene, it can be a `StaticScene`.
 
-## Add the Title scene
+## Add the title scene
 
 ![Edit](images/edit.png) Create a new Class called `TitleScene` that
 extends `StaticScene` in the package `com.github.hanyaeger.tutorial.scenes`.
@@ -52,7 +52,7 @@ Do not forget to do this for your own game, or an Exception will be thrown when
 the game is trying to access a resource that is in a directory that has not been
 opened up.
 
-## Add the `TitleScene` to the Yaeger Game
+## Add the `TitleScene` to the Yaeger game
 
 Now that we have created the `TitleScene`, we should add it to the Game. For 
 this, we will use the method `addScene(int, YaegerScene)` from `Waterworld.

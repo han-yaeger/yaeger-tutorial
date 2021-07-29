@@ -19,7 +19,7 @@ calculate the location, width and height of each entity and instantiate them.
 You will still have to create a class, with the correct constructor, but the 
 rest will be handled by Yaeger.
 
-## Create Coral Entities
+## Create coral entities
 
 Since we need four different coral entities, the approach would be to create 
 four classes, which all extend `SpriteEntity`, but since their behaviour is 
@@ -110,7 +110,7 @@ public int[][] defineMap() {
 }
 ```
 
-## Add the Tile Map to the Game Scene
+## Add the tile map to the game scene
 
 To be able to use the tile map, the scene will need to implement the
 interface `TileMapContainer`. This will expose the method `setupTileMaps()`,
@@ -148,7 +148,7 @@ Since all those classes are in the package
 ![Run](images/play.png) Run the game. Note how the tiles in your tile map are
 scaled automatically.
 
-## Ensure Hanny is hindered whenever she crosses a piece of Coral
+## Ensure Hanny is hindered whenever she crosses a piece of coral
 
 Hanny can now still cross a piece of coral. This can be easily resolved, using
 the `Collided` and `Collider`interfaces. If the speed of Hanny is set to 0, 

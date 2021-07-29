@@ -25,7 +25,7 @@ should be used to add the entities that are to be a part of the composition.
 A composite entity defines its own area, where the top-left corner has 
 coordinate (0,0). The size of a composite entity is derived from it content.
 
-### Create the Entities that should be part of the Composite Entity
+### Create the entities that should be part of the composite entity
 
 The composition will consist of two entities, a `SpriteEntity` that provides 
 the image of the swordfish, and a `RectangleEntity` that will implement 
@@ -59,7 +59,7 @@ public class HitBox extends RectangleEntity implements Collider {
 }
 ```
 
-### Add the Entities to the composition
+### Add the entities to the composition
 
 Now use the `setupEntities()` method from `SwordFish` to add both entities. 
 First the `SwordFishSprite` and then the `HitBox`. Since the 

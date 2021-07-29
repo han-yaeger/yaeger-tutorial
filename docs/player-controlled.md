@@ -1,4 +1,4 @@
-# Adding a player controlled Entity
+# Adding a player controlled entity
 
 The player will control Hanny by using the arrow keys. Again we will use
 a `DynamicSpriteEntity`.
@@ -71,7 +71,7 @@ this, a `DynamicSpriteEntity` provides the method ` setCurrentFrameIndex(int)`.
 ![Edit](images/edit.png) Set the correct frame index. Make sure only the left
 and right buttons change the direction in which Hanny seems to be swimming.
 
-## Make sure Hanny doesn't leave the Scene
+## Make sure Hanny doesn't leave the scene
 
 To ensure that Hanny remains on the screen, we can use the interface 
 `SceneBorderTouchingWatcher`, which provides an event handler that gets called 
@@ -145,7 +145,7 @@ else if(pressedKeys.isEmpty()){
 ![Edit](images/edit.png) Change the event handler from the `KeyListener`
 interface to ensure the speed is no longer set to 0.
 
-## Add a Game Over Scene for when health reaches zero
+## Add a game over scene for when health reaches zero
 
 When health reaches 0 Hanny dies, and the player should see a new scene
 containing the text *Game Over*, with below it the clickable text *Play 
@@ -158,7 +158,7 @@ Clicking the *Play Again* button should load the Game Level Scene.
 ![Edit](images/edit.png) Change the event handler in Hanny in such a way that
 when the health reaches zero, the Game Over scene is loaded.
 
-## Add a Quit Game button to the Game Over Scene
+## Add a quit game button to the game over scene
 
 ![Edit](images/edit.png) Add a second button to the *Game Over* scene. Clicking
 this button should quit Yaeger. The class `YaegerGame` provides a method to 
