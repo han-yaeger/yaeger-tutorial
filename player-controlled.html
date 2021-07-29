@@ -146,7 +146,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="adding-a-player-controlled-entity"><a class="header" href="#adding-a-player-controlled-entity">Adding a player controlled Entity</a></h1>
+                        <h1 id="adding-a-player-controlled-entity"><a class="header" href="#adding-a-player-controlled-entity">Adding a player controlled entity</a></h1>
 <p>The player will control Hanny by using the arrow keys. Again we will use
 a <code>DynamicSpriteEntity</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Create a class for Hanny in the same package as
@@ -200,7 +200,7 @@ this <code>Set</code>, we set the motion of Hanny.</p>
 this, a <code>DynamicSpriteEntity</code> provides the method <code> setCurrentFrameIndex(int)</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Set the correct frame index. Make sure only the left
 and right buttons change the direction in which Hanny seems to be swimming.</p>
-<h2 id="make-sure-hanny-doesnt-leave-the-scene"><a class="header" href="#make-sure-hanny-doesnt-leave-the-scene">Make sure Hanny doesn't leave the Scene</a></h2>
+<h2 id="make-sure-hanny-doesnt-leave-the-scene"><a class="header" href="#make-sure-hanny-doesnt-leave-the-scene">Make sure Hanny doesn't leave the scene</a></h2>
 <p>To ensure that Hanny remains on the screen, we can use the interface 
 <code>SceneBorderTouchingWatcher</code>, which provides an event handler that gets called 
 whenever the entity touches the border of the scene. By implementing this 
@@ -258,7 +258,7 @@ handler from the <code>KeyListener</code> interface:</p>
 </code></pre>
 <p><img src="images/edit.png" alt="Edit" /> Change the event handler from the <code>KeyListener</code>
 interface to ensure the speed is no longer set to 0.</p>
-<h2 id="add-a-game-over-scene-for-when-health-reaches-zero"><a class="header" href="#add-a-game-over-scene-for-when-health-reaches-zero">Add a Game Over Scene for when health reaches zero</a></h2>
+<h2 id="add-a-game-over-scene-for-when-health-reaches-zero"><a class="header" href="#add-a-game-over-scene-for-when-health-reaches-zero">Add a game over scene for when health reaches zero</a></h2>
 <p>When health reaches 0 Hanny dies, and the player should see a new scene
 containing the text <em>Game Over</em>, with below it the clickable text <em>Play 
 again</em>. We have seen all of Yaeger's features that are required for this, so 
@@ -267,7 +267,7 @@ it should be clear how to implement this.</p>
 Clicking the <em>Play Again</em> button should load the Game Level Scene.</p>
 <p><img src="images/edit.png" alt="Edit" /> Change the event handler in Hanny in such a way that
 when the health reaches zero, the Game Over scene is loaded.</p>
-<h2 id="add-a-quit-game-button-to-the-game-over-scene"><a class="header" href="#add-a-quit-game-button-to-the-game-over-scene">Add a Quit Game button to the Game Over Scene</a></h2>
+<h2 id="add-a-quit-game-button-to-the-game-over-scene"><a class="header" href="#add-a-quit-game-button-to-the-game-over-scene">Add a quit game button to the game over scene</a></h2>
 <p><img src="images/edit.png" alt="Edit" /> Add a second button to the <em>Game Over</em> scene. Clicking
 this button should quit Yaeger. The class <code>YaegerGame</code> provides a method to 
 quit the game, so use

@@ -164,7 +164,7 @@ two-dimensional map of entities that are placed on the scene. Yaeger will
 calculate the location, width and height of each entity and instantiate them.
 You will still have to create a class, with the correct constructor, but the 
 rest will be handled by Yaeger.</p>
-<h2 id="create-coral-entities"><a class="header" href="#create-coral-entities">Create Coral Entities</a></h2>
+<h2 id="create-coral-entities"><a class="header" href="#create-coral-entities">Create coral entities</a></h2>
 <p>Since we need four different coral entities, the approach would be to create 
 four classes, which all extend <code>SpriteEntity</code>, but since their behaviour is 
 identical, there is a better way. </p>
@@ -235,7 +235,7 @@ public int[][] defineMap() {
         };
 }
 </code></pre>
-<h2 id="add-the-tile-map-to-the-game-scene"><a class="header" href="#add-the-tile-map-to-the-game-scene">Add the Tile Map to the Game Scene</a></h2>
+<h2 id="add-the-tile-map-to-the-game-scene"><a class="header" href="#add-the-tile-map-to-the-game-scene">Add the tile map to the game scene</a></h2>
 <p>To be able to use the tile map, the scene will need to implement the
 interface <code>TileMapContainer</code>. This will expose the method <code>setupTileMaps()</code>,
 from which the <code>TileMap</code> can be added, by calling <code>addTileMap(TileMap);</code>. This
@@ -262,7 +262,7 @@ Since all those classes are in the package
 </code></pre>
 <p><img src="images/play.png" alt="Run" /> Run the game. Note how the tiles in your tile map are
 scaled automatically.</p>
-<h2 id="ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral"><a class="header" href="#ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral">Ensure Hanny is hindered whenever she crosses a piece of Coral</a></h2>
+<h2 id="ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral"><a class="header" href="#ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral">Ensure Hanny is hindered whenever she crosses a piece of coral</a></h2>
 <p>Hanny can now still cross a piece of coral. This can be easily resolved, using
 the <code>Collided</code> and <code>Collider</code>interfaces. If the speed of Hanny is set to 0, 
 whenever she collides with a piece of Coral, she will stop moving for that Game 

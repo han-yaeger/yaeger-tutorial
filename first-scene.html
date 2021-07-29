@@ -146,14 +146,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="creating-the-first-scene"><a class="header" href="#creating-the-first-scene">Creating the first Scene</a></h1>
+                        <h1 id="creating-the-first-scene"><a class="header" href="#creating-the-first-scene">Creating the first scene</a></h1>
 <p>We're going to add the first scene to the game. Yaeger supports two different
 types of scenes. A <code>StaticScene</code> and a <code>DynamicScene</code>. A <code>StaticScene</code> will have
 no Game World Update (GWU) and should be used for scenes in which nothing 
 should move or be animated. A <code>DynamicScene</code> does receive a GWU and should be
 used for Game Levels, or scenes that contain animated elements. Since nothing
 will have to be animated for the Title scene, it can be a <code>StaticScene</code>.</p>
-<h2 id="add-the-title-scene"><a class="header" href="#add-the-title-scene">Add the Title scene</a></h2>
+<h2 id="add-the-title-scene"><a class="header" href="#add-the-title-scene">Add the title scene</a></h2>
 <p><img src="images/edit.png" alt="Edit" /> Create a new Class called <code>TitleScene</code> that
 extends <code>StaticScene</code> in the package <code>com.github.hanyaeger.tutorial.scenes</code>.
 Implement the required methods, but leave them empty.</p>
@@ -187,7 +187,7 @@ opens sprites;
 <p>Do not forget to do this for your own game, or an Exception will be thrown when
 the game is trying to access a resource that is in a directory that has not been
 opened up.</p>
-<h2 id="add-the-titlescene-to-the-yaeger-game"><a class="header" href="#add-the-titlescene-to-the-yaeger-game">Add the <code>TitleScene</code> to the Yaeger Game</a></h2>
+<h2 id="add-the-titlescene-to-the-yaeger-game"><a class="header" href="#add-the-titlescene-to-the-yaeger-game">Add the <code>TitleScene</code> to the Yaeger game</a></h2>
 <p>Now that we have created the <code>TitleScene</code>, we should add it to the Game. For 
 this, we will use the method <code>addScene(int, YaegerScene)</code> from <code>Waterworld. java</code>. This method should be called from <code>setupScenes()</code> and takes two 
 parameters. The first one identifies the scene, which you can 

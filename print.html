@@ -166,7 +166,7 @@ modern IDE that supports Java, this tutorial will only include examples for
 From Java, we will only be using the basic constructs, such as Packages, 
 classes, interfaces and methods. More &quot;modern&quot; parts of the language, such 
 as lambda's or generics are not required, nor used.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-your-first-yaeger-game"><a class="header" href="#creating-your-first-yaeger-game">Creating your first Yaeger Game</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-your-first-yaeger-game"><a class="header" href="#creating-your-first-yaeger-game">Creating your first Yaeger game</a></h1>
 <p>We are going to create a game that consists of three scenes. A Title scene,
 a Game Level scene and a Game Over scene. The Game itself will be about a fish
 called Hanny, that swims in the ocean and tries to pop air bubbles. Sadly most
@@ -183,7 +183,7 @@ recognized by all modern IDE's. Knowledge of <a href="https://maven.apache.org/"
 is therefore not required, but just to paint the full picture: you'll find a 
 <code>pom.xml</code> file at the root of the project. This file contains the full project 
 setup, and you will notice the dependency it has on<code>Yaeger</code>.</p>
-<h2 id="importing-the-maven-project-into-your-favourite-ide"><a class="header" href="#importing-the-maven-project-into-your-favourite-ide">Importing the Maven Project into your favourite IDE</a></h2>
+<h2 id="importing-the-maven-project-into-your-favourite-ide"><a class="header" href="#importing-the-maven-project-into-your-favourite-ide">Importing the Maven project into your favourite IDE</a></h2>
 <p>Since all modern IDE's can import a <a href="https://maven.apache.org/">Maven</a> project,
 it does not matter which you use. In this tutorial we focus on the two most
 popular amongst Java developers: 
@@ -222,7 +222,7 @@ contains a <code>pom.xml</code> file:</p>
 <p><img src="images/setup/eclipse-select.png" alt="Eclipse select" /></p>
 </li>
 </ol>
-<h2 id="switch-branch-to-look-at-the-solution"><a class="header" href="#switch-branch-to-look-at-the-solution">Switch Branch to look at the solution</a></h2>
+<h2 id="switch-branch-to-look-at-the-solution"><a class="header" href="#switch-branch-to-look-at-the-solution">Switch branch to look at the solution</a></h2>
 <p>Whenever your stuck, you can switch to Branch <em>implementation</em>, to see the full
 implementation. For switching branches some knowledge of 
 <a href="https://git-scm.com/">Git</a> is required, so read the <a href="https://git-scm.com/">Git</a>
@@ -259,14 +259,14 @@ protected void setupGame() {
 </code></pre>
 <p>The game has been set up, in the next step we will add the scenes and their
 content.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-the-first-scene"><a class="header" href="#creating-the-first-scene">Creating the first Scene</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="creating-the-first-scene"><a class="header" href="#creating-the-first-scene">Creating the first scene</a></h1>
 <p>We're going to add the first scene to the game. Yaeger supports two different
 types of scenes. A <code>StaticScene</code> and a <code>DynamicScene</code>. A <code>StaticScene</code> will have
 no Game World Update (GWU) and should be used for scenes in which nothing 
 should move or be animated. A <code>DynamicScene</code> does receive a GWU and should be
 used for Game Levels, or scenes that contain animated elements. Since nothing
 will have to be animated for the Title scene, it can be a <code>StaticScene</code>.</p>
-<h2 id="add-the-title-scene"><a class="header" href="#add-the-title-scene">Add the Title scene</a></h2>
+<h2 id="add-the-title-scene"><a class="header" href="#add-the-title-scene">Add the title scene</a></h2>
 <p><img src="images/edit.png" alt="Edit" /> Create a new Class called <code>TitleScene</code> that
 extends <code>StaticScene</code> in the package <code>com.github.hanyaeger.tutorial.scenes</code>.
 Implement the required methods, but leave them empty.</p>
@@ -300,7 +300,7 @@ opens sprites;
 <p>Do not forget to do this for your own game, or an Exception will be thrown when
 the game is trying to access a resource that is in a directory that has not been
 opened up.</p>
-<h2 id="add-the-titlescene-to-the-yaeger-game"><a class="header" href="#add-the-titlescene-to-the-yaeger-game">Add the <code>TitleScene</code> to the Yaeger Game</a></h2>
+<h2 id="add-the-titlescene-to-the-yaeger-game"><a class="header" href="#add-the-titlescene-to-the-yaeger-game">Add the <code>TitleScene</code> to the Yaeger game</a></h2>
 <p>Now that we have created the <code>TitleScene</code>, we should add it to the Game. For 
 this, we will use the method <code>addScene(int, YaegerScene)</code> from <code>Waterworld. java</code>. This method should be called from <code>setupScenes()</code> and takes two 
 parameters. The first one identifies the scene, which you can 
@@ -360,7 +360,7 @@ created a new class, that needs to be instantiated and added to
 <code>YaegerGame</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Use the <code>setupScenes()</code> from the <code>Waterworld</code>-class to
 add <code>GameLevel</code> to the game. Choose a wise <code>id</code>.</p>
-<h2 id="add-a-button-to-switch-to-the-game-scene"><a class="header" href="#add-a-button-to-switch-to-the-game-scene">Add a button to switch to the Game Scene</a></h2>
+<h2 id="add-a-button-to-switch-to-the-game-scene"><a class="header" href="#add-a-button-to-switch-to-the-game-scene">Add a button to switch to the game scene</a></h2>
 <p>Although <code>GameLevel</code> has now been added to the Yaeger Game, there is no way to
 reach it yet. As said before, the first added Scene is set as the active scene
 and that should be the <code>TitleScene</code>. To switch to <code>GameLevel</code>
@@ -522,7 +522,7 @@ from the toolbar:</p>
 <p><img src="images/setup/eclipse-run-config.png" alt="IntelliJ Run Configuration" /></p>
 <p>Select the <em>Arguments</em> tab and edit the <em>Program Arguments</em>:</p>
 <p><img src="images/setup/eclipse-run-config-argument.png" alt="IntelliJ Program arguments" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-a-player-controlled-entity"><a class="header" href="#adding-a-player-controlled-entity">Adding a player controlled Entity</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-a-player-controlled-entity"><a class="header" href="#adding-a-player-controlled-entity">Adding a player controlled entity</a></h1>
 <p>The player will control Hanny by using the arrow keys. Again we will use
 a <code>DynamicSpriteEntity</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Create a class for Hanny in the same package as
@@ -576,7 +576,7 @@ this <code>Set</code>, we set the motion of Hanny.</p>
 this, a <code>DynamicSpriteEntity</code> provides the method <code> setCurrentFrameIndex(int)</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Set the correct frame index. Make sure only the left
 and right buttons change the direction in which Hanny seems to be swimming.</p>
-<h2 id="make-sure-hanny-doesnt-leave-the-scene"><a class="header" href="#make-sure-hanny-doesnt-leave-the-scene">Make sure Hanny doesn't leave the Scene</a></h2>
+<h2 id="make-sure-hanny-doesnt-leave-the-scene"><a class="header" href="#make-sure-hanny-doesnt-leave-the-scene">Make sure Hanny doesn't leave the scene</a></h2>
 <p>To ensure that Hanny remains on the screen, we can use the interface 
 <code>SceneBorderTouchingWatcher</code>, which provides an event handler that gets called 
 whenever the entity touches the border of the scene. By implementing this 
@@ -634,7 +634,7 @@ handler from the <code>KeyListener</code> interface:</p>
 </code></pre>
 <p><img src="images/edit.png" alt="Edit" /> Change the event handler from the <code>KeyListener</code>
 interface to ensure the speed is no longer set to 0.</p>
-<h2 id="add-a-game-over-scene-for-when-health-reaches-zero"><a class="header" href="#add-a-game-over-scene-for-when-health-reaches-zero">Add a Game Over Scene for when health reaches zero</a></h2>
+<h2 id="add-a-game-over-scene-for-when-health-reaches-zero"><a class="header" href="#add-a-game-over-scene-for-when-health-reaches-zero">Add a game over scene for when health reaches zero</a></h2>
 <p>When health reaches 0 Hanny dies, and the player should see a new scene
 containing the text <em>Game Over</em>, with below it the clickable text <em>Play 
 again</em>. We have seen all of Yaeger's features that are required for this, so 
@@ -643,7 +643,7 @@ it should be clear how to implement this.</p>
 Clicking the <em>Play Again</em> button should load the Game Level Scene.</p>
 <p><img src="images/edit.png" alt="Edit" /> Change the event handler in Hanny in such a way that
 when the health reaches zero, the Game Over scene is loaded.</p>
-<h2 id="add-a-quit-game-button-to-the-game-over-scene"><a class="header" href="#add-a-quit-game-button-to-the-game-over-scene">Add a Quit Game button to the Game Over Scene</a></h2>
+<h2 id="add-a-quit-game-button-to-the-game-over-scene"><a class="header" href="#add-a-quit-game-button-to-the-game-over-scene">Add a quit game button to the game over scene</a></h2>
 <p><img src="images/edit.png" alt="Edit" /> Add a second button to the <em>Game Over</em> scene. Clicking
 this button should quit Yaeger. The class <code>YaegerGame</code> provides a method to 
 quit the game, so use
@@ -662,7 +662,7 @@ doesn't even notice it; the fly does (and dies).</p>
 to be checked for collisions every GWU, and it also enables a good
 Object-Oriented approach to place the responsibility of handling a collision on
 the right entity.</p>
-<h2 id="add-collision-detection-for-hanny-and-the-swordfish"><a class="header" href="#add-collision-detection-for-hanny-and-the-swordfish">Add collision detection for Hanny and the Swordfish</a></h2>
+<h2 id="add-collision-detection-for-hanny-and-the-swordfish"><a class="header" href="#add-collision-detection-for-hanny-and-the-swordfish">Add collision detection for Hanny and the swordfish</a></h2>
 <p>The swordfish is a dangerous foe and each time Hanny collides with him, she will
 lose a life point. At the start of the game Hanny has ten of those and when she
 reaches zero, she dies, and it is Game Over.</p>
@@ -686,7 +686,7 @@ the area that is being checked during a collision detection cycle.</p>
 chapter we will rework the swordfish to a version where only the sword causes
 a collision.</p>
 </blockquote>
-<h2 id="let-hanny-respawn-after-a-collision-with-the-swordfish"><a class="header" href="#let-hanny-respawn-after-a-collision-with-the-swordfish">Let Hanny respawn after a collision with the SwordFish</a></h2>
+<h2 id="let-hanny-respawn-after-a-collision-with-the-swordfish"><a class="header" href="#let-hanny-respawn-after-a-collision-with-the-swordfish">Let Hanny respawn after a collision with the swordfish</a></h2>
 <p>Because Hanny is the one who needs to know if she has collided with the
 swordfish, she will be the one who implements <code>Collided</code>. We are going to 
 use the event handler to let Hanny respawn at a different location, using 
@@ -774,7 +774,7 @@ composition of entities, it supplies its own <code>setupEntities()</code> method
 should be used to add the entities that are to be a part of the composition. </p>
 <p>A composite entity defines its own area, where the top-left corner has 
 coordinate (0,0). The size of a composite entity is derived from it content.</p>
-<h3 id="create-the-entities-that-should-be-part-of-the-composite-entity"><a class="header" href="#create-the-entities-that-should-be-part-of-the-composite-entity">Create the Entities that should be part of the Composite Entity</a></h3>
+<h3 id="create-the-entities-that-should-be-part-of-the-composite-entity"><a class="header" href="#create-the-entities-that-should-be-part-of-the-composite-entity">Create the entities that should be part of the composite entity</a></h3>
 <p>The composition will consist of two entities, a <code>SpriteEntity</code> that provides 
 the image of the swordfish, and a <code>RectangleEntity</code> that will implement 
 <code>Collided</code>, be invisible and placed exactly on the sword of the swordfish.</p>
@@ -800,7 +800,7 @@ and implements <code>Collider</code> in the following way:</p>
     }
 }
 </code></pre>
-<h3 id="add-the-entities-to-the-composition"><a class="header" href="#add-the-entities-to-the-composition">Add the Entities to the composition</a></h3>
+<h3 id="add-the-entities-to-the-composition"><a class="header" href="#add-the-entities-to-the-composition">Add the entities to the composition</a></h3>
 <p>Now use the <code>setupEntities()</code> method from <code>SwordFish</code> to add both entities. 
 First the <code>SwordFishSprite</code> and then the <code>HitBox</code>. Since the 
 <code>SwordFishSprite</code> should be placed in the upper-left corner of the 
@@ -819,8 +819,8 @@ content will move with it. </p>
 did before. Don't forget to make him reappear if he leaves the screen.</p>
 <p><img src="images/play.png" alt="Run" /> Start the game and test if the swordfish behaves as 
 expected. </p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-more-entities-and-entityspawners"><a class="header" href="#adding-more-entities-and-entityspawners">Adding more Entities and EntitySpawners</a></h1>
-<h2 id="add-another-enemy-called-sharky"><a class="header" href="#add-another-enemy-called-sharky">Add another enemy, called <code>Sharky</code></a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="adding-more-entities-and-an-entityspawner"><a class="header" href="#adding-more-entities-and-an-entityspawner">Adding more entities and an <code>EntitySpawner</code></a></h1>
+<h2 id="add-another-enemy-called-sharky"><a class="header" href="#add-another-enemy-called-sharky">Add another enemy, called Sharky</a></h2>
 <p><img src="images/game/sharky.png" alt="Sharky" /></p>
 <p>Not only the swordfish, but also another foe abides in the depth of the ocean:
 the evil Sharky. As can be seen, Sharky swims from left to right and is composed
@@ -832,13 +832,13 @@ swim from left to right. After crossing the scene border, he should reappear
 at a random location left of the screen. After colliding with Sharky, Hanny 
 loses a health point.</p>
 <p><img src="images/play.png" alt="Run" /> Start the game and test if Sharky behaves as expected.</p>
-<h2 id="add-air-and-poison-bubbles"><a class="header" href="#add-air-and-poison-bubbles">Add Air and Poison bubbles</a></h2>
+<h2 id="add-air-and-poison-bubbles"><a class="header" href="#add-air-and-poison-bubbles">Add air and poison bubbles</a></h2>
 <p>We are now going to add the game objective: Hanny is going to pop air bubbles. 
 They emerge from the depth of the ocean and float upwards at random speeds. 
 Some are filled with air, and some are filled with a poisonous gas. When Hanny 
 pops one of those, she loses a health point, but when she pops an air bubble, 
 her bubbles popped score increases, and she earns eternal fame.</p>
-<h3 id="create-air-bubbles-and-poison-bubbles"><a class="header" href="#create-air-bubbles-and-poison-bubbles">Create Air Bubbles and Poison Bubbles</a></h3>
+<h3 id="create-air-and-poison-bubbles"><a class="header" href="#create-air-and-poison-bubbles">Create air and poison bubbles</a></h3>
 <p>For air- and poison bubbles we could provide two images of bubbles and use
 a <code>DynamicSpriteEntity</code>, but we'll use a different approach. Yaeger provides
 various entities for standard shapes and for a bubble we could perfectly use a
@@ -863,7 +863,7 @@ to figure out how to change their opacity to make them transparent.</p>
 <p>Besides the interface <code>DynamicCircleEntity</code>, Yaeger also contains a <code>DynamicRectangleEntity</code>, a <code>DynamicEllipseEntity</code>
 and their static versions.</p>
 </blockquote>
-<h3 id="create-a-bubblespawner"><a class="header" href="#create-a-bubblespawner">Create a BubbleSpawner</a></h3>
+<h3 id="create-a-bubble-spawner"><a class="header" href="#create-a-bubble-spawner">Create a bubble spawner</a></h3>
 <p>Because spawning entities into a level is a common feature of games, Yaeger
 supports this through the class <code>EntitySpawner</code>. An <code>EntitySpawner</code> should 
 be extended and can then be added to a scene. The <code>EntitySpawner</code> will 
@@ -876,7 +876,7 @@ extends <code>EntitySpawner</code> in the package
 of <code>EntitySpawner</code> accepts a parameter called <code>intervalInMs</code>. This parameter
 will define the interval at which the method <code>spawnEntities()</code> is called. From
 this method you can call <code>spawn(YaegerEntity)</code>.</p>
-<h3 id="let-the-bubblespawner-spawn-airbubbles"><a class="header" href="#let-the-bubblespawner-spawn-airbubbles">Let the BubbleSpawner spawn AirBubbles</a></h3>
+<h3 id="let-the-bubble-spawner-spawn-air-bubbles"><a class="header" href="#let-the-bubble-spawner-spawn-air-bubbles">Let the bubble spawner spawn air bubbles</a></h3>
 <p>The <code>spawn(YaegerEntity)</code> method from the <code>BubbleSpawner</code> should be used for
 spawning an entity. Furthermore, the <code>BubbleSpawner</code> should be able to place its
 bubbles anywhere below the scene, so it should know the <em>width</em>
@@ -907,7 +907,7 @@ The <code>PoisonBubble</code> will be added later on.</p>
     }
 }
 </code></pre>
-<h3 id="add-the-bubblespawner-to-the-game-level"><a class="header" href="#add-the-bubblespawner-to-the-game-level">Add the BubbleSpawner to the Game Level</a></h3>
+<h3 id="add-the-bubble-spawner-to-the-game-level"><a class="header" href="#add-the-bubble-spawner-to-the-game-level">Add the bubble spawner to the game level</a></h3>
 <p>A <code>YaegerScene</code> does not support entity spawners by default, to enable it, the
 scene needs to implement the interface <code>EntitySpawnerContainer</code>, which requires
 implementing the method <code>setupEntitySpawners()</code>. From this method we can
@@ -916,7 +916,7 @@ adds the entity spawner to the scene and ensures the spawned entities appear on
 the scene.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the <code>BubbleSpawner</code> to the <code>GameLevel</code>.</p>
 <p><img src="images/play.png" alt="Run" /> Run the game to see if everything works as expected.</p>
-<h3 id="make-the-bubblespawner-also-spawn-instances-of-poisonbubble"><a class="header" href="#make-the-bubblespawner-also-spawn-instances-of-poisonbubble">Make the BubbleSpawner also spawn instances of <code>PoisonBubble</code></a></h3>
+<h3 id="make-the-bubble-spawner-also-spawn-instances-of-poisonbubble"><a class="header" href="#make-the-bubble-spawner-also-spawn-instances-of-poisonbubble">Make the bubble spawner also spawn instances of <code>PoisonBubble</code></a></h3>
 <p>Let's change the <code>spawnEntities()</code> method to ensure that four out of ten spawned
 bubbles will be a <code>PoisonBubble</code>. For this we can use the class <code>Random</code> from
 the Java <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Random.html">API</a>
@@ -954,7 +954,7 @@ public void onCollision(Collider collidingObject){
 <p>Notice that we create a <code>SoundClip</code> and call its method <code>play()</code> to create the
 pop-sound. The <code>remove()</code> method is available on all entities and ensures they
 are removed from the scene.</p>
-<h3 id="remove-the-bubbles-if-they-leave-the-scene"><a class="header" href="#remove-the-bubbles-if-they-leave-the-scene">Remove the Bubbles if they leave the Scene</a></h3>
+<h3 id="remove-the-bubbles-if-they-leave-the-scene"><a class="header" href="#remove-the-bubbles-if-they-leave-the-scene">Remove the bubbles if they leave the scene</a></h3>
 <p>Bubbles that leave the scene should still be removed, otherwise they will float
 on for ever and consume an increasing amount of memory, bringing even the
 fastest computer to a grinding halt. We have already seen everything needed to
@@ -965,13 +965,13 @@ event handler. Do make sure you call this method only when the top-border has
 been crossed. </p>
 <p><img src="images/play.png" alt="Run" /> Run the game and use the debugger to see if the bubbles
 that leave the top of the screen are actually removed (and garbage collected).</p>
-<h3 id="remove-health-point-when-hanny-collides-with-a-poisonbubble"><a class="header" href="#remove-health-point-when-hanny-collides-with-a-poisonbubble">Remove health point when Hanny Collides with a <code>PoisonBubble</code></a></h3>
+<h3 id="remove-health-point-when-hanny-collides-with-a-poisonbubble"><a class="header" href="#remove-health-point-when-hanny-collides-with-a-poisonbubble">Remove health point when Hanny collides with a <code>PoisonBubble</code></a></h3>
 <p>Whenever Hanny collides with a <code>PoisonBubble</code>, one health point should be
 removed. Adding this shouldn't be too hard, since we have already seen
 everything we need to accomplish this.</p>
 <p><img src="images/edit.png" alt="Edit" /> Make Hanny lose a health point whenever she collides
 with a <code>PoisonBubble</code>.</p>
-<h3 id="add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble"><a class="header" href="#add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble">Add a Bubbles Popped counter and increase it whenever Hanny Pops an <code>AirBubble</code></a></h3>
+<h3 id="add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble"><a class="header" href="#add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble">Add a Bubbles Popped counter and increase it whenever Hanny pops an <code>AirBubble</code></a></h3>
 <p>Just like the health counter, shown at the top of the screen, we are going 
 to add a <em>Bubbles Popped</em> counter. Again, something we have done before, so it 
 shouldn't be too hard. The main question will be which entity is responsible 
@@ -1026,7 +1026,7 @@ two-dimensional map of entities that are placed on the scene. Yaeger will
 calculate the location, width and height of each entity and instantiate them.
 You will still have to create a class, with the correct constructor, but the 
 rest will be handled by Yaeger.</p>
-<h2 id="create-coral-entities"><a class="header" href="#create-coral-entities">Create Coral Entities</a></h2>
+<h2 id="create-coral-entities"><a class="header" href="#create-coral-entities">Create coral entities</a></h2>
 <p>Since we need four different coral entities, the approach would be to create 
 four classes, which all extend <code>SpriteEntity</code>, but since their behaviour is 
 identical, there is a better way. </p>
@@ -1097,7 +1097,7 @@ public int[][] defineMap() {
         };
 }
 </code></pre>
-<h2 id="add-the-tile-map-to-the-game-scene"><a class="header" href="#add-the-tile-map-to-the-game-scene">Add the Tile Map to the Game Scene</a></h2>
+<h2 id="add-the-tile-map-to-the-game-scene"><a class="header" href="#add-the-tile-map-to-the-game-scene">Add the tile map to the game scene</a></h2>
 <p>To be able to use the tile map, the scene will need to implement the
 interface <code>TileMapContainer</code>. This will expose the method <code>setupTileMaps()</code>,
 from which the <code>TileMap</code> can be added, by calling <code>addTileMap(TileMap);</code>. This
@@ -1124,7 +1124,7 @@ Since all those classes are in the package
 </code></pre>
 <p><img src="images/play.png" alt="Run" /> Run the game. Note how the tiles in your tile map are
 scaled automatically.</p>
-<h2 id="ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral"><a class="header" href="#ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral">Ensure Hanny is hindered whenever she crosses a piece of Coral</a></h2>
+<h2 id="ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral"><a class="header" href="#ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral">Ensure Hanny is hindered whenever she crosses a piece of coral</a></h2>
 <p>Hanny can now still cross a piece of coral. This can be easily resolved, using
 the <code>Collided</code> and <code>Collider</code>interfaces. If the speed of Hanny is set to 0, 
 whenever she collides with a piece of Coral, she will stop moving for that Game 

@@ -146,8 +146,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="adding-more-entities-and-entityspawners"><a class="header" href="#adding-more-entities-and-entityspawners">Adding more Entities and EntitySpawners</a></h1>
-<h2 id="add-another-enemy-called-sharky"><a class="header" href="#add-another-enemy-called-sharky">Add another enemy, called <code>Sharky</code></a></h2>
+                        <h1 id="adding-more-entities-and-an-entityspawner"><a class="header" href="#adding-more-entities-and-an-entityspawner">Adding more entities and an <code>EntitySpawner</code></a></h1>
+<h2 id="add-another-enemy-called-sharky"><a class="header" href="#add-another-enemy-called-sharky">Add another enemy, called Sharky</a></h2>
 <p><img src="images/game/sharky.png" alt="Sharky" /></p>
 <p>Not only the swordfish, but also another foe abides in the depth of the ocean:
 the evil Sharky. As can be seen, Sharky swims from left to right and is composed
@@ -159,13 +159,13 @@ swim from left to right. After crossing the scene border, he should reappear
 at a random location left of the screen. After colliding with Sharky, Hanny 
 loses a health point.</p>
 <p><img src="images/play.png" alt="Run" /> Start the game and test if Sharky behaves as expected.</p>
-<h2 id="add-air-and-poison-bubbles"><a class="header" href="#add-air-and-poison-bubbles">Add Air and Poison bubbles</a></h2>
+<h2 id="add-air-and-poison-bubbles"><a class="header" href="#add-air-and-poison-bubbles">Add air and poison bubbles</a></h2>
 <p>We are now going to add the game objective: Hanny is going to pop air bubbles. 
 They emerge from the depth of the ocean and float upwards at random speeds. 
 Some are filled with air, and some are filled with a poisonous gas. When Hanny 
 pops one of those, she loses a health point, but when she pops an air bubble, 
 her bubbles popped score increases, and she earns eternal fame.</p>
-<h3 id="create-air-bubbles-and-poison-bubbles"><a class="header" href="#create-air-bubbles-and-poison-bubbles">Create Air Bubbles and Poison Bubbles</a></h3>
+<h3 id="create-air-and-poison-bubbles"><a class="header" href="#create-air-and-poison-bubbles">Create air and poison bubbles</a></h3>
 <p>For air- and poison bubbles we could provide two images of bubbles and use
 a <code>DynamicSpriteEntity</code>, but we'll use a different approach. Yaeger provides
 various entities for standard shapes and for a bubble we could perfectly use a
@@ -190,7 +190,7 @@ to figure out how to change their opacity to make them transparent.</p>
 <p>Besides the interface <code>DynamicCircleEntity</code>, Yaeger also contains a <code>DynamicRectangleEntity</code>, a <code>DynamicEllipseEntity</code>
 and their static versions.</p>
 </blockquote>
-<h3 id="create-a-bubblespawner"><a class="header" href="#create-a-bubblespawner">Create a BubbleSpawner</a></h3>
+<h3 id="create-a-bubble-spawner"><a class="header" href="#create-a-bubble-spawner">Create a bubble spawner</a></h3>
 <p>Because spawning entities into a level is a common feature of games, Yaeger
 supports this through the class <code>EntitySpawner</code>. An <code>EntitySpawner</code> should 
 be extended and can then be added to a scene. The <code>EntitySpawner</code> will 
@@ -203,7 +203,7 @@ extends <code>EntitySpawner</code> in the package
 of <code>EntitySpawner</code> accepts a parameter called <code>intervalInMs</code>. This parameter
 will define the interval at which the method <code>spawnEntities()</code> is called. From
 this method you can call <code>spawn(YaegerEntity)</code>.</p>
-<h3 id="let-the-bubblespawner-spawn-airbubbles"><a class="header" href="#let-the-bubblespawner-spawn-airbubbles">Let the BubbleSpawner spawn AirBubbles</a></h3>
+<h3 id="let-the-bubble-spawner-spawn-air-bubbles"><a class="header" href="#let-the-bubble-spawner-spawn-air-bubbles">Let the bubble spawner spawn air bubbles</a></h3>
 <p>The <code>spawn(YaegerEntity)</code> method from the <code>BubbleSpawner</code> should be used for
 spawning an entity. Furthermore, the <code>BubbleSpawner</code> should be able to place its
 bubbles anywhere below the scene, so it should know the <em>width</em>
@@ -234,7 +234,7 @@ The <code>PoisonBubble</code> will be added later on.</p>
     }
 }
 </code></pre>
-<h3 id="add-the-bubblespawner-to-the-game-level"><a class="header" href="#add-the-bubblespawner-to-the-game-level">Add the BubbleSpawner to the Game Level</a></h3>
+<h3 id="add-the-bubble-spawner-to-the-game-level"><a class="header" href="#add-the-bubble-spawner-to-the-game-level">Add the bubble spawner to the game level</a></h3>
 <p>A <code>YaegerScene</code> does not support entity spawners by default, to enable it, the
 scene needs to implement the interface <code>EntitySpawnerContainer</code>, which requires
 implementing the method <code>setupEntitySpawners()</code>. From this method we can
@@ -243,7 +243,7 @@ adds the entity spawner to the scene and ensures the spawned entities appear on
 the scene.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the <code>BubbleSpawner</code> to the <code>GameLevel</code>.</p>
 <p><img src="images/play.png" alt="Run" /> Run the game to see if everything works as expected.</p>
-<h3 id="make-the-bubblespawner-also-spawn-instances-of-poisonbubble"><a class="header" href="#make-the-bubblespawner-also-spawn-instances-of-poisonbubble">Make the BubbleSpawner also spawn instances of <code>PoisonBubble</code></a></h3>
+<h3 id="make-the-bubble-spawner-also-spawn-instances-of-poisonbubble"><a class="header" href="#make-the-bubble-spawner-also-spawn-instances-of-poisonbubble">Make the bubble spawner also spawn instances of <code>PoisonBubble</code></a></h3>
 <p>Let's change the <code>spawnEntities()</code> method to ensure that four out of ten spawned
 bubbles will be a <code>PoisonBubble</code>. For this we can use the class <code>Random</code> from
 the Java <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/Random.html">API</a>
@@ -281,7 +281,7 @@ public void onCollision(Collider collidingObject){
 <p>Notice that we create a <code>SoundClip</code> and call its method <code>play()</code> to create the
 pop-sound. The <code>remove()</code> method is available on all entities and ensures they
 are removed from the scene.</p>
-<h3 id="remove-the-bubbles-if-they-leave-the-scene"><a class="header" href="#remove-the-bubbles-if-they-leave-the-scene">Remove the Bubbles if they leave the Scene</a></h3>
+<h3 id="remove-the-bubbles-if-they-leave-the-scene"><a class="header" href="#remove-the-bubbles-if-they-leave-the-scene">Remove the bubbles if they leave the scene</a></h3>
 <p>Bubbles that leave the scene should still be removed, otherwise they will float
 on for ever and consume an increasing amount of memory, bringing even the
 fastest computer to a grinding halt. We have already seen everything needed to
@@ -292,13 +292,13 @@ event handler. Do make sure you call this method only when the top-border has
 been crossed. </p>
 <p><img src="images/play.png" alt="Run" /> Run the game and use the debugger to see if the bubbles
 that leave the top of the screen are actually removed (and garbage collected).</p>
-<h3 id="remove-health-point-when-hanny-collides-with-a-poisonbubble"><a class="header" href="#remove-health-point-when-hanny-collides-with-a-poisonbubble">Remove health point when Hanny Collides with a <code>PoisonBubble</code></a></h3>
+<h3 id="remove-health-point-when-hanny-collides-with-a-poisonbubble"><a class="header" href="#remove-health-point-when-hanny-collides-with-a-poisonbubble">Remove health point when Hanny collides with a <code>PoisonBubble</code></a></h3>
 <p>Whenever Hanny collides with a <code>PoisonBubble</code>, one health point should be
 removed. Adding this shouldn't be too hard, since we have already seen
 everything we need to accomplish this.</p>
 <p><img src="images/edit.png" alt="Edit" /> Make Hanny lose a health point whenever she collides
 with a <code>PoisonBubble</code>.</p>
-<h3 id="add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble"><a class="header" href="#add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble">Add a Bubbles Popped counter and increase it whenever Hanny Pops an <code>AirBubble</code></a></h3>
+<h3 id="add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble"><a class="header" href="#add-a-bubbles-popped-counter-and-increase-it-whenever-hanny-pops-an-airbubble">Add a Bubbles Popped counter and increase it whenever Hanny pops an <code>AirBubble</code></a></h3>
 <p>Just like the health counter, shown at the top of the screen, we are going 
 to add a <em>Bubbles Popped</em> counter. Again, something we have done before, so it 
 shouldn't be too hard. The main question will be which entity is responsible 
