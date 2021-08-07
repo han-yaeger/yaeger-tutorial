@@ -175,11 +175,10 @@ public void setupScene(){
 </code></pre>
 <p>At this point you should have a look at the file <code>module-info.java</code>, which is
 called the <a href="https://www.oracle.com/nl/corporate/features/understanding-java-9-modules.html">Module Descriptor</a>. 
-This is a special file that defines
-(amongst other things) which directories should be opened up. The <code>resources</code>
-folder itself is open by default, but any subdirectory should be added for the
-resources in those directories to be available. As you will notice this has
-already been done:</p>
+This is a special file that defines (amongst other things) which directories 
+should be opened up. The <code>resources</code> folder itself is open by default, but 
+any subdirectory should be added for the resources in those directories to 
+be available. As you will notice this has already been done:</p>
 <pre><code class="language-java">opens audio; 
 opens backgrounds; 
 opens sprites;

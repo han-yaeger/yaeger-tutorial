@@ -177,13 +177,13 @@ called <code>StartButton</code> that extends <code>TextEntity</code>
 extends <code>TextEntity</code> and place it in the package
 <code>com.github.hanyaeger.tutorial.entities.buttons</code>. Use the following constructor:</p>
 <pre><code class="language-java">public StartButton(Coordinate2D initialLocation){
-        super(initialLocation,&quot;Play game&quot;);
-        setFill(Color.PURPLE);
-        setFont(Font.font(&quot;Roboto&quot;,FontWeight.BOLD,30));
-        }
+    super(initialLocation,&quot;Play game&quot;);
+    setFill(Color.PURPLE);
+    setFont(Font.font(&quot;Roboto&quot;, FontWeight.BOLD, 30));
+}
 </code></pre>
 <p>As you will notice we use the text <em>Play Game</em>, set the color to <em>Purple</em> and
-use the condensed version of the HAN font.</p>
+use <em>Roboto</em> for the font.</p>
 <p><img src="images/edit.png" alt="Edit" /> Now use the <code>setupEntities()</code> from the <code>TitleScene</code> to
 add the <code>StartButton</code>. Place it at the center of the screen, just below the
 title.</p>
@@ -203,16 +203,16 @@ instance of <code>Waterworld</code> to the <code>StartButton</code> and then cal
 <pre><code class="language-java">private Waterworld waterworld;
 
 public TitleScene(Waterworld waterworld){
-        this.waterworld=waterworld;
-        }
+    this.waterworld = waterworld;
+}
 </code></pre>
 <p>and supply an instance of <code>Waterworld</code> (notice the <code>this</code>) to the <code>TitleScene</code>
 in the <code>setupScenes()</code> method:</p>
 <pre><code class="language-java">@Override
 protected void setupScenes(){
-        addScene(0,new TitleScene(this));
-        addScene(1,new GameLevel());
-        }
+    addScene(0, new TitleScene(this));
+    addScene(1, new GameLevel());
+}
 </code></pre>
 <p><img src="images/edit.png" alt="Edit" /> Now do the same for the constructor of
 the <code>StartButton</code>. This constructor already has the location as a parameter, so
@@ -220,13 +220,13 @@ after this change it will have two parameters.</p>
 <p>As the last step wel would like to add the following to the mouse button
 handler:</p>
 <pre><code class="language-java">@Override
-public void onMouseButtonPressed(MouseButton button,double x,double y){
-        waterworld.setActiveScene(1);
-        }
+public void onMouseButtonPressed(MouseButton button, double x, double y){
+    waterworld.setActiveScene(1);
+}
 </code></pre>
-<p><img src="images/play.png" alt="Run" /> Run the game again. The TitleScene should now contain
+<p><img src="images/play.png" alt="Run" /> Run the game again. The <code>TitleScene</code> should now contain
 the title, and a start button. Clicking this start button should switch the game
-to Game Level.</p>
+to <code>GameLevel</code>.</p>
 <h2 id="add-more-behaviour-to-make-the-button-into-a-real-button"><a class="header" href="#add-more-behaviour-to-make-the-button-into-a-real-button">Add more behaviour to make the button into a real button</a></h2>
 <p>The Button should work now, but it gives little visual feedback on its
 behaviour. We are going to add two more interfaces to the <code>StartButton</code>, being
@@ -235,18 +235,18 @@ the <code>MouseEnterListener</code> and <code>MouseExitListener</code>.</p>
 and <code>MouseExitListener</code> and implement their handlers in the following way:</p>
 <pre><code class="language-java">@Override
 public void onMouseEntered(){
-        setFill(Color.VIOLET);
-        setCursor(Cursor.HAND);
-        }
+    setFill(Color.VIOLET);
+    setCursor(Cursor.HAND);
+}
 
 @Override
 public void onMouseExited(){
-        setFill(Color.PURPLE);
-        setCursor(Cursor.DEFAULT);
-        }
+    setFill(Color.PURPLE);
+    setCursor(Cursor.DEFAULT);
+}
 </code></pre>
-<p>Notice how we change both the color of the <code>Entity</code> and the mouse cursor.</p>
-<p>Now we have set up the Game Level, in the next chapter we'll add Entities to
+<p>Notice how we change both the color of the entity and the mouse cursor.</p>
+<p>Now we have set up the game level, in the next chapter we'll add entities to
 turn it into an actual game.</p>
 
                     </main>
