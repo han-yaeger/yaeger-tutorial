@@ -2,7 +2,7 @@ package com.github.hanyaeger.tutorial.scenes;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.text.TextEntity;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 import com.github.hanyaeger.tutorial.Waterworld;
 import com.github.hanyaeger.tutorial.entities.buttons.StartButton;

@@ -3,7 +3,7 @@ package com.github.hanyaeger.tutorial.entities;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.*;
-import com.github.hanyaeger.api.entities.impl.sprite.DynamicSpriteEntity;
+import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.Waterworld;

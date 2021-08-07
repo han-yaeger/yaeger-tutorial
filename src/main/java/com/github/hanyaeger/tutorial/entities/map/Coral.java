@@ -3,7 +3,7 @@ package com.github.hanyaeger.tutorial.entities.map;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
-import com.github.hanyaeger.api.entities.impl.sprite.SpriteEntity;
+import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 
 /**
  * A {@code Coral} is just a basic {@link SpriteEntity} that implements {@link Collider}. Since
