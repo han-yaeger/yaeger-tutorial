@@ -40,14 +40,14 @@ extends `TextEntity` and place it in the package
 
 ```java
 public StartButton(Coordinate2D initialLocation){
-        super(initialLocation,"Play game");
-        setFill(Color.PURPLE);
-        setFont(Font.font("Roboto",FontWeight.BOLD,30));
-        }
+    super(initialLocation,"Play game");
+    setFill(Color.PURPLE);
+    setFont(Font.font("Roboto", FontWeight.BOLD, 30));
+}
 ```
 
 As you will notice we use the text *Play Game*, set the color to *Purple* and
-use the condensed version of the HAN font.
+use *Roboto* for the font.
 
 ![Edit](images/edit.png) Now use the `setupEntities()` from the `TitleScene` to
 add the `StartButton`. Place it at the center of the screen, just below the
@@ -75,8 +75,8 @@ instance of `Waterworld` to the `StartButton` and then call
 private Waterworld waterworld;
 
 public TitleScene(Waterworld waterworld){
-        this.waterworld=waterworld;
-        }
+    this.waterworld = waterworld;
+}
 ```
 
 and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene`
@@ -85,9 +85,9 @@ in the `setupScenes()` method:
 ```java
 @Override
 protected void setupScenes(){
-        addScene(0,new TitleScene(this));
-        addScene(1,new GameLevel());
-        }
+    addScene(0, new TitleScene(this));
+    addScene(1, new GameLevel());
+}
 ```
 
 ![Edit](images/edit.png) Now do the same for the constructor of
@@ -99,14 +99,14 @@ handler:
 
 ```java
 @Override
-public void onMouseButtonPressed(MouseButton button,double x,double y){
-        waterworld.setActiveScene(1);
-        }
+public void onMouseButtonPressed(MouseButton button, double x, double y){
+    waterworld.setActiveScene(1);
+}
 ```
 
-![Run](images/play.png) Run the game again. The TitleScene should now contain
+![Run](images/play.png) Run the game again. The `TitleScene` should now contain
 the title, and a start button. Clicking this start button should switch the game
-to Game Level.
+to `GameLevel`.
 
 ## Add more behaviour to make the button into a real button
 
@@ -120,18 +120,18 @@ and `MouseExitListener` and implement their handlers in the following way:
 ```java
 @Override
 public void onMouseEntered(){
-        setFill(Color.VIOLET);
-        setCursor(Cursor.HAND);
-        }
+    setFill(Color.VIOLET);
+    setCursor(Cursor.HAND);
+}
 
 @Override
 public void onMouseExited(){
-        setFill(Color.PURPLE);
-        setCursor(Cursor.DEFAULT);
-        }
+    setFill(Color.PURPLE);
+    setCursor(Cursor.DEFAULT);
+}
 ```
 
-Notice how we change both the color of the `Entity` and the mouse cursor.
+Notice how we change both the color of the entity and the mouse cursor.
 
-Now we have set up the Game Level, in the next chapter we'll add Entities to
+Now we have set up the game level, in the next chapter we'll add entities to
 turn it into an actual game.

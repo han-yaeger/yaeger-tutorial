@@ -1,9 +1,9 @@
+name: Publish Documentation
+
 on:
   push:
     branches:
       - documentation
-
-name: Publish Documentation
 
 jobs:
   build:
@@ -16,7 +16,6 @@ jobs:
       - name: Check links in markdown
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
-          use-verbose-mode: 'yes'
           folder-path: 'docs/'
 
       - name: Run mdBook

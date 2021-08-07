@@ -13,9 +13,9 @@ method `launch()` from the class `YaegerGame`. Pass the arguments from
 the `main`-method to the `launch`-method:
 
 ```java
-public static void main(String[]args){
-        launch(args);
-        }
+public static void main(String[] args){
+    launch(args);
+}
 ```
 
 ![Run](images/play.png) You now have a minimal Yaeger game. Run the

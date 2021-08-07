@@ -43,12 +43,14 @@ interaction with Hanny will be of later concern.
 ![Edit](images/edit.png) Create an `AirBubble` and a `PoisonBubble` that accept
 both the `initialLocation` and the `speed` as a parameter of their constructor.
 Do not yet add them to the scene. Use
-the [API](https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/api/entities/impl/circle/DynamicCircleEntity.html)
-to figure out how to set the size and color (fill and stroke) of both bubbles.
+the [API](https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/api/entities/impl/DynamicCircleEntity.html)
+to figure out how to set the size and color (fill and stroke) of both 
+bubbles. Note that the `DynamicCircleEntity` inherits those methods from its 
+parent `ShapeEntity`, so look for the inherited methods in the JavaDoc.
 Ensure you can differentiate between both bubbles.
 
 ![Edit](images/edit.png) Use
-the [API](https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/api/entities/impl/circle/DynamicCircleEntity.html)
+the [API](https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/api/entities/impl/DynamicCircleEntity.html)
 to figure out how to change their opacity to make them transparent.
 
 > Besides the interface `DynamicCircleEntity`, Yaeger also contains a `DynamicRectangleEntity`, a `DynamicEllipseEntity`
