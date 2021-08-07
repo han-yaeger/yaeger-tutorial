@@ -1,9 +1,9 @@
+name: Publish Documentation
+
 on:
   push:
     branches:
       - documentation
-
-name: Publish Documentation
 
 jobs:
   build:
@@ -12,6 +12,11 @@ jobs:
     steps:
       - name: Fetch source code
         uses: actions/checkout@v2
+
+      - name: Check links in markdown
+        uses: gaurav-nelson/github-action-markdown-link-check@v1
+        with:
+          folder-path: 'docs/'
 
       - name: Run mdBook
         uses: peaceiris/actions-mdbook@v1
