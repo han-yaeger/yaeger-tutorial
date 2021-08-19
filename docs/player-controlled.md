@@ -24,7 +24,7 @@ look like:
 
 ```java
 public Hanny(Coordinate2D location){
-    super("sprites/hanny.png",location,new Size(20,40), 1, 2);
+    super("sprites/hanny.png", location, new Size(20,40), 1, 2);
 }
 ```
 
@@ -92,13 +92,13 @@ public void notifyBoundaryTouching(SceneBorder border){
             setAnchorLocationY(1);
             break;
         case BOTTOM:
-            setAnchorLocationY(getSceneHeight()-getHeight()-1);
+            setAnchorLocationY(getSceneHeight() - getHeight() - 1);
             break;
         case LEFT:
             setAnchorLocationX(1);
             break;
         case RIGHT:
-            setAnchorLocationX(getSceneWidth()-getWidth()-1);
+            setAnchorLocationX(getSceneWidth() - getWidth() - 1);
         default:
             break;
         }

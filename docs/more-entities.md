@@ -135,10 +135,10 @@ the Java [API](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java
 ```java
 @Override
 protected void spawnEntities(){
-    if(new Random().nextInt(10)< 4){
-        spawn(new PoisonBubble(randomLocation(),2));
+    if(new Random().nextInt(10) < 4){
+        spawn(new PoisonBubble(randomLocation(), 2));
     } else {
-        spawn(new AirBubble(randomLocation(),2));
+        spawn(new AirBubble(randomLocation(), 2));
     }
 }
 ```
