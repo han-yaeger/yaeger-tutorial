@@ -1,20 +1,11 @@
 # Creating the first scene
 
-<<<<<<< HEAD
-We're going to add the first Scene to the game. Yaeger supports two different
-types of Scenes. A `StaticScene` and a `DynamicScene`. A `StaticScene` will have
-no Game World update and should be used for Scenes in which nothing should move
-or be animated. A `DynamicScene` does receive a Game World update and should be
-used for Game Levels, or Scenes that contain animated elements. Since nothing
-will have to be animated for the TitleScene, it can become `StaticScene`.
-=======
 We're going to add the first scene to the game. Yaeger supports two different
 types of scenes. A `StaticScene` and a `DynamicScene`. A `StaticScene` will have
 no Game World Update (GWU) and should be used for scenes in which nothing 
 should move or be animated. A `DynamicScene` does receive a GWU and should be
 used for Game Levels, or scenes that contain animated elements. Since nothing
 will have to be animated for the Title scene, it can be a `StaticScene`.
->>>>>>> development
 
 ## Add the title scene
 
@@ -25,13 +16,9 @@ Implement the required methods, but leave them empty.
 ## Set the background image and audio
 
 The method `setupScene()` should be used for setting the background image and
-<<<<<<< HEAD
-audio of a Scene. For this you can use the
-methods `setBackgroundImage(String url)` and `setBackgroundAudio(String url)`.
-=======
 audio of a scene. For this you can use the methods 
 `setBackgroundImage(String)` and `setBackgroundAudio(String)`.
->>>>>>> development
+
 Both the image and the audio are provided in the `resources/` folder. This
 folder should be the only place to store your assets. The url is relative to
 this folder, so the file `background1.jpg` from the folder `backgrounds/` should
@@ -49,19 +36,11 @@ public void setupScene(){
 ```
 
 At this point you should have a look at the file `module-info.java`, which is
-<<<<<<< HEAD
-called the *Module Descriptor*. This is a special file that defines
-(amongst other things) which directories should be opened up. The `resources`
-folder itself is open by default, but any subdirectory should be added for the
-resources in those directories to be available. As you will notice this has
-already been done:
-=======
 called the [Module Descriptor](https://www.oracle.com/nl/corporate/features/understanding-java-9-modules.html). 
 This is a special file that defines (amongst other things) which directories 
 should be opened up. The `resources` folder itself is open by default, but 
 any subdirectory should be added for the resources in those directories to 
 be available. As you will notice this has already been done:
->>>>>>> development
 
 ```java 
 opens audio; 
@@ -75,19 +54,11 @@ opened up.
 
 ## Add the `TitleScene` to the Yaeger game
 
-<<<<<<< HEAD
-Now that we have created the TitleScene, we should add it to the Game. For this,
-we will use the method `setupScenes()`
-from `Waterworld.java`. This method takes two parameters. The first one
-identifies the Scene, which you can use to set the active Scene. The second
-parameter is an instance of the Scene.
-=======
 Now that we have created the `TitleScene`, we should add it to the Game. For 
 this, we will use the method `addScene(int, YaegerScene)` from `Waterworld.
 java`. This method should be called from `setupScenes()` and takes two 
 parameters. The first one identifies the scene, which you can 
 use to set the active scene. The second parameter is an instance of the scene.
->>>>>>> development
 
 ![Edit](images/edit.png) So add the following body to the `setupScenes()`
 method:
@@ -100,24 +71,10 @@ protected void setupScenes(){
 ```
 
 ![Run](images/play.png) It's time to run the game again. After the Splash Screen
-<<<<<<< HEAD
-has been shown, the TitleScene should be loaded.
-=======
 has been shown, the `TitleScene` should be loaded.
->>>>>>> development
 
 ## Add some text to the `TitleScene`
 
-<<<<<<< HEAD
-Let's add the title of the game to the TitleScene. All objects you can add to a
-Scene are called *Entities*. Of these there are various different types. There
-are *TextEntities* that should be used for displaying a text, *SpriteEntities*
-for displaying a Sprite and shape-based Entities, such as, for instance, a *
-RectangleEntity*. For all these types there are the Static and Dynamic version.
-
-A title is typically the static version of a `TextEntity`. We will use the
-method `setupEntities()` to add Entities to the Scene.
-=======
 Let's add the title of the game to the `TitleScene`. All objects you can add to
 a scene are called *Entities*. Of these there are various different types. There
 are *TextEntities* that should be used for displaying text, *SpriteEntities* 
@@ -127,25 +84,20 @@ Dynamic version.
 
 A title is typically the static version of a `TextEntity`. We will use the
 method `setupEntities()` to add Entities to the scene.
->>>>>>> development
 
 ![Edit](images/edit.png) Add the following body to the `setupEntities()` method:
 
 ```java
 @Override
 public void setupEntities(){
-<<<<<<< HEAD
-    var waterworldText=new TextEntity(
-        new Coordinate2D(getWidth()/2,getHeight()/2),
-=======
+
     var waterworldText = new TextEntity(
         new Coordinate2D(getWidth() / 2, getHeight() / 2),
->>>>>>> development
         "Waterworld"
     );
     waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
     waterworldText.setFill(Color.DARKBLUE);
-    waterworldText.setFont(Font.font("Roboto",FontWeight.SEMI_BOLD,80));
+    waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
     addEntity(waterworldText);
 }
 ```
@@ -154,16 +106,6 @@ public void setupEntities(){
 
 First we create the `waterworldText` by instantiating a `TextEntity`. The first
 parameter of the constructor is the `Coordinate2D`. To place it at the center of
-<<<<<<< HEAD
-the Scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter
-is the text to be shown. To actually place the center of the `TextEntity` at the
-center of the Scene, we use the method `setAnchorPoint()` and to set the color,
-we use `setFill()`. We set the font to the HAN font, through the
-method `setFont()` and lastly we add the `Entity` to the Scene, by calling the
-method `addEntity()`.
-
-![Run](images/play.png) Run the game again. The TitleScene should now contain
-=======
 the scene, we use the `getWidth()/2` and `getHeight()/2`. The second parameter
 is the text to be shown. To actually place the center of the `TextEntity` at the
 center of the scene, we use the method `setAnchorPoint()`. To set the color,
@@ -172,5 +114,4 @@ method `setFont()` and lastly we add the `TextEntity` to the scene, by
 calling the method `addEntity()`.
 
 ![Run](images/play.png) Run the game again. The `TitleScene` should now contain
->>>>>>> development
 the title.

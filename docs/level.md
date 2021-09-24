@@ -1,31 +1,17 @@
 # Creating a level
 
-<<<<<<< HEAD
-Now that we have a TitleScene, lets add a Game Level. Since a level is typically
-a Scene that contains animated Entities, we are going to extend a `DynamicScene`
-.
-
-![Edit](images/edit.png) Add a scene called `GameLevel`, which extends
-a `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
-=======
 Now that we have a Title Scene, lets add a Game Level. Since a level is
 typically a Scene that contains animated Entities, we are going to extend a
 `DynamicScene`.
 
 ![Edit](images/edit.png) Add a scene called `GameLevel`, which extends
 `DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
->>>>>>> development
 package. Use the method `setupScene()` to set the background to the
 asset `background2.jpg` and the audio to `waterworld.mp3`.
 
 At this moment the level has not yet been added to the game. You have only
-<<<<<<< HEAD
-created a new class, that needs to be instantiated and added to the `YaegerGame`
-.
-=======
 created a new class, that needs to be instantiated and added to
 `YaegerGame`.
->>>>>>> development
 
 ![Edit](images/edit.png) Use the `setupScenes()` from the `Waterworld`-class to
 add `GameLevel` to the game. Choose a wise `id`.
@@ -37,13 +23,8 @@ reach it yet. As said before, the first added Scene is set as the active scene
 and that should be the `TitleScene`. To switch to `GameLevel`
 you will need to call the method `setActiveScene(id)` on the `Waterworld` class.
 
-<<<<<<< HEAD
-To enable this, we are going to add a button to the `TitleScene`. Clicking the
-button will result in switching to
-=======
 To trigger this call, we are going to add a button to the `TitleScene`. Clicking
 the button will result in switching to
->>>>>>> development
 `GameLevel`. As said before, everything that should appear on a Scene is an
 Entity. For the button we are going to use a `TextEntity` that will need to
 listen to mouse-clicks. Because of the latter, we can no longer use an inline
@@ -59,16 +40,6 @@ extends `TextEntity` and place it in the package
 
 ```java
 public StartButton(Coordinate2D initialLocation){
-<<<<<<< HEAD
-        super(initialLocation,"Play game");
-        setFill(Color.PURPLE);
-        setFont(Font.font("Roboto",FontWeight.BOLD,30));
-        }
-```
-
-As you will notice we use the text *Play Game*, set the color to *Purple* and
-use the condensed version of the HAN font.
-=======
     super(initialLocation,"Play game");
     setFill(Color.PURPLE);
     setFont(Font.font("Roboto", FontWeight.BOLD, 30));
@@ -77,7 +48,6 @@ use the condensed version of the HAN font.
 
 As you will notice we use the text *Play Game*, set the color to *Purple* and
 use *Roboto* for the font.
->>>>>>> development
 
 ![Edit](images/edit.png) Now use the `setupEntities()` from the `TitleScene` to
 add the `StartButton`. Place it at the center of the screen, just below the
@@ -87,20 +57,6 @@ title.
 
 In general, to expand the behaviour of an `Entity`, you should add the
 appropriate Interface to the `Entity`. To let an `Entity` listen to mouse button
-<<<<<<< HEAD
-clicks, the `Entity` should implement the Interface `MouseButtonPressedListener`
-.
-
-![Edit](images/edit.png) Let `StartButton` implement the
-interface `MouseButtonPressedListener`.
-
-When the user clicks on the `StartButton` the handler (`onMouseButtonPressed()`)
-is called. this handler should call
-`setActiveScene()` on the `Waterworld` class, but this method is not available
-from the `TitleScene`. So lets pass the instance of `Waterworld` to
-the `StartButton` and then call `setActiveScene()` from the mouse pressed
-handler.
-=======
 clicks, the `Entity` should implement the Interface
 `MouseButtonPressedListener`.
 
@@ -112,7 +68,6 @@ is called. this handler should call `setActiveScene()` on the `Waterworld`
 class, but this method is not available from the `TitleScene`. So lets pass the
 instance of `Waterworld` to the `StartButton` and then call
 `setActiveScene()` from the mouse pressed handler.
->>>>>>> development
 
 ![Edit](images/edit.png) Change the constructor of `TitleScene` to
 
@@ -125,11 +80,7 @@ public TitleScene(Waterworld waterworld){
 ```
 
 and supply an instance of `Waterworld` (notice the `this`) to the `TitleScene`
-<<<<<<< HEAD
-in the `setupScenes` method:
-=======
 in the `setupScenes()` method:
->>>>>>> development
 
 ```java
 @Override
@@ -153,15 +104,9 @@ public void onMouseButtonPressed(MouseButton button, double x, double y){
 }
 ```
 
-<<<<<<< HEAD
-![Run](images/play.png) Run the game again. The TitleScene should now contain
-the title, and a start button. Clicking this start button should switch the game
-to Game Level.
-=======
 ![Run](images/play.png) Run the game again. The `TitleScene` should now contain
 the title, and a start button. Clicking this start button should switch the game
 to `GameLevel`.
->>>>>>> development
 
 ## Add more behaviour to make the button into a real button
 

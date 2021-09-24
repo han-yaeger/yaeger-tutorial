@@ -4,8 +4,7 @@
 
     <groupId>com.github.han-yaeger</groupId>
     <artifactId>tutorial</artifactId>
-    <version>2021.2022</version>
-
+    <version>2021.2022.1</version>
     <name>Yaeger tutorial: Waterworld</name>
 
     <properties>
@@ -47,7 +46,7 @@
         <dependency>
             <groupId>com.github.han-yaeger</groupId>
             <artifactId>yaeger</artifactId>
-            <version>2021.2022</version>
+            <version>2021.2022.1</version>
         </dependency>
     </dependencies>
 </project>
