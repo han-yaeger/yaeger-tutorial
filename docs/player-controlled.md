@@ -143,26 +143,3 @@ else if(pressedKeys.isEmpty()){
 
 ![Edit](images/edit.png) Change the event handler from the `KeyListener`
 interface to ensure the speed is no longer set to 0.
-
-## Add a game over scene for when health reaches zero
-
-When health reaches 0 Hanny dies, and the player should see a new scene
-containing the text *Game Over*, with below it the clickable text *Play 
-again*. We have seen all of Yaeger's features that are required for this, so 
-it should be clear how to implement this.
-
-![Edit](images/edit.png) Add a *Game Over* scene with a *Play Again* button.
-Clicking the *Play Again* button should load the Game Level Scene.
-
-![Edit](images/edit.png) Change the event handler in Hanny in such a way that
-when the health reaches zero, the Game Over scene is loaded.
-
-## Add a quit game button to the game over scene
-
-![Edit](images/edit.png) Add a second button to the *Game Over* scene. Clicking
-this button should quit Yaeger. The class `YaegerGame` provides a method to 
-quit the game, so use
-the [JavaDoc](https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/api/YaegerGame.html)
-to figure out which one it is.
-
-![Run](images/play.png) Run the game and test if the quit button works.
