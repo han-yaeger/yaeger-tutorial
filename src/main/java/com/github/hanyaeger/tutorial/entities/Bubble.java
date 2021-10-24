@@ -10,6 +10,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.entities.map.Coral;
+import com.github.hanyaeger.tutorial.entities.swordfish.HitBox;
 import com.github.hanyaeger.tutorial.entities.swordfish.SwordFish;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public abstract class Bubble extends DynamicCircleEntity implements Collided, Co
         for (Collider collider : collidingObject) {
             if (collider instanceof Sharky ||
                     collider instanceof Hanny ||
-                    collider instanceof SwordFish) {
+                    collider instanceof HitBox) {
                 shouldPop = true;
                 break;
             }
