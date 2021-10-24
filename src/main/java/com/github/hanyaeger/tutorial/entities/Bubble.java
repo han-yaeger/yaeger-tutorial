@@ -10,6 +10,9 @@ import com.github.hanyaeger.api.entities.impl.DynamicCircleEntity;
 import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.tutorial.entities.map.Coral;
+import com.github.hanyaeger.tutorial.entities.swordfish.SwordFish;
+
+import java.util.List;
 
 public abstract class Bubble extends DynamicCircleEntity implements Collided, Collider, SceneBorderCrossingWatcher {
 
@@ -22,15 +25,24 @@ public abstract class Bubble extends DynamicCircleEntity implements Collided, Co
     }
 
     @Override
-    public void onCollision(Collider collidingObject) {
-        if (collidingObject instanceof Coral) {
-            return;
+    public void onCollision(List<Collider> collidingObject) {
+        var shouldPop = false;
+
+        for (Collider collider : collidingObject) {
+            if (collider instanceof Sharky ||
+                    collider instanceof Hanny ||
+                    collider instanceof SwordFish) {
+                shouldPop = true;
+                break;
+            }
         }
+        if (shouldPop) {
 
-        var popSound = new SoundClip("audio/pop.mp3");
-        popSound.play();
+            var popSound = new SoundClip("audio/pop.mp3");
+            popSound.play();
 
-        remove();
+            remove();
+        }
     }
 
     @Override

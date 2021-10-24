@@ -12,6 +12,7 @@ import com.github.hanyaeger.tutorial.entities.text.BubblesPoppedText;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -52,12 +53,28 @@ public class Hanny extends DynamicSpriteEntity implements SceneBorderTouchingWat
     }
 
     @Override
-    public void onCollision(Collider collidingObject) {
-        if (collidingObject instanceof Coral) {
+    public void onCollision(List<Collider> collidingObject) {
+        var coralCollision = false;
+        var airBubbleCollision = false;
+        var enemyCollision = false;
+
+        for (Collider collider : collidingObject) {
+            if (collider instanceof Coral) {
+                coralCollision = true;
+            } else if (collider instanceof AirBubble) {
+                airBubbleCollision = true;
+            } else {
+                enemyCollision = true;
+            }
+        }
+
+        if (coralCollision) {
             setSpeed(0);
-        } else if (collidingObject instanceof AirBubble) {
+        }
+        if (airBubbleCollision) {
             bubblesPoppedText.setText(++bubblesPopped);
-        } else {
+        }
+        if (enemyCollision) {
             healthText.setText(--health);
 
             if (health == 0) {
