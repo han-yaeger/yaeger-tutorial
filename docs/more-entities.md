@@ -216,7 +216,7 @@ Think about which entities need to become a `Collider` and implement the event
 handler for collisions on Hanny in the following way:
 
 ```java
- @Override
+@Override
 public void onCollision(List<Collider> collidingObject) {
     var airBubbleCollision = false;
     var enemyCollision = false;
