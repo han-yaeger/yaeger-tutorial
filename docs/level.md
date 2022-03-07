@@ -99,7 +99,7 @@ handler:
 
 ```java
 @Override
-public void onMouseButtonPressed(MouseButton button, double x, double y){
+public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D){
     waterworld.setActiveScene(1);
 }
 ```
