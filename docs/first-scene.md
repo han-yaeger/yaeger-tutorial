@@ -65,7 +65,7 @@ method:
 
 ```java
 @Override
-protected void setupScenes(){
+public void setupScenes(){
     addScene(0, new TitleScene());
 }
 ```
