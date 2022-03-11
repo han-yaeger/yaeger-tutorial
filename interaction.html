@@ -225,6 +225,9 @@ public Hanny(Coordinate2D location, HealthText healthText){
 
     this.healthText = healthText;
     healthText.setHealthText(health);
+
+    setGravityConstant(0.005);
+    setFrictionConstant(0.04);
 }
 </code></pre>
 <p>The last step is to integrate the health into the event handler of Hanny.</p>
