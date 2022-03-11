@@ -703,7 +703,8 @@ Hanny. This way, Hanny has access to the <code>HealthText</code> entity and can 
 method <code>setHealthText(int)</code> whenever her health changes.</p>
 <p><img src="images/edit.png" alt="Edit" /> Give Hanny a private instance field called health of
 type <code>int</code> and initialize it to 10. Also bind the constructor
-parameter <code>HealthText</code> to an instance field. Af this change, the constructor and
+parameter <code>HealthText</code> to an instance field. After this change, the 
+constructor and
 instance fields of Hanny should look like:</p>
 <pre><code class="language-java">private HealthText healthText;
 private int health = 10;
@@ -817,7 +818,7 @@ expected. </p>
 the evil Sharky. As can be seen, Sharky swims from left to right and is composed
 of many sprites. If these sprites are cycled at the correct speed, Sharky
 becomes animated. To automatically cycle through the sprites,
-a <code>DynamicSpriteEntity</code> provides the <code>setAutoCyce(long)</code> method.</p>
+a <code>DynamicSpriteEntity</code> provides the <code>setAutoCycle(long)</code> method.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add Sharky to <code>GameLevel</code>, animate him and let him
 swim from left to right. After crossing the scene border, he should reappear 
 at a random location left of the screen. After colliding with Sharky, Hanny 
