@@ -8,7 +8,7 @@ Not only the swordfish, but also another foe abides in the depth of the ocean:
 the evil Sharky. As can be seen, Sharky swims from left to right and is composed
 of many sprites. If these sprites are cycled at the correct speed, Sharky
 becomes animated. To automatically cycle through the sprites,
-a `DynamicSpriteEntity` provides the `setAutoCyce(long)` method.
+a `DynamicSpriteEntity` provides the `setAutoCycle(long)` method.
 
 ![Edit](images/edit.png) Add Sharky to `GameLevel`, animate him and let him
 swim from left to right. After crossing the scene border, he should reappear 
