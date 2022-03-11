@@ -108,6 +108,9 @@ public Hanny(Coordinate2D location, HealthText healthText){
 
     this.healthText = healthText;
     healthText.setHealthText(health);
+
+    setGravityConstant(0.005);
+    setFrictionConstant(0.04);
 }
 ```
 
