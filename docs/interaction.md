@@ -99,7 +99,6 @@ method `setHealthText(int)` whenever her health changes.
 type `int` and initialize it to 10. Also bind the constructor
 parameter `HealthText` to an instance field. After this change, the 
 constructor and instance fields of Hanny should look like:
->>>>>>> 6cf1534... [documentation] Minor reformat
 
 ```java
 private HealthText healthText;
@@ -110,6 +109,9 @@ public Hanny(Coordinate2D location, HealthText healthText){
 
     this.healthText = healthText;
     healthText.setHealthText(health);
+
+    setGravityConstant(0.005);
+    setFrictionConstant(0.04);
 }
 ```
 
