@@ -97,8 +97,7 @@ method `setHealthText(int)` whenever her health changes.
 ![Edit](images/edit.png) Give Hanny a private instance field called health of
 type `int` and initialize it to 10. Also bind the constructor
 parameter `HealthText` to an instance field. After this change, the 
-constructor and
-instance fields of Hanny should look like:
+constructor and instance fields of Hanny should look like:
 
 ```java
 private HealthText healthText;
