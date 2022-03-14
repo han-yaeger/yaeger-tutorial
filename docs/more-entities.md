@@ -249,7 +249,7 @@ public void onCollision(List<Collider> collidingObject) {
 ## Apply some proper Object Orientation
 
 When you followed the steps above you might have implemented the `Collider`
-interface in the `AirBubble` class as well as in the `PoissonBubble` class.
+interface in the `AirBubble` class as well as in the `PoisonBubble` class.
 Again shared behaviour, so it's time to clean that up.
 
 ![Edit](images/edit.png) Create a superclass for both `AirBubble`
