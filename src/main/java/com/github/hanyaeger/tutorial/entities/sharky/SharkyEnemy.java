@@ -1,17 +1,21 @@
 package com.github.hanyaeger.tutorial.entities.sharky;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.entities.YaegerEntity;
+import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 
 import java.util.Random;
 
 public class SharkyEnemy extends DynamicCompositeEntity implements SceneBorderCrossingWatcher {
+    private static final Size sharkySize = new Size(400, 400);
+
     public SharkyEnemy(Coordinate2D initialLocation) {
         super(initialLocation);
-        setMotion(4, 90d);
+        setMotion(1, 90d);
     }
 
     @Override
@@ -20,12 +24,12 @@ public class SharkyEnemy extends DynamicCompositeEntity implements SceneBorderCr
         addEntity(createHitBox());
     }
 
-    private YaegerEntity createSprite() {
-        return new Sprite();
+    private SpriteEntity createSprite() {
+        return new Sprite(sharkySize);
     }
 
     private YaegerEntity createHitBox() {
-        return new HitBox(new Coordinate2D(0, 38));
+        return new HitBox(new Coordinate2D(sharkySize.width() - 100, 125));
     }
 
     @Override

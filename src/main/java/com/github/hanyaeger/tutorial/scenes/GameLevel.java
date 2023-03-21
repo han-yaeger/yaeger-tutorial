@@ -18,7 +18,7 @@ public class GameLevel extends DynamicScene {
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/waterworld.mp3");
+//        setBackgroundAudio("audio/waterworld.mp3");
         setBackgroundImage("backgrounds/background2.jpg");
     }
 

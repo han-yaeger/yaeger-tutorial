@@ -8,8 +8,8 @@ import javafx.scene.paint.Color;
 public class HitBox extends RectangleEntity implements Collider {
     public HitBox(final Coordinate2D initialPosition) {
         super(initialPosition);
-        setWidth(25);
-        setHeight(50);
+        setWidth(100);
+        setHeight(150);
         setFill(Color.RED);
     }
 }
