@@ -11,11 +11,11 @@ import com.github.hanyaeger.api.scenes.SceneBorder;
 import java.util.Random;
 
 public class SharkyEnemy extends DynamicCompositeEntity implements SceneBorderCrossingWatcher {
-    private static final Size sharkySize = new Size(400, 400);
+    private final Size sharkySize = new Size(400, 400);
 
     public SharkyEnemy(Coordinate2D initialLocation) {
         super(initialLocation);
-        setMotion(1, 90d);
+        setMotion(4, 90d);
     }
 
     @Override
@@ -29,12 +29,12 @@ public class SharkyEnemy extends DynamicCompositeEntity implements SceneBorderCr
     }
 
     private YaegerEntity createHitBox() {
-        return new HitBox(new Coordinate2D(sharkySize.width() - 100, 125));
+        return new HitBox(new Coordinate2D(sharkySize.width() - 80, 170));
     }
 
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
-        setAnchorLocationX(0);
-        setAnchorLocationY(new Random().nextInt((int) getSceneHeight()- 81));
+        setAnchorLocationX(-sharkySize.width());
+        setAnchorLocationY(new Random().nextInt((int) getSceneHeight() - 200));
     }
 }
