@@ -23,7 +23,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
     @Override
     public void onCollision(Collider collider) {
-
+        System.out.println("ja");
     }
 
     @Override

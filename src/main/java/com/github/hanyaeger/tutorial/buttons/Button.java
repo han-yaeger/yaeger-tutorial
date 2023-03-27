@@ -24,6 +24,7 @@ public class Button extends TextEntity implements MouseButtonPressedListener, Mo
 
     @Override
     public void onMouseButtonPressed(MouseButton mouseButton, Coordinate2D coordinate2D) {
+
         lavaExit.setActiveScene(1);
     }
 
