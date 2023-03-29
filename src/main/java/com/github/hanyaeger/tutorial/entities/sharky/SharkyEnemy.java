@@ -25,11 +25,11 @@ public class SharkyEnemy extends DynamicCompositeEntity implements SceneBorderCr
     }
 
     private SpriteEntity createSprite() {
-        return new Sprite(sharkySize);
+        return new SharkySprite(sharkySize);
     }
 
     private YaegerEntity createHitBox() {
-        return new HitBox(new Coordinate2D(sharkySize.width() - 80, 170));
+        return new SharkyHitBox(new Coordinate2D(sharkySize.width() - 80, 170));
     }
 
     @Override

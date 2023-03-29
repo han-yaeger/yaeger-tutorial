@@ -10,22 +10,26 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.entities.sharky.SharkyHitBox;
+import com.github.hanyaeger.tutorial.entities.swordfish.SwordfishHitBox;
 import com.github.hanyaeger.tutorial.entities.text.HealthText;
+import com.github.hanyaeger.tutorial.settings.EnemyDamage;
 import javafx.scene.input.KeyCode;
 
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
+public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian,
+        Collided, Collider {
 
     private int health = 10;
-
-    // TODO: Maak afhankelijk van enemy
-    private static final int HIT_DECREMENT = 10;
 
     private final Waterworld waterworld;
 
     private final HealthText healthText;
+
+    private static final double SPEED = 4;
 
     public Hanny(Coordinate2D initialLocation, Waterworld waterworld, HealthText healthText) {
         super("sprites/hanny.png", initialLocation, new Size(20, 40), 1, 2);
@@ -44,25 +48,32 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBord
         return health;
     }
 
-    private void setHealth(int health) {
-        this.health = health;
+    public void decrementHealth(int decrement) {
+        health = getHealth() - decrement;
+
+        if (health > 0) {
+            healthText.setHealthText(getHealth());
+        }
+        else {
+            waterworld.setActiveScene(2);
+        }
     }
 
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
-            setMotion(3, 270d);
+            setMotion(SPEED, 270d);
             setCurrentFrameIndex(0);
         }
         else if (pressedKeys.contains(KeyCode.RIGHT)) {
-            setMotion(3, 90d);
+            setMotion(SPEED, 90d);
             setCurrentFrameIndex(1);
         }
         else if (pressedKeys.contains(KeyCode.UP)) {
-            setMotion(3, 180d);
+            setMotion(SPEED, 180d);
         }
         else if (pressedKeys.contains(KeyCode.DOWN)) {
-            setMotion(3, 0d);
+            setMotion(SPEED, 0d);
         }
     }
 
@@ -87,23 +98,23 @@ public class Hanny extends DynamicSpriteEntity implements KeyListener, SceneBord
         }
     }
 
-
     @Override
-    public void onCollision(Collider collidingObject) {
+    public void onCollision(List<Collider> collidingObjects) {
         setAnchorLocation(
                 new Coordinate2D(new Random().nextInt((int) (getSceneWidth()
                         - getWidth())),
                         new Random().nextInt((int) (getSceneHeight() - getHeight())))
         );
 
-        setHealth(health - HIT_DECREMENT);
+        Collider enemy = collidingObjects.get(0);
+        int damage = 0;
 
-        if (health > 0) {
-            healthText.setHealthText(getHealth());
+        if (enemy instanceof SwordfishHitBox) {
+            damage = EnemyDamage.SWORDFISH.getDamage();
+        } else if (enemy instanceof SharkyHitBox) {
+            damage = EnemyDamage.SHARKY.getDamage();
+        }
 
-        }
-        else {
-            waterworld.setActiveScene(2);
-        }
+        decrementHealth(damage);
     }
 }

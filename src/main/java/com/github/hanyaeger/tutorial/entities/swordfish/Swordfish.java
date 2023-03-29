@@ -14,23 +14,28 @@ public class Swordfish extends DynamicCompositeEntity implements SceneBorderCros
         setMotion(2, 270d);
     }
 
+    private YaegerEntity createSprite() {
+        return new SwordfishSprite();
+    }
+
+    private YaegerEntity createHitBox() {
+        return new SwordfishHitBox(new Coordinate2D(0, 38));
+    }
+
     @Override
     protected void setupEntities() {
         addEntity(createSprite());
         addEntity(createHitBox());
     }
 
-    private YaegerEntity createSprite() {
-        return new Sprite();
-    }
-
-    private YaegerEntity createHitBox() {
-        return new HitBox(new Coordinate2D(0, 38));
-    }
-
     @Override
     public void notifyBoundaryCrossing(SceneBorder border) {
         setAnchorLocationX(getSceneWidth());
         setAnchorLocationY(new Random().nextInt((int) getSceneHeight()- 81));
+    }
+
+    @Override
+    public void update(long timestamp) {
+        super.update(timestamp);
     }
 }

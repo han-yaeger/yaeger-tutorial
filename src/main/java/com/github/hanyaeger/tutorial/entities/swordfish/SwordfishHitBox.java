@@ -5,8 +5,8 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 import javafx.scene.paint.Color;
 
-public class HitBox extends RectangleEntity implements Collider {
-    public HitBox(final Coordinate2D initialPosition) {
+public class SwordfishHitBox extends RectangleEntity implements Collider {
+    public SwordfishHitBox(final Coordinate2D initialPosition) {
         super(initialPosition);
         setWidth(60);
         setHeight(3);
