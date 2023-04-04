@@ -1,7 +1,7 @@
-module waterworld {
+module seacleaner {
     requires hanyaeger;
 
-    exports com.github.hanyaeger.tutorial;
+    exports com.github.tvloet1.seacleaner;
 
     opens audio;
     opens backgrounds;
