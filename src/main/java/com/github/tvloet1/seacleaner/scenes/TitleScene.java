@@ -21,17 +21,17 @@ public class TitleScene extends StaticScene {
 	@Override
 	public void setupScene() {
 		setBackgroundAudio("audio/behindEnemyLines.mp3");
-		setBackgroundImage("backgrounds/background1.jpg");
+		setBackgroundImage("backgrounds/backgroundStart.jpg");
 	}
 
 	@Override
 	public void setupEntities() {
-		var seacleanerText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() / 2), "seacleaner");
+		var seacleanerText = new TextEntity(new Coordinate2D(getWidth() / 2, getHeight() *0.4), "Sea Cleaner");
 		seacleanerText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
 		seacleanerText.setFill(Color.ORANGE);
 		seacleanerText.setFont(Font.font("Courier New", FontWeight.BOLD, 80));
 		addEntity(seacleanerText);
-		var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.6), seacleaner);
+		var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() * 0.5), seacleaner);
 		startButton.setAnchorPoint(AnchorPoint.CENTER_CENTER);
 		addEntity(startButton);
 	}
