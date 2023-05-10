@@ -7,12 +7,7 @@ import com.github.hanyaeger.tutorial.Player;
 
 public class VastPlatform extends Platform implements Collider {
 
-    public VastPlatform(Player player, Coordinate2D initialLocation, Size size, String resource) {
-        super(player, initialLocation, size, resource);
-    }
-
-    @Override
-    public boolean staatErop(){
-        if(player)
+    public VastPlatform(Coordinate2D initialLocation, Size size, String resource) {
+        super(initialLocation, size, resource);
     }
 }

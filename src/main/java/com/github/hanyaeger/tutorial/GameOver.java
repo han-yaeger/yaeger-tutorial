@@ -9,10 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class Startscherm extends StaticScene {
+public class GameOver extends StaticScene {
     private LavaExit lavaExit;
 
-    public Startscherm(LavaExit lavaExit) {
+    public GameOver(LavaExit lavaExit){
         this.lavaExit = lavaExit;
     }
 
@@ -26,14 +26,14 @@ public class Startscherm extends StaticScene {
     public void setupEntities() {
         var lavaExitText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 2),
-                "LavExit"
+                "Game Over"
         );
         lavaExitText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
         lavaExitText.setFill(Color.WHITE);
         lavaExitText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
         addEntity(lavaExitText);
 
-        var startTekst = new Button(new Coordinate2D(getWidth() / 2.5, getHeight() / 1.75), lavaExit);
-        addEntity(startTekst);
+        var gameOverTekst = new Button(new Coordinate2D(getWidth() / 2.5, getHeight() / 1.75), "Restart", 1, lavaExit);
+        addEntity(gameOverTekst);
     }
 }
