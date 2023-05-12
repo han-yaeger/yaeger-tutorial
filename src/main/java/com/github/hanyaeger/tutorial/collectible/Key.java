@@ -4,22 +4,29 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
+import com.github.hanyaeger.tutorial.Player;
 
 public class Key extends Collectible implements Collided {
-    private static boolean opgepakt = false;
+    private boolean opgepakt = false;
+    private Player player;
 
-    public Key(Coordinate2D initialLocation, Size size) {
+    public Key(Player player, Coordinate2D initialLocation, Size size) {
         super("sprites/key.png", initialLocation, size);
+        this.player = player;
     }
 
     public void onCollision(Collider collider) {
-        opgepakt = true;
+        if(collider instanceof Player) {
+            opgepakt = true;
+            remove();
+        }
+
     }
 
-    public static boolean getOpgepakt(){
+    public boolean getOpgepakt(){
         return opgepakt;
     }
-    public static void setOpgepakt(boolean aanraken){
+    public void setOpgepakt(boolean aanraken){
         opgepakt = aanraken;
     }
 }

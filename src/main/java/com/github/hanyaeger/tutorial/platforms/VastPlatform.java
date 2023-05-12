@@ -7,7 +7,7 @@ import com.github.hanyaeger.tutorial.Player;
 
 public class VastPlatform extends Platform implements Collider {
 
-    public VastPlatform(Coordinate2D initialLocation, Size size, String resource) {
-        super(initialLocation, size, resource);
+    public VastPlatform(Coordinate2D initialLocation) {
+        super(initialLocation);
     }
 }

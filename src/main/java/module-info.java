@@ -7,4 +7,5 @@ module waterworld {
     opens backgrounds;
     opens sprites;
     exports com.github.hanyaeger.tutorial.collectible;
+    exports com.github.hanyaeger.tutorial.collectible.powerup;
 }
