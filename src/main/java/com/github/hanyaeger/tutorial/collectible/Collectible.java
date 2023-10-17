@@ -4,11 +4,16 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
+import com.github.hanyaeger.tutorial.Player;
 
-public abstract class Collectible extends SpriteEntity {
+public class Collectible extends SpriteEntity {
     public Collectible(String resource, Coordinate2D location, Size size) {
         super(resource, location, size);
     }
 
-    public abstract void onCollision(Collider collider);
+    public void onCollision(Collider collider){
+        if (collider instanceof Player){
+            remove();
+        }
+    }
 }

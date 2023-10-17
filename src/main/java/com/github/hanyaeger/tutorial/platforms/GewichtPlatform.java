@@ -9,12 +9,10 @@ import com.github.hanyaeger.tutorial.text.Text;
 public class GewichtPlatform extends Platform implements Collided {
     private Text maxGewichtText;
     private int maxGewicht;
-    private Player player;
 
-    public GewichtPlatform(Text maxGewichtText, Player player, int maxGewicht, Coordinate2D initialLocation) {
+    public GewichtPlatform(Text maxGewichtText, int maxGewicht, Coordinate2D initialLocation) {
         super(initialLocation);
         this.maxGewicht = maxGewicht;
-        this.player = player;
         this.maxGewichtText = maxGewichtText;
 
         maxGewichtText.setText("max. ", maxGewicht);
@@ -23,6 +21,7 @@ public class GewichtPlatform extends Platform implements Collided {
     @Override
     public void onCollision(Collider collider) {
         if (collider instanceof Player) {
+            Player player = (Player) collider;
             if (player.gewicht > maxGewicht){
                 remove();
                 maxGewichtText.remove();

@@ -9,13 +9,11 @@ import com.github.hanyaeger.tutorial.collectible.Key;
 
 public class Door extends SpriteEntity implements Collided {
     private Key key;
-    private Player player;
     private LavaExit lavaExit;
 
-    public Door(Key key, Player player, LavaExit lavaExit, Coordinate2D location, Size size) {
+    public Door(Key key, LavaExit lavaExit, Coordinate2D location, Size size) {
         super("sprites/door.png", location, size);
         this.key = key;
-        this.player = player;
         this.lavaExit = lavaExit;
     }
 
@@ -23,6 +21,7 @@ public class Door extends SpriteEntity implements Collided {
     @Override
     public void onCollision(Collider collider) {
         if (collider instanceof Player) {
+            Player player = (Player) collider;
             if(key.getOpgepakt()) {
                 lavaExit.setActiveScene(3);
                 key.setOpgepakt(false);

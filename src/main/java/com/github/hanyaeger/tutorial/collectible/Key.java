@@ -7,26 +7,23 @@ import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.Player;
 
 public class Key extends Collectible implements Collided {
-    private boolean opgepakt = false;
-    private Player player;
+    private boolean isOpgepakt = false;
 
-    public Key(Player player, Coordinate2D initialLocation, Size size) {
+    public Key(Coordinate2D initialLocation, Size size) {
         super("sprites/key.png", initialLocation, size);
-        this.player = player;
     }
 
     public void onCollision(Collider collider) {
+        super.onCollision(collider);
         if(collider instanceof Player) {
-            opgepakt = true;
-            remove();
+            isOpgepakt = true;
         }
-
     }
 
     public boolean getOpgepakt(){
-        return opgepakt;
+        return isOpgepakt;
     }
     public void setOpgepakt(boolean aanraken){
-        opgepakt = aanraken;
+        isOpgepakt = aanraken;
     }
 }

@@ -5,28 +5,17 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.Player;
-import com.github.hanyaeger.tutorial.collectible.Collectible;
 
 public class HeavierPowerup extends Powerup implements Collided {
-    private int zwaarte;
-    private Player player;
+    private final int zwaarte;
 
-    public HeavierPowerup(Player player, Coordinate2D location, Size size, int zwaarte) {
+    public HeavierPowerup(Coordinate2D location, Size size, int zwaarte) {
             super("sprites/heavyPowerup.png", location, size);
             this.zwaarte = zwaarte;
-            this.player = player;
     }
 
     @Override
-    public void onCollision(Collider collider) {
-        if (collider instanceof Player){
-            player.setGewicht(pasToe(player.gewicht));
-            System.out.println(player.gewicht);
-            remove();
-        }
-    }
-
-    public int pasToe(int gewicht){
-        return gewicht + zwaarte;
+    public void pasToe(Player player){
+        player.setGewicht(player.getGewicht() + zwaarte);
     }
 }
