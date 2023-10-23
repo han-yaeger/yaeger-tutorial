@@ -1,4 +1,4 @@
-package com.github.hanyaeger.tutorial;
+package com.github.hanyaeger.FishingSimulator;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;

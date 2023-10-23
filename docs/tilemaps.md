@@ -28,19 +28,19 @@ identical, there is a better way.
 We'll dive into that later on, for now:
 
 ![Edit](images/edit.png) Create a class `Coral` that extends `SpriteEntity` to
-the package `com.github.hanyaeger.tutorial.entities.map`.
+the package `com.github.hanyaeger.FishingSimulator.entities.map`.
 
 It's constructor should accept a `Coordinate2D` as the first parameter, a 
 `Size` as the second, and a `String` as the third. Pass these values to the
 constructor of `SpriteEntity`, notice how that constructor accepts the same 
 parameters, but in a different order.
 
-Add the class to the package `com.github.hanyaeger.tutorial.entities.map`.
+Add the class to the package `com.github.hanyaeger.FishingSimulator.entities.map`.
 
 ## Create a tile map for the coral
 
 ![Edit](images/edit.png) Create a class `CoralTileMap` that extends `TileMap` to
-the package `com.github.hanyaeger.tutorial.entities.map`.
+the package `com.github.hanyaeger.FishingSimulator.entities.map`.
 
 As you can see, `CoralTileMap` will need to implement two methods. The
 method `setupEntities()` will be used to register the entities that are to be
@@ -126,7 +126,7 @@ Exception:
 
 ```text
 Caused by: java.lang.IllegalAccessException: class com.github.hanyaeger.core.factories.TileFactory (in module hanyaeger) cannot access class com.
-github.hanyaeger.tutorial.entities.map.Coral (in module waterworld) because module waterworld does not export com.github.hanyaeger.tutorial.entities.map to module hanyaeger
+github.hanyaeger.tutorial.entities.map.Coral (in module waterworld) because module waterworld does not export com.github.hanyaeger.FishingSimulator.entities.map to module hanyaeger
 	at java.base/jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:376)
 	at java.base/java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:647)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:490)
@@ -137,12 +137,12 @@ github.hanyaeger.tutorial.entities.map.Coral (in module waterworld) because modu
 Remember how we talked about the *Module Descriptor*? We are going to edit it,
 to make sure that Yaeger is allowed to make instances of the coral entities.
 Since all those classes are in the package 
-`com.github.hanyaeger.tutorial.entities.map`, we have to export that package.
+`com.github.hanyaeger.FishingSimulator.entities.map`, we have to export that package.
 
 ![Edit](images/edit.png) Add the following line to the file `module-info.java`:
 
 ```text
-    exports com.github.hanyaeger.tutorial.entities.map;
+    exports com.github.hanyaeger.FishingSimulator.entities.map;
 ```
 
 ![Run](images/play.png) Run the game. Note how the tiles in your tile map are

@@ -1,11 +1,11 @@
-package com.github.hanyaeger.tutorial.scenes;
+package com.github.hanyaeger.FishingSimulator.scenes;
 
 import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
-import com.github.hanyaeger.tutorial.FishingSimulator;
-import com.github.hanyaeger.tutorial.buttons.StartButton;
+import com.github.hanyaeger.FishingSimulator.FishingSimulator;
+import com.github.hanyaeger.FishingSimulator.buttons.StartButton;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;

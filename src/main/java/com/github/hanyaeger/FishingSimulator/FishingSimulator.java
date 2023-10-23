@@ -1,9 +1,9 @@
-package com.github.hanyaeger.tutorial;
+package com.github.hanyaeger.FishingSimulator;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.tutorial.scenes.GameScene;
-import com.github.hanyaeger.tutorial.scenes.TitleScene;
+import com.github.hanyaeger.FishingSimulator.scenes.GameScene;
+import com.github.hanyaeger.FishingSimulator.scenes.TitleScene;
 
 public class FishingSimulator extends YaegerGame {
 
@@ -14,7 +14,7 @@ public class FishingSimulator extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Fishing Simulator");
-        setSize(new Size(800, 600));
+        setSize(new Size(1280, 720));
     }
 
     @Override
