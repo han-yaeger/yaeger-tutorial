@@ -11,30 +11,29 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TitleScene extends StaticScene {
-    private FishingSimulator waterworld;
+    private FishingSimulator fishingSimulator;
 
-    public TitleScene(FishingSimulator waterworld){
-        this.waterworld = waterworld;
+    public TitleScene(FishingSimulator fishingSimulator){
+        this.fishingSimulator = fishingSimulator;
     }
 
     @Override
     public void setupScene() {
-        setBackgroundAudio("audio/ocean.mp3");
-        setBackgroundImage("backgrounds/background1.jpg");
+        setBackgroundColor(Color.BEIGE);
     }
 
     @Override
     public void setupEntities() {
-        var waterworldText = new TextEntity(
+        var fishingSimulatorText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 2),
-                "Waterworld"
+                "Fishing Simulator"
         );
-        waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
-        waterworldText.setFill(Color.DARKBLUE);
-        waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
-        addEntity(waterworldText);
+        fishingSimulatorText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+        fishingSimulatorText.setFill(Color.LIGHTSEAGREEN);
+        fishingSimulatorText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
+        addEntity(fishingSimulatorText);
 
-        var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100), waterworld);
+        var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100), fishingSimulator);
         addEntity(startButton);
     }
 

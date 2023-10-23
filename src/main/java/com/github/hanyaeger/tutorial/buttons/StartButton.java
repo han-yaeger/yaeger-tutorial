@@ -13,18 +13,18 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class StartButton extends TextEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener{
-    private FishingSimulator waterworld;
+    private FishingSimulator fishingSimulator;
 
-    public StartButton(Coordinate2D initialLocation, FishingSimulator waterworld){
-        super(initialLocation,"Play game");
-        setFill(Color.PURPLE);
+    public StartButton(Coordinate2D initialLocation, FishingSimulator fishingSimulator){
+        super(initialLocation,"Fish!");
+        setFill(Color.BLUEVIOLET);
         setFont(Font.font("Roboto", FontWeight.BOLD, 30));
-        this.waterworld = waterworld;
+        this.fishingSimulator = fishingSimulator;
     }
 
     @Override
     public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2D){
-        waterworld.setActiveScene(1);
+        fishingSimulator.setActiveScene(1);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class StartButton extends TextEntity implements MouseButtonPressedListene
 
     @Override
     public void onMouseExited(){
-        setFill(Color.PURPLE);
+        setFill(Color.BLUEVIOLET);
         setCursor(Cursor.DEFAULT);
     }
 
