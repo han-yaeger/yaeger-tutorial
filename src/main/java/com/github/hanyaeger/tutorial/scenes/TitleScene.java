@@ -22,8 +22,7 @@ public class TitleScene extends StaticScene {
         setBackgroundColor(Color.BEIGE);
     }
 
-    @Override
-    public void setupEntities() {
+    @Override    public void setupEntities() {
         var fishingSimulatorText = new TextEntity(
                 new Coordinate2D(getWidth() / 2, getHeight() / 2),
                 "Fishing Simulator"
@@ -33,7 +32,7 @@ public class TitleScene extends StaticScene {
         fishingSimulatorText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
         addEntity(fishingSimulatorText);
 
-        var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 2 + 100), fishingSimulator);
+        var startButton = new StartButton(new Coordinate2D(getWidth() / 2.2, getHeight() / 2 + 100), fishingSimulator);
         addEntity(startButton);
     }
 
