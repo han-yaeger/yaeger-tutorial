@@ -7,6 +7,7 @@ public class GameScene extends DynamicScene {
 
     @Override
     public void setupScene() {
+        setBackgroundImage("backgrounds/gameBackground.gif");
     }
 
     @Override

@@ -14,7 +14,7 @@ public class FishingSimulator extends YaegerGame {
     @Override
     public void setupGame() {
         setGameTitle("Fishing Simulator");
-        setSize(new Size(800, 600));
+        setSize(new Size(1280, 720));
     }
 
     @Override
