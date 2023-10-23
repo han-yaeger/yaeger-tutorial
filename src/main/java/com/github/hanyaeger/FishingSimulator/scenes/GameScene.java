@@ -2,7 +2,7 @@ package com.github.hanyaeger.FishingSimulator.scenes;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.tutorial.entities.Player;
+import com.github.hanyaeger.FishingSimulator.entities.Player;
 
 public class GameScene extends DynamicScene {
 

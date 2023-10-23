@@ -1,4 +1,4 @@
-package com.github.hanyaeger.tutorial.entities;
+package com.github.hanyaeger.FishingSimulator.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
