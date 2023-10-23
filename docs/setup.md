@@ -3,7 +3,7 @@
 Let's first create the entry-point, the class that contains the `main`-method.
 
 ![Edit](images/edit.png) Create a class called `Waterworld.java` in the
-package `com.github.hanyaeger.tutorial`.
+package `com.github.hanyaeger.FishingSimulator`.
 
 ![Edit](images/edit.png)  Let `Waterworld` extend the class `YaegerGame` and
 implement the required methods. Leave them empty for now.

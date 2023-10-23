@@ -8,7 +8,7 @@ swim around, we will be using a `DynamicSpriteEntity`.
 
 ![Edit](images/edit.png) Create a new class called `Swordfish` that
 extends `DynamicSpriteEntity` in package 
-`com.github.hanyaeger.tutorial.entities`. Since the image of the
+`com.github.hanyaeger.FishingSimulator.entities`. Since the image of the
 swordfish is already of the correct size, we don't need to set its size through
 the constructor, which can now look like:
 

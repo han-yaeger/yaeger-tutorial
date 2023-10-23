@@ -68,7 +68,7 @@ of `AirBubble` and `PoisonBubble`.
 
 ![Edit](images/edit.png) Create a class called `BubbleSpawner` that
 extends `EntitySpawner` in the package
-`com.github.hanyaeger.tutorial.spawners`. Notice that the constructor
+`com.github.hanyaeger.FishingSimulator.spawners`. Notice that the constructor
 of `EntitySpawner` accepts a parameter called `intervalInMs`. This parameter
 will define the interval at which the method `spawnEntities()` is called. From
 this method you can call `spawn(YaegerEntity)`.

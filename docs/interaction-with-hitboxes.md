@@ -11,7 +11,7 @@ this, we will be using a composition of several entities, that will be part of
 a `DynamicCompositeEntity`.
 
 ![Edit](images/edit.png) Create a package
-`com.github.hanyaeger.tutorial.entities.swordfish`. In this package create a
+`com.github.hanyaeger.FishingSimulator.entities.swordfish`. In this package create a
 class `SwordFish` that extends `DynamicCompositeEntity`. Implement the methods,
 but leave them empty for now. Delete the previous implementation of the
 swordfish and replace all usages with the new one.
@@ -33,7 +33,7 @@ the image of the swordfish, and a `RectangleEntity` that will implement
 
 ![Edit](images/edit.png) Create the class `SwordFishSprite` that extends 
 `SpriteEntity` and place it in the package 
-`com.github.hanyaeger.tutorial.entities.swordfish` in the following way:
+`com.github.hanyaeger.FishingSimulator.entities.swordfish` in the following way:
 
 ```java
 public class SwordfishSprite extends SpriteEntity {

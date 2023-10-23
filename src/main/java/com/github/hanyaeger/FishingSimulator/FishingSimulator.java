@@ -1,9 +1,9 @@
-package com.github.hanyaeger.tutorial;
+package com.github.hanyaeger.FishingSimulator;
 
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
-import com.github.hanyaeger.tutorial.scenes.GameScene;
-import com.github.hanyaeger.tutorial.scenes.TitleScene;
+import com.github.hanyaeger.FishingSimulator.scenes.GameScene;
+import com.github.hanyaeger.FishingSimulator.scenes.TitleScene;
 
 public class FishingSimulator extends YaegerGame {
 
