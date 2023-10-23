@@ -75,7 +75,7 @@ already seen.
 
 ![Edit](images/edit.png) Create a new static `TextEntity` called `HealthText`
 with the constructor and method shown below. Add it to the
-package `com.github.hanyaeger.tutorial.entities.text`.
+package `com.github.hanyaeger.FishingSimulator.entities.text`.
 
 ```java
 public HealthText(Coordinate2D initialLocation){

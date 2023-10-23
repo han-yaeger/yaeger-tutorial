@@ -5,7 +5,7 @@ typically a Scene that contains animated Entities, we are going to extend a
 `DynamicScene`.
 
 ![Edit](images/edit.png) Add a scene called `GameLevel`, which extends
-`DynamicScene`, to the `com.github.hanyaeger.tutorial.scenes`
+`DynamicScene`, to the `com.github.hanyaeger.FishingSimulator.scenes`
 package. Use the method `setupScene()` to set the background to the
 asset `background2.jpg` and the audio to `waterworld.mp3`.
 
@@ -36,7 +36,7 @@ called `StartButton` that extends `TextEntity`
 
 ![Edit](images/edit.png) Create a new Class `StartButton` that
 extends `TextEntity` and place it in the package
-`com.github.hanyaeger.tutorial.entities.buttons`. Use the following constructor:
+`com.github.hanyaeger.FishingSimulator.entities.buttons`. Use the following constructor:
 
 ```java
 public StartButton(Coordinate2D initialLocation){
