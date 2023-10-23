@@ -12,4 +12,5 @@ public abstract class Powerup extends Collectible implements Collider {
     }
 
     public abstract void pasToe(Player player);
+    public abstract void verwijderEffect(Player player);
 }

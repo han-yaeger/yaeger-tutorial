@@ -15,4 +15,9 @@ public class SpringenPowerup extends Powerup implements Collided {
     public void pasToe(Player player) {
         player.setHoogSpringen(true);
     }
+
+    @Override
+    public void verwijderEffect(Player player) {
+        player.setHoogSpringen(false);
+    }
 }

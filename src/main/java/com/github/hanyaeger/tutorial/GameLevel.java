@@ -29,7 +29,8 @@ public class GameLevel extends DynamicScene {
     @Override
     public void setupEntities() {
         Text gewichtText = new Text(new Coordinate2D(10, 10), 30);
-        Player player = new Player(gewichtText, new Coordinate2D(70, 300));
+        Text inventoryText = new Text(new Coordinate2D(10, 40), 20);
+        Player player = new Player(gewichtText, inventoryText, new Coordinate2D(70, 300));
 
         Collectible key = new Key(new Coordinate2D(530, 150), new Size(100, 50));
         Collectible heavierPowerup = new HeavierPowerup(new Coordinate2D(600, 500), new Size(50, 50), 70);
@@ -40,7 +41,7 @@ public class GameLevel extends DynamicScene {
         Lava lava = new Lava((Key) key, player, lavaExit, new Coordinate2D(0, 580), new Size(800, 800));
 
         Platform vastPlatform1 = new VastPlatform(new Coordinate2D(0, 500));
-        Platform vastPlatform2 = new VastPlatform(new Coordinate2D(300, 400));
+        Platform vastPlatform2 = new VastPlatform(new Coordinate2D(325, 400));
         Platform vastPlatform3 = new VastPlatform(new Coordinate2D(700, 550));
         Platform vastPlatform4 = new VastPlatform(new Coordinate2D(450, 500));
 
@@ -53,6 +54,7 @@ public class GameLevel extends DynamicScene {
         Platform secondenPlatform2 = new SecondenPlatform(secondenText2, new Coordinate2D(550, 550), 7);
 
         addEntity(gewichtText);
+        addEntity(inventoryText);
         addEntity(key);
         addEntity(heavierPowerup);
         addEntity(springenPowerup);

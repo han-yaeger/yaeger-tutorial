@@ -21,11 +21,11 @@ public class Lava extends SpriteEntity implements Collided {
 
     @Override
     public void onCollision(Collider collider) {
-//        if (collider instanceof Player) {
-//            lavaExit.setActiveScene(2);
-//            key.setOpgepakt(false);
-//            player.setGewicht(70);
-//            player.setHoogSpringen(false);
-//        }
+        if (collider instanceof Player) {
+            lavaExit.setActiveScene(2);
+            key.setOpgepakt(false);
+            player.setGewicht(70);
+            player.setHoogSpringen(false);
+        }
     }
 }

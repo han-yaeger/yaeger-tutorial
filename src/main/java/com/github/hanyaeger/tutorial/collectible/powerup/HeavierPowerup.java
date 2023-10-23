@@ -18,4 +18,9 @@ public class HeavierPowerup extends Powerup implements Collided {
     public void pasToe(Player player){
         player.setGewicht(player.getGewicht() + zwaarte);
     }
+
+    @Override
+    public void verwijderEffect(Player player) {
+        player.setGewicht(player.getGewicht() - zwaarte);
+    }
 }
