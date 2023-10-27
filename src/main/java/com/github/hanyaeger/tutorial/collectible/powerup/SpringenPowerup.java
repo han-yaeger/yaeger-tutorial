@@ -2,7 +2,6 @@ package com.github.hanyaeger.tutorial.collectible.powerup;
 
 import com.github.hanyaeger.api.*;
 import com.github.hanyaeger.api.entities.Collided;
-import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.tutorial.Player;
 
 public class SpringenPowerup extends Powerup implements Collided {

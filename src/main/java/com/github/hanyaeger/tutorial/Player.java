@@ -12,6 +12,7 @@ import com.github.hanyaeger.tutorial.collectible.powerup.Powerup;
 import com.github.hanyaeger.tutorial.collectible.powerup.SpringenPowerup;
 import com.github.hanyaeger.tutorial.platforms.Platform;
 import com.github.hanyaeger.tutorial.text.Text;
+import javafx.geometry.Bounds;
 import javafx.scene.input.KeyCode;
 
 import java.util.Set;
@@ -21,6 +22,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     private Text inventoryText;
     private boolean springen = false;
     private boolean hoogSpringen = false;
+    private Bounds oudBoundingBox;
+    private Bounds nieuwBoundingBox;
     private Powerup inventoryPowerup;
     private Powerup usePowerup;
     public int gewicht = 70;
@@ -37,46 +40,52 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     @Override
     public void explicitUpdate(long l) {
         gewichtText.setText("Gewicht: ",gewicht);
+
+        //slaat neiuwe en oude locatie op
+        if(getBoundingBox() != nieuwBoundingBox){
+            oudBoundingBox = nieuwBoundingBox;
+            nieuwBoundingBox = getBoundingBox();
+        }
     }
 
-
-    //TO DO: afronden naar bepaald decimaal getal en dan checken met elkaar
     @Override
     public void onCollision(Collider collider) {
-
         if (collider instanceof Platform platform) {
             //controleert of player op het platform staat
-            //(moet met een marche gerekend worden, omdat de 2 waarde van beide elementen bijna nooit gelijk zijn
-            if((getBoundingBox().getMaxY() - platform.getBoundingBox().getMinY() <= 15)
-            && (getBoundingBox().getMaxY() - platform.getBoundingBox().getMinY() >= -5)) {
+            //wordt gecontroleer dmv van de oude locatie en de nieuwe locatie en te controleren of het platform daar tussenvalt
+            //dit omdat de locatie van player bijna nooit gelijk is aan de locatie van platform
+            if((platform.getBoundingBox().getMinY() <= nieuwBoundingBox.getMaxY())
+            && (platform.getBoundingBox().getMinY() >= oudBoundingBox.getMaxY())){
+                nullifySpeedInDirection(Direction.DOWN);
                 setAnchorLocationY(platform.getBoundingBox().getMinY() - getBoundingBox().getHeight());
                 springen = true;
             }
 
-            //controleert of player tegen de linkerkant van een platform aanloopt
-            if((getBoundingBox().getMaxX() - platform.getBoundingBox().getMinX() <= 15)
-            && (getBoundingBox().getMaxX() - platform.getBoundingBox().getMinX() >= 5)){
-                setAnchorLocationX(platform.getBoundingBox().getMinX() - getBoundingBox().getWidth() - 1);
+            //controleert of player tegen de rechterkant van een platform aanloopt
+            if((platform.getBoundingBox().getMaxX() >= nieuwBoundingBox.getMinX())
+            && (platform.getBoundingBox().getMaxX() <= oudBoundingBox.getMinX())){
+                nullifySpeedInDirection(Direction.LEFT);
+                setAnchorLocationX(platform.getBoundingBox().getMaxX());
             }
 
-            //controleert of player tegen de rechterkant van een platform aanloopt
-            if((getBoundingBox().getMinX() - platform.getBoundingBox().getMaxX() >= -10)
-            && (getBoundingBox().getMinX() - platform.getBoundingBox().getMaxX() <= 5)){
-                setAnchorLocationX(platform.getBoundingBox().getMaxX() + 6);
+            //controleert of player tegen de linkerkant van een platform aanloopt
+            if((platform.getBoundingBox().getMinX() <= nieuwBoundingBox.getMaxX())
+            && (platform.getBoundingBox().getMinX() >= oudBoundingBox.getMaxX())){
+                nullifySpeedInDirection(Direction.RIGHT);
+                setAnchorLocationX(platform.getBoundingBox().getMinX() - getBoundingBox().getWidth());
             }
 
             //controleert of player tegen de onderkant van een platform aankomt
-            if((getBoundingBox().getMinY() - platform.getBoundingBox().getMaxY() >= -10)
-            && (getBoundingBox().getMinY() - platform.getBoundingBox().getMaxY() <= 5)){
-                setAnchorLocationY(platform.getBoundingBox().getMaxY() + 6);
+            if((platform.getBoundingBox().getMaxY() >= nieuwBoundingBox.getMinY())
+            && (platform.getBoundingBox().getMaxY() <= oudBoundingBox.getMinY())){
+                setAnchorLocationY(platform.getBoundingBox().getMaxY() + 10);
             }
-
         }
         if (collider instanceof Powerup puCollider) {
             //slaat aangeraakte powerup op in een variabele
             //player mag maar 1 powerup tegelijkertijd opslaan
             //zodra player een andere powerup aanraakt overschrijft hij de vorige
-            setSpeed(0);
+            setAnchorLocationY(getBoundingBox().getMinY());
             inventoryPowerup = puCollider;
             if(inventoryPowerup instanceof SpringenPowerup) {
                 inventoryText.setText("Inventory: hoger springen");
@@ -89,7 +98,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     @Override
     public void notifyBoundaryTouching(SceneBorder border) {
-        setSpeed(0);
+        //setSpeed(0);
         switch (border) {
             case TOP:
                 setAnchorLocationY(1);
