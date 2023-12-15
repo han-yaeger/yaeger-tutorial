@@ -55,7 +55,7 @@ a random location:
 
 ```java
 @Override
-public void onCollision(Collider collidingObject){
+public void onCollision(List<Collider> collidingObject){
     setAnchorLocation(
         new Coordinate2D(new Random().nextInt((int)(getSceneWidth() 
         - getWidth())),
@@ -121,7 +121,7 @@ decreased, and the `healthText` changed:
 
 ```java
 @Override
-public void onCollision(Collider collidingObject){
+public void onCollision(List<Collider> collidingObject){
     setAnchorLocation(new Coordinate2D(
         new Random().nextInt((int)(getSceneWidth()-getWidth())),
         new Random().nextInt((int)(getSceneHeight()-getHeight())))

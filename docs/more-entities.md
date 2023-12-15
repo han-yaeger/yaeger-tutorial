@@ -160,7 +160,7 @@ the following way:
 
 ```java
 @Override
-public void onCollision(Collider collidingObject){
+public void onCollision(List<Collider> collidingObject){
     var popSound = new SoundClip("audio/pop.mp3");
     popSound.play();
 
@@ -216,18 +216,30 @@ handler for collisions on Hanny in the following way:
 
 ```java
 @Override
-public void onCollision(Collider collidingObject){
-    if (collidingObject instanceof AirBubble){
+public void onCollision(List<Collider> collidingObject) {
+    var airBubbleCollision = false;
+    var enemyCollision = false;
+
+    for (Collider collider : collidingObject) {
+        if (collider instanceof AirBubble) {
+            airBubbleCollision = true;
+        } else {
+            enemyCollision = true;
+        }
+    }
+    
+    if (airBubbleCollision) {
         bubblesPoppedText.setText(++bubblesPopped);
-    } else {
+    }
+    if (enemyCollision) {
         healthText.setText(--health);
 
-        if (health == 0){
+        if (health == 0) {
             this.waterworld.setActiveScene(2);
         } else {
             setAnchorLocation(new Coordinate2D(
-                new Random().nextInt((int)(getSceneWidth() - getWidth())),
-                new Random().nextInt((int)(getSceneHeight() - getHeight()))));
+                new Random().nextInt((int) (getSceneWidth() - getWidth())),
+                new Random().nextInt((int) (getSceneHeight() - getHeight()))));
         }
     }
 }
@@ -236,7 +248,7 @@ public void onCollision(Collider collidingObject){
 ## Apply some proper Object Orientation
 
 When you followed the steps above you might have implemented the `Collider`
-interface in the `AirBubble` class as well as in the `PoissonBubble` class.
+interface in the `AirBubble` class as well as in the `PoisonBubble` class.
 Again shared behaviour, so it's time to clean that up.
 
 ![Edit](images/edit.png) Create a superclass for both `AirBubble`

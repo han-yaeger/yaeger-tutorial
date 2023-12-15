@@ -9,8 +9,13 @@ get their hands on Hanny, she gets eaten.
 
 ## Clone the starter project
 
+<<<<<<< HEAD
 We provide a [Git](https://git-scm.com/) repository, that contains both a 
 starter project and the required assets. Either clone this repository to your 
+=======
+We provide a [Git](https://git-scm.com/) repository, that contains both a
+starter project and the required assets. Either clone this repository to your
+>>>>>>> development
 local machine, or download the zip file. You can find the starter project here:
 [https://github.com/han-yaeger/yaeger-tutorial](https://github.com/han-yaeger/yaeger-tutorial)
 
