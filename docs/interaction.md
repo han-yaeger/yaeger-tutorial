@@ -1,6 +1,6 @@
 # Add interaction through collision detection
 
-A standard feature of a game engine is collision detection. It is an
+A standard feature of a game engine is *collision detection*. It is an
 algorithmically complex calculation that determines if any two entities occupy
 the same part of the screen. If so, they have collided.
 
@@ -21,8 +21,8 @@ lose a life point. At the start of the game Hanny has ten of those and when she
 reaches zero, she dies, and it is Game Over.
 
 There are several algorithms for collision detection but Yaeger only supports
-the simplest implementation, which is based on the Bounding Box of an entity.
-This method is called Axis Aligned Bounding Box (AABB) collision detection and
+the simplest implementation, which is based on the *Bounding Box* of an entity.
+This method is called *Axis Aligned Bounding Box* (AABB) collision detection and
 is implemented through the interfaces `Collided` and `Collider`.
 
 ![Edit](images/edit.png) Add the correct interface to Hanny and the swordfish.
@@ -36,7 +36,7 @@ visible.
 
 > You might have noticed that because Yaeger uses the Bounding Box to check for 
 > collisions, the collision detection is not as accurate as you might like it to
-> be. This can be solved by using the notion of a hit box, a shape that defines 
+> be. This can be solved by using the notion of a *hitbox*, a shape that defines 
 > the area that is being checked during a collision detection cycle.
 >
 > We will first finish implementing what happens after a collision. In the next

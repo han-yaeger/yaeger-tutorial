@@ -58,7 +58,7 @@ popular amongst Java developers:
 
 ## Switch branch to look at the solution
 
-Whenever your stuck, you can switch to Branch *implementation*, to see the full
+Whenever you're stuck, you can switch to the Branch *implementation*, to see the full
 implementation. For switching branches some knowledge of 
 [Git](https://git-scm.com/) is required, so read the [Git](https://git-scm.com/)
 documentation to figure out how to switch branches.
