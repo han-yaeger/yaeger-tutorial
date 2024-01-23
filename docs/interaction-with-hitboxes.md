@@ -1,13 +1,13 @@
 # Improve collision detection through the use of composition
 
 Now we have implemented both the swordfish and Hanny, and collision detection
-between them, we might notice that the collision detection is to rough. The
+between them, we might notice that the collision detection is too rough. The
 bounding box of the swordfish is much too large, compared to its area, and we
 would much rather only register a collision if Hanny collides with the actual
 sword of the swordfish.
 
 We are going to create a new version of the swordfish that does just that. For
-this, we will be using a composition of several entities, that will be part of
+this, we will be using a *composition* of several entities, that will be part of
 a `DynamicCompositeEntity`.
 
 ![Edit](images/edit.png) Create a package
