@@ -65,8 +65,11 @@ this `Set`, we set the motion of Hanny.
 
 ## Change the frame index depending on the direction of the Hanny
 
-We must still change the frame index depending on the direction of Hanny. For
-this, a `DynamicSpriteEntity` provides the method ` setCurrentFrameIndex(int)`.
+We must still change the *frame index* depending on the direction of Hanny.
+To select either the left facing or right facing part (sprite) of Hanny's bitmap
+and prevent that she swims backwars, but always looks in the direction she is swimming.
+
+For this, a `DynamicSpriteEntity` provides the method ` setCurrentFrameIndex(int)`.
 
 ![Edit](images/edit.png) Set the correct frame index. Make sure only the left
 and right buttons change the direction in which Hanny seems to be swimming.
@@ -78,8 +81,8 @@ To ensure that Hanny remains on the screen, we can use the interface
 whenever the entity touches the border of the scene. By implementing this 
 interface, the entity needs to implement the method 
 `void notifyBoundaryTouching(SceneBorder)`, which receives which of the four 
-borders was touched. We can use this the set either the x or 
-y-coordinate of Hanny to ensure she remains within the screen. Besides that, we
+borders was touched. We can use this the set either the `x` or 
+`y`-coordinate of Hanny to ensure she remains within the screen. Besides that, we
 also set her speed to 0.
 
 ```java
@@ -114,8 +117,8 @@ and use the event handler to ensure that Hanny doesn't leave the Scene.
 
 ## Make Hanny experience gravity and friction
 
-Yaeger supports a simple approach to enable gravity and friction, which can be
-enabled by implementing the `Newtonian` interface. With that interface the 
+Yaeger supports a simple approach to enable *gravity* and *friction*, which can be
+enabled by implementing the `Newtonian` interface. With this interface the 
 entity will continually experience gravitational pull and friction whenever 
 it moves. To learn more about this interface, have a look at
 the [API](https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/core/entities/motion/Movable.html)

@@ -15,7 +15,7 @@ then set het x- or y-coordinate to the right value.
 
 ## Prevent Hanny from respawning in the coral field
 
-Because Hanny will respawn at a random location, she could also respawn on a
+Because Hanny will respawn at a random location, she could also respawn 'within' a
 piece of coral. Because her speed is always set to 0, whenever she collides with
-coral, leaving such a location is cumbersome. Resolve this by limiting the
+coral, leaving such a location is cumbersome for the player. Resolve this by limiting the
 locations at which Hanny can respawn.
