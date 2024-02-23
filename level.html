@@ -207,9 +207,9 @@ called <code>StartButton</code> that extends <code>TextEntity</code>
 extends <code>TextEntity</code> and place it in the package
 <code>com.github.hanyaeger.tutorial.entities.buttons</code>. Use the following constructor:</p>
 <pre><code class="language-java">public StartButton(Coordinate2D initialLocation){
-    super(initialLocation,&quot;Play game&quot;);
+    super(initialLocation,"Play game");
     setFill(Color.PURPLE);
-    setFont(Font.font(&quot;Roboto&quot;, FontWeight.BOLD, 30));
+    setFont(Font.font("Roboto", FontWeight.BOLD, 30));
 }
 </code></pre>
 <p>As you will notice we use the text <em>Play Game</em>, set the color to <em>Purple</em> and
@@ -220,8 +220,7 @@ title.</p>
 <h2 id="add-behaviour-to-handle-mouse-clicks"><a class="header" href="#add-behaviour-to-handle-mouse-clicks">Add behaviour to handle mouse clicks</a></h2>
 <p>In general, to expand the behaviour of an <code>Entity</code>, you should add the
 appropriate Interface to the <code>Entity</code>. To let an <code>Entity</code> listen to mouse button
-clicks, the <code>Entity</code> should implement the Interface
-<code>MouseButtonPressedListener</code>.</p>
+clicks, the <code>Entity</code> should implement the Interface <code>MouseButtonPressedListener</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Let <code>StartButton</code> implement the interface
 <code>MouseButtonPressedListener</code>.</p>
 <p>When the user clicks on the <code>StartButton</code> the handler (<code>onMouseButtonPressed()</code>)

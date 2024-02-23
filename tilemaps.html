@@ -187,23 +187,23 @@ available:</p>
 <li>coral4.png: <img src="images/game/coral4.png" alt="Coral1" /></li>
 </ol>
 <p>We could just create new instances of <code>SpriteEntity</code> for each of the four coral
-images and then use <code>addEntity(YaegerEntity)</code> to add them to the <code>GameLevel</code>. 
+images and then use <code>addEntity(YaegerEntity)</code> to add them to the <code>GameLevel</code>.
 This would work, but it will be hard to add them in a nice pattern to the scene.</p>
-<p>To facilitate this, Yaeger supplies a <code>TileMap</code>, with which you can create a 
+<p>To facilitate this, Yaeger supplies a <code>TileMap</code>, with which you can create a
 two-dimensional map of entities that are placed on the scene. Yaeger will
 calculate the location, width and height of each entity and instantiate them.
-You will still have to create a class, with the correct constructor, but the 
+You will still have to create a class, with the correct constructor, but the
 rest will be handled by Yaeger.</p>
 <h2 id="create-coral-entities"><a class="header" href="#create-coral-entities">Create coral entities</a></h2>
-<p>Since we need four different coral entities, the approach would be to create 
-four classes, which all extend <code>SpriteEntity</code>, but since their behaviour is 
-identical, there is a better way. </p>
+<p>Since we need four different coral entities, the approach would be to create
+four classes, which all extend <code>SpriteEntity</code>, but since their behaviour is
+identical, there is a better way.</p>
 <p>We'll dive into that later on, for now:</p>
 <p><img src="images/edit.png" alt="Edit" /> Create a class <code>Coral</code> that extends <code>SpriteEntity</code> to
 the package <code>com.github.hanyaeger.tutorial.entities.map</code>.</p>
-<p>It's constructor should accept a <code>Coordinate2D</code> as the first parameter, a 
+<p>It's constructor should accept a <code>Coordinate2D</code> as the first parameter, a
 <code>Size</code> as the second, and a <code>String</code> as the third. Pass these values to the
-constructor of <code>SpriteEntity</code>, notice how that constructor accepts the same 
+constructor of <code>SpriteEntity</code>, notice how that constructor accepts the same
 parameters, but in a different order.</p>
 <p>Add the class to the package <code>com.github.hanyaeger.tutorial.entities.map</code>.</p>
 <h2 id="create-a-tile-map-for-the-coral"><a class="header" href="#create-a-tile-map-for-the-coral">Create a tile map for the coral</a></h2>
@@ -211,36 +211,36 @@ parameters, but in a different order.</p>
 the package <code>com.github.hanyaeger.tutorial.entities.map</code>.</p>
 <p>As you can see, <code>CoralTileMap</code> will need to implement two methods. The
 method <code>setupEntities()</code> will be used to register the entities that are to be
-used with the <code>TileMap</code>. The method <code>defineMap()</code> should return a 
-two-dimensional array of <code>int</code> values. This array is a map of the scene and 
-tells Yaeger where to place which entity. In the next step we will implement 
+used with the <code>TileMap</code>. The method <code>defineMap()</code> should return a
+two-dimensional array of <code>int</code> values. This array is a map of the scene and
+tells Yaeger where to place which entity. In the next step we will implement
 both methods.</p>
 <h2 id="implement-the-coraltilemap"><a class="header" href="#implement-the-coraltilemap">Implement the <code>CoralTileMap</code></a></h2>
-<p>The method <code>setupEntities()</code> should be used to register entities on the 
-<code>TileMap</code>. From this method we should call either <code>addEntity(int, Class)</code> or 
-<code>addEntity(int, Class, Object)</code>. </p>
-<p>As you can see, these methods accept an <code>int</code> and a <code>Class</code>, and the second 
-(overloaded) version also accepts an <code>Object</code>. The <code>int</code> is used to figure 
+<p>The method <code>setupEntities()</code> should be used to register entities on the
+<code>TileMap</code>. From this method we should call either <code>addEntity(int, Class)</code> or
+<code>addEntity(int, Class, Object)</code>.</p>
+<p>As you can see, these methods accept an <code>int</code> and a <code>Class</code>, and the second
+(overloaded) version also accepts an <code>Object</code>. The <code>int</code> is used to figure
 out which entity should be placed where. The <code>Class</code> shows us that this
-method does not require an instance of the entity you want to add, but the 
+method does not require an instance of the entity you want to add, but the
 actual <code>Class</code> itself. Yaeger will use this <code>Class</code> to create the instance.</p>
-<p>The overloaded method, with three parameters can be used to pass a third 
-parameter (of type <code>Object</code>), which is the used as the third parameter for 
-the constructor of the provided <code>Class</code>. In our case, it's a <code>String</code> that 
+<p>The overloaded method, with three parameters can be used to pass a third
+parameter (of type <code>Object</code>), which is the used as the third parameter for
+the constructor of the provided <code>Class</code>. In our case, it's a <code>String</code> that
 contains the url of the coral image.</p>
 <p><img src="images/edit.png" alt="Edit" /> Implement the method <code>setupEntities()</code> as shown below.</p>
 <pre><code class="language-java">@Override
 public void setupEntities() {
-    addEntity(1, Coral.class, &quot;sprites/coral1.png&quot;);
-    addEntity(2, Coral.class, &quot;sprites/coral2.png&quot;);
-    addEntity(3, Coral.class, &quot;sprites/coral3.png&quot;);
-    addEntity(4, Coral.class, &quot;sprites/coral4.png&quot;);
+    addEntity(1, Coral.class, "sprites/coral1.png");
+    addEntity(2, Coral.class, "sprites/coral2.png");
+    addEntity(3, Coral.class, "sprites/coral3.png");
+    addEntity(4, Coral.class, "sprites/coral4.png");
 }
 </code></pre>
 <p>The Coral should be placed on the lower half of the scene. For this we can use
-the method <code>defineMap()</code>, from which we will return a two-dimensional 
-array of integers that represents the scene. The integer value 0 will mean no 
-entity is to be placed. The other values are mapped on the entities registered 
+the method <code>defineMap()</code>, from which we will return a two-dimensional
+array of integers that represents the scene. The integer value 0 will mean no
+entity is to be placed. The other values are mapped on the entities registered
 from the method <code>setupEntities()</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Implement the method <code>defineMap()</code> as shown below.</p>
 <pre><code class="language-java">@Override
@@ -285,7 +285,7 @@ github.hanyaeger.tutorial.entities.map.Coral (in module waterworld) because modu
 </code></pre>
 <p>Remember how we talked about the <em>Module Descriptor</em>? We are going to edit it,
 to make sure that Yaeger is allowed to make instances of the coral entities.
-Since all those classes are in the package 
+Since all those classes are in the package
 <code>com.github.hanyaeger.tutorial.entities.map</code>, we have to export that package.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the following line to the file <code>module-info.java</code>:</p>
 <pre><code class="language-text">    exports com.github.hanyaeger.tutorial.entities.map;
@@ -294,12 +294,12 @@ Since all those classes are in the package
 scaled automatically.</p>
 <h2 id="ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral"><a class="header" href="#ensure-hanny-is-hindered-whenever-she-crosses-a-piece-of-coral">Ensure Hanny is hindered whenever she crosses a piece of coral</a></h2>
 <p>Hanny can now still cross a piece of coral. This can be easily resolved, using
-the <code>Collided</code> and <code>Collider</code>interfaces. If the speed of Hanny is set to 0, 
-whenever she collides with a piece of Coral, she will stop moving for that Game 
-World Update. Because this new speed is only applied after one GWU, she can 
-still move, but very slowly.</p>
+the <code>Collided</code> and <code>Collider</code>interfaces. By setting the speed of Hanny to 0,
+when she collides with a piece of Coral, she will stop moving for that Game
+World Update (because this new speed is only applied after one GWU, she can
+still move, but very slowly).</p>
 <p><img src="images/edit.png" alt="Edit" /> Implement everything required to ensure Hanny cannot
-cross a piece of coral. Also make sure a bubble can still cross them.</p>
+cross a piece of coral. Also make sure a bubble <strong>can</strong> still cross them.</p>
 <p><img src="images/game/game.png" alt="Waterworld" /></p>
 
                     </main>

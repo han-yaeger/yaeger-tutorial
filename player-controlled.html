@@ -194,16 +194,16 @@ constructor, we can change this.</p>
 <p><img src="images/edit.png" alt="Edit" /> With this in mind, the constructor of <code>Hanny</code> should
 look like:</p>
 <pre><code class="language-java">public Hanny(Coordinate2D location){
-    super(&quot;sprites/hanny.png&quot;, location, new Size(20,40), 1, 2);
+    super("sprites/hanny.png", location, new Size(20,40), 1, 2);
 }
 </code></pre>
 <p><img src="images/edit.png" alt="Edit" /> Now use the <code>setupEntities()</code> from the <code>GameLevel</code> to
 add <code>Hanny</code>. Place her in the top left corner of the screen.</p>
 <h2 id="animate-hanny"><a class="header" href="#animate-hanny">Animate Hanny</a></h2>
 <p>To animate Hanny, we are going to let her listen to user input through the
-keyboard. As with the <code>MouseButtonPressedListener</code>, we are going to add an 
-interface. In its event handler, we are going to call <code>setMotion()</code>, so we 
-can change the direction based on the key being pressed. When no buttons are 
+keyboard. As with the <code>MouseButtonPressedListener</code>, we are going to add an
+interface. In its event handler, we are going to call <code>setMotion()</code>, so we
+can change the direction based on the key being pressed. When no buttons are
 pressed, we use <code>setSpeed(0)</code> to make sure Hanny keeps her location.</p>
 <p><img src="images/edit.png" alt="Edit" /> Let <code>Hanny</code> implement the interface <code>KeyListener</code> and
 implement the event handler in the following way:</p>
@@ -226,18 +226,20 @@ public void onPressedKeysChange(Set&lt;KeyCode&gt; pressedKeys){
 all the keys that are currently being pressed. Depending on which keys are in
 this <code>Set</code>, we set the motion of Hanny.</p>
 <h2 id="change-the-frame-index-depending-on-the-direction-of-the-hanny"><a class="header" href="#change-the-frame-index-depending-on-the-direction-of-the-hanny">Change the frame index depending on the direction of the Hanny</a></h2>
-<p>We must still change the frame index depending on the direction of Hanny. For
-this, a <code>DynamicSpriteEntity</code> provides the method <code> setCurrentFrameIndex(int)</code>.</p>
+<p>We must still change the <em>frame index</em> depending on the direction of Hanny.
+To select either the left facing or right facing part (sprite) of Hanny's bitmap
+and prevent that she swims backwars, but always looks in the direction she is swimming.</p>
+<p>For this, a <code>DynamicSpriteEntity</code> provides the method <code> setCurrentFrameIndex(int)</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Set the correct frame index. Make sure only the left
 and right buttons change the direction in which Hanny seems to be swimming.</p>
 <h2 id="make-sure-hanny-doesnt-leave-the-scene"><a class="header" href="#make-sure-hanny-doesnt-leave-the-scene">Make sure Hanny doesn't leave the scene</a></h2>
-<p>To ensure that Hanny remains on the screen, we can use the interface 
-<code>SceneBorderTouchingWatcher</code>, which provides an event handler that gets called 
-whenever the entity touches the border of the scene. By implementing this 
-interface, the entity needs to implement the method 
-<code>void notifyBoundaryTouching(SceneBorder)</code>, which receives which of the four 
-borders was touched. We can use this the set either the x or 
-y-coordinate of Hanny to ensure she remains within the screen. Besides that, we
+<p>To ensure that Hanny remains on the screen, we can use the interface
+<code>SceneBorderTouchingWatcher</code>, which provides an event handler that gets called
+whenever the entity touches the border of the scene. By implementing this
+interface, the entity needs to implement the method
+<code>void notifyBoundaryTouching(SceneBorder)</code>, which receives which of the four
+borders was touched. We can use this the set either the <code>x</code> or
+<code>y</code>-coordinate of Hanny to ensure she remains within the screen. Besides that, we
 also set her speed to 0.</p>
 <pre><code class="language-java">@Override
 public void notifyBoundaryTouching(SceneBorder border){
@@ -266,9 +268,9 @@ behaviour.</p>
 <p><img src="images/edit.png" alt="Edit" /> Implement the interface <code>SceneBorderTouchingWatcher</code>
 and use the event handler to ensure that Hanny doesn't leave the screen.</p>
 <h2 id="make-hanny-experience-gravity-and-friction"><a class="header" href="#make-hanny-experience-gravity-and-friction">Make Hanny experience gravity and friction</a></h2>
-<p>Yaeger supports a simple approach to enable gravity and friction, which can be
-enabled by implementing the <code>Newtonian</code> interface. With that interface the 
-entity will continually experience gravitational pull and friction whenever 
+<p>Yaeger supports a simple approach to enable <em>gravity</em> and <em>friction</em>, which can be
+enabled by implementing the <code>Newtonian</code> interface. With this interface the
+entity will continually experience gravitational pull and friction whenever
 it moves. To learn more about this interface, have a look at
 the <a href="https://han-yaeger.github.io/yaeger/hanyaeger/com/github/hanyaeger/core/entities/motion/Movable.html">API</a>
 .</p>

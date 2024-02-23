@@ -177,12 +177,12 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="add-interaction-through-collision-detection"><a class="header" href="#add-interaction-through-collision-detection">Add interaction through collision detection</a></h1>
-<p>A standard feature of a game engine is collision detection. It is an
+<p>A standard feature of a game engine is <em>collision detection</em>. It is an
 algorithmically complex calculation that determines if any two entities occupy
 the same part of the screen. If so, they have collided.</p>
 <p>Yaeger differentiates between entities that need to be notified about a
-collision (a <code>Collided</code>), and those that do not need to be notified (a 
-<code>Collider</code>). Think of this as a train and a fly. If they collide, the train 
+collision (a <code>Collided</code>), and those that do not need to be notified (a
+<code>Collider</code>). Think of this as a train and a fly. If they collide, the train
 doesn't even notice it; the fly does (and dies).</p>
 <p>With this approach, it is possible to minimize the number of entities that need
 to be checked for collisions every GWU, and it also enables a good
@@ -193,20 +193,20 @@ the right entity.</p>
 lose a life point. At the start of the game Hanny has ten of those and when she
 reaches zero, she dies, and it is Game Over.</p>
 <p>There are several algorithms for collision detection but Yaeger only supports
-the simplest implementation, which is based on the Bounding Box of an entity.
-This method is called Axis Aligned Bounding Box (AABB) collision detection and
+the simplest implementation, which is based on the <em>Bounding Box</em> of an entity.
+This method is called <em>Axis Aligned Bounding Box</em> (AABB) collision detection and
 is implemented through the interfaces <code>Collided</code> and <code>Collider</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the correct interface to Hanny and the swordfish.
 You do not yet need to implement the event handler, but for testing purposes you
-should add a <code>System.out.println(&quot;Collision!&quot;);</code></p>
+should add a <code>System.out.println("Collision!");</code></p>
 <p><img src="images/play.png" alt="Run" /> Start the game and test if the collision has been
 detected. To get more insight into these collisions, it is possible to run
 Yaeger with the commandline argument <code>--showBB</code>, which makes all bounding boxes
 visible.</p>
 <blockquote>
-<p>You might have noticed that because Yaeger uses the Bounding Box to check for 
+<p>You might have noticed that because Yaeger uses the Bounding Box to check for
 collisions, the collision detection is not as accurate as you might like it to
-be. This can be solved by using the notion of a hit box, a shape that defines 
+be. This can be solved by using the notion of a <em>hitbox</em>, a shape that defines
 the area that is being checked during a collision detection cycle.</p>
 <p>We will first finish implementing what happens after a collision. In the next
 chapter we will rework the swordfish to a version where only the sword causes
@@ -214,8 +214,8 @@ a collision.</p>
 </blockquote>
 <h2 id="let-hanny-respawn-after-a-collision-with-the-swordfish"><a class="header" href="#let-hanny-respawn-after-a-collision-with-the-swordfish">Let Hanny respawn after a collision with the swordfish</a></h2>
 <p>Because Hanny is the one who needs to know if she has collided with the
-swordfish, she will be the one who implements <code>Collided</code>. We are going to 
-use the event handler to let Hanny respawn at a different location, using 
+swordfish, she will be the one who implements <code>Collided</code>. We are going to
+use the event handler to let Hanny respawn at a different location, using
 her <code>setAnchorLocation()</code> method.</p>
 <p><img src="images/edit.png" alt="Edit" /> Use the following event handler to let Hanny respawn at
 a random location:</p>
@@ -229,7 +229,7 @@ public void onCollision(List&lt;Collider&gt; collidingObject){
 }
 </code></pre>
 <p>Notice that we have access to the <em>SceneWidth</em> and <em>SceneHeight</em> and that we
-subtract, respectively, the <em>width</em> and <em>height</em> of Hanny to ensure that 
+subtract, respectively, the <em>width</em> and <em>height</em> of Hanny to ensure that
 Hanny respawns within the scene.</p>
 <h2 id="add-health-points-and-subtract-one-on-a-collision"><a class="header" href="#add-health-points-and-subtract-one-on-a-collision">Add health points and subtract one on a collision</a></h2>
 <p>The next step should be fairly simple, since we will use only features we have
@@ -240,27 +240,27 @@ package <code>com.github.hanyaeger.tutorial.entities.text</code>.</p>
 <pre><code class="language-java">public HealthText(Coordinate2D initialLocation){
     super(initialLocation);
 
-    setFont(Font.font(&quot;Roboto&quot;,FontWeight.NORMAL, 30));
+    setFont(Font.font("Roboto",FontWeight.NORMAL, 30));
     setFill(Color.DARKBLUE);
 }
 
 public void setHealthText(int health){
-    setText(&quot;Health: &quot; + health);
+    setText("Health: " + health);
 }
 </code></pre>
-<p><img src="images/edit.png" alt="Edit" /> Add this entity to <code>GameLevel</code>, by using  the 
+<p><img src="images/edit.png" alt="Edit" /> Add this entity to <code>GameLevel</code>, by using  the
 <code>setupEntities()</code> method, but also pass the instance to the constructor of
 Hanny. This way, Hanny has access to the <code>HealthText</code> entity and can call the
 method <code>setHealthText(int)</code> whenever her health changes.</p>
 <p><img src="images/edit.png" alt="Edit" /> Give Hanny a private instance field called health of
 type <code>int</code> and initialize it to 10. Also bind the constructor
-parameter <code>HealthText</code> to an instance field. After this change, the 
+parameter <code>HealthText</code> to an instance field. After this change, the
 constructor and instance fields of Hanny should look like:</p>
 <pre><code class="language-java">private HealthText healthText;
 private int health = 10;
 
 public Hanny(Coordinate2D location, HealthText healthText){
-    super(&quot;sprites/hanny.png&quot;, location, new Size(20,40), 2);
+    super("sprites/hanny.png", location, new Size(20,40), 2);
 
     this.healthText = healthText;
     healthText.setHealthText(health);

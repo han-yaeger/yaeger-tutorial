@@ -178,12 +178,12 @@
                     <main>
                         <h1 id="improve-collision-detection-through-the-use-of-composition"><a class="header" href="#improve-collision-detection-through-the-use-of-composition">Improve collision detection through the use of composition</a></h1>
 <p>Now we have implemented both the swordfish and Hanny, and collision detection
-between them, we might notice that the collision detection is to rough. The
+between them, we might notice that the collision detection is too rough. The
 bounding box of the swordfish is much too large, compared to its area, and we
 would much rather only register a collision if Hanny collides with the actual
 sword of the swordfish.</p>
 <p>We are going to create a new version of the swordfish that does just that. For
-this, we will be using a composition of several entities, that will be part of
+this, we will be using a <em>composition</em> of several entities, that will be part of
 a <code>DynamicCompositeEntity</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Create a package
 <code>com.github.hanyaeger.tutorial.entities.swordfish</code>. In this package create a
@@ -191,22 +191,22 @@ class <code>SwordFish</code> that extends <code>DynamicCompositeEntity</code>. I
 but leave them empty for now. Delete the previous implementation of the
 swordfish and replace all usages with the new one.</p>
 <h2 id="another-setupentities"><a class="header" href="#another-setupentities">Another <code>setupEntities()</code>?</a></h2>
-<p>Because a composite entity enables the possibility to create a 
-composition of entities, it supplies its own <code>setupEntities()</code> method, which 
-should be used to add the entities that are to be a part of the composition. </p>
-<p>A composite entity defines its own area, where the top-left corner has 
+<p>Because a composite entity enables the possibility to create a
+composition of entities, it supplies its own <code>setupEntities()</code> method, which
+should be used to add the entities that are to be a part of the composition.</p>
+<p>A composite entity defines its own area, where the top-left corner has
 coordinate (0,0). The size of a composite entity is derived from it content.</p>
 <h3 id="create-the-entities-that-should-be-part-of-the-composite-entity"><a class="header" href="#create-the-entities-that-should-be-part-of-the-composite-entity">Create the entities that should be part of the composite entity</a></h3>
-<p>The composition will consist of two entities, a <code>SpriteEntity</code> that provides 
-the image of the swordfish, and a <code>RectangleEntity</code> that will implement 
+<p>The composition will consist of two entities, a <code>SpriteEntity</code> that provides
+the image of the swordfish, and a <code>RectangleEntity</code> that will implement
 <code>Collided</code>, be invisible and placed exactly on the sword of the swordfish.</p>
-<p><img src="images/edit.png" alt="Edit" /> Create the class <code>SwordFishSprite</code> that extends 
-<code>SpriteEntity</code> and place it in the package 
+<p><img src="images/edit.png" alt="Edit" /> Create the class <code>SwordFishSprite</code> that extends
+<code>SpriteEntity</code> and place it in the package
 <code>com.github.hanyaeger.tutorial.entities.swordfish</code> in the following way:</p>
 <pre><code class="language-java">public class SwordfishSprite extends SpriteEntity {
 
     public SwordfishSprite(final Coordinate2D location) {
-        super(&quot;sprites/swordfish.png&quot;, location);
+        super("sprites/swordfish.png", location);
     }
 }
 </code></pre>
@@ -223,24 +223,24 @@ and implements <code>Collider</code> in the following way:</p>
 }
 </code></pre>
 <h3 id="add-the-entities-to-the-composition"><a class="header" href="#add-the-entities-to-the-composition">Add the entities to the composition</a></h3>
-<p>Now use the <code>setupEntities()</code> method from <code>SwordFish</code> to add both entities. 
-First the <code>SwordFishSprite</code> and then the <code>HitBox</code>. Since the 
-<code>SwordFishSprite</code> should be placed in the upper-left corner of the 
-<code>SwordFish</code>, it should be placed at coordinate (0,0). </p>
-<p><img src="images/edit.png" alt="Edit" /> Add the <code>SwordFishSprite</code> to the <code>SwordFish</code> at 
+<p>Now use the <code>setupEntities()</code> method from <code>SwordFish</code> to add both entities.
+First the <code>SwordFishSprite</code> and then the <code>HitBox</code>. Since the
+<code>SwordFishSprite</code> should be placed in the upper-left corner of the
+<code>SwordFish</code>, it should be placed at coordinate (0,0).</p>
+<p><img src="images/edit.png" alt="Edit" /> Add the <code>SwordFishSprite</code> to the <code>SwordFish</code> at
 coordinate (0,0).</p>
-<p><img src="images/edit.png" alt="Edit" /> Add the <code>HitBox</code> to the swordfish in such a way 
-that it overlaps the sword of the swordfish. It could help to set the fill 
+<p><img src="images/edit.png" alt="Edit" /> Add the <code>HitBox</code> to the swordfish in such a way
+that it overlaps the sword of the swordfish. It could help to set the fill
 of the hitbox to a specific color, so you can see what you're doing.</p>
 <h2 id="make-the-swordfish-swim"><a class="header" href="#make-the-swordfish-swim">Make the swordfish swim</a></h2>
-<p>Notice that both the image and the hitbox are static entities. They are part 
-of the composite entity, which is a dynamic entity. This 
-<code>DynamicCompositeEntity</code> is the one that will move around the scene, and its 
-content will move with it. </p>
-<p><img src="images/edit.png" alt="Edit" /> Make the <code>SwordFish</code> swim through the scene as it 
+<p>Notice that both the image and the hitbox are static entities. They are part
+of the composite entity, which is a dynamic entity. This
+<code>DynamicCompositeEntity</code> is the one that will move around the scene, and its
+content will move with it.</p>
+<p><img src="images/edit.png" alt="Edit" /> Make the <code>SwordFish</code> swim through the scene as it
 did before. Don't forget to make him reappear if he leaves the screen.</p>
-<p><img src="images/play.png" alt="Run" /> Start the game and test if the swordfish behaves as 
-expected. </p>
+<p><img src="images/play.png" alt="Run" /> Start the game and test if the swordfish behaves as
+expected.</p>
 
                     </main>
 

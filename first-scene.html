@@ -179,7 +179,7 @@
                         <h1 id="creating-the-first-scene"><a class="header" href="#creating-the-first-scene">Creating the first scene</a></h1>
 <p>We're going to add the first scene to the game. Yaeger supports two different
 types of scenes. A <code>StaticScene</code> and a <code>DynamicScene</code>. A <code>StaticScene</code> will have
-no Game World Update (GWU) and should be used for scenes in which nothing 
+no Game World Update (GWU) and should be used for scenes in which nothing
 should move or be animated. A <code>DynamicScene</code> does receive a GWU and should be
 used for Game Levels, or scenes that contain animated elements. Since nothing
 will have to be animated for the Title scene, it can be a <code>StaticScene</code>.</p>
@@ -189,25 +189,25 @@ extends <code>StaticScene</code> in the package <code>com.github.hanyaeger.tutor
 Implement the required methods, but leave them empty.</p>
 <h2 id="set-the-background-image-and-audio"><a class="header" href="#set-the-background-image-and-audio">Set the background image and audio</a></h2>
 <p>The method <code>setupScene()</code> should be used for setting the background image and
-audio of a scene. For this you can use the methods 
+audio of a scene. For this you can use the methods
 <code>setBackgroundImage(String)</code> and <code>setBackgroundAudio(String)</code>.
 Both the image and the audio are provided in the <code>resources/</code> folder. This
-folder should be the only place to store your assets. The url is relative to
+folder should be the only location to store your assets. The url is relative to
 this folder, so the file <code>background1.jpg</code> from the folder <code>backgrounds/</code> should
 be accessed through the url <code>backgrounds/background1.jpg</code>. For the background
 audio, we will use <code>ocean.mp3</code>.</p>
 <p><img src="images/edit.png" alt="Edit" /> Add the following body to the <code>setupScene()</code>.</p>
 <pre><code class="language-java">@Override
 public void setupScene(){
-    setBackgroundAudio(&quot;audio/ocean.mp3&quot;);
-    setBackgroundImage(&quot;backgrounds/background1.jpg&quot;);
+    setBackgroundAudio("audio/ocean.mp3");
+    setBackgroundImage("backgrounds/background1.jpg");
 }
 </code></pre>
 <p>At this point you should have a look at the file <code>module-info.java</code>, which is
-called the <a href="https://www.oracle.com/nl/corporate/features/understanding-java-9-modules.html">Module Descriptor</a>. 
-This is a special file that defines (amongst other things) which directories 
-should be opened up. The <code>resources</code> folder itself is open by default, but 
-any subdirectory should be added for the resources in those directories to 
+called the <a href="https://www.oracle.com/nl/corporate/features/understanding-java-9-modules.html">Module Descriptor</a>.
+This is a special file that defines (amongst other things) which directories
+should be opened up. The <code>resources</code> folder itself is open by default, but
+any subdirectory should be added for the resources in those directories to
 be available. As you will notice this has already been done:</p>
 <pre><code class="language-java">opens audio; 
 opens backgrounds; 
@@ -217,9 +217,9 @@ opens sprites;
 the game is trying to access a resource that is in a directory that has not been
 opened up.</p>
 <h2 id="add-the-titlescene-to-the-yaeger-game"><a class="header" href="#add-the-titlescene-to-the-yaeger-game">Add the <code>TitleScene</code> to the Yaeger game</a></h2>
-<p>Now that we have created the <code>TitleScene</code>, we should add it to the Game. For 
-this, we will use the method <code>addScene(int, YaegerScene)</code> from <code>Waterworld. java</code>. This method should be called from <code>setupScenes()</code> and takes two 
-parameters. The first one identifies the scene, which you can 
+<p>Now that we have created the <code>TitleScene</code>, we should add it to the Game. For
+this, we will use the method <code>addScene(int, YaegerScene)</code> from <code>Waterworld. java</code>. This method should be called from <code>setupScenes()</code> and takes two
+parameters. The first one identifies the scene, which you can
 use to set the active scene. The second parameter is an instance of the scene.</p>
 <p><img src="images/edit.png" alt="Edit" /> So add the following body to the <code>setupScenes()</code>
 method:</p>
@@ -233,8 +233,8 @@ has been shown, the <code>TitleScene</code> should be loaded.</p>
 <h2 id="add-some-text-to-the-titlescene"><a class="header" href="#add-some-text-to-the-titlescene">Add some text to the <code>TitleScene</code></a></h2>
 <p>Let's add the title of the game to the <code>TitleScene</code>. All objects you can add to
 a scene are called <em>Entities</em>. Of these there are various different types. There
-are <em>TextEntities</em> that should be used for displaying text, <em>SpriteEntities</em> 
-for displaying a Sprite and shape-based Entities, such as a 
+are <em>TextEntities</em> that should be used for displaying text, <em>SpriteEntities</em>
+for displaying a Sprite and shape-based Entities, such as a
 <em>RectangleEntity</em>. For all these types there are the Static and
 Dynamic version.</p>
 <p>A title is typically the static version of a <code>TextEntity</code>. We will use the
@@ -244,11 +244,11 @@ method <code>setupEntities()</code> to add Entities to the scene.</p>
 public void setupEntities(){
     var waterworldText = new TextEntity(
         new Coordinate2D(getWidth() / 2, getHeight() / 2),
-        &quot;Waterworld&quot;
+        "Waterworld"
     );
     waterworldText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
     waterworldText.setFill(Color.DARKBLUE);
-    waterworldText.setFont(Font.font(&quot;Roboto&quot;, FontWeight.SEMI_BOLD, 80));
+    waterworldText.setFont(Font.font("Roboto", FontWeight.SEMI_BOLD, 80));
     addEntity(waterworldText);
 }
 </code></pre>
@@ -259,7 +259,7 @@ the scene, we use the <code>getWidth()/2</code> and <code>getHeight()/2</code>. 
 is the text to be shown. To actually place the center of the <code>TextEntity</code> at the
 center of the scene, we use the method <code>setAnchorPoint()</code>. To set the color,
 we use <code>setFill()</code>. We set the font to Roboto, through the
-method <code>setFont()</code> and lastly we add the <code>TextEntity</code> to the scene, by 
+method <code>setFont()</code> and lastly we add the <code>TextEntity</code> to the scene, by
 calling the method <code>addEntity()</code>.</p>
 <p><img src="images/play.png" alt="Run" /> Run the game again. The <code>TitleScene</code> should now contain
 the title.</p>
