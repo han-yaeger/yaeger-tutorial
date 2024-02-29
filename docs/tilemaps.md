@@ -53,7 +53,7 @@ both methods.
 
 The method `setupEntities()` should be used to register entities on the 
 `TileMap`. From this method we should call either `addEntity(int, Class)` or 
-`addEntity(int, Class, Object)`. 
+`addEntity(int, Class, Object)`.
 
 As you can see, these methods accept an `int` and a `Class`, and the second 
 (overloaded) version also accepts an `Object`. The `int` is used to figure 
@@ -151,12 +151,12 @@ scaled automatically.
 ## Ensure Hanny is hindered whenever she crosses a piece of coral
 
 Hanny can now still cross a piece of coral. This can be easily resolved, using
-the `Collided` and `Collider`interfaces. If the speed of Hanny is set to 0, 
-whenever she collides with a piece of Coral, she will stop moving for that Game 
-World Update. Because this new speed is only applied after one GWU, she can 
-still move, but very slowly.
+the `Collided` and `Collider`interfaces. By setting the speed of Hanny to 0, 
+when she collides with a piece of Coral, she will stop moving for that Game 
+World Update (because this new speed is only applied after one GWU, she can 
+still move, but very slowly).
 
 ![Edit](images/edit.png) Implement everything required to ensure Hanny cannot
-cross a piece of coral. Also make sure a bubble can still cross them.
+cross a piece of coral. Also make sure a bubble **can** still cross them.
 
 ![Waterworld](images/game/game.png)

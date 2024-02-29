@@ -23,7 +23,7 @@ We are now going to add the game objective: Hanny is going to pop air bubbles.
 They emerge from the depth of the ocean and float upwards at random speeds. 
 Some are filled with air, and some are filled with a poisonous gas. When Hanny 
 pops one of those, she loses a health point, but when she pops an air bubble, 
-her bubbles popped score increases, and she earns eternal fame.
+her *bubbles popped* score increases, and she earns eternal fame.
 
 ### Create air and poison bubbles
 
@@ -112,10 +112,10 @@ public class BubbleSpawner extends EntitySpawner {
 
 ### Add the bubble spawner to the game level
 
-A `YaegerScene` does not support entity spawners by default, to enable it, the
+A `YaegerScene` does not support entity spawners by default. To enable it, the
 scene needs to implement the interface `EntitySpawnerContainer`, which requires
 implementing the method `setupEntitySpawners()`. From this method we can
-call ` addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));`, which
+call `addEntitySpawner(new BubbleSpawner(getWidth(), getHeight()));`, which
 adds the entity spawner to the scene and ensures the spawned entities appear on
 the scene.
 
@@ -145,13 +145,13 @@ protected void spawnEntities(){
 ### Make the bubbles pop if they collide with Hanny
 
 Whenever a bubble collides with Hanny, a popping sound should be played, and
-they should be removed from the scene. We have already seen how to approach
+the bubble should disappear (by removing it from the scene). We have already seen how to approach
 this. Apparently the bubble needs to be notified when something collides with
 it. Remember the interface `Collided`? But then, this is only applicable if the
-entity that collides with it, becomes an `Collider`. So Hanny will not only be
-a `Collided`, but also a `Collider`.
+entity that collides with it, becomes a `Collider`. So Hanny will not only be
+a `Collided`, but also a `Collider`!
 
-![Edit](images/edit.png) Add the interface `Collider` to Hanny
+![Edit](images/edit.png) Add the interface `Collider` to Hanny.
 
 ![Edit](images/edit.png) Add the interface `Collided` to the `PoisonBubble`
 and `AirBubble` (since this is shared behaviour, and we are doing proper object
@@ -160,7 +160,7 @@ the following way:
 
 ```java
 @Override
-public void onCollision(Collider collidingObject){
+public void onCollision(List<Collider> collidingObject){
     var popSound = new SoundClip("audio/pop.mp3");
     popSound.play();
 
@@ -187,7 +187,7 @@ been crossed.
 ![Run](images/play.png) Run the game and use the debugger to see if the bubbles
 that leave the top of the screen are actually removed (and garbage collected).
 
-### Remove health point when Hanny collides with a `PoisonBubble`
+### Remove a health point when Hanny collides with a `PoisonBubble`
 
 Whenever Hanny collides with a `PoisonBubble`, one health point should be
 removed. Adding this shouldn't be too hard, since we have already seen
@@ -200,7 +200,7 @@ with a `PoisonBubble`.
 
 Just like the health counter, shown at the top of the screen, we are going 
 to add a *Bubbles Popped* counter. Again, something we have done before, so it 
-shouldn't be too hard. The main question will be which entity is responsible 
+shouldn't be too hard. The main question will be which entity is **responsible** 
 for changing the *Bubbles Popped* counter. Is it Hanny, or are the air bubbles 
 responsible for this?
 
@@ -216,18 +216,30 @@ handler for collisions on Hanny in the following way:
 
 ```java
 @Override
-public void onCollision(Collider collidingObject){
-    if (collidingObject instanceof AirBubble){
+public void onCollision(List<Collider> collidingObject) {
+    var airBubbleCollision = false;
+    var enemyCollision = false;
+
+    for (Collider collider : collidingObject) {
+        if (collider instanceof AirBubble) {
+            airBubbleCollision = true;
+        } else {
+            enemyCollision = true;
+        }
+    }
+    
+    if (airBubbleCollision) {
         bubblesPoppedText.setText(++bubblesPopped);
-    } else {
+    }
+    if (enemyCollision) {
         healthText.setText(--health);
 
-        if (health == 0){
+        if (health == 0) {
             this.waterworld.setActiveScene(2);
         } else {
             setAnchorLocation(new Coordinate2D(
-                new Random().nextInt((int)(getSceneWidth() - getWidth())),
-                new Random().nextInt((int)(getSceneHeight() - getHeight()))));
+                new Random().nextInt((int) (getSceneWidth() - getWidth())),
+                new Random().nextInt((int) (getSceneHeight() - getHeight()))));
         }
     }
 }
@@ -236,7 +248,7 @@ public void onCollision(Collider collidingObject){
 ## Apply some proper Object Orientation
 
 When you followed the steps above you might have implemented the `Collider`
-interface in the `AirBubble` class as well as in the `PoissonBubble` class.
+interface in the `AirBubble` class as well as in the `PoisonBubble` class.
 Again shared behaviour, so it's time to clean that up.
 
 ![Edit](images/edit.png) Create a superclass for both `AirBubble`

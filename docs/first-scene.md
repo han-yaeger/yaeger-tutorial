@@ -20,7 +20,7 @@ audio of a scene. For this you can use the methods
 `setBackgroundImage(String)` and `setBackgroundAudio(String)`.
 
 Both the image and the audio are provided in the `resources/` folder. This
-folder should be the only place to store your assets. The url is relative to
+folder should be the only location to store your assets. The url is relative to
 this folder, so the file `background1.jpg` from the folder `backgrounds/` should
 be accessed through the url `backgrounds/background1.jpg`. For the background
 audio, we will use `ocean.mp3`.

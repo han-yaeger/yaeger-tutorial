@@ -2,14 +2,14 @@
 
 In this tutorial you will create a simple game called Waterworld. We will start
 with an empty project. Only the assets and the project settings are provided. 
-Step-by-step you will be guided in the creation of simple game, and in doing 
+You will be guided Step-by-step in the creation of a simple game, and in doing 
 so, become familiar with many of the features of Yaeger.
 
 ## What we will be building
 
 When this tutorial is completed, we will have a game in which a fish (called 
 Hanny) has to navigate through the ocean and pop air bubbles. While doing so,
-she has to prevent being bitten by enemies that also prowl the ocean
+she has to prevent being bitten by enemies that also prowl the ocean.
 
 ![Waterworld](images/game/game.png)
 
@@ -21,6 +21,6 @@ modern IDE that supports Java, this tutorial will only include examples for
 [Eclipse](https://www.eclipse.org/).
 
 This tutorial expects a basic understanding of the Java Programming language.
-From Java, we will only be using the basic constructs, such as Packages, 
+From Java, we will only be using the basic constructs, such as packages, 
 classes, interfaces and methods. More "modern" parts of the language, such 
 as lambda's or generics are not required, nor used.

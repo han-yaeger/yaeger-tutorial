@@ -9,8 +9,13 @@ get their hands on Hanny, she gets eaten.
 
 ## Clone the starter project
 
+<<<<<<< HEAD
 We provide a [Git](https://git-scm.com/) repository, that contains both a 
 starter project and the required assets. Either clone this repository to your 
+=======
+We provide a [Git](https://git-scm.com/) repository, that contains both a
+starter project and the required assets. Either clone this repository to your
+>>>>>>> development
 local machine, or download the zip file. You can find the starter project here:
 [https://github.com/han-yaeger/yaeger-tutorial](https://github.com/han-yaeger/yaeger-tutorial)
 
@@ -58,7 +63,7 @@ popular amongst Java developers:
 
 ## Switch branch to look at the solution
 
-Whenever your stuck, you can switch to Branch *implementation*, to see the full
+Whenever you're stuck, you can switch to the Branch *implementation*, to see the full
 implementation. For switching branches some knowledge of 
 [Git](https://git-scm.com/) is required, so read the [Git](https://git-scm.com/)
 documentation to figure out how to switch branches.

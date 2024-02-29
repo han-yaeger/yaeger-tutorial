@@ -57,8 +57,7 @@ title.
 
 In general, to expand the behaviour of an `Entity`, you should add the
 appropriate Interface to the `Entity`. To let an `Entity` listen to mouse button
-clicks, the `Entity` should implement the Interface
-`MouseButtonPressedListener`.
+clicks, the `Entity` should implement the Interface `MouseButtonPressedListener`.
 
 ![Edit](images/edit.png) Let `StartButton` implement the interface
 `MouseButtonPressedListener`.
