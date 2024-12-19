@@ -15,7 +15,7 @@ she has to prevent being bitten by enemies that also prowl the ocean.
 
 ## Prerequisite
 
-Yaeger requires Java JDK16 or above to work. Although it can be used with any 
+Yaeger requires Java JDK21 or above to work. Although it can be used with any 
 modern IDE that supports Java, this tutorial will only include examples for
 [JetBrains IntelliJ](https://www.jetbrains.com/idea/) and 
 [Eclipse](https://www.eclipse.org/).
